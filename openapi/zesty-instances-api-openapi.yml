@@ -1,0 +1,1546 @@
+openapi: 3.1.0
+info:
+  title: Zesty Instances API
+  description: >-
+    The Zesty.io Instances API is a REST API that allows CRUD operations on
+    Zesty.io instances. Every instance created in Zesty.io is assigned a ZUID
+    (Zesty Universal Identifier) and can be interacted with over HTTPS. The
+    API provides access to content models, content items, fields, views,
+    stylesheets, scripts, settings, head tags, navigation, audits, and
+    publishing operations.
+  version: 1.0.0
+  contact:
+    name: Zesty.io
+    url: https://www.zesty.io/
+  license:
+    name: Proprietary
+    url: https://www.zesty.io/
+externalDocs:
+  description: Zesty Instances API Documentation
+  url: https://docs.zesty.io/docs/instances-api
+servers:
+  - url: https://{instanceZUID}.api.zesty.io/v1
+    description: Zesty Instances API (per-instance)
+    variables:
+      instanceZUID:
+        default: INSTANCE_ZUID
+        description: >-
+          The ZUID of the Zesty.io instance. Each instance has a unique ZUID
+          assigned at creation.
+paths:
+  /content/models:
+    get:
+      operationId: getModels
+      summary: List all content models
+      description: Returns a list of all content models defined in the instance.
+      tags:
+        - Content Models
+      security:
+        - sessionToken: []
+      responses:
+        '200':
+          description: A list of content models.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/ContentModel'
+        '401':
+          description: Unauthorized.
+    post:
+      operationId: createModel
+      summary: Create a content model
+      description: Creates a new content model in the instance.
+      tags:
+        - Content Models
+      security:
+        - sessionToken: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - name
+                - label
+                - type
+              properties:
+                name:
+                  type: string
+                  description: The reference name for the model.
+                label:
+                  type: string
+                  description: The display label for the model.
+                type:
+                  type: string
+                  enum:
+                    - templateset
+                    - pageset
+                    - dataset
+                  description: The type of content model.
+      responses:
+        '201':
+          description: Content model created successfully.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                  data:
+                    $ref: '#/components/schemas/ContentModel'
+        '400':
+          description: Invalid request.
+        '401':
+          description: Unauthorized.
+  /content/models/{modelZUID}:
+    get:
+      operationId: getModel
+      summary: Get a content model
+      description: Returns details for a specific content model including its fields.
+      tags:
+        - Content Models
+      security:
+        - sessionToken: []
+      parameters:
+        - name: modelZUID
+          in: path
+          required: true
+          schema:
+            type: string
+          description: The ZUID of the content model.
+      responses:
+        '200':
+          description: Content model details.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                  data:
+                    $ref: '#/components/schemas/ContentModel'
+        '401':
+          description: Unauthorized.
+        '404':
+          description: Content model not found.
+    put:
+      operationId: updateModel
+      summary: Update a content model
+      description: Updates the details of a specific content model.
+      tags:
+        - Content Models
+      security:
+        - sessionToken: []
+      parameters:
+        - name: modelZUID
+          in: path
+          required: true
+          schema:
+            type: string
+          description: The ZUID of the content model.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                label:
+                  type: string
+                  description: The updated display label.
+      responses:
+        '200':
+          description: Content model updated successfully.
+        '401':
+          description: Unauthorized.
+        '404':
+          description: Content model not found.
+    delete:
+      operationId: deleteModel
+      summary: Delete a content model
+      description: Deletes a specific content model and its associated data.
+      tags:
+        - Content Models
+      security:
+        - sessionToken: []
+      parameters:
+        - name: modelZUID
+          in: path
+          required: true
+          schema:
+            type: string
+          description: The ZUID of the content model.
+      responses:
+        '200':
+          description: Content model deleted successfully.
+        '401':
+          description: Unauthorized.
+        '404':
+          description: Content model not found.
+  /content/models/{modelZUID}/fields:
+    get:
+      operationId: getFields
+      summary: List fields for a content model
+      description: Returns all fields defined for the specified content model.
+      tags:
+        - Fields
+      security:
+        - sessionToken: []
+      parameters:
+        - name: modelZUID
+          in: path
+          required: true
+          schema:
+            type: string
+          description: The ZUID of the content model.
+      responses:
+        '200':
+          description: A list of fields.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Field'
+        '401':
+          description: Unauthorized.
+        '404':
+          description: Content model not found.
+    post:
+      operationId: createField
+      summary: Create a field on a content model
+      description: Adds a new field to the specified content model.
+      tags:
+        - Fields
+      security:
+        - sessionToken: []
+      parameters:
+        - name: modelZUID
+          in: path
+          required: true
+          schema:
+            type: string
+          description: The ZUID of the content model.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - name
+                - label
+                - datatype
+              properties:
+                name:
+                  type: string
+                  description: The reference name for the field.
+                label:
+                  type: string
+                  description: The display label for the field.
+                datatype:
+                  type: string
+                  description: The data type of the field.
+                required:
+                  type: boolean
+                  description: Whether the field is required.
+                sort:
+                  type: integer
+                  description: The sort order of the field.
+      responses:
+        '201':
+          description: Field created successfully.
+        '400':
+          description: Invalid request.
+        '401':
+          description: Unauthorized.
+  /content/models/{modelZUID}/fields/{fieldZUID}:
+    get:
+      operationId: getField
+      summary: Get a field
+      description: Returns details for a specific field.
+      tags:
+        - Fields
+      security:
+        - sessionToken: []
+      parameters:
+        - name: modelZUID
+          in: path
+          required: true
+          schema:
+            type: string
+          description: The ZUID of the content model.
+        - name: fieldZUID
+          in: path
+          required: true
+          schema:
+            type: string
+          description: The ZUID of the field.
+      responses:
+        '200':
+          description: Field details.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                  data:
+                    $ref: '#/components/schemas/Field'
+        '401':
+          description: Unauthorized.
+        '404':
+          description: Field not found.
+    put:
+      operationId: updateField
+      summary: Update a field
+      description: Updates the details of a specific field.
+      tags:
+        - Fields
+      security:
+        - sessionToken: []
+      parameters:
+        - name: modelZUID
+          in: path
+          required: true
+          schema:
+            type: string
+          description: The ZUID of the content model.
+        - name: fieldZUID
+          in: path
+          required: true
+          schema:
+            type: string
+          description: The ZUID of the field.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                label:
+                  type: string
+                required:
+                  type: boolean
+                sort:
+                  type: integer
+      responses:
+        '200':
+          description: Field updated successfully.
+        '401':
+          description: Unauthorized.
+        '404':
+          description: Field not found.
+    delete:
+      operationId: deleteField
+      summary: Delete a field
+      description: Deletes a specific field from a content model.
+      tags:
+        - Fields
+      security:
+        - sessionToken: []
+      parameters:
+        - name: modelZUID
+          in: path
+          required: true
+          schema:
+            type: string
+          description: The ZUID of the content model.
+        - name: fieldZUID
+          in: path
+          required: true
+          schema:
+            type: string
+          description: The ZUID of the field.
+      responses:
+        '200':
+          description: Field deleted successfully.
+        '401':
+          description: Unauthorized.
+        '404':
+          description: Field not found.
+  /content/models/{modelZUID}/items:
+    get:
+      operationId: getItems
+      summary: List content items for a model
+      description: Returns all content items for the specified content model.
+      tags:
+        - Content Items
+      security:
+        - sessionToken: []
+      parameters:
+        - name: modelZUID
+          in: path
+          required: true
+          schema:
+            type: string
+          description: The ZUID of the content model.
+      responses:
+        '200':
+          description: A list of content items.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/ContentItem'
+        '401':
+          description: Unauthorized.
+        '404':
+          description: Content model not found.
+    post:
+      operationId: createItem
+      summary: Create a content item
+      description: Creates a new content item in the specified content model.
+      tags:
+        - Content Items
+      security:
+        - sessionToken: []
+      parameters:
+        - name: modelZUID
+          in: path
+          required: true
+          schema:
+            type: string
+          description: The ZUID of the content model.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                data:
+                  type: object
+                  description: Key-value pairs of field names and their values.
+                web:
+                  type: object
+                  properties:
+                    pathPart:
+                      type: string
+                      description: The URL path segment for this item.
+                    parentZUID:
+                      type: string
+                      description: The parent item ZUID for URL hierarchy.
+                    metaTitle:
+                      type: string
+                    metaDescription:
+                      type: string
+                    metaLinkText:
+                      type: string
+                meta:
+                  type: object
+                  properties:
+                    langID:
+                      type: integer
+                      description: Language identifier.
+      responses:
+        '201':
+          description: Content item created successfully.
+        '400':
+          description: Invalid request.
+        '401':
+          description: Unauthorized.
+  /content/models/{modelZUID}/items/{itemZUID}:
+    get:
+      operationId: getItem
+      summary: Get a content item
+      description: Returns a specific content item with its data, web, and meta properties.
+      tags:
+        - Content Items
+      security:
+        - sessionToken: []
+      parameters:
+        - name: modelZUID
+          in: path
+          required: true
+          schema:
+            type: string
+          description: The ZUID of the content model.
+        - name: itemZUID
+          in: path
+          required: true
+          schema:
+            type: string
+          description: The ZUID of the content item.
+      responses:
+        '200':
+          description: Content item details.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                  data:
+                    $ref: '#/components/schemas/ContentItem'
+        '401':
+          description: Unauthorized.
+        '404':
+          description: Content item not found.
+    put:
+      operationId: updateItem
+      summary: Update a content item
+      description: Updates the content, web, and meta data of a specific item.
+      tags:
+        - Content Items
+      security:
+        - sessionToken: []
+      parameters:
+        - name: modelZUID
+          in: path
+          required: true
+          schema:
+            type: string
+          description: The ZUID of the content model.
+        - name: itemZUID
+          in: path
+          required: true
+          schema:
+            type: string
+          description: The ZUID of the content item.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                data:
+                  type: object
+                  description: Key-value pairs of field names and their values.
+                web:
+                  type: object
+                  properties:
+                    pathPart:
+                      type: string
+                    metaTitle:
+                      type: string
+                    metaDescription:
+                      type: string
+      responses:
+        '200':
+          description: Content item updated successfully.
+        '401':
+          description: Unauthorized.
+        '404':
+          description: Content item not found.
+    delete:
+      operationId: deleteItem
+      summary: Delete a content item
+      description: Deletes a specific content item.
+      tags:
+        - Content Items
+      security:
+        - sessionToken: []
+      parameters:
+        - name: modelZUID
+          in: path
+          required: true
+          schema:
+            type: string
+          description: The ZUID of the content model.
+        - name: itemZUID
+          in: path
+          required: true
+          schema:
+            type: string
+          description: The ZUID of the content item.
+      responses:
+        '200':
+          description: Content item deleted successfully.
+        '401':
+          description: Unauthorized.
+        '404':
+          description: Content item not found.
+  /content/models/{modelZUID}/items/{itemZUID}/publishings:
+    post:
+      operationId: publishItem
+      summary: Publish a content item
+      description: Publishes a content item, making it available on the live site.
+      tags:
+        - Publishing
+      security:
+        - sessionToken: []
+      parameters:
+        - name: modelZUID
+          in: path
+          required: true
+          schema:
+            type: string
+          description: The ZUID of the content model.
+        - name: itemZUID
+          in: path
+          required: true
+          schema:
+            type: string
+          description: The ZUID of the content item.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                version:
+                  type: integer
+                  description: The version number to publish.
+      responses:
+        '200':
+          description: Content item published successfully.
+        '401':
+          description: Unauthorized.
+        '404':
+          description: Content item not found.
+  /web/views:
+    get:
+      operationId: getViews
+      summary: List all views
+      description: Returns a list of all view files (templates) in the instance.
+      tags:
+        - Views
+      security:
+        - sessionToken: []
+      responses:
+        '200':
+          description: A list of views.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/View'
+        '401':
+          description: Unauthorized.
+    post:
+      operationId: createView
+      summary: Create a view
+      description: Creates a new view file in the instance.
+      tags:
+        - Views
+      security:
+        - sessionToken: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - fileName
+                - code
+              properties:
+                fileName:
+                  type: string
+                  description: The filename for the view.
+                code:
+                  type: string
+                  description: The view template code.
+                type:
+                  type: string
+                  description: The view type (e.g., snippet, ajax-json).
+      responses:
+        '201':
+          description: View created successfully.
+        '400':
+          description: Invalid request.
+        '401':
+          description: Unauthorized.
+  /web/views/{viewZUID}:
+    get:
+      operationId: getView
+      summary: Get a view
+      description: Returns a specific view file and its code content.
+      tags:
+        - Views
+      security:
+        - sessionToken: []
+      parameters:
+        - name: viewZUID
+          in: path
+          required: true
+          schema:
+            type: string
+          description: The ZUID of the view.
+      responses:
+        '200':
+          description: View details.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                  data:
+                    $ref: '#/components/schemas/View'
+        '401':
+          description: Unauthorized.
+        '404':
+          description: View not found.
+    put:
+      operationId: updateView
+      summary: Update a view
+      description: Updates the code content of a specific view file.
+      tags:
+        - Views
+      security:
+        - sessionToken: []
+      parameters:
+        - name: viewZUID
+          in: path
+          required: true
+          schema:
+            type: string
+          description: The ZUID of the view.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                code:
+                  type: string
+                  description: The updated view template code.
+      responses:
+        '200':
+          description: View updated successfully.
+        '401':
+          description: Unauthorized.
+        '404':
+          description: View not found.
+  /web/stylesheets:
+    get:
+      operationId: getStylesheets
+      summary: List all stylesheets
+      description: Returns a list of all stylesheet files in the instance.
+      tags:
+        - Stylesheets
+      security:
+        - sessionToken: []
+      responses:
+        '200':
+          description: A list of stylesheets.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Stylesheet'
+        '401':
+          description: Unauthorized.
+    post:
+      operationId: createStylesheet
+      summary: Create a stylesheet
+      description: Creates a new stylesheet file in the instance.
+      tags:
+        - Stylesheets
+      security:
+        - sessionToken: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - fileName
+                - code
+              properties:
+                fileName:
+                  type: string
+                code:
+                  type: string
+                type:
+                  type: string
+      responses:
+        '201':
+          description: Stylesheet created successfully.
+        '400':
+          description: Invalid request.
+        '401':
+          description: Unauthorized.
+  /web/stylesheets/{stylesheetZUID}:
+    get:
+      operationId: getStylesheet
+      summary: Get a stylesheet
+      description: Returns a specific stylesheet and its code content.
+      tags:
+        - Stylesheets
+      security:
+        - sessionToken: []
+      parameters:
+        - name: stylesheetZUID
+          in: path
+          required: true
+          schema:
+            type: string
+          description: The ZUID of the stylesheet.
+      responses:
+        '200':
+          description: Stylesheet details.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                  data:
+                    $ref: '#/components/schemas/Stylesheet'
+        '401':
+          description: Unauthorized.
+        '404':
+          description: Stylesheet not found.
+    put:
+      operationId: updateStylesheet
+      summary: Update a stylesheet
+      description: Updates the code content of a specific stylesheet.
+      tags:
+        - Stylesheets
+      security:
+        - sessionToken: []
+      parameters:
+        - name: stylesheetZUID
+          in: path
+          required: true
+          schema:
+            type: string
+          description: The ZUID of the stylesheet.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                code:
+                  type: string
+      responses:
+        '200':
+          description: Stylesheet updated successfully.
+        '401':
+          description: Unauthorized.
+        '404':
+          description: Stylesheet not found.
+  /web/scripts:
+    get:
+      operationId: getScripts
+      summary: List all scripts
+      description: Returns a list of all JavaScript files in the instance.
+      tags:
+        - Scripts
+      security:
+        - sessionToken: []
+      responses:
+        '200':
+          description: A list of scripts.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Script'
+        '401':
+          description: Unauthorized.
+    post:
+      operationId: createScript
+      summary: Create a script
+      description: Creates a new JavaScript file in the instance.
+      tags:
+        - Scripts
+      security:
+        - sessionToken: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - fileName
+                - code
+              properties:
+                fileName:
+                  type: string
+                code:
+                  type: string
+                type:
+                  type: string
+      responses:
+        '201':
+          description: Script created successfully.
+        '400':
+          description: Invalid request.
+        '401':
+          description: Unauthorized.
+  /web/scripts/{scriptZUID}:
+    get:
+      operationId: getScript
+      summary: Get a script
+      description: Returns a specific script file and its code content.
+      tags:
+        - Scripts
+      security:
+        - sessionToken: []
+      parameters:
+        - name: scriptZUID
+          in: path
+          required: true
+          schema:
+            type: string
+          description: The ZUID of the script.
+      responses:
+        '200':
+          description: Script details.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                  data:
+                    $ref: '#/components/schemas/Script'
+        '401':
+          description: Unauthorized.
+        '404':
+          description: Script not found.
+    put:
+      operationId: updateScript
+      summary: Update a script
+      description: Updates the code content of a specific script file.
+      tags:
+        - Scripts
+      security:
+        - sessionToken: []
+      parameters:
+        - name: scriptZUID
+          in: path
+          required: true
+          schema:
+            type: string
+          description: The ZUID of the script.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                code:
+                  type: string
+      responses:
+        '200':
+          description: Script updated successfully.
+        '401':
+          description: Unauthorized.
+        '404':
+          description: Script not found.
+  /env/settings:
+    get:
+      operationId: getSettings
+      summary: List all instance settings
+      description: Returns all settings for the instance.
+      tags:
+        - Settings
+      security:
+        - sessionToken: []
+      responses:
+        '200':
+          description: A list of settings.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Setting'
+        '401':
+          description: Unauthorized.
+  /env/settings/{settingZUID}:
+    get:
+      operationId: getSetting
+      summary: Get a setting
+      description: Returns a specific instance setting.
+      tags:
+        - Settings
+      security:
+        - sessionToken: []
+      parameters:
+        - name: settingZUID
+          in: path
+          required: true
+          schema:
+            type: string
+          description: The ZUID of the setting.
+      responses:
+        '200':
+          description: Setting details.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                  data:
+                    $ref: '#/components/schemas/Setting'
+        '401':
+          description: Unauthorized.
+        '404':
+          description: Setting not found.
+    put:
+      operationId: updateSetting
+      summary: Update a setting
+      description: Updates the value of a specific instance setting.
+      tags:
+        - Settings
+      security:
+        - sessionToken: []
+      parameters:
+        - name: settingZUID
+          in: path
+          required: true
+          schema:
+            type: string
+          description: The ZUID of the setting.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                value:
+                  type: string
+                  description: The new value for the setting.
+      responses:
+        '200':
+          description: Setting updated successfully.
+        '401':
+          description: Unauthorized.
+        '404':
+          description: Setting not found.
+  /web/headtags:
+    get:
+      operationId: getHeadTags
+      summary: List all head tags
+      description: Returns a list of all HTML head tags in the instance.
+      tags:
+        - Head Tags
+      security:
+        - sessionToken: []
+      responses:
+        '200':
+          description: A list of head tags.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/HeadTag'
+        '401':
+          description: Unauthorized.
+    post:
+      operationId: createHeadTag
+      summary: Create a head tag
+      description: Creates a new HTML head tag entry for the instance.
+      tags:
+        - Head Tags
+      security:
+        - sessionToken: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - type
+                - resourceZUID
+              properties:
+                type:
+                  type: string
+                  description: The tag type (e.g., meta, link, script).
+                resourceZUID:
+                  type: string
+                  description: The ZUID of the resource this tag applies to.
+                attributes:
+                  type: object
+                  description: Key-value pairs of HTML attributes.
+                sort:
+                  type: integer
+      responses:
+        '201':
+          description: Head tag created successfully.
+        '400':
+          description: Invalid request.
+        '401':
+          description: Unauthorized.
+  /web/headtags/{headTagZUID}:
+    get:
+      operationId: getHeadTag
+      summary: Get a head tag
+      description: Returns a specific head tag.
+      tags:
+        - Head Tags
+      security:
+        - sessionToken: []
+      parameters:
+        - name: headTagZUID
+          in: path
+          required: true
+          schema:
+            type: string
+          description: The ZUID of the head tag.
+      responses:
+        '200':
+          description: Head tag details.
+        '401':
+          description: Unauthorized.
+        '404':
+          description: Head tag not found.
+    put:
+      operationId: updateHeadTag
+      summary: Update a head tag
+      description: Updates a specific head tag.
+      tags:
+        - Head Tags
+      security:
+        - sessionToken: []
+      parameters:
+        - name: headTagZUID
+          in: path
+          required: true
+          schema:
+            type: string
+          description: The ZUID of the head tag.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                type:
+                  type: string
+                attributes:
+                  type: object
+                sort:
+                  type: integer
+      responses:
+        '200':
+          description: Head tag updated successfully.
+        '401':
+          description: Unauthorized.
+        '404':
+          description: Head tag not found.
+    delete:
+      operationId: deleteHeadTag
+      summary: Delete a head tag
+      description: Deletes a specific head tag.
+      tags:
+        - Head Tags
+      security:
+        - sessionToken: []
+      parameters:
+        - name: headTagZUID
+          in: path
+          required: true
+          schema:
+            type: string
+          description: The ZUID of the head tag.
+      responses:
+        '200':
+          description: Head tag deleted successfully.
+        '401':
+          description: Unauthorized.
+        '404':
+          description: Head tag not found.
+  /env/audits:
+    get:
+      operationId: getAudits
+      summary: List audit trail entries
+      description: >-
+        Returns a list of audit trail entries recording actions taken on the
+        instance.
+      tags:
+        - Audits
+      security:
+        - sessionToken: []
+      parameters:
+        - name: limit
+          in: query
+          schema:
+            type: integer
+          description: Maximum number of entries to return.
+        - name: page
+          in: query
+          schema:
+            type: integer
+          description: Page number for pagination.
+      responses:
+        '200':
+          description: A list of audit entries.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        ZUID:
+                          type: string
+                        action:
+                          type: string
+                        resourceZUID:
+                          type: string
+                        userZUID:
+                          type: string
+                        happenedAt:
+                          type: string
+                          format: date-time
+        '401':
+          description: Unauthorized.
+  /env/nav:
+    get:
+      operationId: getNavigation
+      summary: Get navigation tree
+      description: Returns the navigation tree for the instance.
+      tags:
+        - Navigation
+      security:
+        - sessionToken: []
+      responses:
+        '200':
+          description: The navigation tree.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        ZUID:
+                          type: string
+                        label:
+                          type: string
+                        parentZUID:
+                          type: string
+                        sort:
+                          type: integer
+        '401':
+          description: Unauthorized.
+  /search/items:
+    get:
+      operationId: searchItems
+      summary: Search content items
+      description: Searches across all content items in the instance.
+      tags:
+        - Search
+      security:
+        - sessionToken: []
+      parameters:
+        - name: q
+          in: query
+          required: true
+          schema:
+            type: string
+          description: The search query string.
+        - name: limit
+          in: query
+          schema:
+            type: integer
+          description: Maximum number of results to return.
+      responses:
+        '200':
+          description: Search results.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/ContentItem'
+        '401':
+          description: Unauthorized.
+components:
+  securitySchemes:
+    sessionToken:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: >-
+        A session token or access token obtained from the Auth API.
+  schemas:
+    ContentModel:
+      type: object
+      properties:
+        ZUID:
+          type: string
+          description: The Zesty Universal Identifier for the content model.
+        name:
+          type: string
+          description: The reference name.
+        label:
+          type: string
+          description: The display label.
+        type:
+          type: string
+          enum:
+            - templateset
+            - pageset
+            - dataset
+          description: The model type.
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+    Field:
+      type: object
+      properties:
+        ZUID:
+          type: string
+          description: The Zesty Universal Identifier for the field.
+        name:
+          type: string
+          description: The reference name.
+        label:
+          type: string
+          description: The display label.
+        datatype:
+          type: string
+          description: The field data type.
+        required:
+          type: boolean
+        sort:
+          type: integer
+        contentModelZUID:
+          type: string
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+    ContentItem:
+      type: object
+      properties:
+        ZUID:
+          type: string
+          description: The Zesty Universal Identifier for the content item.
+        data:
+          type: object
+          description: Key-value pairs of field data.
+        web:
+          type: object
+          properties:
+            pathPart:
+              type: string
+            path:
+              type: string
+            metaTitle:
+              type: string
+            metaDescription:
+              type: string
+            metaLinkText:
+              type: string
+        meta:
+          type: object
+          properties:
+            ZUID:
+              type: string
+            contentModelZUID:
+              type: string
+            langID:
+              type: integer
+            version:
+              type: integer
+            createdAt:
+              type: string
+              format: date-time
+            updatedAt:
+              type: string
+              format: date-time
+    View:
+      type: object
+      properties:
+        ZUID:
+          type: string
+        fileName:
+          type: string
+        code:
+          type: string
+        type:
+          type: string
+        version:
+          type: integer
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+    Stylesheet:
+      type: object
+      properties:
+        ZUID:
+          type: string
+        fileName:
+          type: string
+        code:
+          type: string
+        type:
+          type: string
+        version:
+          type: integer
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+    Script:
+      type: object
+      properties:
+        ZUID:
+          type: string
+        fileName:
+          type: string
+        code:
+          type: string
+        type:
+          type: string
+        version:
+          type: integer
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+    Setting:
+      type: object
+      properties:
+        ZUID:
+          type: string
+        key:
+          type: string
+        value:
+          type: string
+        category:
+          type: string
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+    HeadTag:
+      type: object
+      properties:
+        ZUID:
+          type: string
+        type:
+          type: string
+        resourceZUID:
+          type: string
+        attributes:
+          type: object
+        sort:
+          type: integer
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+tags:
+  - name: Content Models
+    description: Manage content model schemas.
+  - name: Fields
+    description: Manage fields on content models.
+  - name: Content Items
+    description: Manage content item data.
+  - name: Publishing
+    description: Publish content items to the live site.
+  - name: Views
+    description: Manage view template files.
+  - name: Stylesheets
+    description: Manage CSS stylesheet files.
+  - name: Scripts
+    description: Manage JavaScript files.
+  - name: Settings
+    description: Manage instance settings.
+  - name: Head Tags
+    description: Manage HTML head tag entries.
+  - name: Audits
+    description: View audit trail entries.
+  - name: Navigation
+    description: Manage the instance navigation tree.
+  - name: Search
+    description: Search across content items.

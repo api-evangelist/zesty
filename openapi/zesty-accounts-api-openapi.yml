@@ -1,0 +1,887 @@
+openapi: 3.1.0
+info:
+  title: Zesty Accounts API
+  description: >-
+    The Zesty.io Accounts API is used to manage users, roles, instances,
+    teams, tokens, ecosystems, webhooks, and apps. It provides
+    administrative control over the organizational structure of a Zesty.io
+    account. All endpoints require authentication via a session token
+    obtained from the Auth API.
+  version: 1.0.0
+  contact:
+    name: Zesty.io
+    url: https://www.zesty.io/
+  license:
+    name: Proprietary
+    url: https://www.zesty.io/
+externalDocs:
+  description: Zesty Accounts API Documentation
+  url: https://docs.zesty.io/docs/accounts
+servers:
+  - url: https://accounts.api.zesty.io/v1
+    description: Zesty Accounts API Production Server
+paths:
+  /instances:
+    get:
+      operationId: getInstances
+      summary: List all instances
+      description: Returns a list of all instances accessible to the authenticated user.
+      tags:
+        - Instances
+      security:
+        - sessionToken: []
+      responses:
+        '200':
+          description: A list of instances.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Instance'
+        '401':
+          description: Unauthorized.
+    post:
+      operationId: createInstance
+      summary: Create a new instance
+      description: Creates a new Zesty.io instance.
+      tags:
+        - Instances
+      security:
+        - sessionToken: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - name
+              properties:
+                name:
+                  type: string
+                  description: The name of the instance.
+                ecoZUID:
+                  type: string
+                  description: The ecosystem ZUID to associate with.
+      responses:
+        '201':
+          description: Instance created successfully.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                  data:
+                    $ref: '#/components/schemas/Instance'
+        '400':
+          description: Invalid request.
+        '401':
+          description: Unauthorized.
+  /instances/{instanceZUID}:
+    get:
+      operationId: getInstance
+      summary: Get an instance
+      description: Returns details for a specific instance by its ZUID.
+      tags:
+        - Instances
+      security:
+        - sessionToken: []
+      parameters:
+        - name: instanceZUID
+          in: path
+          required: true
+          schema:
+            type: string
+          description: The ZUID of the instance.
+      responses:
+        '200':
+          description: Instance details.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                  data:
+                    $ref: '#/components/schemas/Instance'
+        '401':
+          description: Unauthorized.
+        '404':
+          description: Instance not found.
+    put:
+      operationId: updateInstance
+      summary: Update an instance
+      description: Updates the details of a specific instance.
+      tags:
+        - Instances
+      security:
+        - sessionToken: []
+      parameters:
+        - name: instanceZUID
+          in: path
+          required: true
+          schema:
+            type: string
+          description: The ZUID of the instance.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: The updated name of the instance.
+      responses:
+        '200':
+          description: Instance updated successfully.
+        '401':
+          description: Unauthorized.
+        '404':
+          description: Instance not found.
+    delete:
+      operationId: deleteInstance
+      summary: Delete an instance
+      description: Deletes a specific instance.
+      tags:
+        - Instances
+      security:
+        - sessionToken: []
+      parameters:
+        - name: instanceZUID
+          in: path
+          required: true
+          schema:
+            type: string
+          description: The ZUID of the instance.
+      responses:
+        '200':
+          description: Instance deleted successfully.
+        '401':
+          description: Unauthorized.
+        '404':
+          description: Instance not found.
+  /users:
+    get:
+      operationId: getUsers
+      summary: List all users
+      description: Returns a list of all users in the account.
+      tags:
+        - Users
+      security:
+        - sessionToken: []
+      responses:
+        '200':
+          description: A list of users.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/User'
+        '401':
+          description: Unauthorized.
+  /users/{userZUID}:
+    get:
+      operationId: getUser
+      summary: Get a user
+      description: Returns details for a specific user by their ZUID.
+      tags:
+        - Users
+      security:
+        - sessionToken: []
+      parameters:
+        - name: userZUID
+          in: path
+          required: true
+          schema:
+            type: string
+          description: The ZUID of the user.
+      responses:
+        '200':
+          description: User details.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                  data:
+                    $ref: '#/components/schemas/User'
+        '401':
+          description: Unauthorized.
+        '404':
+          description: User not found.
+    put:
+      operationId: updateUser
+      summary: Update a user
+      description: Updates the details of a specific user.
+      tags:
+        - Users
+      security:
+        - sessionToken: []
+      parameters:
+        - name: userZUID
+          in: path
+          required: true
+          schema:
+            type: string
+          description: The ZUID of the user.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                firstName:
+                  type: string
+                lastName:
+                  type: string
+                email:
+                  type: string
+                  format: email
+      responses:
+        '200':
+          description: User updated successfully.
+        '401':
+          description: Unauthorized.
+        '404':
+          description: User not found.
+    delete:
+      operationId: deleteUser
+      summary: Delete a user
+      description: Deletes a specific user.
+      tags:
+        - Users
+      security:
+        - sessionToken: []
+      parameters:
+        - name: userZUID
+          in: path
+          required: true
+          schema:
+            type: string
+          description: The ZUID of the user.
+      responses:
+        '200':
+          description: User deleted successfully.
+        '401':
+          description: Unauthorized.
+        '404':
+          description: User not found.
+  /roles:
+    get:
+      operationId: getRoles
+      summary: List all roles
+      description: Returns a list of all roles available in the account.
+      tags:
+        - Roles
+      security:
+        - sessionToken: []
+      responses:
+        '200':
+          description: A list of roles.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Role'
+        '401':
+          description: Unauthorized.
+    post:
+      operationId: createRole
+      summary: Create a new role
+      description: Creates a new role with specified permissions.
+      tags:
+        - Roles
+      security:
+        - sessionToken: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - name
+              properties:
+                name:
+                  type: string
+                  description: The name of the role.
+                instanceZUID:
+                  type: string
+                  description: The instance ZUID to assign this role to.
+      responses:
+        '201':
+          description: Role created successfully.
+        '400':
+          description: Invalid request.
+        '401':
+          description: Unauthorized.
+  /roles/{roleZUID}:
+    get:
+      operationId: getRole
+      summary: Get a role
+      description: Returns details for a specific role by its ZUID.
+      tags:
+        - Roles
+      security:
+        - sessionToken: []
+      parameters:
+        - name: roleZUID
+          in: path
+          required: true
+          schema:
+            type: string
+          description: The ZUID of the role.
+      responses:
+        '200':
+          description: Role details.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                  data:
+                    $ref: '#/components/schemas/Role'
+        '401':
+          description: Unauthorized.
+        '404':
+          description: Role not found.
+    put:
+      operationId: updateRole
+      summary: Update a role
+      description: Updates the details of a specific role.
+      tags:
+        - Roles
+      security:
+        - sessionToken: []
+      parameters:
+        - name: roleZUID
+          in: path
+          required: true
+          schema:
+            type: string
+          description: The ZUID of the role.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+      responses:
+        '200':
+          description: Role updated successfully.
+        '401':
+          description: Unauthorized.
+        '404':
+          description: Role not found.
+    delete:
+      operationId: deleteRole
+      summary: Delete a role
+      description: Deletes a specific role.
+      tags:
+        - Roles
+      security:
+        - sessionToken: []
+      parameters:
+        - name: roleZUID
+          in: path
+          required: true
+          schema:
+            type: string
+          description: The ZUID of the role.
+      responses:
+        '200':
+          description: Role deleted successfully.
+        '401':
+          description: Unauthorized.
+        '404':
+          description: Role not found.
+  /teams:
+    get:
+      operationId: getTeams
+      summary: List all teams
+      description: Returns a list of all teams in the account.
+      tags:
+        - Teams
+      security:
+        - sessionToken: []
+      responses:
+        '200':
+          description: A list of teams.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Team'
+        '401':
+          description: Unauthorized.
+    post:
+      operationId: createTeam
+      summary: Create a new team
+      description: Creates a new team.
+      tags:
+        - Teams
+      security:
+        - sessionToken: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - name
+              properties:
+                name:
+                  type: string
+                  description: The name of the team.
+                description:
+                  type: string
+                  description: A description of the team.
+      responses:
+        '201':
+          description: Team created successfully.
+        '400':
+          description: Invalid request.
+        '401':
+          description: Unauthorized.
+  /teams/{teamZUID}:
+    get:
+      operationId: getTeam
+      summary: Get a team
+      description: Returns details for a specific team by its ZUID.
+      tags:
+        - Teams
+      security:
+        - sessionToken: []
+      parameters:
+        - name: teamZUID
+          in: path
+          required: true
+          schema:
+            type: string
+          description: The ZUID of the team.
+      responses:
+        '200':
+          description: Team details.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                  data:
+                    $ref: '#/components/schemas/Team'
+        '401':
+          description: Unauthorized.
+        '404':
+          description: Team not found.
+    put:
+      operationId: updateTeam
+      summary: Update a team
+      description: Updates the details of a specific team.
+      tags:
+        - Teams
+      security:
+        - sessionToken: []
+      parameters:
+        - name: teamZUID
+          in: path
+          required: true
+          schema:
+            type: string
+          description: The ZUID of the team.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                description:
+                  type: string
+      responses:
+        '200':
+          description: Team updated successfully.
+        '401':
+          description: Unauthorized.
+        '404':
+          description: Team not found.
+    delete:
+      operationId: deleteTeam
+      summary: Delete a team
+      description: Deletes a specific team.
+      tags:
+        - Teams
+      security:
+        - sessionToken: []
+      parameters:
+        - name: teamZUID
+          in: path
+          required: true
+          schema:
+            type: string
+          description: The ZUID of the team.
+      responses:
+        '200':
+          description: Team deleted successfully.
+        '401':
+          description: Unauthorized.
+        '404':
+          description: Team not found.
+  /tokens:
+    get:
+      operationId: getTokens
+      summary: List all access tokens
+      description: Returns a list of all access tokens for the account.
+      tags:
+        - Tokens
+      security:
+        - sessionToken: []
+      responses:
+        '200':
+          description: A list of access tokens.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Token'
+        '401':
+          description: Unauthorized.
+    post:
+      operationId: createToken
+      summary: Create an access token
+      description: Creates a new access token for API authentication.
+      tags:
+        - Tokens
+      security:
+        - sessionToken: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - name
+                - roleZUID
+              properties:
+                name:
+                  type: string
+                  description: A descriptive name for the token.
+                roleZUID:
+                  type: string
+                  description: The role ZUID to associate with this token.
+      responses:
+        '201':
+          description: Token created successfully.
+        '400':
+          description: Invalid request.
+        '401':
+          description: Unauthorized.
+  /tokens/{tokenZUID}:
+    get:
+      operationId: getToken
+      summary: Get an access token
+      description: Returns details for a specific access token.
+      tags:
+        - Tokens
+      security:
+        - sessionToken: []
+      parameters:
+        - name: tokenZUID
+          in: path
+          required: true
+          schema:
+            type: string
+          description: The ZUID of the token.
+      responses:
+        '200':
+          description: Token details.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                  data:
+                    $ref: '#/components/schemas/Token'
+        '401':
+          description: Unauthorized.
+        '404':
+          description: Token not found.
+    delete:
+      operationId: deleteToken
+      summary: Delete an access token
+      description: Deletes a specific access token.
+      tags:
+        - Tokens
+      security:
+        - sessionToken: []
+      parameters:
+        - name: tokenZUID
+          in: path
+          required: true
+          schema:
+            type: string
+          description: The ZUID of the token.
+      responses:
+        '200':
+          description: Token deleted successfully.
+        '401':
+          description: Unauthorized.
+        '404':
+          description: Token not found.
+  /apps:
+    get:
+      operationId: getApps
+      summary: List all apps
+      description: Returns a list of all registered apps.
+      tags:
+        - Apps
+      security:
+        - sessionToken: []
+      responses:
+        '200':
+          description: A list of apps.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        ZUID:
+                          type: string
+                        name:
+                          type: string
+                        url:
+                          type: string
+        '401':
+          description: Unauthorized.
+  /webhooks:
+    get:
+      operationId: getWebhooks
+      summary: List all webhooks
+      description: Returns a list of all configured webhooks.
+      tags:
+        - Webhooks
+      security:
+        - sessionToken: []
+      responses:
+        '200':
+          description: A list of webhooks.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        ZUID:
+                          type: string
+                        url:
+                          type: string
+                        event:
+                          type: string
+        '401':
+          description: Unauthorized.
+    post:
+      operationId: createWebhook
+      summary: Create a webhook
+      description: Creates a new webhook for event notifications.
+      tags:
+        - Webhooks
+      security:
+        - sessionToken: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - url
+                - event
+              properties:
+                url:
+                  type: string
+                  format: uri
+                  description: The URL to receive webhook notifications.
+                event:
+                  type: string
+                  description: The event type to subscribe to.
+      responses:
+        '201':
+          description: Webhook created successfully.
+        '400':
+          description: Invalid request.
+        '401':
+          description: Unauthorized.
+components:
+  securitySchemes:
+    sessionToken:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: >-
+        A session token obtained from the Auth API login endpoint.
+  schemas:
+    Instance:
+      type: object
+      properties:
+        ZUID:
+          type: string
+          description: The Zesty Universal Identifier for the instance.
+        name:
+          type: string
+          description: The name of the instance.
+        ecoZUID:
+          type: string
+          description: The ecosystem ZUID.
+        domain:
+          type: string
+          description: The instance domain.
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+    User:
+      type: object
+      properties:
+        ZUID:
+          type: string
+          description: The Zesty Universal Identifier for the user.
+        firstName:
+          type: string
+        lastName:
+          type: string
+        email:
+          type: string
+          format: email
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+    Role:
+      type: object
+      properties:
+        ZUID:
+          type: string
+          description: The Zesty Universal Identifier for the role.
+        name:
+          type: string
+        instanceZUID:
+          type: string
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+    Team:
+      type: object
+      properties:
+        ZUID:
+          type: string
+          description: The Zesty Universal Identifier for the team.
+        name:
+          type: string
+        description:
+          type: string
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+    Token:
+      type: object
+      properties:
+        ZUID:
+          type: string
+          description: The Zesty Universal Identifier for the token.
+        name:
+          type: string
+        roleZUID:
+          type: string
+        token:
+          type: string
+        createdAt:
+          type: string
+          format: date-time
+tags:
+  - name: Instances
+    description: Manage Zesty.io instances.
+  - name: Users
+    description: Manage user accounts.
+  - name: Roles
+    description: Manage roles and permissions.
+  - name: Teams
+    description: Manage teams.
+  - name: Tokens
+    description: Manage API access tokens.
+  - name: Apps
+    description: Manage registered applications.
+  - name: Webhooks
+    description: Manage webhook subscriptions.

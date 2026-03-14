@@ -1,0 +1,651 @@
+openapi: 3.1.0
+info:
+  title: Zesty Media API
+  description: >-
+    The Zesty.io Media API is a collection of services for managing media
+    files in the Zesty.io platform. It consists of four services: Media
+    Manager (database communication and primary endpoints), Media Storage
+    (communicates with storage provider), Media Modify (image manipulation),
+    and Media Resolver (returns CDN paths for media file ZUIDs). The Media
+    Manager service is the most commonly used and handles bins, groups
+    (folders), and file management.
+  version: 1.0.0
+  contact:
+    name: Zesty.io
+    url: https://www.zesty.io/
+  license:
+    name: Proprietary
+    url: https://www.zesty.io/
+externalDocs:
+  description: Zesty Media API Documentation
+  url: https://docs.zesty.io/docs/media
+servers:
+  - url: https://media-manager.api.zesty.io
+    description: Zesty Media Manager Service
+  - url: https://media-storage.api.zesty.io
+    description: Zesty Media Storage Service
+  - url: https://media-modify.api.zesty.io
+    description: Zesty Media Modify Service
+  - url: https://media-resolver.api.zesty.io
+    description: Zesty Media Resolver Service
+paths:
+  /bins:
+    get:
+      operationId: getBins
+      summary: List all media bins
+      description: >-
+        Returns a list of all media bins accessible to the authenticated
+        user. Bins are top-level containers for organizing media files.
+      tags:
+        - Bins
+      security:
+        - sessionToken: []
+      responses:
+        '200':
+          description: A list of media bins.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Bin'
+        '401':
+          description: Unauthorized.
+    post:
+      operationId: createBin
+      summary: Create a media bin
+      description: Creates a new media bin for organizing files.
+      tags:
+        - Bins
+      security:
+        - sessionToken: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - name
+              properties:
+                name:
+                  type: string
+                  description: The name of the media bin.
+      responses:
+        '201':
+          description: Bin created successfully.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                  data:
+                    $ref: '#/components/schemas/Bin'
+        '400':
+          description: Invalid request.
+        '401':
+          description: Unauthorized.
+  /bins/{binZUID}:
+    get:
+      operationId: getBin
+      summary: Get a media bin
+      description: Returns details for a specific media bin.
+      tags:
+        - Bins
+      security:
+        - sessionToken: []
+      parameters:
+        - name: binZUID
+          in: path
+          required: true
+          schema:
+            type: string
+          description: The ZUID of the media bin.
+      responses:
+        '200':
+          description: Bin details.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                  data:
+                    $ref: '#/components/schemas/Bin'
+        '401':
+          description: Unauthorized.
+        '404':
+          description: Bin not found.
+    put:
+      operationId: updateBin
+      summary: Update a media bin
+      description: Updates the details of a specific media bin.
+      tags:
+        - Bins
+      security:
+        - sessionToken: []
+      parameters:
+        - name: binZUID
+          in: path
+          required: true
+          schema:
+            type: string
+          description: The ZUID of the media bin.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+      responses:
+        '200':
+          description: Bin updated successfully.
+        '401':
+          description: Unauthorized.
+        '404':
+          description: Bin not found.
+    delete:
+      operationId: deleteBin
+      summary: Delete a media bin
+      description: Deletes a specific media bin and all its contents.
+      tags:
+        - Bins
+      security:
+        - sessionToken: []
+      parameters:
+        - name: binZUID
+          in: path
+          required: true
+          schema:
+            type: string
+          description: The ZUID of the media bin.
+      responses:
+        '200':
+          description: Bin deleted successfully.
+        '401':
+          description: Unauthorized.
+        '404':
+          description: Bin not found.
+  /groups:
+    get:
+      operationId: getGroups
+      summary: List all media groups
+      description: >-
+        Returns a list of all media groups (folders) for organizing files
+        within bins.
+      tags:
+        - Groups
+      security:
+        - sessionToken: []
+      parameters:
+        - name: binZUID
+          in: query
+          schema:
+            type: string
+          description: Filter groups by bin ZUID.
+      responses:
+        '200':
+          description: A list of media groups.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Group'
+        '401':
+          description: Unauthorized.
+    post:
+      operationId: createGroup
+      summary: Create a media group
+      description: Creates a new media group (folder) within a bin.
+      tags:
+        - Groups
+      security:
+        - sessionToken: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - name
+                - binZUID
+              properties:
+                name:
+                  type: string
+                  description: The name of the group.
+                binZUID:
+                  type: string
+                  description: The bin ZUID to create the group in.
+                groupZUID:
+                  type: string
+                  description: The parent group ZUID for nesting.
+      responses:
+        '201':
+          description: Group created successfully.
+        '400':
+          description: Invalid request.
+        '401':
+          description: Unauthorized.
+  /groups/{groupZUID}:
+    get:
+      operationId: getGroup
+      summary: Get a media group
+      description: Returns details for a specific media group.
+      tags:
+        - Groups
+      security:
+        - sessionToken: []
+      parameters:
+        - name: groupZUID
+          in: path
+          required: true
+          schema:
+            type: string
+          description: The ZUID of the group.
+      responses:
+        '200':
+          description: Group details.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                  data:
+                    $ref: '#/components/schemas/Group'
+        '401':
+          description: Unauthorized.
+        '404':
+          description: Group not found.
+    put:
+      operationId: updateGroup
+      summary: Update a media group
+      description: Updates the details of a specific media group.
+      tags:
+        - Groups
+      security:
+        - sessionToken: []
+      parameters:
+        - name: groupZUID
+          in: path
+          required: true
+          schema:
+            type: string
+          description: The ZUID of the group.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+      responses:
+        '200':
+          description: Group updated successfully.
+        '401':
+          description: Unauthorized.
+        '404':
+          description: Group not found.
+    delete:
+      operationId: deleteGroup
+      summary: Delete a media group
+      description: Deletes a specific media group.
+      tags:
+        - Groups
+      security:
+        - sessionToken: []
+      parameters:
+        - name: groupZUID
+          in: path
+          required: true
+          schema:
+            type: string
+          description: The ZUID of the group.
+      responses:
+        '200':
+          description: Group deleted successfully.
+        '401':
+          description: Unauthorized.
+        '404':
+          description: Group not found.
+  /files:
+    get:
+      operationId: getFiles
+      summary: List all media files
+      description: Returns a list of media files, optionally filtered by bin or group.
+      tags:
+        - Files
+      security:
+        - sessionToken: []
+      parameters:
+        - name: binZUID
+          in: query
+          schema:
+            type: string
+          description: Filter files by bin ZUID.
+        - name: groupZUID
+          in: query
+          schema:
+            type: string
+          description: Filter files by group ZUID.
+        - name: limit
+          in: query
+          schema:
+            type: integer
+          description: Maximum number of files to return.
+        - name: page
+          in: query
+          schema:
+            type: integer
+          description: Page number for pagination.
+      responses:
+        '200':
+          description: A list of media files.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/File'
+        '401':
+          description: Unauthorized.
+  /files/{fileZUID}:
+    get:
+      operationId: getFile
+      summary: Get a media file
+      description: Returns details for a specific media file.
+      tags:
+        - Files
+      security:
+        - sessionToken: []
+      parameters:
+        - name: fileZUID
+          in: path
+          required: true
+          schema:
+            type: string
+          description: The ZUID of the file.
+      responses:
+        '200':
+          description: File details.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                  data:
+                    $ref: '#/components/schemas/File'
+        '401':
+          description: Unauthorized.
+        '404':
+          description: File not found.
+    put:
+      operationId: updateFile
+      summary: Update a media file
+      description: Updates the metadata of a specific media file.
+      tags:
+        - Files
+      security:
+        - sessionToken: []
+      parameters:
+        - name: fileZUID
+          in: path
+          required: true
+          schema:
+            type: string
+          description: The ZUID of the file.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                title:
+                  type: string
+                  description: The file title.
+                fileName:
+                  type: string
+                  description: The file name.
+                groupZUID:
+                  type: string
+                  description: Move to a different group.
+      responses:
+        '200':
+          description: File updated successfully.
+        '401':
+          description: Unauthorized.
+        '404':
+          description: File not found.
+    delete:
+      operationId: deleteFile
+      summary: Delete a media file
+      description: Deletes a specific media file.
+      tags:
+        - Files
+      security:
+        - sessionToken: []
+      parameters:
+        - name: fileZUID
+          in: path
+          required: true
+          schema:
+            type: string
+          description: The ZUID of the file.
+      responses:
+        '200':
+          description: File deleted successfully.
+        '401':
+          description: Unauthorized.
+        '404':
+          description: File not found.
+  /upload/{binZUID}/{groupZUID}:
+    post:
+      operationId: uploadFile
+      summary: Upload a media file
+      description: >-
+        Uploads a new media file to the specified bin and group. Supports
+        images, documents, and other file types.
+      tags:
+        - Files
+      security:
+        - sessionToken: []
+      parameters:
+        - name: binZUID
+          in: path
+          required: true
+          schema:
+            type: string
+          description: The ZUID of the bin to upload to.
+        - name: groupZUID
+          in: path
+          required: true
+          schema:
+            type: string
+          description: The ZUID of the group (folder) to upload to.
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              required:
+                - file
+              properties:
+                file:
+                  type: string
+                  format: binary
+                  description: The file to upload.
+                title:
+                  type: string
+                  description: The file title.
+                fileName:
+                  type: string
+                  description: The desired file name.
+      responses:
+        '201':
+          description: File uploaded successfully.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                  data:
+                    $ref: '#/components/schemas/File'
+        '400':
+          description: Invalid request or unsupported file type.
+        '401':
+          description: Unauthorized.
+  /resolve/{fileZUID}:
+    get:
+      operationId: resolveFile
+      summary: Resolve a file to its CDN URL
+      description: >-
+        Returns the CDN URL for a media file by its ZUID. This endpoint is
+        served by the Media Resolver service.
+      tags:
+        - Resolver
+      servers:
+        - url: https://media-resolver.api.zesty.io
+          description: Zesty Media Resolver Service
+      parameters:
+        - name: fileZUID
+          in: path
+          required: true
+          schema:
+            type: string
+          description: The ZUID of the file to resolve.
+      responses:
+        '200':
+          description: CDN URL for the file.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                  data:
+                    type: object
+                    properties:
+                      url:
+                        type: string
+                        format: uri
+                        description: The CDN URL for the file.
+        '404':
+          description: File not found.
+components:
+  securitySchemes:
+    sessionToken:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: >-
+        A session token or access token obtained from the Auth API.
+  schemas:
+    Bin:
+      type: object
+      properties:
+        ZUID:
+          type: string
+          description: The Zesty Universal Identifier for the bin.
+        name:
+          type: string
+          description: The name of the bin.
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+    Group:
+      type: object
+      properties:
+        ZUID:
+          type: string
+          description: The Zesty Universal Identifier for the group.
+        name:
+          type: string
+          description: The name of the group.
+        binZUID:
+          type: string
+          description: The bin this group belongs to.
+        groupZUID:
+          type: string
+          description: The parent group ZUID if nested.
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+    File:
+      type: object
+      properties:
+        ZUID:
+          type: string
+          description: The Zesty Universal Identifier for the file.
+        binZUID:
+          type: string
+          description: The bin this file belongs to.
+        groupZUID:
+          type: string
+          description: The group this file belongs to.
+        fileName:
+          type: string
+          description: The file name.
+        title:
+          type: string
+          description: The file title.
+        url:
+          type: string
+          format: uri
+          description: The CDN URL for the file.
+        type:
+          type: string
+          description: The MIME type of the file.
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+tags:
+  - name: Bins
+    description: Manage media bins (top-level containers).
+  - name: Groups
+    description: Manage media groups (folders within bins).
+  - name: Files
+    description: Manage and upload media files.
+  - name: Resolver
+    description: Resolve file ZUIDs to CDN URLs.

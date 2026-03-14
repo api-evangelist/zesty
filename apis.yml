@@ -1,27 +1,106 @@
 aid: zesty
 name: Zesty
-description: 'ComposableData DrivenDrag '
+description: >-
+  Zesty.io is a composable, data-driven, headless CMS platform that provides
+  REST APIs for authentication, account management, instance content
+  management, and media file management. All resources are identified by
+  ZUIDs (Zesty Universal Identifiers).
 type: Index
 position: Consumer
 access: 3rd-Party
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 tags:
-  - API
+  - CMS
+  - Content Management
+  - Headless CMS
+  - Media
+  - Composable
 created: '2025-02-17'
-modified: '2025-02-17'
+modified: '2026-03-14'
 url: >-
   https://raw.githubusercontent.com/api-evangelist/zesty/refs/heads/main/apis.yml
 specificationVersion: '0.19'
 apis:
-  - aid: zesty:zesty
-    name: Zesty
-    description: 'ComposableData DrivenDrag '
-    humanURL: https://www.zesty.io/
+  - aid: zesty:auth-api
+    name: Zesty Auth API
+    description: >-
+      The Zesty.io Auth API is used to authenticate users with the platform.
+      It returns a session token that grants access to the Instances API,
+      Accounts API, and Media API. User authentication is done by providing
+      an email and password combination, which issues a short-lived 30-minute
+      session token.
+    humanURL: https://docs.zesty.io/docs/auth-api
+    baseURL: https://auth.api.zesty.io
     tags:
-      - API
+      - Authentication
+      - Sessions
+      - Tokens
     properties:
       - type: Documentation
-        url: https://www.zesty.io/
+        url: https://docs.zesty.io/docs/auth-api
+      - type: OpenAPI
+        url: openapi/zesty-auth-api-openapi.yml
+  - aid: zesty:accounts-api
+    name: Zesty Accounts API
+    description: >-
+      The Zesty.io Accounts API is used to manage users, roles, instances,
+      teams, tokens, ecosystems, webhooks, and apps. It provides
+      administrative control over the organizational structure of a Zesty.io
+      account.
+    humanURL: https://docs.zesty.io/docs/accounts
+    baseURL: https://accounts.api.zesty.io/v1
+    tags:
+      - Accounts
+      - Users
+      - Roles
+      - Teams
+      - Instances
+    properties:
+      - type: Documentation
+        url: https://docs.zesty.io/docs/accounts
+      - type: OpenAPI
+        url: openapi/zesty-accounts-api-openapi.yml
+  - aid: zesty:instances-api
+    name: Zesty Instances API
+    description: >-
+      The Zesty.io Instances API is a REST API that allows CRUD operations on
+      Zesty.io instances. It provides access to content models, content
+      items, fields, views, stylesheets, scripts, settings, head tags,
+      navigation, audits, and publishing operations. Each instance is
+      identified by a unique ZUID.
+    humanURL: https://docs.zesty.io/docs/instances-api
+    baseURL: https://{instanceZUID}.api.zesty.io/v1
+    tags:
+      - CMS
+      - Content Models
+      - Content Items
+      - Views
+      - Publishing
+    properties:
+      - type: Documentation
+        url: https://docs.zesty.io/docs/instances-api
+      - type: OpenAPI
+        url: openapi/zesty-instances-api-openapi.yml
+  - aid: zesty:media-api
+    name: Zesty Media API
+    description: >-
+      The Zesty.io Media API is a collection of services for managing media
+      files. It consists of four services: Media Manager, Media Storage,
+      Media Modify, and Media Resolver. It handles bins, groups (folders),
+      file uploads, and CDN URL resolution.
+    humanURL: https://docs.zesty.io/docs/media
+    baseURL: https://media-manager.api.zesty.io
+    tags:
+      - Media
+      - Files
+      - Images
+      - CDN
+      - Storage
+    properties:
+      - type: Documentation
+        url: https://docs.zesty.io/docs/media
+      - type: OpenAPI
+        url: openapi/zesty-media-api-openapi.yml
 maintainers:
   - FN: Kin Lane
     email: info@apievangelist.com

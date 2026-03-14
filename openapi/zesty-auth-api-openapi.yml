@@ -1,0 +1,195 @@
+openapi: 3.1.0
+info:
+  title: Zesty Auth API
+  description: >-
+    The Zesty.io Auth API is used to authenticate users with the Zesty.io
+    platform. It returns a session token that grants access to the Instances
+    API, Accounts API, and Media API. Auth is a standalone service designed
+    to connect to many services in the Zesty.io infrastructure. User
+    authentication is done by providing a user account email and password
+    combination, which issues a short-lived 30-minute session token that is
+    extended whenever an authenticated action is taken.
+  version: 1.0.0
+  contact:
+    name: Zesty.io
+    url: https://www.zesty.io/
+  license:
+    name: Proprietary
+    url: https://www.zesty.io/
+externalDocs:
+  description: Zesty Auth API Documentation
+  url: https://docs.zesty.io/docs/auth-api
+servers:
+  - url: https://auth.api.zesty.io
+    description: Zesty Auth API Production Server
+paths:
+  /login:
+    post:
+      operationId: login
+      summary: Authenticate a user
+      description: >-
+        Authenticates a user by providing an email and password combination.
+        Returns a session token upon successful authentication. The session
+        token is a short-lived 30-minute token that is extended whenever an
+        authenticated action is taken.
+      tags:
+        - Authentication
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - email
+                - password
+              properties:
+                email:
+                  type: string
+                  format: email
+                  description: The user's email address.
+                password:
+                  type: string
+                  format: password
+                  description: The user's password.
+      responses:
+        '200':
+          description: Successfully authenticated. Returns a session token.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                  message:
+                    type: string
+                  data:
+                    type: string
+                    description: The session token.
+        '401':
+          description: Invalid credentials.
+  /logout:
+    delete:
+      operationId: logout
+      summary: End a user session
+      description: >-
+        Logs out the current user session and invalidates the session token.
+      tags:
+        - Authentication
+      security:
+        - sessionToken: []
+      responses:
+        '200':
+          description: Successfully logged out.
+        '401':
+          description: Unauthorized. Invalid or expired session token.
+  /verify:
+    get:
+      operationId: verifyToken
+      summary: Verify a session token
+      description: >-
+        Verifies whether the provided session token is still valid and
+        returns user information associated with the token.
+      tags:
+        - Authentication
+      security:
+        - sessionToken: []
+      responses:
+        '200':
+          description: Token is valid.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                  message:
+                    type: string
+                  data:
+                    type: object
+                    properties:
+                      ZUID:
+                        type: string
+                        description: The user's Zesty Universal Identifier.
+                      email:
+                        type: string
+                        format: email
+                      firstName:
+                        type: string
+                      lastName:
+                        type: string
+        '401':
+          description: Invalid or expired token.
+  /password/request:
+    post:
+      operationId: requestPasswordReset
+      summary: Request a password reset
+      description: >-
+        Sends a password reset email to the specified email address if an
+        account with that email exists.
+      tags:
+        - Password
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - email
+              properties:
+                email:
+                  type: string
+                  format: email
+                  description: The email address associated with the account.
+      responses:
+        '200':
+          description: Password reset email sent if the account exists.
+        '400':
+          description: Invalid request.
+  /password/reset:
+    post:
+      operationId: resetPassword
+      summary: Reset a user password
+      description: >-
+        Resets the user's password using the reset token received via email.
+      tags:
+        - Password
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - token
+                - password
+              properties:
+                token:
+                  type: string
+                  description: The password reset token from the email.
+                password:
+                  type: string
+                  format: password
+                  description: The new password.
+      responses:
+        '200':
+          description: Password successfully reset.
+        '400':
+          description: Invalid or expired token.
+components:
+  securitySchemes:
+    sessionToken:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: >-
+        A session token obtained from the login endpoint. Short-lived
+        30-minute token extended on each authenticated action.
+tags:
+  - name: Authentication
+    description: User authentication and session management.
+  - name: Password
+    description: Password management operations.
