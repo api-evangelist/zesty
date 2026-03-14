@@ -1,0 +1,93 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/api-evangelist/zesty/blob/main/json-schema/content-item.json",
+  "title": "Zesty Content Item",
+  "description": "A Zesty.io content item is an individual piece of content belonging to a content model. Items hold field data and have versioning and publishing states.",
+  "type": "object",
+  "properties": {
+    "ZUID": {
+      "type": "string",
+      "description": "The Zesty Universal Identifier for the content item."
+    },
+    "modelZUID": {
+      "type": "string",
+      "description": "The content model ZUID this item belongs to."
+    },
+    "data": {
+      "type": "object",
+      "description": "The field data for the content item.",
+      "additionalProperties": true
+    },
+    "web": {
+      "type": "object",
+      "description": "Web-specific metadata for the content item.",
+      "properties": {
+        "url": {
+          "type": "string",
+          "description": "The URL path for the content item."
+        },
+        "pathPart": {
+          "type": "string",
+          "description": "The URL path part for this item."
+        },
+        "metaTitle": {
+          "type": "string",
+          "description": "The meta title for SEO."
+        },
+        "metaDescription": {
+          "type": "string",
+          "description": "The meta description for SEO."
+        },
+        "canonicalTagMode": {
+          "type": "integer",
+          "description": "The canonical tag mode."
+        }
+      }
+    },
+    "meta": {
+      "type": "object",
+      "description": "Metadata about the content item.",
+      "properties": {
+        "version": {
+          "type": "integer",
+          "description": "The current version number."
+        },
+        "listed": {
+          "type": "boolean",
+          "description": "Whether the item is listed in navigation."
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Timestamp when the item was created."
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Timestamp when the item was last updated."
+        }
+      }
+    },
+    "publishing": {
+      "type": "object",
+      "description": "Publishing state information.",
+      "properties": {
+        "isPublished": {
+          "type": "boolean",
+          "description": "Whether the item is currently published."
+        },
+        "publishAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Scheduled publish date."
+        },
+        "unpublishAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Scheduled unpublish date."
+        }
+      }
+    }
+  },
+  "required": ["ZUID", "modelZUID"]
+}

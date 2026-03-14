@@ -1,0 +1,57 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/api-evangelist/zesty/blob/main/json-schema/field.json",
+  "title": "Zesty Field",
+  "description": "A Zesty.io field defines a single data attribute within a content model, specifying its type, validation rules, and display settings.",
+  "type": "object",
+  "properties": {
+    "ZUID": {
+      "type": "string",
+      "description": "The Zesty Universal Identifier for the field."
+    },
+    "contentModelZUID": {
+      "type": "string",
+      "description": "The content model ZUID this field belongs to."
+    },
+    "name": {
+      "type": "string",
+      "description": "The programmatic name of the field."
+    },
+    "label": {
+      "type": "string",
+      "description": "The display label for the field."
+    },
+    "description": {
+      "type": "string",
+      "description": "A description of the field."
+    },
+    "datatype": {
+      "type": "string",
+      "description": "The data type of the field (e.g., text, textarea, wysiwyg_basic, images, date, number, link, internal_link, one_to_one, one_to_many)."
+    },
+    "required": {
+      "type": "boolean",
+      "description": "Whether the field is required."
+    },
+    "sort": {
+      "type": "integer",
+      "description": "The sort order of the field within the model."
+    },
+    "settings": {
+      "type": "object",
+      "description": "Additional field settings and validation rules.",
+      "additionalProperties": true
+    },
+    "createdAt": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Timestamp when the field was created."
+    },
+    "updatedAt": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Timestamp when the field was last updated."
+    }
+  },
+  "required": ["ZUID", "contentModelZUID", "name", "datatype"]
+}

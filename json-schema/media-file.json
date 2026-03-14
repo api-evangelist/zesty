@@ -1,0 +1,49 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/api-evangelist/zesty/blob/main/json-schema/media-file.json",
+  "title": "Zesty Media File",
+  "description": "A Zesty.io media file represents an uploaded asset (image, document, video, etc.) stored in a media bin and served via CDN.",
+  "type": "object",
+  "properties": {
+    "ZUID": {
+      "type": "string",
+      "description": "The Zesty Universal Identifier for the file."
+    },
+    "binZUID": {
+      "type": "string",
+      "description": "The bin ZUID this file belongs to."
+    },
+    "groupZUID": {
+      "type": "string",
+      "description": "The group ZUID this file belongs to."
+    },
+    "fileName": {
+      "type": "string",
+      "description": "The file name."
+    },
+    "title": {
+      "type": "string",
+      "description": "The display title of the file."
+    },
+    "url": {
+      "type": "string",
+      "format": "uri",
+      "description": "The CDN URL for the file."
+    },
+    "type": {
+      "type": "string",
+      "description": "The MIME type of the file."
+    },
+    "createdAt": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Timestamp when the file was uploaded."
+    },
+    "updatedAt": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Timestamp when the file was last updated."
+    }
+  },
+  "required": ["ZUID", "binZUID", "fileName"]
+}

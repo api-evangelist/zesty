@@ -1,0 +1,49 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/api-evangelist/zesty/blob/main/json-schema/content-model.json",
+  "title": "Zesty Content Model",
+  "description": "A Zesty.io content model defines the structure and schema for content items within an instance, including fields and their types.",
+  "type": "object",
+  "properties": {
+    "ZUID": {
+      "type": "string",
+      "description": "The Zesty Universal Identifier for the content model."
+    },
+    "name": {
+      "type": "string",
+      "description": "The name of the content model."
+    },
+    "label": {
+      "type": "string",
+      "description": "The display label for the content model."
+    },
+    "type": {
+      "type": "string",
+      "enum": ["templateset", "pageset", "dataset", "headless"],
+      "description": "The type of the content model."
+    },
+    "description": {
+      "type": "string",
+      "description": "A description of the content model."
+    },
+    "parentZUID": {
+      "type": "string",
+      "description": "The parent content model ZUID for nested models."
+    },
+    "listed": {
+      "type": "boolean",
+      "description": "Whether the model appears in navigation."
+    },
+    "createdAt": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Timestamp when the content model was created."
+    },
+    "updatedAt": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Timestamp when the content model was last updated."
+    }
+  },
+  "required": ["ZUID", "name"]
+}

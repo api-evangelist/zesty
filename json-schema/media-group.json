@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/api-evangelist/zesty/blob/main/json-schema/media-group.json",
+  "title": "Zesty Media Group",
+  "description": "A Zesty.io media group is a folder within a media bin used to organize media files hierarchically.",
+  "type": "object",
+  "properties": {
+    "ZUID": {
+      "type": "string",
+      "description": "The Zesty Universal Identifier for the group."
+    },
+    "name": {
+      "type": "string",
+      "description": "The name of the media group."
+    },
+    "binZUID": {
+      "type": "string",
+      "description": "The bin ZUID this group belongs to."
+    },
+    "groupZUID": {
+      "type": "string",
+      "description": "The parent group ZUID if nested."
+    },
+    "createdAt": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Timestamp when the group was created."
+    },
+    "updatedAt": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Timestamp when the group was last updated."
+    }
+  },
+  "required": ["ZUID", "name", "binZUID"]
+}

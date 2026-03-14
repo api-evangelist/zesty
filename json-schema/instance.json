@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/api-evangelist/zesty/blob/main/json-schema/instance.json",
+  "title": "Zesty Instance",
+  "description": "A Zesty.io instance represents an individual content management site or application. Each instance is assigned a unique ZUID (Zesty Universal Identifier) upon creation and can be interacted with over HTTPS.",
+  "type": "object",
+  "properties": {
+    "ZUID": {
+      "type": "string",
+      "description": "The Zesty Universal Identifier for the instance."
+    },
+    "name": {
+      "type": "string",
+      "description": "The name of the instance."
+    },
+    "ecoZUID": {
+      "type": "string",
+      "description": "The ecosystem ZUID this instance belongs to."
+    },
+    "domain": {
+      "type": "string",
+      "description": "The primary domain for the instance."
+    },
+    "blueprint": {
+      "type": "string",
+      "description": "The blueprint used to create the instance."
+    },
+    "createdAt": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Timestamp when the instance was created."
+    },
+    "updatedAt": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Timestamp when the instance was last updated."
+    }
+  },
+  "required": ["ZUID", "name"]
+}

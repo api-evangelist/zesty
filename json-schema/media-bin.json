@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/api-evangelist/zesty/blob/main/json-schema/media-bin.json",
+  "title": "Zesty Media Bin",
+  "description": "A Zesty.io media bin is a top-level container for organizing media files and groups within the Media Manager service.",
+  "type": "object",
+  "properties": {
+    "ZUID": {
+      "type": "string",
+      "description": "The Zesty Universal Identifier for the bin."
+    },
+    "name": {
+      "type": "string",
+      "description": "The name of the media bin."
+    },
+    "createdAt": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Timestamp when the bin was created."
+    },
+    "updatedAt": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Timestamp when the bin was last updated."
+    }
+  },
+  "required": ["ZUID", "name"]
+}

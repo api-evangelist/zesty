@@ -1,0 +1,165 @@
+{
+  "@context": {
+    "@vocab": "https://schema.org/",
+    "zesty": "https://docs.zesty.io/docs/",
+    "Instance": {
+      "@id": "zesty:instances-api",
+      "@context": {
+        "ZUID": "https://schema.org/identifier",
+        "name": "https://schema.org/name",
+        "ecoZUID": {
+          "@id": "zesty:accounts",
+          "@type": "@id"
+        },
+        "domain": "https://schema.org/url",
+        "blueprint": "https://schema.org/additionalType",
+        "createdAt": "https://schema.org/dateCreated",
+        "updatedAt": "https://schema.org/dateModified"
+      }
+    },
+    "User": {
+      "@id": "zesty:accounts",
+      "@context": {
+        "ZUID": "https://schema.org/identifier",
+        "firstName": "https://schema.org/givenName",
+        "lastName": "https://schema.org/familyName",
+        "email": "https://schema.org/email",
+        "createdAt": "https://schema.org/dateCreated",
+        "updatedAt": "https://schema.org/dateModified"
+      }
+    },
+    "Role": {
+      "@id": "zesty:accounts",
+      "@context": {
+        "ZUID": "https://schema.org/identifier",
+        "name": "https://schema.org/name",
+        "instanceZUID": {
+          "@id": "zesty:instances-api",
+          "@type": "@id"
+        },
+        "systemRole": "https://schema.org/additionalType",
+        "createdAt": "https://schema.org/dateCreated",
+        "updatedAt": "https://schema.org/dateModified"
+      }
+    },
+    "Team": {
+      "@id": "zesty:accounts",
+      "@context": {
+        "ZUID": "https://schema.org/identifier",
+        "name": "https://schema.org/name",
+        "description": "https://schema.org/description",
+        "createdAt": "https://schema.org/dateCreated",
+        "updatedAt": "https://schema.org/dateModified"
+      }
+    },
+    "Token": {
+      "@id": "zesty:accounts",
+      "@context": {
+        "ZUID": "https://schema.org/identifier",
+        "name": "https://schema.org/name",
+        "roleZUID": {
+          "@id": "zesty:accounts",
+          "@type": "@id"
+        },
+        "token": "https://schema.org/accessCode",
+        "createdAt": "https://schema.org/dateCreated"
+      }
+    },
+    "ContentModel": {
+      "@id": "zesty:instances-api",
+      "@context": {
+        "ZUID": "https://schema.org/identifier",
+        "name": "https://schema.org/name",
+        "label": "https://schema.org/alternateName",
+        "type": "https://schema.org/additionalType",
+        "description": "https://schema.org/description",
+        "parentZUID": {
+          "@id": "zesty:instances-api",
+          "@type": "@id"
+        },
+        "listed": "https://schema.org/position",
+        "createdAt": "https://schema.org/dateCreated",
+        "updatedAt": "https://schema.org/dateModified"
+      }
+    },
+    "ContentItem": {
+      "@id": "zesty:instances-api",
+      "@context": {
+        "ZUID": "https://schema.org/identifier",
+        "modelZUID": {
+          "@id": "zesty:instances-api",
+          "@type": "@id"
+        },
+        "data": "https://schema.org/mainEntity",
+        "web": "https://schema.org/WebPage",
+        "meta": "https://schema.org/additionalProperty",
+        "publishing": "https://schema.org/publishingPrinciples"
+      }
+    },
+    "Field": {
+      "@id": "zesty:instances-api",
+      "@context": {
+        "ZUID": "https://schema.org/identifier",
+        "contentModelZUID": {
+          "@id": "zesty:instances-api",
+          "@type": "@id"
+        },
+        "name": "https://schema.org/name",
+        "label": "https://schema.org/alternateName",
+        "description": "https://schema.org/description",
+        "datatype": "https://schema.org/additionalType",
+        "required": "https://schema.org/valueRequired",
+        "sort": "https://schema.org/position",
+        "settings": "https://schema.org/additionalProperty",
+        "createdAt": "https://schema.org/dateCreated",
+        "updatedAt": "https://schema.org/dateModified"
+      }
+    },
+    "MediaBin": {
+      "@id": "zesty:media",
+      "@context": {
+        "ZUID": "https://schema.org/identifier",
+        "name": "https://schema.org/name",
+        "createdAt": "https://schema.org/dateCreated",
+        "updatedAt": "https://schema.org/dateModified"
+      }
+    },
+    "MediaGroup": {
+      "@id": "zesty:media",
+      "@context": {
+        "ZUID": "https://schema.org/identifier",
+        "name": "https://schema.org/name",
+        "binZUID": {
+          "@id": "zesty:media",
+          "@type": "@id"
+        },
+        "groupZUID": {
+          "@id": "zesty:media",
+          "@type": "@id"
+        },
+        "createdAt": "https://schema.org/dateCreated",
+        "updatedAt": "https://schema.org/dateModified"
+      }
+    },
+    "MediaFile": {
+      "@id": "zesty:media",
+      "@context": {
+        "ZUID": "https://schema.org/identifier",
+        "binZUID": {
+          "@id": "zesty:media",
+          "@type": "@id"
+        },
+        "groupZUID": {
+          "@id": "zesty:media",
+          "@type": "@id"
+        },
+        "fileName": "https://schema.org/name",
+        "title": "https://schema.org/headline",
+        "url": "https://schema.org/contentUrl",
+        "type": "https://schema.org/encodingFormat",
+        "createdAt": "https://schema.org/dateCreated",
+        "updatedAt": "https://schema.org/dateModified"
+      }
+    }
+  }
+}

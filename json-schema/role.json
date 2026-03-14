@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/api-evangelist/zesty/blob/main/json-schema/role.json",
+  "title": "Zesty Role",
+  "description": "A Zesty.io role defines a set of permissions that can be assigned to users for controlling access to instance resources.",
+  "type": "object",
+  "properties": {
+    "ZUID": {
+      "type": "string",
+      "description": "The Zesty Universal Identifier for the role."
+    },
+    "name": {
+      "type": "string",
+      "description": "The name of the role."
+    },
+    "instanceZUID": {
+      "type": "string",
+      "description": "The instance ZUID this role is scoped to."
+    },
+    "systemRole": {
+      "type": "boolean",
+      "description": "Whether this is a built-in system role."
+    },
+    "createdAt": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Timestamp when the role was created."
+    },
+    "updatedAt": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Timestamp when the role was last updated."
+    }
+  },
+  "required": ["ZUID", "name"]
+}
