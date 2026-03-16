@@ -130,7 +130,7 @@ common:
     type: GitHub
     description: 'null'
 created: '2025-02-17'
-modified: '2026-03-14'
+modified: '2026-03-16'
 position: Consumer
 description: >-
   Zesty.io is a composable, data-driven, headless CMS platform that provides
@@ -139,5 +139,5 @@ description: >-
   ZUIDs (Zesty Universal Identifiers).
 maintainers:
   - FN: Kin Lane
-    email: info@apievangelist.com
+    email: kin@apievangelist.com
 specificationVersion: '0.19'
