@@ -24,7 +24,7 @@ paths:
   /instances:
     get:
       operationId: getInstances
-      summary: List all instances
+      summary: Zesty List all instances
       description: Returns a list of all instances accessible to the authenticated user.
       tags:
         - Instances
@@ -48,7 +48,7 @@ paths:
           description: Unauthorized.
     post:
       operationId: createInstance
-      summary: Create a new instance
+      summary: Zesty Create a new instance
       description: Creates a new Zesty.io instance.
       tags:
         - Instances
@@ -88,7 +88,7 @@ paths:
   /instances/{instanceZUID}:
     get:
       operationId: getInstance
-      summary: Get an instance
+      summary: Zesty Get an instance
       description: Returns details for a specific instance by its ZUID.
       tags:
         - Instances
@@ -119,7 +119,7 @@ paths:
           description: Instance not found.
     put:
       operationId: updateInstance
-      summary: Update an instance
+      summary: Zesty Update an instance
       description: Updates the details of a specific instance.
       tags:
         - Instances
@@ -151,7 +151,7 @@ paths:
           description: Instance not found.
     delete:
       operationId: deleteInstance
-      summary: Delete an instance
+      summary: Zesty Delete an instance
       description: Deletes a specific instance.
       tags:
         - Instances
@@ -174,7 +174,7 @@ paths:
   /users:
     get:
       operationId: getUsers
-      summary: List all users
+      summary: Zesty List all users
       description: Returns a list of all users in the account.
       tags:
         - Users
@@ -199,7 +199,7 @@ paths:
   /users/{userZUID}:
     get:
       operationId: getUser
-      summary: Get a user
+      summary: Zesty Get a user
       description: Returns details for a specific user by their ZUID.
       tags:
         - Users
@@ -230,7 +230,7 @@ paths:
           description: User not found.
     put:
       operationId: updateUser
-      summary: Update a user
+      summary: Zesty Update a user
       description: Updates the details of a specific user.
       tags:
         - Users
@@ -266,7 +266,7 @@ paths:
           description: User not found.
     delete:
       operationId: deleteUser
-      summary: Delete a user
+      summary: Zesty Delete a user
       description: Deletes a specific user.
       tags:
         - Users
@@ -289,7 +289,7 @@ paths:
   /roles:
     get:
       operationId: getRoles
-      summary: List all roles
+      summary: Zesty List all roles
       description: Returns a list of all roles available in the account.
       tags:
         - Roles
@@ -313,7 +313,7 @@ paths:
           description: Unauthorized.
     post:
       operationId: createRole
-      summary: Create a new role
+      summary: Zesty Create a new role
       description: Creates a new role with specified permissions.
       tags:
         - Roles
@@ -344,7 +344,7 @@ paths:
   /roles/{roleZUID}:
     get:
       operationId: getRole
-      summary: Get a role
+      summary: Zesty Get a role
       description: Returns details for a specific role by its ZUID.
       tags:
         - Roles
@@ -375,7 +375,7 @@ paths:
           description: Role not found.
     put:
       operationId: updateRole
-      summary: Update a role
+      summary: Zesty Update a role
       description: Updates the details of a specific role.
       tags:
         - Roles
@@ -406,7 +406,7 @@ paths:
           description: Role not found.
     delete:
       operationId: deleteRole
-      summary: Delete a role
+      summary: Zesty Delete a role
       description: Deletes a specific role.
       tags:
         - Roles
@@ -429,7 +429,7 @@ paths:
   /teams:
     get:
       operationId: getTeams
-      summary: List all teams
+      summary: Zesty List all teams
       description: Returns a list of all teams in the account.
       tags:
         - Teams
@@ -453,7 +453,7 @@ paths:
           description: Unauthorized.
     post:
       operationId: createTeam
-      summary: Create a new team
+      summary: Zesty Create a new team
       description: Creates a new team.
       tags:
         - Teams
@@ -484,7 +484,7 @@ paths:
   /teams/{teamZUID}:
     get:
       operationId: getTeam
-      summary: Get a team
+      summary: Zesty Get a team
       description: Returns details for a specific team by its ZUID.
       tags:
         - Teams
@@ -515,7 +515,7 @@ paths:
           description: Team not found.
     put:
       operationId: updateTeam
-      summary: Update a team
+      summary: Zesty Update a team
       description: Updates the details of a specific team.
       tags:
         - Teams
@@ -548,7 +548,7 @@ paths:
           description: Team not found.
     delete:
       operationId: deleteTeam
-      summary: Delete a team
+      summary: Zesty Delete a team
       description: Deletes a specific team.
       tags:
         - Teams
@@ -571,7 +571,7 @@ paths:
   /tokens:
     get:
       operationId: getTokens
-      summary: List all access tokens
+      summary: Zesty List all access tokens
       description: Returns a list of all access tokens for the account.
       tags:
         - Tokens
@@ -595,7 +595,7 @@ paths:
           description: Unauthorized.
     post:
       operationId: createToken
-      summary: Create an access token
+      summary: Zesty Create an access token
       description: Creates a new access token for API authentication.
       tags:
         - Tokens
@@ -627,7 +627,7 @@ paths:
   /tokens/{tokenZUID}:
     get:
       operationId: getToken
-      summary: Get an access token
+      summary: Zesty Get an access token
       description: Returns details for a specific access token.
       tags:
         - Tokens
@@ -658,7 +658,7 @@ paths:
           description: Token not found.
     delete:
       operationId: deleteToken
-      summary: Delete an access token
+      summary: Zesty Delete an access token
       description: Deletes a specific access token.
       tags:
         - Tokens
@@ -681,7 +681,7 @@ paths:
   /apps:
     get:
       operationId: getApps
-      summary: List all apps
+      summary: Zesty List all apps
       description: Returns a list of all registered apps.
       tags:
         - Apps
@@ -713,7 +713,7 @@ paths:
   /webhooks:
     get:
       operationId: getWebhooks
-      summary: List all webhooks
+      summary: Zesty List all webhooks
       description: Returns a list of all configured webhooks.
       tags:
         - Webhooks
@@ -744,7 +744,7 @@ paths:
           description: Unauthorized.
     post:
       operationId: createWebhook
-      summary: Create a webhook
+      summary: Zesty Create a webhook
       description: Creates a new webhook for event notifications.
       tags:
         - Webhooks

@@ -32,7 +32,7 @@ paths:
   /bins:
     get:
       operationId: getBins
-      summary: List all media bins
+      summary: Zesty List all media bins
       description: >-
         Returns a list of all media bins accessible to the authenticated
         user. Bins are top-level containers for organizing media files.
@@ -58,7 +58,7 @@ paths:
           description: Unauthorized.
     post:
       operationId: createBin
-      summary: Create a media bin
+      summary: Zesty Create a media bin
       description: Creates a new media bin for organizing files.
       tags:
         - Bins
@@ -95,7 +95,7 @@ paths:
   /bins/{binZUID}:
     get:
       operationId: getBin
-      summary: Get a media bin
+      summary: Zesty Get a media bin
       description: Returns details for a specific media bin.
       tags:
         - Bins
@@ -126,7 +126,7 @@ paths:
           description: Bin not found.
     put:
       operationId: updateBin
-      summary: Update a media bin
+      summary: Zesty Update a media bin
       description: Updates the details of a specific media bin.
       tags:
         - Bins
@@ -157,7 +157,7 @@ paths:
           description: Bin not found.
     delete:
       operationId: deleteBin
-      summary: Delete a media bin
+      summary: Zesty Delete a media bin
       description: Deletes a specific media bin and all its contents.
       tags:
         - Bins
@@ -180,7 +180,7 @@ paths:
   /groups:
     get:
       operationId: getGroups
-      summary: List all media groups
+      summary: Zesty List all media groups
       description: >-
         Returns a list of all media groups (folders) for organizing files
         within bins.
@@ -212,7 +212,7 @@ paths:
           description: Unauthorized.
     post:
       operationId: createGroup
-      summary: Create a media group
+      summary: Zesty Create a media group
       description: Creates a new media group (folder) within a bin.
       tags:
         - Groups
@@ -247,7 +247,7 @@ paths:
   /groups/{groupZUID}:
     get:
       operationId: getGroup
-      summary: Get a media group
+      summary: Zesty Get a media group
       description: Returns details for a specific media group.
       tags:
         - Groups
@@ -278,7 +278,7 @@ paths:
           description: Group not found.
     put:
       operationId: updateGroup
-      summary: Update a media group
+      summary: Zesty Update a media group
       description: Updates the details of a specific media group.
       tags:
         - Groups
@@ -309,7 +309,7 @@ paths:
           description: Group not found.
     delete:
       operationId: deleteGroup
-      summary: Delete a media group
+      summary: Zesty Delete a media group
       description: Deletes a specific media group.
       tags:
         - Groups
@@ -332,7 +332,7 @@ paths:
   /files:
     get:
       operationId: getFiles
-      summary: List all media files
+      summary: Zesty List all media files
       description: Returns a list of media files, optionally filtered by bin or group.
       tags:
         - Files
@@ -378,7 +378,7 @@ paths:
   /files/{fileZUID}:
     get:
       operationId: getFile
-      summary: Get a media file
+      summary: Zesty Get a media file
       description: Returns details for a specific media file.
       tags:
         - Files
@@ -409,7 +409,7 @@ paths:
           description: File not found.
     put:
       operationId: updateFile
-      summary: Update a media file
+      summary: Zesty Update a media file
       description: Updates the metadata of a specific media file.
       tags:
         - Files
@@ -447,7 +447,7 @@ paths:
           description: File not found.
     delete:
       operationId: deleteFile
-      summary: Delete a media file
+      summary: Zesty Delete a media file
       description: Deletes a specific media file.
       tags:
         - Files
@@ -470,7 +470,7 @@ paths:
   /upload/{binZUID}/{groupZUID}:
     post:
       operationId: uploadFile
-      summary: Upload a media file
+      summary: Zesty Upload a media file
       description: >-
         Uploads a new media file to the specified bin and group. Supports
         images, documents, and other file types.
@@ -529,7 +529,7 @@ paths:
   /resolve/{fileZUID}:
     get:
       operationId: resolveFile
-      summary: Resolve a file to its CDN URL
+      summary: Zesty Resolve a file to its CDN URL
       description: >-
         Returns the CDN URL for a media file by its ZUID. This endpoint is
         served by the Media Resolver service.
