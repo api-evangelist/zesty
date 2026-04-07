@@ -24,10 +24,10 @@ apis:
     name: Zesty Accounts API
     tags:
       - Accounts
-      - Users
+      - Instances
       - Roles
       - Teams
-      - Instances
+      - Users
     humanURL: https://docs.zesty.io/docs/accounts
     properties:
       - url: https://docs.zesty.io/docs/accounts
@@ -53,10 +53,10 @@ apis:
     name: Zesty Instances API
     tags:
       - CMS
-      - Content Models
       - Content Items
-      - Views
+      - Content Models
       - Publishing
+      - Views
     humanURL: https://docs.zesty.io/docs/instances-api
     properties:
       - url: https://docs.zesty.io/docs/instances-api
@@ -78,10 +78,10 @@ apis:
   - aid: zesty:media-api
     name: Zesty Media API
     tags:
-      - Media
+      - CDN
       - Files
       - Images
-      - CDN
+      - Media
       - Storage
     humanURL: https://docs.zesty.io/docs/media
     properties:
@@ -105,10 +105,10 @@ apis:
 name: Zesty
 tags:
   - CMS
+  - Composable
   - Content Management
   - Headless CMS
   - Media
-  - Composable
 type: Index
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 access: 3rd-Party

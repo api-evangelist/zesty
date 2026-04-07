@@ -643,9 +643,9 @@ components:
 tags:
   - name: Bins
     description: Manage media bins (top-level containers).
-  - name: Groups
-    description: Manage media groups (folders within bins).
   - name: Files
     description: Manage and upload media files.
+  - name: Groups
+    description: Manage media groups (folders within bins).
   - name: Resolver
     description: Resolve file ZUIDs to CDN URLs.

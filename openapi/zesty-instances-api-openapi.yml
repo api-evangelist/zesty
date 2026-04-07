@@ -1520,27 +1520,27 @@ components:
           type: string
           format: date-time
 tags:
+  - name: Audits
+    description: View audit trail entries.
+  - name: Content Items
+    description: Manage content item data.
   - name: Content Models
     description: Manage content model schemas.
   - name: Fields
     description: Manage fields on content models.
-  - name: Content Items
-    description: Manage content item data.
-  - name: Publishing
-    description: Publish content items to the live site.
-  - name: Views
-    description: Manage view template files.
-  - name: Stylesheets
-    description: Manage CSS stylesheet files.
-  - name: Scripts
-    description: Manage JavaScript files.
-  - name: Settings
-    description: Manage instance settings.
   - name: Head Tags
     description: Manage HTML head tag entries.
-  - name: Audits
-    description: View audit trail entries.
   - name: Navigation
     description: Manage the instance navigation tree.
+  - name: Publishing
+    description: Publish content items to the live site.
+  - name: Scripts
+    description: Manage JavaScript files.
   - name: Search
     description: Search across content items.
+  - name: Settings
+    description: Manage instance settings.
+  - name: Stylesheets
+    description: Manage CSS stylesheet files.
+  - name: Views
+    description: Manage view template files.

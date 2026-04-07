@@ -871,17 +871,17 @@ components:
           type: string
           format: date-time
 tags:
+  - name: Apps
+    description: Manage registered applications.
   - name: Instances
     description: Manage Zesty.io instances.
-  - name: Users
-    description: Manage user accounts.
   - name: Roles
     description: Manage roles and permissions.
   - name: Teams
     description: Manage teams.
   - name: Tokens
     description: Manage API access tokens.
-  - name: Apps
-    description: Manage registered applications.
+  - name: Users
+    description: Manage user accounts.
   - name: Webhooks
     description: Manage webhook subscriptions.
