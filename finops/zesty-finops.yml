@@ -1,5 +1,6 @@
 specification: FinOps Framework
 specificationVersion: '1.0'
+schema: https://www.finops.org/framework/
 alignedWith:
   framework: FinOps Foundation Framework
   frameworkUrl: https://www.finops.org/framework/
@@ -8,156 +9,87 @@ alignedWith:
   dataSpecUrl: https://focus.finops.org/focus-specification/v1-3/
 provider: Zesty
 providerId: zesty
-publisherName: Zesty
-serviceCategory: API
+publisherName: Zesty, Inc.
+serviceCategory: Headless CMS
 created: '2026-05-04'
-modified: '2026-05-04'
+modified: '2026-05-05'
+reconciled: true
 tags:
   - CMS
   - Composable
-  - Content Management
-  - GraphQL
-  - Headless CMS
-  - Media
+  - Headless
   - FinOps
-  - Cost Management
   - FOCUS
-description: FinOps framework definition for the Zesty API surface. Provides a FOCUS-aligned mapping for
-  cost allocation, usage measurement, and unit-economics reporting across the provider's APIs.
-principles:
-  - name: Visibility
-    description: Make API consumption costs visible to engineering, product, and finance teams in near
-      real-time.
-  - name: Allocation
-    description: Tag every chargeable API call with the consuming team, environment, application, and
-      feature so cost can be allocated.
-  - name: Optimization
-    description: Continuously evaluate request patterns, caching, batching, and tier selection to reduce
-      cost per useful unit of work.
-  - name: Accountability
-    description: Establish budget owners and chargeback or showback flows for each consuming team.
-domains:
-  - name: Understand Usage and Cost
-    capabilities:
-      - Data Ingestion
-      - Allocation
-      - Reporting and Analytics
-      - Anomaly Management
-  - name: Quantify Business Value
-    capabilities:
-      - Planning and Estimating
-      - Forecasting
-      - Budgeting
-      - Benchmarking
-      - Unit Economics
-  - name: Optimize Usage and Cost
-    capabilities:
-      - Architecting for Cloud
-      - Rate Optimization
-      - Workload Optimization
-      - Cloud Sustainability
-      - Licensing and SaaS
-  - name: Manage the FinOps Practice
-    capabilities:
-      - FinOps Practice Operations
-      - FinOps Education and Enablement
-      - Invoicing and Chargeback
-      - Onboarding Workloads
-      - Intersecting Disciplines
+description: |
+  FOCUS-aligned FinOps view for Zesty.io: a tiered monthly subscription that bundles
+  CDN bandwidth, CDN requests, API calls, storage, and users, with per-user add-ons
+  on the Free tier and custom commitments at Enterprise.
+sources:
+  - https://www.zesty.io/pricing/
 billingModel:
-  pricingCategory: Usage-Based
+  pricingCategory: Tiered Subscription
   billingFrequency: Monthly
   billingCurrency: USD
   chargeCategories:
-    - Usage
     - Purchase
+    - Usage
     - Tax
-    - Credit
-    - Adjustment
-  chargeFrequency: Recurring
 focusColumns:
-  ServiceName: Zesty
-  ServiceCategory: Developer Tools / API
+  ServiceName: Zesty.io
+  ServiceCategory: Headless CMS
   ProviderName: Zesty
-  PublisherName: Zesty
-  InvoiceIssuerName: Zesty
-  PricingCategory: Usage-Based
-  PricingUnit: request
+  PublisherName: Zesty, Inc.
+  InvoiceIssuerName: Zesty, Inc.
   BillingCurrency: USD
-  ChargeCategory: Usage
+  ChargeCategory: Purchase
 meters:
-  - name: api_requests
-    description: Count of billable API requests
-    unit: request
-    aggregation: sum
+  - name: plan_subscription
+    description: Monthly plan subscription (Free / Start Up / Business / Enterprise);
+      the primary Zesty billing line.
+    unit: month
+    aggregation: max
     dimensions:
-      - api
-      - endpoint
-      - tier
-      - region
-      - consumer
-  - name: data_egress
-    description: Bytes returned over the network in API responses
+      - plan_tier
+  - name: additional_users
+    description: Add-on users beyond the plan's bundled allowance (e.g. $9/user/month
+      on the Free Community plan).
+    unit: seat-month
+    aggregation: count
+    dimensions:
+      - plan_tier
+  - name: cdn_bandwidth
+    description: CDN bandwidth consumed against the plan's bundled GB / TB allowance.
     unit: GB
     aggregation: sum
-    dimensions:
-      - api
-      - region
-      - consumer
-  - name: compute_seconds
-    description: Server-side compute consumed by the request, where applicable
-    unit: second
+  - name: cdn_requests
+    description: CDN requests served against the plan's bundled monthly allowance.
+    unit: request
     aggregation: sum
-    dimensions:
-      - api
-      - endpoint
-      - tier
-apis:
-  - name: Zesty Auth API
-    baseURL: ''
-    tags:
-      - Authentication
-      - Sessions
-      - Tokens
-    serviceName: Zesty Auth API
-    serviceCategory: API
-  - name: Zesty Accounts API
-    baseURL: ''
-    tags:
-      - Accounts
-      - Instances
-      - Roles
-      - Teams
-      - Users
-    serviceName: Zesty Accounts API
-    serviceCategory: API
-  - name: Zesty Instances API
-    baseURL: ''
-    tags:
-      - CMS
-      - Content Items
-      - Content Models
-      - Publishing
-      - Views
-    serviceName: Zesty Instances API
-    serviceCategory: API
-  - name: Zesty Media API
-    baseURL: ''
-    tags:
-      - CDN
-      - Files
-      - Images
-      - Media
-      - Storage
-    serviceName: Zesty Media API
-    serviceCategory: API
-unitEconomics:
-  - name: Cost per 1K Requests
-    metric: billed_cost / (api_requests / 1000)
-    target: TBD
-  - name: Cost per Active Consumer
-    metric: billed_cost / active_consumers
-    target: TBD
+  - name: api_calls
+    description: Headless API calls served against the plan's bundled monthly allowance
+      (3K / 10K / 50K / custom).
+    unit: request
+    aggregation: sum
+  - name: storage
+    description: Stored content / asset volume against the plan's bundled allowance.
+    unit: GB
+    aggregation: max
+principles:
+  - name: Visibility
+    description: Use the Zesty Manager dashboards for plan utilization (CDN bandwidth,
+      CDN requests, API calls, storage) and confirm bundled quotas against the plan
+      tier each billing cycle.
+  - name: Allocation
+    description: Allocate Zesty cost by site / instance and per-user seats; tag enterprise
+      contracts to the owning brand or product line.
+  - name: Optimization
+    description: Optimize via CDN caching policies (raise hit rate to reduce origin
+      requests), pruning unused users, and right-sizing the plan tier rather than
+      paying per-user add-ons on the Free tier.
+  - name: Accountability
+    description: Spend ownership sits with the digital / web team that operates the
+      Zesty instance; renewal review is monthly for Start Up / Business and at contract
+      term for Enterprise.
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com

@@ -4,148 +4,236 @@ schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main
 provider: Zesty
 providerId: zesty
 created: '2026-05-04'
-modified: '2026-05-04'
+modified: '2026-05-05'
+reconciled: true
 tags:
   - CMS
   - Composable
-  - Content Management
-  - GraphQL
-  - Headless CMS
-  - Media
-description: Machine-readable plans and pricing scaffold for this API provider. Conforms to the API Commons
-  Plans schema. Tier limits and prices are scaffold defaults; replace with provider-published values.
+  - Headless
+  - Content
+  - Developer Tools
+description: |
+  Zesty.io is a headless CMS billed as tiered subscription plans that bundle CDN
+  bandwidth, CDN requests, API calls, storage, users, languages, and SLA targets.
+  All API access is included with the chosen plan; usage above the bundled API call
+  cap is governed by plan tier rather than published per-call overage prices.
+sources:
+  - https://www.zesty.io/pricing/
 plans:
-  - id: zesty-free
-    name: Free
+  - id: zesty-free-community
+    name: Free Community
     type: freemium
-    description: Free entry tier for the Zesty API surface. Intended for evaluation, prototyping, and
-      low-volume integrations. Real limits and pricing must be reconciled with the provider's published
-      plan documentation.
+    description: Free tier for evaluation and small projects; no credit card required.
     entries:
-      - label: API Requests
-        description: Monthly API request quota across all included endpoints
-        name: api_requests
-        type: quota
-        metric: requests
-        limit: 1000
+      - label: Subscription
+        name: subscription
+        type: subscription
+        metric: month
+        limit: 1
         timeFrame: month
         geo: global
-        domains: []
         unit: 1
-        price: '0.00'
+        price: '$0'
         userMultiplied: false
-      - label: Rate Limit
-        description: Maximum requests per minute on the free tier
-        name: rate_limit
-        type: rate
-        metric: requests_per_minute
-        limit: 10
-        timeFrame: minute
+      - label: CDN Bandwidth
+        name: cdn_bandwidth
+        type: quota
+        metric: gb
+        limit: 5
+        timeFrame: month
         geo: global
-        domains: []
         unit: 1
-        price: '0.00'
+        price: included
         userMultiplied: false
+      - label: CDN Requests
+        name: cdn_requests
+        type: quota
+        metric: request
+        limit: 50000
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: included
+        userMultiplied: false
+      - label: API Calls
+        name: api_calls
+        type: quota
+        metric: request
+        limit: 3000
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: included
+        userMultiplied: false
+      - label: Storage
+        name: storage
+        type: quota
+        metric: gb
+        limit: 5
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: included
+        userMultiplied: false
+      - label: Additional Users
+        name: additional_users
+        type: subscription
+        metric: seat
+        limit: 5
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: '$9/user/month'
+        userMultiplied: true
     elements:
-      - name: Public Documentation
-      - name: Community Support
-      - name: Sandbox Access
-      - name: Zesty Auth API
-      - name: Zesty Accounts API
-      - name: Zesty Instances API
-      - name: Zesty Media API
-  - id: zesty-pro
-    name: Professional
-    type: paid
-    description: Production tier for Zesty. Provides higher quotas, priority support, and access to the
-      broader API portfolio. Pricing placeholder; align with the provider's pricing page.
+      - name: 1 included user
+      - name: Up to 5 additional users
+  - id: zesty-startup
+    name: Start Up
+    type: subscription
+    description: Production starter tier with 97% SLA and developer environments.
     entries:
-      - label: API Requests
-        description: Monthly API request quota
-        name: api_requests
-        type: quota
-        metric: requests
-        limit: 100000
+      - label: Subscription
+        name: subscription
+        type: subscription
+        metric: month
+        limit: 1
         timeFrame: month
         geo: global
-        domains: []
         unit: 1
-        price: TBD
+        price: '$475/mo'
         userMultiplied: false
-      - label: Rate Limit
-        description: Maximum requests per minute on the professional tier
-        name: rate_limit
-        type: rate
-        metric: requests_per_minute
+      - label: CDN Bandwidth
+        name: cdn_bandwidth
+        type: quota
+        metric: gb
         limit: 100
-        timeFrame: minute
-        geo: global
-        domains: []
-        unit: 1
-        price: '0.00'
-        userMultiplied: false
-      - label: Overage
-        description: Per-request price after monthly quota is exceeded
-        name: overage
-        type: metered
-        metric: requests
-        limit: -1
         timeFrame: month
         geo: global
-        domains: []
-        unit: 1000
-        price: TBD
+        unit: 1
+        price: included
+        userMultiplied: false
+      - label: CDN Requests
+        name: cdn_requests
+        type: quota
+        metric: request
+        limit: 500000
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: included
+        userMultiplied: false
+      - label: API Calls
+        name: api_calls
+        type: quota
+        metric: request
+        limit: 10000
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: included
+        userMultiplied: false
+      - label: Storage
+        name: storage
+        type: quota
+        metric: gb
+        limit: 20
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: included
         userMultiplied: false
     elements:
-      - name: All Production Endpoints
-      - name: Email Support
-      - name: SLA Targets
-      - name: Webhook Subscriptions
-      - name: Zesty Auth API
-      - name: Zesty Accounts API
-      - name: Zesty Instances API
-      - name: Zesty Media API
+      - name: 3 included users (max 15 total)
+      - name: 2 languages
+      - name: 97% uptime SLA
+      - name: Developer environments
+  - id: zesty-business
+    name: Business
+    type: subscription
+    description: Most-popular production tier with 99.95% SLA and advanced caching.
+    entries:
+      - label: Subscription
+        name: subscription
+        type: subscription
+        metric: month
+        limit: 1
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: '$3,500/mo'
+        userMultiplied: false
+      - label: CDN Bandwidth
+        name: cdn_bandwidth
+        type: quota
+        metric: tb
+        limit: 2
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: included
+        userMultiplied: false
+      - label: CDN Requests
+        name: cdn_requests
+        type: quota
+        metric: request
+        limit: 5000000
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: included
+        userMultiplied: false
+      - label: API Calls
+        name: api_calls
+        type: quota
+        metric: request
+        limit: 50000
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: included
+        userMultiplied: false
+      - label: Storage
+        name: storage
+        type: quota
+        metric: gb
+        limit: 200
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: included
+        userMultiplied: false
+    elements:
+      - name: 10 included users (max 40 total)
+      - name: 15 languages
+      - name: 99.95% uptime SLA
+      - name: Business support
+      - name: Advanced caching
   - id: zesty-enterprise
     name: Enterprise
     type: enterprise
-    description: Custom-negotiated tier for Zesty. Includes dedicated capacity, contractual SLAs, security
-      review, data residency options, and named technical account management.
+    description: Custom-priced enterprise tier with 99.99% SLA, DAM, SSO, and security
+      review.
     entries:
-      - label: API Requests
-        description: Negotiated request volume; -1 indicates uncapped subject to fair use
-        name: api_requests
-        type: quota
-        metric: requests
+      - label: Subscription
+        name: subscription
+        type: subscription
+        metric: month
         limit: -1
         timeFrame: month
-        geo: configurable
-        domains: []
+        geo: global
         unit: 1
-        price: custom
-        userMultiplied: false
-      - label: Rate Limit
-        description: Negotiated burst and steady-state rate
-        name: rate_limit
-        type: rate
-        metric: requests_per_minute
-        limit: 1000
-        timeFrame: minute
-        geo: configurable
-        domains: []
-        unit: 1
-        price: custom
+        price: contact sales
         userMultiplied: false
     elements:
-      - name: Unlimited / Negotiated Volume
-      - name: 24/7 Dedicated Support
-      - name: Contractual SLA
-      - name: Security & Compliance Review
-      - name: Dedicated Account Manager
-      - name: Custom Data Residency
-      - name: Zesty Auth API
-      - name: Zesty Accounts API
-      - name: Zesty Instances API
-      - name: Zesty Media API
+      - name: Custom user / language allowances
+      - name: 99.99% uptime SLA
+      - name: Digital asset management
+      - name: SSO
+      - name: Activity log
+      - name: Custom caching
+      - name: Dedicated account manager
+      - name: Legal and security review
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
