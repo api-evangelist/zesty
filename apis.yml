@@ -153,6 +153,11 @@ common:
     name: Fetch Wrapper
     type: SDKs
     description: Zesty.io HTTP fetch wrapper utility.
+  - type: Integrations
+    url: https://www.zesty.io/integrations/
+integrations:
+  - name: websights
+  - name: zesty.io
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
