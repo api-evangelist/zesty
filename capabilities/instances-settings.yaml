@@ -1,0 +1,156 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Zesty Instances API — Settings
+  description: 'Zesty Instances API — Settings. 3 operations. Lead operation: Zesty List all instance settings. Self-contained
+    Naftiko capability covering one Zesty business surface.'
+  tags:
+  - Zesty
+  - Settings
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    ZESTY_API_KEY: ZESTY_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: instances-settings
+    baseUri: https://{instanceZUID}.api.zesty.io/v1
+    description: Zesty Instances API — Settings business capability. Self-contained, no shared references.
+    resources:
+    - name: env-settings
+      path: /env/settings
+      operations:
+      - name: getsettings
+        method: GET
+        description: Zesty List all instance settings
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: env-settings-settingZUID
+      path: /env/settings/{settingZUID}
+      operations:
+      - name: getsetting
+        method: GET
+        description: Zesty Get a setting
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: settingZUID
+          in: path
+          type: string
+          description: The ZUID of the setting.
+          required: true
+      - name: updatesetting
+        method: PUT
+        description: Zesty Update a setting
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: settingZUID
+          in: path
+          type: string
+          description: The ZUID of the setting.
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    authentication:
+      type: apikey
+      key: Authorization
+      value: '{{env.ZESTY_API_KEY}}'
+      placement: header
+  exposes:
+  - type: rest
+    namespace: instances-settings-rest
+    port: 8080
+    description: REST adapter for Zesty Instances API — Settings. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/env/settings
+      name: env-settings
+      description: REST surface for env-settings.
+      operations:
+      - method: GET
+        name: getsettings
+        description: Zesty List all instance settings
+        call: instances-settings.getsettings
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/env/settings/{settingzuid}
+      name: env-settings-settingzuid
+      description: REST surface for env-settings-settingZUID.
+      operations:
+      - method: GET
+        name: getsetting
+        description: Zesty Get a setting
+        call: instances-settings.getsetting
+        with:
+          settingZUID: rest.settingZUID
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: updatesetting
+        description: Zesty Update a setting
+        call: instances-settings.updatesetting
+        with:
+          settingZUID: rest.settingZUID
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: instances-settings-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Zesty Instances API — Settings. One tool per consumed operation, routed inline through this
+      capability's consumes block.
+    tools:
+    - name: zesty-list-all-instance-settings
+      description: Zesty List all instance settings
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: instances-settings.getsettings
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: zesty-get-setting
+      description: Zesty Get a setting
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: instances-settings.getsetting
+      with:
+        settingZUID: tools.settingZUID
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: zesty-update-setting
+      description: Zesty Update a setting
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: instances-settings.updatesetting
+      with:
+        settingZUID: tools.settingZUID
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

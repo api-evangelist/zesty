@@ -1,0 +1,226 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Zesty Accounts API — Instances
+  description: 'Zesty Accounts API — Instances. 5 operations. Lead operation: Zesty List all instances. Self-contained Naftiko
+    capability covering one Zesty business surface.'
+  tags:
+  - Zesty
+  - Instances
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    ZESTY_API_KEY: ZESTY_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: accounts-instances
+    baseUri: https://accounts.api.zesty.io/v1
+    description: Zesty Accounts API — Instances business capability. Self-contained, no shared references.
+    resources:
+    - name: instances
+      path: /instances
+      operations:
+      - name: getinstances
+        method: GET
+        description: Zesty List all instances
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: createinstance
+        method: POST
+        description: Zesty Create a new instance
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: instances-instanceZUID
+      path: /instances/{instanceZUID}
+      operations:
+      - name: getinstance
+        method: GET
+        description: Zesty Get an instance
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: instanceZUID
+          in: path
+          type: string
+          description: The ZUID of the instance.
+          required: true
+      - name: updateinstance
+        method: PUT
+        description: Zesty Update an instance
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: instanceZUID
+          in: path
+          type: string
+          description: The ZUID of the instance.
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: deleteinstance
+        method: DELETE
+        description: Zesty Delete an instance
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: instanceZUID
+          in: path
+          type: string
+          description: The ZUID of the instance.
+          required: true
+    authentication:
+      type: apikey
+      key: Authorization
+      value: '{{env.ZESTY_API_KEY}}'
+      placement: header
+  exposes:
+  - type: rest
+    namespace: accounts-instances-rest
+    port: 8080
+    description: REST adapter for Zesty Accounts API — Instances. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/instances
+      name: instances
+      description: REST surface for instances.
+      operations:
+      - method: GET
+        name: getinstances
+        description: Zesty List all instances
+        call: accounts-instances.getinstances
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: createinstance
+        description: Zesty Create a new instance
+        call: accounts-instances.createinstance
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/instances/{instancezuid}
+      name: instances-instancezuid
+      description: REST surface for instances-instanceZUID.
+      operations:
+      - method: GET
+        name: getinstance
+        description: Zesty Get an instance
+        call: accounts-instances.getinstance
+        with:
+          instanceZUID: rest.instanceZUID
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: updateinstance
+        description: Zesty Update an instance
+        call: accounts-instances.updateinstance
+        with:
+          instanceZUID: rest.instanceZUID
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deleteinstance
+        description: Zesty Delete an instance
+        call: accounts-instances.deleteinstance
+        with:
+          instanceZUID: rest.instanceZUID
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: accounts-instances-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Zesty Accounts API — Instances. One tool per consumed operation, routed inline through this
+      capability's consumes block.
+    tools:
+    - name: zesty-list-all-instances
+      description: Zesty List all instances
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: accounts-instances.getinstances
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: zesty-create-new-instance
+      description: Zesty Create a new instance
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: accounts-instances.createinstance
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: zesty-get-instance
+      description: Zesty Get an instance
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: accounts-instances.getinstance
+      with:
+        instanceZUID: tools.instanceZUID
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: zesty-update-instance
+      description: Zesty Update an instance
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: accounts-instances.updateinstance
+      with:
+        instanceZUID: tools.instanceZUID
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: zesty-delete-instance
+      description: Zesty Delete an instance
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: accounts-instances.deleteinstance
+      with:
+        instanceZUID: tools.instanceZUID
+      outputParameters:
+      - type: object
+        mapping: $.

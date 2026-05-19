@@ -1,0 +1,96 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Zesty Instances API — Publishing
+  description: 'Zesty Instances API — Publishing. 1 operations. Lead operation: Zesty Publish a content item. Self-contained
+    Naftiko capability covering one Zesty business surface.'
+  tags:
+  - Zesty
+  - Publishing
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    ZESTY_API_KEY: ZESTY_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: instances-publishing
+    baseUri: https://{instanceZUID}.api.zesty.io/v1
+    description: Zesty Instances API — Publishing business capability. Self-contained, no shared references.
+    resources:
+    - name: content-models-modelZUID-items-itemZUID-publishings
+      path: /content/models/{modelZUID}/items/{itemZUID}/publishings
+      operations:
+      - name: publishitem
+        method: POST
+        description: Zesty Publish a content item
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: modelZUID
+          in: path
+          type: string
+          description: The ZUID of the content model.
+          required: true
+        - name: itemZUID
+          in: path
+          type: string
+          description: The ZUID of the content item.
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    authentication:
+      type: apikey
+      key: Authorization
+      value: '{{env.ZESTY_API_KEY}}'
+      placement: header
+  exposes:
+  - type: rest
+    namespace: instances-publishing-rest
+    port: 8080
+    description: REST adapter for Zesty Instances API — Publishing. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/content/models/{modelzuid}/items/{itemzuid}/publishings
+      name: content-models-modelzuid-items-itemzuid-publishings
+      description: REST surface for content-models-modelZUID-items-itemZUID-publishings.
+      operations:
+      - method: POST
+        name: publishitem
+        description: Zesty Publish a content item
+        call: instances-publishing.publishitem
+        with:
+          modelZUID: rest.modelZUID
+          itemZUID: rest.itemZUID
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: instances-publishing-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Zesty Instances API — Publishing. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: zesty-publish-content-item
+      description: Zesty Publish a content item
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: instances-publishing.publishitem
+      with:
+        modelZUID: tools.modelZUID
+        itemZUID: tools.itemZUID
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

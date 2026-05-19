@@ -1,0 +1,72 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Zesty Instances API — Navigation
+  description: 'Zesty Instances API — Navigation. 1 operations. Lead operation: Zesty Get navigation tree. Self-contained
+    Naftiko capability covering one Zesty business surface.'
+  tags:
+  - Zesty
+  - Navigation
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    ZESTY_API_KEY: ZESTY_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: instances-navigation
+    baseUri: https://{instanceZUID}.api.zesty.io/v1
+    description: Zesty Instances API — Navigation business capability. Self-contained, no shared references.
+    resources:
+    - name: env-nav
+      path: /env/nav
+      operations:
+      - name: getnavigation
+        method: GET
+        description: Zesty Get navigation tree
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    authentication:
+      type: apikey
+      key: Authorization
+      value: '{{env.ZESTY_API_KEY}}'
+      placement: header
+  exposes:
+  - type: rest
+    namespace: instances-navigation-rest
+    port: 8080
+    description: REST adapter for Zesty Instances API — Navigation. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/env/nav
+      name: env-nav
+      description: REST surface for env-nav.
+      operations:
+      - method: GET
+        name: getnavigation
+        description: Zesty Get navigation tree
+        call: instances-navigation.getnavigation
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: instances-navigation-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Zesty Instances API — Navigation. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: zesty-get-navigation-tree
+      description: Zesty Get navigation tree
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: instances-navigation.getnavigation
+      outputParameters:
+      - type: object
+        mapping: $.

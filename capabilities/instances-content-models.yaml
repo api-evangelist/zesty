@@ -1,0 +1,226 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Zesty Instances API — Content Models
+  description: 'Zesty Instances API — Content Models. 5 operations. Lead operation: Zesty List all content models. Self-contained
+    Naftiko capability covering one Zesty business surface.'
+  tags:
+  - Zesty
+  - Content Models
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    ZESTY_API_KEY: ZESTY_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: instances-content-models
+    baseUri: https://{instanceZUID}.api.zesty.io/v1
+    description: Zesty Instances API — Content Models business capability. Self-contained, no shared references.
+    resources:
+    - name: content-models
+      path: /content/models
+      operations:
+      - name: getmodels
+        method: GET
+        description: Zesty List all content models
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: createmodel
+        method: POST
+        description: Zesty Create a content model
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: content-models-modelZUID
+      path: /content/models/{modelZUID}
+      operations:
+      - name: getmodel
+        method: GET
+        description: Zesty Get a content model
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: modelZUID
+          in: path
+          type: string
+          description: The ZUID of the content model.
+          required: true
+      - name: updatemodel
+        method: PUT
+        description: Zesty Update a content model
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: modelZUID
+          in: path
+          type: string
+          description: The ZUID of the content model.
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: deletemodel
+        method: DELETE
+        description: Zesty Delete a content model
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: modelZUID
+          in: path
+          type: string
+          description: The ZUID of the content model.
+          required: true
+    authentication:
+      type: apikey
+      key: Authorization
+      value: '{{env.ZESTY_API_KEY}}'
+      placement: header
+  exposes:
+  - type: rest
+    namespace: instances-content-models-rest
+    port: 8080
+    description: REST adapter for Zesty Instances API — Content Models. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/content/models
+      name: content-models
+      description: REST surface for content-models.
+      operations:
+      - method: GET
+        name: getmodels
+        description: Zesty List all content models
+        call: instances-content-models.getmodels
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: createmodel
+        description: Zesty Create a content model
+        call: instances-content-models.createmodel
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/content/models/{modelzuid}
+      name: content-models-modelzuid
+      description: REST surface for content-models-modelZUID.
+      operations:
+      - method: GET
+        name: getmodel
+        description: Zesty Get a content model
+        call: instances-content-models.getmodel
+        with:
+          modelZUID: rest.modelZUID
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: updatemodel
+        description: Zesty Update a content model
+        call: instances-content-models.updatemodel
+        with:
+          modelZUID: rest.modelZUID
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deletemodel
+        description: Zesty Delete a content model
+        call: instances-content-models.deletemodel
+        with:
+          modelZUID: rest.modelZUID
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: instances-content-models-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Zesty Instances API — Content Models. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: zesty-list-all-content-models
+      description: Zesty List all content models
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: instances-content-models.getmodels
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: zesty-create-content-model
+      description: Zesty Create a content model
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: instances-content-models.createmodel
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: zesty-get-content-model
+      description: Zesty Get a content model
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: instances-content-models.getmodel
+      with:
+        modelZUID: tools.modelZUID
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: zesty-update-content-model
+      description: Zesty Update a content model
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: instances-content-models.updatemodel
+      with:
+        modelZUID: tools.modelZUID
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: zesty-delete-content-model
+      description: Zesty Delete a content model
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: instances-content-models.deletemodel
+      with:
+        modelZUID: tools.modelZUID
+      outputParameters:
+      - type: object
+        mapping: $.

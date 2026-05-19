@@ -1,0 +1,87 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Zesty Instances API — Audits
+  description: 'Zesty Instances API — Audits. 1 operations. Lead operation: Zesty List audit trail entries. Self-contained
+    Naftiko capability covering one Zesty business surface.'
+  tags:
+  - Zesty
+  - Audits
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    ZESTY_API_KEY: ZESTY_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: instances-audits
+    baseUri: https://{instanceZUID}.api.zesty.io/v1
+    description: Zesty Instances API — Audits business capability. Self-contained, no shared references.
+    resources:
+    - name: env-audits
+      path: /env/audits
+      operations:
+      - name: getaudits
+        method: GET
+        description: Zesty List audit trail entries
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: limit
+          in: query
+          type: integer
+          description: Maximum number of entries to return.
+        - name: page
+          in: query
+          type: integer
+          description: Page number for pagination.
+    authentication:
+      type: apikey
+      key: Authorization
+      value: '{{env.ZESTY_API_KEY}}'
+      placement: header
+  exposes:
+  - type: rest
+    namespace: instances-audits-rest
+    port: 8080
+    description: REST adapter for Zesty Instances API — Audits. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/env/audits
+      name: env-audits
+      description: REST surface for env-audits.
+      operations:
+      - method: GET
+        name: getaudits
+        description: Zesty List audit trail entries
+        call: instances-audits.getaudits
+        with:
+          limit: rest.limit
+          page: rest.page
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: instances-audits-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Zesty Instances API — Audits. One tool per consumed operation, routed inline through this
+      capability's consumes block.
+    tools:
+    - name: zesty-list-audit-trail-entries
+      description: Zesty List audit trail entries
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: instances-audits.getaudits
+      with:
+        limit: tools.limit
+        page: tools.page
+      outputParameters:
+      - type: object
+        mapping: $.

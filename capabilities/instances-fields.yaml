@@ -1,0 +1,264 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Zesty Instances API — Fields
+  description: 'Zesty Instances API — Fields. 5 operations. Lead operation: Zesty List fields for a content model. Self-contained
+    Naftiko capability covering one Zesty business surface.'
+  tags:
+  - Zesty
+  - Fields
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    ZESTY_API_KEY: ZESTY_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: instances-fields
+    baseUri: https://{instanceZUID}.api.zesty.io/v1
+    description: Zesty Instances API — Fields business capability. Self-contained, no shared references.
+    resources:
+    - name: content-models-modelZUID-fields
+      path: /content/models/{modelZUID}/fields
+      operations:
+      - name: getfields
+        method: GET
+        description: Zesty List fields for a content model
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: modelZUID
+          in: path
+          type: string
+          description: The ZUID of the content model.
+          required: true
+      - name: createfield
+        method: POST
+        description: Zesty Create a field on a content model
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: modelZUID
+          in: path
+          type: string
+          description: The ZUID of the content model.
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: content-models-modelZUID-fields-fieldZUID
+      path: /content/models/{modelZUID}/fields/{fieldZUID}
+      operations:
+      - name: getfield
+        method: GET
+        description: Zesty Get a field
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: modelZUID
+          in: path
+          type: string
+          description: The ZUID of the content model.
+          required: true
+        - name: fieldZUID
+          in: path
+          type: string
+          description: The ZUID of the field.
+          required: true
+      - name: updatefield
+        method: PUT
+        description: Zesty Update a field
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: modelZUID
+          in: path
+          type: string
+          description: The ZUID of the content model.
+          required: true
+        - name: fieldZUID
+          in: path
+          type: string
+          description: The ZUID of the field.
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: deletefield
+        method: DELETE
+        description: Zesty Delete a field
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: modelZUID
+          in: path
+          type: string
+          description: The ZUID of the content model.
+          required: true
+        - name: fieldZUID
+          in: path
+          type: string
+          description: The ZUID of the field.
+          required: true
+    authentication:
+      type: apikey
+      key: Authorization
+      value: '{{env.ZESTY_API_KEY}}'
+      placement: header
+  exposes:
+  - type: rest
+    namespace: instances-fields-rest
+    port: 8080
+    description: REST adapter for Zesty Instances API — Fields. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/content/models/{modelzuid}/fields
+      name: content-models-modelzuid-fields
+      description: REST surface for content-models-modelZUID-fields.
+      operations:
+      - method: GET
+        name: getfields
+        description: Zesty List fields for a content model
+        call: instances-fields.getfields
+        with:
+          modelZUID: rest.modelZUID
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: createfield
+        description: Zesty Create a field on a content model
+        call: instances-fields.createfield
+        with:
+          modelZUID: rest.modelZUID
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/content/models/{modelzuid}/fields/{fieldzuid}
+      name: content-models-modelzuid-fields-fieldzuid
+      description: REST surface for content-models-modelZUID-fields-fieldZUID.
+      operations:
+      - method: GET
+        name: getfield
+        description: Zesty Get a field
+        call: instances-fields.getfield
+        with:
+          modelZUID: rest.modelZUID
+          fieldZUID: rest.fieldZUID
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: updatefield
+        description: Zesty Update a field
+        call: instances-fields.updatefield
+        with:
+          modelZUID: rest.modelZUID
+          fieldZUID: rest.fieldZUID
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deletefield
+        description: Zesty Delete a field
+        call: instances-fields.deletefield
+        with:
+          modelZUID: rest.modelZUID
+          fieldZUID: rest.fieldZUID
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: instances-fields-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Zesty Instances API — Fields. One tool per consumed operation, routed inline through this
+      capability's consumes block.
+    tools:
+    - name: zesty-list-fields-content-model
+      description: Zesty List fields for a content model
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: instances-fields.getfields
+      with:
+        modelZUID: tools.modelZUID
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: zesty-create-field-content-model
+      description: Zesty Create a field on a content model
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: instances-fields.createfield
+      with:
+        modelZUID: tools.modelZUID
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: zesty-get-field
+      description: Zesty Get a field
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: instances-fields.getfield
+      with:
+        modelZUID: tools.modelZUID
+        fieldZUID: tools.fieldZUID
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: zesty-update-field
+      description: Zesty Update a field
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: instances-fields.updatefield
+      with:
+        modelZUID: tools.modelZUID
+        fieldZUID: tools.fieldZUID
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: zesty-delete-field
+      description: Zesty Delete a field
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: instances-fields.deletefield
+      with:
+        modelZUID: tools.modelZUID
+        fieldZUID: tools.fieldZUID
+      outputParameters:
+      - type: object
+        mapping: $.

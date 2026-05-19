@@ -1,0 +1,146 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Zesty Auth API — Authentication
+  description: 'Zesty Auth API — Authentication. 3 operations. Lead operation: Zesty Authenticate a user. Self-contained Naftiko
+    capability covering one Zesty business surface.'
+  tags:
+  - Zesty
+  - Authentication
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    ZESTY_API_KEY: ZESTY_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: auth-authentication
+    baseUri: https://auth.api.zesty.io
+    description: Zesty Auth API — Authentication business capability. Self-contained, no shared references.
+    resources:
+    - name: login
+      path: /login
+      operations:
+      - name: login
+        method: POST
+        description: Zesty Authenticate a user
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: logout
+      path: /logout
+      operations:
+      - name: logout
+        method: DELETE
+        description: Zesty End a user session
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: verify
+      path: /verify
+      operations:
+      - name: verifytoken
+        method: GET
+        description: Zesty Verify a session token
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    authentication:
+      type: apikey
+      key: Authorization
+      value: '{{env.ZESTY_API_KEY}}'
+      placement: header
+  exposes:
+  - type: rest
+    namespace: auth-authentication-rest
+    port: 8080
+    description: REST adapter for Zesty Auth API — Authentication. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/login
+      name: login
+      description: REST surface for login.
+      operations:
+      - method: POST
+        name: login
+        description: Zesty Authenticate a user
+        call: auth-authentication.login
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/logout
+      name: logout
+      description: REST surface for logout.
+      operations:
+      - method: DELETE
+        name: logout
+        description: Zesty End a user session
+        call: auth-authentication.logout
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/verify
+      name: verify
+      description: REST surface for verify.
+      operations:
+      - method: GET
+        name: verifytoken
+        description: Zesty Verify a session token
+        call: auth-authentication.verifytoken
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: auth-authentication-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Zesty Auth API — Authentication. One tool per consumed operation, routed inline through this
+      capability's consumes block.
+    tools:
+    - name: zesty-authenticate-user
+      description: Zesty Authenticate a user
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: auth-authentication.login
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: zesty-end-user-session
+      description: Zesty End a user session
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: auth-authentication.logout
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: zesty-verify-session-token
+      description: Zesty Verify a session token
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: auth-authentication.verifytoken
+      outputParameters:
+      - type: object
+        mapping: $.
