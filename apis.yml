@@ -192,6 +192,8 @@ common:
     description: Zesty.io HTTP fetch wrapper utility.
   - type: Integrations
     url: https://www.zesty.io/integrations/
+  - type: LLMsTxt
+    url: https://docs.zesty.io/llms.txt
 integrations:
   - name: websights
   - name: zesty.io
