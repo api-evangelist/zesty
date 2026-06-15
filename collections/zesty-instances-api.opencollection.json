@@ -1,0 +1,1103 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Zesty Instances API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Content Models",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Zesty List all content models",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{instanceZUID}.api.zesty.io/v1/content/models",
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Returns a list of all content models defined in the instance."
+        },
+        {
+          "info": {
+            "name": "Zesty Create a content model",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{instanceZUID}.api.zesty.io/v1/content/models",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Creates a new content model in the instance."
+        },
+        {
+          "info": {
+            "name": "Zesty Get a content model",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{instanceZUID}.api.zesty.io/v1/content/models/:modelZUID",
+            "params": [
+              {
+                "name": "modelZUID",
+                "value": "",
+                "type": "path",
+                "description": "The ZUID of the content model."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Returns details for a specific content model including its fields."
+        },
+        {
+          "info": {
+            "name": "Zesty Update a content model",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://{instanceZUID}.api.zesty.io/v1/content/models/:modelZUID",
+            "params": [
+              {
+                "name": "modelZUID",
+                "value": "",
+                "type": "path",
+                "description": "The ZUID of the content model."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Updates the details of a specific content model."
+        },
+        {
+          "info": {
+            "name": "Zesty Delete a content model",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://{instanceZUID}.api.zesty.io/v1/content/models/:modelZUID",
+            "params": [
+              {
+                "name": "modelZUID",
+                "value": "",
+                "type": "path",
+                "description": "The ZUID of the content model."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Deletes a specific content model and its associated data."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Fields",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Zesty List fields for a content model",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{instanceZUID}.api.zesty.io/v1/content/models/:modelZUID/fields",
+            "params": [
+              {
+                "name": "modelZUID",
+                "value": "",
+                "type": "path",
+                "description": "The ZUID of the content model."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Returns all fields defined for the specified content model."
+        },
+        {
+          "info": {
+            "name": "Zesty Create a field on a content model",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{instanceZUID}.api.zesty.io/v1/content/models/:modelZUID/fields",
+            "params": [
+              {
+                "name": "modelZUID",
+                "value": "",
+                "type": "path",
+                "description": "The ZUID of the content model."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Adds a new field to the specified content model."
+        },
+        {
+          "info": {
+            "name": "Zesty Get a field",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{instanceZUID}.api.zesty.io/v1/content/models/:modelZUID/fields/:fieldZUID",
+            "params": [
+              {
+                "name": "modelZUID",
+                "value": "",
+                "type": "path",
+                "description": "The ZUID of the content model."
+              },
+              {
+                "name": "fieldZUID",
+                "value": "",
+                "type": "path",
+                "description": "The ZUID of the field."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Returns details for a specific field."
+        },
+        {
+          "info": {
+            "name": "Zesty Update a field",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://{instanceZUID}.api.zesty.io/v1/content/models/:modelZUID/fields/:fieldZUID",
+            "params": [
+              {
+                "name": "modelZUID",
+                "value": "",
+                "type": "path",
+                "description": "The ZUID of the content model."
+              },
+              {
+                "name": "fieldZUID",
+                "value": "",
+                "type": "path",
+                "description": "The ZUID of the field."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Updates the details of a specific field."
+        },
+        {
+          "info": {
+            "name": "Zesty Delete a field",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://{instanceZUID}.api.zesty.io/v1/content/models/:modelZUID/fields/:fieldZUID",
+            "params": [
+              {
+                "name": "modelZUID",
+                "value": "",
+                "type": "path",
+                "description": "The ZUID of the content model."
+              },
+              {
+                "name": "fieldZUID",
+                "value": "",
+                "type": "path",
+                "description": "The ZUID of the field."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Deletes a specific field from a content model."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Content Items",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Zesty List content items for a model",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{instanceZUID}.api.zesty.io/v1/content/models/:modelZUID/items",
+            "params": [
+              {
+                "name": "modelZUID",
+                "value": "",
+                "type": "path",
+                "description": "The ZUID of the content model."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Returns all content items for the specified content model."
+        },
+        {
+          "info": {
+            "name": "Zesty Create a content item",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{instanceZUID}.api.zesty.io/v1/content/models/:modelZUID/items",
+            "params": [
+              {
+                "name": "modelZUID",
+                "value": "",
+                "type": "path",
+                "description": "The ZUID of the content model."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Creates a new content item in the specified content model."
+        },
+        {
+          "info": {
+            "name": "Zesty Get a content item",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{instanceZUID}.api.zesty.io/v1/content/models/:modelZUID/items/:itemZUID",
+            "params": [
+              {
+                "name": "modelZUID",
+                "value": "",
+                "type": "path",
+                "description": "The ZUID of the content model."
+              },
+              {
+                "name": "itemZUID",
+                "value": "",
+                "type": "path",
+                "description": "The ZUID of the content item."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Returns a specific content item with its data, web, and meta properties."
+        },
+        {
+          "info": {
+            "name": "Zesty Update a content item",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://{instanceZUID}.api.zesty.io/v1/content/models/:modelZUID/items/:itemZUID",
+            "params": [
+              {
+                "name": "modelZUID",
+                "value": "",
+                "type": "path",
+                "description": "The ZUID of the content model."
+              },
+              {
+                "name": "itemZUID",
+                "value": "",
+                "type": "path",
+                "description": "The ZUID of the content item."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Updates the content, web, and meta data of a specific item."
+        },
+        {
+          "info": {
+            "name": "Zesty Delete a content item",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://{instanceZUID}.api.zesty.io/v1/content/models/:modelZUID/items/:itemZUID",
+            "params": [
+              {
+                "name": "modelZUID",
+                "value": "",
+                "type": "path",
+                "description": "The ZUID of the content model."
+              },
+              {
+                "name": "itemZUID",
+                "value": "",
+                "type": "path",
+                "description": "The ZUID of the content item."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Deletes a specific content item."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Publishing",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Zesty Publish a content item",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{instanceZUID}.api.zesty.io/v1/content/models/:modelZUID/items/:itemZUID/publishings",
+            "params": [
+              {
+                "name": "modelZUID",
+                "value": "",
+                "type": "path",
+                "description": "The ZUID of the content model."
+              },
+              {
+                "name": "itemZUID",
+                "value": "",
+                "type": "path",
+                "description": "The ZUID of the content item."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Publishes a content item, making it available on the live site."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Views",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Zesty List all views",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{instanceZUID}.api.zesty.io/v1/web/views",
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Returns a list of all view files (templates) in the instance."
+        },
+        {
+          "info": {
+            "name": "Zesty Create a view",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{instanceZUID}.api.zesty.io/v1/web/views",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Creates a new view file in the instance."
+        },
+        {
+          "info": {
+            "name": "Zesty Get a view",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{instanceZUID}.api.zesty.io/v1/web/views/:viewZUID",
+            "params": [
+              {
+                "name": "viewZUID",
+                "value": "",
+                "type": "path",
+                "description": "The ZUID of the view."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Returns a specific view file and its code content."
+        },
+        {
+          "info": {
+            "name": "Zesty Update a view",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://{instanceZUID}.api.zesty.io/v1/web/views/:viewZUID",
+            "params": [
+              {
+                "name": "viewZUID",
+                "value": "",
+                "type": "path",
+                "description": "The ZUID of the view."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Updates the code content of a specific view file."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Stylesheets",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Zesty List all stylesheets",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{instanceZUID}.api.zesty.io/v1/web/stylesheets",
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Returns a list of all stylesheet files in the instance."
+        },
+        {
+          "info": {
+            "name": "Zesty Create a stylesheet",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{instanceZUID}.api.zesty.io/v1/web/stylesheets",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Creates a new stylesheet file in the instance."
+        },
+        {
+          "info": {
+            "name": "Zesty Get a stylesheet",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{instanceZUID}.api.zesty.io/v1/web/stylesheets/:stylesheetZUID",
+            "params": [
+              {
+                "name": "stylesheetZUID",
+                "value": "",
+                "type": "path",
+                "description": "The ZUID of the stylesheet."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Returns a specific stylesheet and its code content."
+        },
+        {
+          "info": {
+            "name": "Zesty Update a stylesheet",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://{instanceZUID}.api.zesty.io/v1/web/stylesheets/:stylesheetZUID",
+            "params": [
+              {
+                "name": "stylesheetZUID",
+                "value": "",
+                "type": "path",
+                "description": "The ZUID of the stylesheet."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Updates the code content of a specific stylesheet."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Scripts",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Zesty List all scripts",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{instanceZUID}.api.zesty.io/v1/web/scripts",
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Returns a list of all JavaScript files in the instance."
+        },
+        {
+          "info": {
+            "name": "Zesty Create a script",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{instanceZUID}.api.zesty.io/v1/web/scripts",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Creates a new JavaScript file in the instance."
+        },
+        {
+          "info": {
+            "name": "Zesty Get a script",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{instanceZUID}.api.zesty.io/v1/web/scripts/:scriptZUID",
+            "params": [
+              {
+                "name": "scriptZUID",
+                "value": "",
+                "type": "path",
+                "description": "The ZUID of the script."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Returns a specific script file and its code content."
+        },
+        {
+          "info": {
+            "name": "Zesty Update a script",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://{instanceZUID}.api.zesty.io/v1/web/scripts/:scriptZUID",
+            "params": [
+              {
+                "name": "scriptZUID",
+                "value": "",
+                "type": "path",
+                "description": "The ZUID of the script."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Updates the code content of a specific script file."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Settings",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Zesty List all instance settings",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{instanceZUID}.api.zesty.io/v1/env/settings",
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Returns all settings for the instance."
+        },
+        {
+          "info": {
+            "name": "Zesty Get a setting",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{instanceZUID}.api.zesty.io/v1/env/settings/:settingZUID",
+            "params": [
+              {
+                "name": "settingZUID",
+                "value": "",
+                "type": "path",
+                "description": "The ZUID of the setting."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Returns a specific instance setting."
+        },
+        {
+          "info": {
+            "name": "Zesty Update a setting",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://{instanceZUID}.api.zesty.io/v1/env/settings/:settingZUID",
+            "params": [
+              {
+                "name": "settingZUID",
+                "value": "",
+                "type": "path",
+                "description": "The ZUID of the setting."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Updates the value of a specific instance setting."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Head Tags",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Zesty List all head tags",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{instanceZUID}.api.zesty.io/v1/web/headtags",
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Returns a list of all HTML head tags in the instance."
+        },
+        {
+          "info": {
+            "name": "Zesty Create a head tag",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{instanceZUID}.api.zesty.io/v1/web/headtags",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Creates a new HTML head tag entry for the instance."
+        },
+        {
+          "info": {
+            "name": "Zesty Get a head tag",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{instanceZUID}.api.zesty.io/v1/web/headtags/:headTagZUID",
+            "params": [
+              {
+                "name": "headTagZUID",
+                "value": "",
+                "type": "path",
+                "description": "The ZUID of the head tag."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Returns a specific head tag."
+        },
+        {
+          "info": {
+            "name": "Zesty Update a head tag",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://{instanceZUID}.api.zesty.io/v1/web/headtags/:headTagZUID",
+            "params": [
+              {
+                "name": "headTagZUID",
+                "value": "",
+                "type": "path",
+                "description": "The ZUID of the head tag."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Updates a specific head tag."
+        },
+        {
+          "info": {
+            "name": "Zesty Delete a head tag",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://{instanceZUID}.api.zesty.io/v1/web/headtags/:headTagZUID",
+            "params": [
+              {
+                "name": "headTagZUID",
+                "value": "",
+                "type": "path",
+                "description": "The ZUID of the head tag."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Deletes a specific head tag."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Audits",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Zesty List audit trail entries",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{instanceZUID}.api.zesty.io/v1/env/audits",
+            "params": [
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of entries to return."
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Page number for pagination."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Returns a list of audit trail entries recording actions taken on the instance."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Navigation",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Zesty Get navigation tree",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{instanceZUID}.api.zesty.io/v1/env/nav",
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Returns the navigation tree for the instance."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Search",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Zesty Search content items",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{instanceZUID}.api.zesty.io/v1/search/items",
+            "params": [
+              {
+                "name": "q",
+                "value": "",
+                "type": "query",
+                "description": "The search query string."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of results to return."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Searches across all content items in the instance."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

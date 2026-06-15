@@ -1,0 +1,656 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Zesty Accounts API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Instances",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Zesty List all instances",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://accounts.api.zesty.io/v1/instances",
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Returns a list of all instances accessible to the authenticated user."
+        },
+        {
+          "info": {
+            "name": "Zesty Create a new instance",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://accounts.api.zesty.io/v1/instances",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Creates a new Zesty.io instance."
+        },
+        {
+          "info": {
+            "name": "Zesty Get an instance",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://accounts.api.zesty.io/v1/instances/:instanceZUID",
+            "params": [
+              {
+                "name": "instanceZUID",
+                "value": "",
+                "type": "path",
+                "description": "The ZUID of the instance."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Returns details for a specific instance by its ZUID."
+        },
+        {
+          "info": {
+            "name": "Zesty Update an instance",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://accounts.api.zesty.io/v1/instances/:instanceZUID",
+            "params": [
+              {
+                "name": "instanceZUID",
+                "value": "",
+                "type": "path",
+                "description": "The ZUID of the instance."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Updates the details of a specific instance."
+        },
+        {
+          "info": {
+            "name": "Zesty Delete an instance",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://accounts.api.zesty.io/v1/instances/:instanceZUID",
+            "params": [
+              {
+                "name": "instanceZUID",
+                "value": "",
+                "type": "path",
+                "description": "The ZUID of the instance."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Deletes a specific instance."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Users",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Zesty List all users",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://accounts.api.zesty.io/v1/users",
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Returns a list of all users in the account."
+        },
+        {
+          "info": {
+            "name": "Zesty Get a user",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://accounts.api.zesty.io/v1/users/:userZUID",
+            "params": [
+              {
+                "name": "userZUID",
+                "value": "",
+                "type": "path",
+                "description": "The ZUID of the user."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Returns details for a specific user by their ZUID."
+        },
+        {
+          "info": {
+            "name": "Zesty Update a user",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://accounts.api.zesty.io/v1/users/:userZUID",
+            "params": [
+              {
+                "name": "userZUID",
+                "value": "",
+                "type": "path",
+                "description": "The ZUID of the user."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Updates the details of a specific user."
+        },
+        {
+          "info": {
+            "name": "Zesty Delete a user",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://accounts.api.zesty.io/v1/users/:userZUID",
+            "params": [
+              {
+                "name": "userZUID",
+                "value": "",
+                "type": "path",
+                "description": "The ZUID of the user."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Deletes a specific user."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Roles",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Zesty List all roles",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://accounts.api.zesty.io/v1/roles",
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Returns a list of all roles available in the account."
+        },
+        {
+          "info": {
+            "name": "Zesty Create a new role",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://accounts.api.zesty.io/v1/roles",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Creates a new role with specified permissions."
+        },
+        {
+          "info": {
+            "name": "Zesty Get a role",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://accounts.api.zesty.io/v1/roles/:roleZUID",
+            "params": [
+              {
+                "name": "roleZUID",
+                "value": "",
+                "type": "path",
+                "description": "The ZUID of the role."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Returns details for a specific role by its ZUID."
+        },
+        {
+          "info": {
+            "name": "Zesty Update a role",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://accounts.api.zesty.io/v1/roles/:roleZUID",
+            "params": [
+              {
+                "name": "roleZUID",
+                "value": "",
+                "type": "path",
+                "description": "The ZUID of the role."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Updates the details of a specific role."
+        },
+        {
+          "info": {
+            "name": "Zesty Delete a role",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://accounts.api.zesty.io/v1/roles/:roleZUID",
+            "params": [
+              {
+                "name": "roleZUID",
+                "value": "",
+                "type": "path",
+                "description": "The ZUID of the role."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Deletes a specific role."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Teams",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Zesty List all teams",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://accounts.api.zesty.io/v1/teams",
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Returns a list of all teams in the account."
+        },
+        {
+          "info": {
+            "name": "Zesty Create a new team",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://accounts.api.zesty.io/v1/teams",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Creates a new team."
+        },
+        {
+          "info": {
+            "name": "Zesty Get a team",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://accounts.api.zesty.io/v1/teams/:teamZUID",
+            "params": [
+              {
+                "name": "teamZUID",
+                "value": "",
+                "type": "path",
+                "description": "The ZUID of the team."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Returns details for a specific team by its ZUID."
+        },
+        {
+          "info": {
+            "name": "Zesty Update a team",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://accounts.api.zesty.io/v1/teams/:teamZUID",
+            "params": [
+              {
+                "name": "teamZUID",
+                "value": "",
+                "type": "path",
+                "description": "The ZUID of the team."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Updates the details of a specific team."
+        },
+        {
+          "info": {
+            "name": "Zesty Delete a team",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://accounts.api.zesty.io/v1/teams/:teamZUID",
+            "params": [
+              {
+                "name": "teamZUID",
+                "value": "",
+                "type": "path",
+                "description": "The ZUID of the team."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Deletes a specific team."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Tokens",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Zesty List all access tokens",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://accounts.api.zesty.io/v1/tokens",
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Returns a list of all access tokens for the account."
+        },
+        {
+          "info": {
+            "name": "Zesty Create an access token",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://accounts.api.zesty.io/v1/tokens",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Creates a new access token for API authentication."
+        },
+        {
+          "info": {
+            "name": "Zesty Get an access token",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://accounts.api.zesty.io/v1/tokens/:tokenZUID",
+            "params": [
+              {
+                "name": "tokenZUID",
+                "value": "",
+                "type": "path",
+                "description": "The ZUID of the token."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Returns details for a specific access token."
+        },
+        {
+          "info": {
+            "name": "Zesty Delete an access token",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://accounts.api.zesty.io/v1/tokens/:tokenZUID",
+            "params": [
+              {
+                "name": "tokenZUID",
+                "value": "",
+                "type": "path",
+                "description": "The ZUID of the token."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Deletes a specific access token."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Apps",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Zesty List all apps",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://accounts.api.zesty.io/v1/apps",
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Returns a list of all registered apps."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Webhooks",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Zesty List all webhooks",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://accounts.api.zesty.io/v1/webhooks",
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Returns a list of all configured webhooks."
+        },
+        {
+          "info": {
+            "name": "Zesty Create a webhook",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://accounts.api.zesty.io/v1/webhooks",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Creates a new webhook for event notifications."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
