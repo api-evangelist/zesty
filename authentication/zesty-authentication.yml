@@ -1,0 +1,20 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/zesty-accounts-api-openapi.yml, openapi/zesty-auth-api-openapi.yml, openapi/zesty-instances-api-openapi.yml,
+  openapi/zesty-media-api-openapi.yml
+summary:
+  types:
+  - apiKey
+  api_key_in:
+  - header
+schemes:
+- name: sessionToken
+  type: apiKey
+  in: header
+  parameter: Authorization
+  description: A session token obtained from the Auth API login endpoint.
+  sources:
+  - openapi/zesty-accounts-api-openapi.yml
+  - openapi/zesty-auth-api-openapi.yml
+  - openapi/zesty-instances-api-openapi.yml
+  - openapi/zesty-media-api-openapi.yml

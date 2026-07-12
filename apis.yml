@@ -118,6 +118,10 @@ apis:
     Manager, Media Storage, Media Modify, and Media Resolver. It handles bins, groups (folders), file uploads, and CDN
     URL resolution.
 common:
+- type: DomainSecurity
+  url: security/zesty-domain-security.yml
+- type: Authentication
+  url: authentication/zesty-authentication.yml
 - type: LinkedIn
   url: https://www.linkedin.com/company/zesty-io
 - url: https://www.zesty.io/docs/
