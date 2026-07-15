@@ -118,6 +118,8 @@ apis:
     Manager, Media Storage, Media Modify, and Media Resolver. It handles bins, groups (folders), file uploads, and CDN
     URL resolution.
 common:
+- type: AgenticAccess
+  url: agentic-access/zesty-agentic-access.yml
 - type: DomainSecurity
   url: security/zesty-domain-security.yml
 - type: Authentication
