@@ -1,0 +1,105 @@
+openapi: 3.1.0
+info:
+  title: Zesty Accounts Apps Search API
+  description: The Zesty.io Accounts API is used to manage users, roles, instances, teams, tokens, ecosystems, webhooks, and apps. It provides administrative control over the organizational structure of a Zesty.io account. All endpoints require authentication via a session token obtained from the Auth API.
+  version: 1.0.0
+  contact:
+    name: Zesty.io
+    url: https://www.zesty.io/
+  license:
+    name: Proprietary
+    url: https://www.zesty.io/
+servers:
+- url: https://accounts.api.zesty.io/v1
+  description: Zesty Accounts API Production Server
+tags:
+- name: Search
+  description: Search across content items.
+paths:
+  /search/items:
+    get:
+      operationId: searchItems
+      summary: Zesty Search content items
+      description: Searches across all content items in the instance.
+      tags:
+      - Search
+      security:
+      - sessionToken: []
+      parameters:
+      - name: q
+        in: query
+        required: true
+        schema:
+          type: string
+        description: The search query string.
+      - name: limit
+        in: query
+        schema:
+          type: integer
+        description: Maximum number of results to return.
+      responses:
+        '200':
+          description: Search results.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/ContentItem'
+        '401':
+          description: Unauthorized.
+components:
+  schemas:
+    ContentItem:
+      type: object
+      properties:
+        ZUID:
+          type: string
+          description: The Zesty Universal Identifier for the content item.
+        data:
+          type: object
+          description: Key-value pairs of field data.
+        web:
+          type: object
+          properties:
+            pathPart:
+              type: string
+            path:
+              type: string
+            metaTitle:
+              type: string
+            metaDescription:
+              type: string
+            metaLinkText:
+              type: string
+        meta:
+          type: object
+          properties:
+            ZUID:
+              type: string
+            contentModelZUID:
+              type: string
+            langID:
+              type: integer
+            version:
+              type: integer
+            createdAt:
+              type: string
+              format: date-time
+            updatedAt:
+              type: string
+              format: date-time
+  securitySchemes:
+    sessionToken:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: A session token obtained from the Auth API login endpoint.
+externalDocs:
+  description: Zesty Accounts API Documentation
+  url: https://docs.zesty.io/docs/accounts

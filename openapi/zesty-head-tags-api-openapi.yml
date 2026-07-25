@@ -1,6 +1,6 @@
 openapi: 3.1.0
 info:
-  title: Zesty Accounts Apps Instances API
+  title: Zesty Accounts Apps Head Tags API
   description: The Zesty.io Accounts API is used to manage users, roles, instances, teams, tokens, ecosystems, webhooks, and apps. It provides administrative control over the organizational structure of a Zesty.io account. All endpoints require authentication via a session token obtained from the Auth API.
   version: 1.0.0
   contact:
@@ -13,21 +13,21 @@ servers:
 - url: https://accounts.api.zesty.io/v1
   description: Zesty Accounts API Production Server
 tags:
-- name: Instances
-  description: Manage Zesty.io instances.
+- name: Head Tags
+  description: Manage HTML head tag entries.
 paths:
-  /instances:
+  /web/headtags:
     get:
-      operationId: getInstances
-      summary: Zesty List all instances
-      description: Returns a list of all instances accessible to the authenticated user.
+      operationId: getHeadTags
+      summary: Zesty List all head tags
+      description: Returns a list of all HTML head tags in the instance.
       tags:
-      - Instances
+      - Head Tags
       security:
       - sessionToken: []
       responses:
         '200':
-          description: A list of instances.
+          description: A list of head tags.
           content:
             application/json:
               schema:
@@ -38,15 +38,15 @@ paths:
                   data:
                     type: array
                     items:
-                      $ref: '#/components/schemas/Instance'
+                      $ref: '#/components/schemas/HeadTag'
         '401':
           description: Unauthorized.
     post:
-      operationId: createInstance
-      summary: Zesty Create a new instance
-      description: Creates a new Zesty.io instance.
+      operationId: createHeadTag
+      summary: Zesty Create a head tag
+      description: Creates a new HTML head tag entry for the instance.
       tags:
-      - Instances
+      - Head Tags
       security:
       - sessionToken: []
       requestBody:
@@ -56,77 +56,65 @@ paths:
             schema:
               type: object
               required:
-              - name
+              - type
+              - resourceZUID
               properties:
-                name:
+                type:
                   type: string
-                  description: The name of the instance.
-                ecoZUID:
+                  description: The tag type (e.g., meta, link, script).
+                resourceZUID:
                   type: string
-                  description: The ecosystem ZUID to associate with.
+                  description: The ZUID of the resource this tag applies to.
+                attributes:
+                  type: object
+                  description: Key-value pairs of HTML attributes.
+                sort:
+                  type: integer
       responses:
         '201':
-          description: Instance created successfully.
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  code:
-                    type: integer
-                  data:
-                    $ref: '#/components/schemas/Instance'
+          description: Head tag created successfully.
         '400':
           description: Invalid request.
         '401':
           description: Unauthorized.
-  /instances/{instanceZUID}:
+  /web/headtags/{headTagZUID}:
     get:
-      operationId: getInstance
-      summary: Zesty Get an instance
-      description: Returns details for a specific instance by its ZUID.
+      operationId: getHeadTag
+      summary: Zesty Get a head tag
+      description: Returns a specific head tag.
       tags:
-      - Instances
+      - Head Tags
       security:
       - sessionToken: []
       parameters:
-      - name: instanceZUID
+      - name: headTagZUID
         in: path
         required: true
         schema:
           type: string
-        description: The ZUID of the instance.
+        description: The ZUID of the head tag.
       responses:
         '200':
-          description: Instance details.
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  code:
-                    type: integer
-                  data:
-                    $ref: '#/components/schemas/Instance'
+          description: Head tag details.
         '401':
           description: Unauthorized.
         '404':
-          description: Instance not found.
+          description: Head tag not found.
     put:
-      operationId: updateInstance
-      summary: Zesty Update an instance
-      description: Updates the details of a specific instance.
+      operationId: updateHeadTag
+      summary: Zesty Update a head tag
+      description: Updates a specific head tag.
       tags:
-      - Instances
+      - Head Tags
       security:
       - sessionToken: []
       parameters:
-      - name: instanceZUID
+      - name: headTagZUID
         in: path
         required: true
         schema:
           type: string
-        description: The ZUID of the instance.
+        description: The ZUID of the head tag.
       requestBody:
         required: true
         content:
@@ -134,55 +122,56 @@ paths:
             schema:
               type: object
               properties:
-                name:
+                type:
                   type: string
-                  description: The updated name of the instance.
+                attributes:
+                  type: object
+                sort:
+                  type: integer
       responses:
         '200':
-          description: Instance updated successfully.
+          description: Head tag updated successfully.
         '401':
           description: Unauthorized.
         '404':
-          description: Instance not found.
+          description: Head tag not found.
     delete:
-      operationId: deleteInstance
-      summary: Zesty Delete an instance
-      description: Deletes a specific instance.
+      operationId: deleteHeadTag
+      summary: Zesty Delete a head tag
+      description: Deletes a specific head tag.
       tags:
-      - Instances
+      - Head Tags
       security:
       - sessionToken: []
       parameters:
-      - name: instanceZUID
+      - name: headTagZUID
         in: path
         required: true
         schema:
           type: string
-        description: The ZUID of the instance.
+        description: The ZUID of the head tag.
       responses:
         '200':
-          description: Instance deleted successfully.
+          description: Head tag deleted successfully.
         '401':
           description: Unauthorized.
         '404':
-          description: Instance not found.
+          description: Head tag not found.
 components:
   schemas:
-    Instance:
+    HeadTag:
       type: object
       properties:
         ZUID:
           type: string
-          description: The Zesty Universal Identifier for the instance.
-        name:
+        type:
           type: string
-          description: The name of the instance.
-        ecoZUID:
+        resourceZUID:
           type: string
-          description: The ecosystem ZUID.
-        domain:
-          type: string
-          description: The instance domain.
+        attributes:
+          type: object
+        sort:
+          type: integer
         createdAt:
           type: string
           format: date-time

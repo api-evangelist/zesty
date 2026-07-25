@@ -1,0 +1,66 @@
+openapi: 3.1.0
+info:
+  title: Zesty Accounts Apps Publishing API
+  description: The Zesty.io Accounts API is used to manage users, roles, instances, teams, tokens, ecosystems, webhooks, and apps. It provides administrative control over the organizational structure of a Zesty.io account. All endpoints require authentication via a session token obtained from the Auth API.
+  version: 1.0.0
+  contact:
+    name: Zesty.io
+    url: https://www.zesty.io/
+  license:
+    name: Proprietary
+    url: https://www.zesty.io/
+servers:
+- url: https://accounts.api.zesty.io/v1
+  description: Zesty Accounts API Production Server
+tags:
+- name: Publishing
+  description: Publish content items to the live site.
+paths:
+  /content/models/{modelZUID}/items/{itemZUID}/publishings:
+    post:
+      operationId: publishItem
+      summary: Zesty Publish a content item
+      description: Publishes a content item, making it available on the live site.
+      tags:
+      - Publishing
+      security:
+      - sessionToken: []
+      parameters:
+      - name: modelZUID
+        in: path
+        required: true
+        schema:
+          type: string
+        description: The ZUID of the content model.
+      - name: itemZUID
+        in: path
+        required: true
+        schema:
+          type: string
+        description: The ZUID of the content item.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                version:
+                  type: integer
+                  description: The version number to publish.
+      responses:
+        '200':
+          description: Content item published successfully.
+        '401':
+          description: Unauthorized.
+        '404':
+          description: Content item not found.
+components:
+  securitySchemes:
+    sessionToken:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: A session token obtained from the Auth API login endpoint.
+externalDocs:
+  description: Zesty Accounts API Documentation
+  url: https://docs.zesty.io/docs/accounts

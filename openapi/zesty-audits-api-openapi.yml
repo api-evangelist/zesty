@@ -1,0 +1,76 @@
+openapi: 3.1.0
+info:
+  title: Zesty Accounts Apps Audits API
+  description: The Zesty.io Accounts API is used to manage users, roles, instances, teams, tokens, ecosystems, webhooks, and apps. It provides administrative control over the organizational structure of a Zesty.io account. All endpoints require authentication via a session token obtained from the Auth API.
+  version: 1.0.0
+  contact:
+    name: Zesty.io
+    url: https://www.zesty.io/
+  license:
+    name: Proprietary
+    url: https://www.zesty.io/
+servers:
+- url: https://accounts.api.zesty.io/v1
+  description: Zesty Accounts API Production Server
+tags:
+- name: Audits
+  description: View audit trail entries.
+paths:
+  /env/audits:
+    get:
+      operationId: getAudits
+      summary: Zesty List audit trail entries
+      description: Returns a list of audit trail entries recording actions taken on the instance.
+      tags:
+      - Audits
+      security:
+      - sessionToken: []
+      parameters:
+      - name: limit
+        in: query
+        schema:
+          type: integer
+        description: Maximum number of entries to return.
+      - name: page
+        in: query
+        schema:
+          type: integer
+        description: Page number for pagination.
+      responses:
+        '200':
+          description: A list of audit entries.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        ZUID:
+                          type: string
+                        action:
+                          type: string
+                        resourceZUID:
+                          type: string
+                        userZUID:
+                          type: string
+                        happenedAt:
+                          type: string
+                          format: date-time
+        '401':
+          description: Unauthorized.
+components:
+  securitySchemes:
+    sessionToken:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: A session token obtained from the Auth API login endpoint.
+externalDocs:
+  description: Zesty Accounts API Documentation
+  url: https://docs.zesty.io/docs/accounts

@@ -1,0 +1,64 @@
+openapi: 3.1.0
+info:
+  title: Zesty Accounts Apps Resolver API
+  description: The Zesty.io Accounts API is used to manage users, roles, instances, teams, tokens, ecosystems, webhooks, and apps. It provides administrative control over the organizational structure of a Zesty.io account. All endpoints require authentication via a session token obtained from the Auth API.
+  version: 1.0.0
+  contact:
+    name: Zesty.io
+    url: https://www.zesty.io/
+  license:
+    name: Proprietary
+    url: https://www.zesty.io/
+servers:
+- url: https://accounts.api.zesty.io/v1
+  description: Zesty Accounts API Production Server
+tags:
+- name: Resolver
+  description: Resolve file ZUIDs to CDN URLs.
+paths:
+  /resolve/{fileZUID}:
+    get:
+      operationId: resolveFile
+      summary: Zesty Resolve a file to its CDN URL
+      description: Returns the CDN URL for a media file by its ZUID. This endpoint is served by the Media Resolver service.
+      tags:
+      - Resolver
+      servers:
+      - url: https://media-resolver.api.zesty.io
+        description: Zesty Media Resolver Service
+      parameters:
+      - name: fileZUID
+        in: path
+        required: true
+        schema:
+          type: string
+        description: The ZUID of the file to resolve.
+      responses:
+        '200':
+          description: CDN URL for the file.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                  data:
+                    type: object
+                    properties:
+                      url:
+                        type: string
+                        format: uri
+                        description: The CDN URL for the file.
+        '404':
+          description: File not found.
+components:
+  securitySchemes:
+    sessionToken:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: A session token obtained from the Auth API login endpoint.
+externalDocs:
+  description: Zesty Accounts API Documentation
+  url: https://docs.zesty.io/docs/accounts

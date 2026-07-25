@@ -1,0 +1,268 @@
+openapi: 3.1.0
+info:
+  title: Zesty Accounts Apps Content Items API
+  description: The Zesty.io Accounts API is used to manage users, roles, instances, teams, tokens, ecosystems, webhooks, and apps. It provides administrative control over the organizational structure of a Zesty.io account. All endpoints require authentication via a session token obtained from the Auth API.
+  version: 1.0.0
+  contact:
+    name: Zesty.io
+    url: https://www.zesty.io/
+  license:
+    name: Proprietary
+    url: https://www.zesty.io/
+servers:
+- url: https://accounts.api.zesty.io/v1
+  description: Zesty Accounts API Production Server
+tags:
+- name: Content Items
+  description: Manage content item data.
+paths:
+  /content/models/{modelZUID}/items:
+    get:
+      operationId: getItems
+      summary: Zesty List content items for a model
+      description: Returns all content items for the specified content model.
+      tags:
+      - Content Items
+      security:
+      - sessionToken: []
+      parameters:
+      - name: modelZUID
+        in: path
+        required: true
+        schema:
+          type: string
+        description: The ZUID of the content model.
+      responses:
+        '200':
+          description: A list of content items.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/ContentItem'
+        '401':
+          description: Unauthorized.
+        '404':
+          description: Content model not found.
+    post:
+      operationId: createItem
+      summary: Zesty Create a content item
+      description: Creates a new content item in the specified content model.
+      tags:
+      - Content Items
+      security:
+      - sessionToken: []
+      parameters:
+      - name: modelZUID
+        in: path
+        required: true
+        schema:
+          type: string
+        description: The ZUID of the content model.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                data:
+                  type: object
+                  description: Key-value pairs of field names and their values.
+                web:
+                  type: object
+                  properties:
+                    pathPart:
+                      type: string
+                      description: The URL path segment for this item.
+                    parentZUID:
+                      type: string
+                      description: The parent item ZUID for URL hierarchy.
+                    metaTitle:
+                      type: string
+                    metaDescription:
+                      type: string
+                    metaLinkText:
+                      type: string
+                meta:
+                  type: object
+                  properties:
+                    langID:
+                      type: integer
+                      description: Language identifier.
+      responses:
+        '201':
+          description: Content item created successfully.
+        '400':
+          description: Invalid request.
+        '401':
+          description: Unauthorized.
+  /content/models/{modelZUID}/items/{itemZUID}:
+    get:
+      operationId: getItem
+      summary: Zesty Get a content item
+      description: Returns a specific content item with its data, web, and meta properties.
+      tags:
+      - Content Items
+      security:
+      - sessionToken: []
+      parameters:
+      - name: modelZUID
+        in: path
+        required: true
+        schema:
+          type: string
+        description: The ZUID of the content model.
+      - name: itemZUID
+        in: path
+        required: true
+        schema:
+          type: string
+        description: The ZUID of the content item.
+      responses:
+        '200':
+          description: Content item details.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                  data:
+                    $ref: '#/components/schemas/ContentItem'
+        '401':
+          description: Unauthorized.
+        '404':
+          description: Content item not found.
+    put:
+      operationId: updateItem
+      summary: Zesty Update a content item
+      description: Updates the content, web, and meta data of a specific item.
+      tags:
+      - Content Items
+      security:
+      - sessionToken: []
+      parameters:
+      - name: modelZUID
+        in: path
+        required: true
+        schema:
+          type: string
+        description: The ZUID of the content model.
+      - name: itemZUID
+        in: path
+        required: true
+        schema:
+          type: string
+        description: The ZUID of the content item.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                data:
+                  type: object
+                  description: Key-value pairs of field names and their values.
+                web:
+                  type: object
+                  properties:
+                    pathPart:
+                      type: string
+                    metaTitle:
+                      type: string
+                    metaDescription:
+                      type: string
+      responses:
+        '200':
+          description: Content item updated successfully.
+        '401':
+          description: Unauthorized.
+        '404':
+          description: Content item not found.
+    delete:
+      operationId: deleteItem
+      summary: Zesty Delete a content item
+      description: Deletes a specific content item.
+      tags:
+      - Content Items
+      security:
+      - sessionToken: []
+      parameters:
+      - name: modelZUID
+        in: path
+        required: true
+        schema:
+          type: string
+        description: The ZUID of the content model.
+      - name: itemZUID
+        in: path
+        required: true
+        schema:
+          type: string
+        description: The ZUID of the content item.
+      responses:
+        '200':
+          description: Content item deleted successfully.
+        '401':
+          description: Unauthorized.
+        '404':
+          description: Content item not found.
+components:
+  schemas:
+    ContentItem:
+      type: object
+      properties:
+        ZUID:
+          type: string
+          description: The Zesty Universal Identifier for the content item.
+        data:
+          type: object
+          description: Key-value pairs of field data.
+        web:
+          type: object
+          properties:
+            pathPart:
+              type: string
+            path:
+              type: string
+            metaTitle:
+              type: string
+            metaDescription:
+              type: string
+            metaLinkText:
+              type: string
+        meta:
+          type: object
+          properties:
+            ZUID:
+              type: string
+            contentModelZUID:
+              type: string
+            langID:
+              type: integer
+            version:
+              type: integer
+            createdAt:
+              type: string
+              format: date-time
+            updatedAt:
+              type: string
+              format: date-time
+  securitySchemes:
+    sessionToken:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: A session token obtained from the Auth API login endpoint.
+externalDocs:
+  description: Zesty Accounts API Documentation
+  url: https://docs.zesty.io/docs/accounts

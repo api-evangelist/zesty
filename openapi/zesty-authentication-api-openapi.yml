@@ -1,0 +1,120 @@
+openapi: 3.1.0
+info:
+  title: Zesty Accounts Apps Authentication API
+  description: The Zesty.io Accounts API is used to manage users, roles, instances, teams, tokens, ecosystems, webhooks, and apps. It provides administrative control over the organizational structure of a Zesty.io account. All endpoints require authentication via a session token obtained from the Auth API.
+  version: 1.0.0
+  contact:
+    name: Zesty.io
+    url: https://www.zesty.io/
+  license:
+    name: Proprietary
+    url: https://www.zesty.io/
+servers:
+- url: https://accounts.api.zesty.io/v1
+  description: Zesty Accounts API Production Server
+tags:
+- name: Authentication
+  description: User authentication and session management.
+paths:
+  /login:
+    post:
+      operationId: login
+      summary: Zesty Authenticate a user
+      description: Authenticates a user by providing an email and password combination. Returns a session token upon successful authentication. The session token is a short-lived 30-minute token that is extended whenever an authenticated action is taken.
+      tags:
+      - Authentication
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - email
+              - password
+              properties:
+                email:
+                  type: string
+                  format: email
+                  description: The user's email address.
+                password:
+                  type: string
+                  format: password
+                  description: The user's password.
+      responses:
+        '200':
+          description: Successfully authenticated. Returns a session token.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                  message:
+                    type: string
+                  data:
+                    type: string
+                    description: The session token.
+        '401':
+          description: Invalid credentials.
+  /logout:
+    delete:
+      operationId: logout
+      summary: Zesty End a user session
+      description: Logs out the current user session and invalidates the session token.
+      tags:
+      - Authentication
+      security:
+      - sessionToken: []
+      responses:
+        '200':
+          description: Successfully logged out.
+        '401':
+          description: Unauthorized. Invalid or expired session token.
+  /verify:
+    get:
+      operationId: verifyToken
+      summary: Zesty Verify a session token
+      description: Verifies whether the provided session token is still valid and returns user information associated with the token.
+      tags:
+      - Authentication
+      security:
+      - sessionToken: []
+      responses:
+        '200':
+          description: Token is valid.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                  message:
+                    type: string
+                  data:
+                    type: object
+                    properties:
+                      ZUID:
+                        type: string
+                        description: The user's Zesty Universal Identifier.
+                      email:
+                        type: string
+                        format: email
+                      firstName:
+                        type: string
+                      lastName:
+                        type: string
+        '401':
+          description: Invalid or expired token.
+components:
+  securitySchemes:
+    sessionToken:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: A session token obtained from the Auth API login endpoint.
+externalDocs:
+  description: Zesty Accounts API Documentation
+  url: https://docs.zesty.io/docs/accounts

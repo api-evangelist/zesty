@@ -1,6 +1,6 @@
 openapi: 3.1.0
 info:
-  title: Zesty Accounts Apps Instances API
+  title: Zesty Accounts Apps Stylesheets API
   description: The Zesty.io Accounts API is used to manage users, roles, instances, teams, tokens, ecosystems, webhooks, and apps. It provides administrative control over the organizational structure of a Zesty.io account. All endpoints require authentication via a session token obtained from the Auth API.
   version: 1.0.0
   contact:
@@ -13,21 +13,21 @@ servers:
 - url: https://accounts.api.zesty.io/v1
   description: Zesty Accounts API Production Server
 tags:
-- name: Instances
-  description: Manage Zesty.io instances.
+- name: Stylesheets
+  description: Manage CSS stylesheet files.
 paths:
-  /instances:
+  /web/stylesheets:
     get:
-      operationId: getInstances
-      summary: Zesty List all instances
-      description: Returns a list of all instances accessible to the authenticated user.
+      operationId: getStylesheets
+      summary: Zesty List all stylesheets
+      description: Returns a list of all stylesheet files in the instance.
       tags:
-      - Instances
+      - Stylesheets
       security:
       - sessionToken: []
       responses:
         '200':
-          description: A list of instances.
+          description: A list of stylesheets.
           content:
             application/json:
               schema:
@@ -38,15 +38,15 @@ paths:
                   data:
                     type: array
                     items:
-                      $ref: '#/components/schemas/Instance'
+                      $ref: '#/components/schemas/Stylesheet'
         '401':
           description: Unauthorized.
     post:
-      operationId: createInstance
-      summary: Zesty Create a new instance
-      description: Creates a new Zesty.io instance.
+      operationId: createStylesheet
+      summary: Zesty Create a stylesheet
+      description: Creates a new stylesheet file in the instance.
       tags:
-      - Instances
+      - Stylesheets
       security:
       - sessionToken: []
       requestBody:
@@ -56,49 +56,41 @@ paths:
             schema:
               type: object
               required:
-              - name
+              - fileName
+              - code
               properties:
-                name:
+                fileName:
                   type: string
-                  description: The name of the instance.
-                ecoZUID:
+                code:
                   type: string
-                  description: The ecosystem ZUID to associate with.
+                type:
+                  type: string
       responses:
         '201':
-          description: Instance created successfully.
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  code:
-                    type: integer
-                  data:
-                    $ref: '#/components/schemas/Instance'
+          description: Stylesheet created successfully.
         '400':
           description: Invalid request.
         '401':
           description: Unauthorized.
-  /instances/{instanceZUID}:
+  /web/stylesheets/{stylesheetZUID}:
     get:
-      operationId: getInstance
-      summary: Zesty Get an instance
-      description: Returns details for a specific instance by its ZUID.
+      operationId: getStylesheet
+      summary: Zesty Get a stylesheet
+      description: Returns a specific stylesheet and its code content.
       tags:
-      - Instances
+      - Stylesheets
       security:
       - sessionToken: []
       parameters:
-      - name: instanceZUID
+      - name: stylesheetZUID
         in: path
         required: true
         schema:
           type: string
-        description: The ZUID of the instance.
+        description: The ZUID of the stylesheet.
       responses:
         '200':
-          description: Instance details.
+          description: Stylesheet details.
           content:
             application/json:
               schema:
@@ -107,26 +99,26 @@ paths:
                   code:
                     type: integer
                   data:
-                    $ref: '#/components/schemas/Instance'
+                    $ref: '#/components/schemas/Stylesheet'
         '401':
           description: Unauthorized.
         '404':
-          description: Instance not found.
+          description: Stylesheet not found.
     put:
-      operationId: updateInstance
-      summary: Zesty Update an instance
-      description: Updates the details of a specific instance.
+      operationId: updateStylesheet
+      summary: Zesty Update a stylesheet
+      description: Updates the code content of a specific stylesheet.
       tags:
-      - Instances
+      - Stylesheets
       security:
       - sessionToken: []
       parameters:
-      - name: instanceZUID
+      - name: stylesheetZUID
         in: path
         required: true
         schema:
           type: string
-        description: The ZUID of the instance.
+        description: The ZUID of the stylesheet.
       requestBody:
         required: true
         content:
@@ -134,55 +126,30 @@ paths:
             schema:
               type: object
               properties:
-                name:
+                code:
                   type: string
-                  description: The updated name of the instance.
       responses:
         '200':
-          description: Instance updated successfully.
+          description: Stylesheet updated successfully.
         '401':
           description: Unauthorized.
         '404':
-          description: Instance not found.
-    delete:
-      operationId: deleteInstance
-      summary: Zesty Delete an instance
-      description: Deletes a specific instance.
-      tags:
-      - Instances
-      security:
-      - sessionToken: []
-      parameters:
-      - name: instanceZUID
-        in: path
-        required: true
-        schema:
-          type: string
-        description: The ZUID of the instance.
-      responses:
-        '200':
-          description: Instance deleted successfully.
-        '401':
-          description: Unauthorized.
-        '404':
-          description: Instance not found.
+          description: Stylesheet not found.
 components:
   schemas:
-    Instance:
+    Stylesheet:
       type: object
       properties:
         ZUID:
           type: string
-          description: The Zesty Universal Identifier for the instance.
-        name:
+        fileName:
           type: string
-          description: The name of the instance.
-        ecoZUID:
+        code:
           type: string
-          description: The ecosystem ZUID.
-        domain:
+        type:
           type: string
-          description: The instance domain.
+        version:
+          type: integer
         createdAt:
           type: string
           format: date-time

@@ -1,0 +1,92 @@
+openapi: 3.1.0
+info:
+  title: Zesty Accounts Apps Webhooks API
+  description: The Zesty.io Accounts API is used to manage users, roles, instances, teams, tokens, ecosystems, webhooks, and apps. It provides administrative control over the organizational structure of a Zesty.io account. All endpoints require authentication via a session token obtained from the Auth API.
+  version: 1.0.0
+  contact:
+    name: Zesty.io
+    url: https://www.zesty.io/
+  license:
+    name: Proprietary
+    url: https://www.zesty.io/
+servers:
+- url: https://accounts.api.zesty.io/v1
+  description: Zesty Accounts API Production Server
+tags:
+- name: Webhooks
+  description: Manage webhook subscriptions.
+paths:
+  /webhooks:
+    get:
+      operationId: getWebhooks
+      summary: Zesty List all webhooks
+      description: Returns a list of all configured webhooks.
+      tags:
+      - Webhooks
+      security:
+      - sessionToken: []
+      responses:
+        '200':
+          description: A list of webhooks.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        ZUID:
+                          type: string
+                        url:
+                          type: string
+                        event:
+                          type: string
+        '401':
+          description: Unauthorized.
+    post:
+      operationId: createWebhook
+      summary: Zesty Create a webhook
+      description: Creates a new webhook for event notifications.
+      tags:
+      - Webhooks
+      security:
+      - sessionToken: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - url
+              - event
+              properties:
+                url:
+                  type: string
+                  format: uri
+                  description: The URL to receive webhook notifications.
+                event:
+                  type: string
+                  description: The event type to subscribe to.
+      responses:
+        '201':
+          description: Webhook created successfully.
+        '400':
+          description: Invalid request.
+        '401':
+          description: Unauthorized.
+components:
+  securitySchemes:
+    sessionToken:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: A session token obtained from the Auth API login endpoint.
+externalDocs:
+  description: Zesty Accounts API Documentation
+  url: https://docs.zesty.io/docs/accounts

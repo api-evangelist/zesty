@@ -1,0 +1,245 @@
+openapi: 3.1.0
+info:
+  title: Zesty Accounts Apps Fields API
+  description: The Zesty.io Accounts API is used to manage users, roles, instances, teams, tokens, ecosystems, webhooks, and apps. It provides administrative control over the organizational structure of a Zesty.io account. All endpoints require authentication via a session token obtained from the Auth API.
+  version: 1.0.0
+  contact:
+    name: Zesty.io
+    url: https://www.zesty.io/
+  license:
+    name: Proprietary
+    url: https://www.zesty.io/
+servers:
+- url: https://accounts.api.zesty.io/v1
+  description: Zesty Accounts API Production Server
+tags:
+- name: Fields
+  description: Manage fields on content models.
+paths:
+  /content/models/{modelZUID}/fields:
+    get:
+      operationId: getFields
+      summary: Zesty List fields for a content model
+      description: Returns all fields defined for the specified content model.
+      tags:
+      - Fields
+      security:
+      - sessionToken: []
+      parameters:
+      - name: modelZUID
+        in: path
+        required: true
+        schema:
+          type: string
+        description: The ZUID of the content model.
+      responses:
+        '200':
+          description: A list of fields.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Field'
+        '401':
+          description: Unauthorized.
+        '404':
+          description: Content model not found.
+    post:
+      operationId: createField
+      summary: Zesty Create a field on a content model
+      description: Adds a new field to the specified content model.
+      tags:
+      - Fields
+      security:
+      - sessionToken: []
+      parameters:
+      - name: modelZUID
+        in: path
+        required: true
+        schema:
+          type: string
+        description: The ZUID of the content model.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - name
+              - label
+              - datatype
+              properties:
+                name:
+                  type: string
+                  description: The reference name for the field.
+                label:
+                  type: string
+                  description: The display label for the field.
+                datatype:
+                  type: string
+                  description: The data type of the field.
+                required:
+                  type: boolean
+                  description: Whether the field is required.
+                sort:
+                  type: integer
+                  description: The sort order of the field.
+      responses:
+        '201':
+          description: Field created successfully.
+        '400':
+          description: Invalid request.
+        '401':
+          description: Unauthorized.
+  /content/models/{modelZUID}/fields/{fieldZUID}:
+    get:
+      operationId: getField
+      summary: Zesty Get a field
+      description: Returns details for a specific field.
+      tags:
+      - Fields
+      security:
+      - sessionToken: []
+      parameters:
+      - name: modelZUID
+        in: path
+        required: true
+        schema:
+          type: string
+        description: The ZUID of the content model.
+      - name: fieldZUID
+        in: path
+        required: true
+        schema:
+          type: string
+        description: The ZUID of the field.
+      responses:
+        '200':
+          description: Field details.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                  data:
+                    $ref: '#/components/schemas/Field'
+        '401':
+          description: Unauthorized.
+        '404':
+          description: Field not found.
+    put:
+      operationId: updateField
+      summary: Zesty Update a field
+      description: Updates the details of a specific field.
+      tags:
+      - Fields
+      security:
+      - sessionToken: []
+      parameters:
+      - name: modelZUID
+        in: path
+        required: true
+        schema:
+          type: string
+        description: The ZUID of the content model.
+      - name: fieldZUID
+        in: path
+        required: true
+        schema:
+          type: string
+        description: The ZUID of the field.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                label:
+                  type: string
+                required:
+                  type: boolean
+                sort:
+                  type: integer
+      responses:
+        '200':
+          description: Field updated successfully.
+        '401':
+          description: Unauthorized.
+        '404':
+          description: Field not found.
+    delete:
+      operationId: deleteField
+      summary: Zesty Delete a field
+      description: Deletes a specific field from a content model.
+      tags:
+      - Fields
+      security:
+      - sessionToken: []
+      parameters:
+      - name: modelZUID
+        in: path
+        required: true
+        schema:
+          type: string
+        description: The ZUID of the content model.
+      - name: fieldZUID
+        in: path
+        required: true
+        schema:
+          type: string
+        description: The ZUID of the field.
+      responses:
+        '200':
+          description: Field deleted successfully.
+        '401':
+          description: Unauthorized.
+        '404':
+          description: Field not found.
+components:
+  schemas:
+    Field:
+      type: object
+      properties:
+        ZUID:
+          type: string
+          description: The Zesty Universal Identifier for the field.
+        name:
+          type: string
+          description: The reference name.
+        label:
+          type: string
+          description: The display label.
+        datatype:
+          type: string
+          description: The field data type.
+        required:
+          type: boolean
+        sort:
+          type: integer
+        contentModelZUID:
+          type: string
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+  securitySchemes:
+    sessionToken:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: A session token obtained from the Auth API login endpoint.
+externalDocs:
+  description: Zesty Accounts API Documentation
+  url: https://docs.zesty.io/docs/accounts
