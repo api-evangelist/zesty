@@ -7,9 +7,22 @@ description: >-
   Universal Identifiers). The platform supports WebEngine for traditional CMS, headless API architecture, GraphQL, and
   JamStack implementations. Built on Google Cloud Platform with Fastly edge caching.
 type: Index
+accessModel:
+  pricing: freemium
+  onboarding: self-serve
+  trial: false
+  try_now: true
+  public: false
+  label: Freemium · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
 position: Consumer
 access: 3rd-Party
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/zesty.png
 tags:
 - CMS
 - Composable
@@ -21,52 +34,6 @@ created: '2025-02-17'
 modified: '2026-05-19'
 specificationVersion: '0.19'
 apis:
-- aid: zesty:auth-api
-  name: Zesty Auth API
-  tags:
-  - Authentication
-  - Sessions
-  - Tokens
-  humanURL: https://docs.zesty.io/docs/auth-api
-  properties:
-  - url: https://docs.zesty.io/docs/auth-api
-    type: Documentation
-  - url: openapi/zesty-auth-api-openapi.yml
-    type: OpenAPI
-  - url: graphql/zesty-graphql.md
-    type: GraphQL
-  description: >-
-    The Zesty.io Auth API is used to authenticate users with the platform. It returns a session token that grants
-    access to the Instances API, Accounts API, and Media API. User authentication is done by providing an email and
-    password combination, which issues a short-lived 30-minute session token. Also supports Microsoft SSO, Okta SSO,
-    and Azure SSO.
-- aid: zesty:accounts-api
-  name: Zesty Accounts API
-  tags:
-  - Accounts
-  - Instances
-  - Roles
-  - Teams
-  - Users
-  humanURL: https://docs.zesty.io/docs/accounts
-  properties:
-  - url: https://docs.zesty.io/docs/accounts
-    type: Documentation
-  - url: openapi/zesty-accounts-api-openapi.yml
-    type: OpenAPI
-  - url: json-schema/instance.json
-    type: JSONSchema
-  - url: json-schema/user.json
-    type: JSONSchema
-  - url: json-schema/role.json
-    type: JSONSchema
-  - url: json-schema/team.json
-    type: JSONSchema
-  - url: json-schema/token.json
-    type: JSONSchema
-  description: >-
-    The Zesty.io Accounts API is used to manage users, roles, instances, teams, tokens, ecosystems, webhooks, and
-    apps. It provides administrative control over the organizational structure of a Zesty.io account.
 - aid: zesty:instances-api
   name: Zesty Instances API
   tags:
@@ -88,35 +55,849 @@ apis:
   - url: json-schema/field.json
     type: JSONSchema
   description: >-
-    The Zesty.io Instances API is a REST API that allows CRUD operations on Zesty.io instances. It provides access to
-    content models, content items, fields, views, stylesheets, scripts, settings, head tags, navigation, audits, and
-    publishing operations. Each instance is identified by a unique ZUID.
-- aid: zesty:media-api
-  name: Zesty Media API
+    The Zesty.io Instances API is a REST API that allows CRUD operations on Zesty.io instances. It provides
+    access to content models, content items, fields, views, stylesheets, scripts, settings, head tags,
+    navigation, audits, and publishing operations. Each instance is identified by a unique ZUID.
+- aid: zesty:zesty-apps-api
+  name: Zesty Apps API
+  description: Manage registered applications.
+  humanURL: https://docs.zesty.io/docs/auth-api
   tags:
-  - CDN
-  - Files
-  - Images
-  - Media
-  - Storage
-  humanURL: https://docs.zesty.io/docs/media
+  - Apps
   properties:
-  - url: https://docs.zesty.io/docs/media
-    type: Documentation
-  - url: openapi/zesty-media-api-openapi.yml
-    type: OpenAPI
-  - url: json-schema/media-bin.json
-    type: JSONSchema
-  - url: json-schema/media-group.json
-    type: JSONSchema
-  - url: json-schema/media-file.json
-    type: JSONSchema
-  - url: json-ld/zesty-context.jsonld
-    type: JSONLD
-  description: >-
-    The Zesty.io Media API is a collection of services for managing media files. It consists of four services: Media
-    Manager, Media Storage, Media Modify, and Media Resolver. It handles bins, groups (folders), file uploads, and CDN
-    URL resolution.
+  - type: OpenAPI
+    url: openapi/zesty-apps-api-openapi.yml
+  - type: Documentation
+    url: https://docs.zesty.io/docs/auth-api
+  - type: GraphQL
+    url: graphql/zesty-graphql.md
+  - type: Documentation
+    url: https://docs.zesty.io/docs/accounts
+  - type: JSONSchema
+    url: json-schema/instance.json
+  - type: JSONSchema
+    url: json-schema/user.json
+  - type: JSONSchema
+    url: json-schema/role.json
+  - type: JSONSchema
+    url: json-schema/team.json
+  - type: JSONSchema
+    url: json-schema/token.json
+  - type: Documentation
+    url: https://docs.zesty.io/docs/media
+  - type: JSONSchema
+    url: json-schema/media-bin.json
+  - type: JSONSchema
+    url: json-schema/media-group.json
+  - type: JSONSchema
+    url: json-schema/media-file.json
+  - type: JSONLD
+    url: json-ld/zesty-context.jsonld
+- aid: zesty:zesty-audits-api
+  name: Zesty Audits API
+  description: View audit trail entries.
+  humanURL: https://docs.zesty.io/docs/auth-api
+  tags:
+  - Audits
+  properties:
+  - type: OpenAPI
+    url: openapi/zesty-audits-api-openapi.yml
+  - type: Documentation
+    url: https://docs.zesty.io/docs/auth-api
+  - type: GraphQL
+    url: graphql/zesty-graphql.md
+  - type: Documentation
+    url: https://docs.zesty.io/docs/accounts
+  - type: JSONSchema
+    url: json-schema/instance.json
+  - type: JSONSchema
+    url: json-schema/user.json
+  - type: JSONSchema
+    url: json-schema/role.json
+  - type: JSONSchema
+    url: json-schema/team.json
+  - type: JSONSchema
+    url: json-schema/token.json
+  - type: Documentation
+    url: https://docs.zesty.io/docs/media
+  - type: JSONSchema
+    url: json-schema/media-bin.json
+  - type: JSONSchema
+    url: json-schema/media-group.json
+  - type: JSONSchema
+    url: json-schema/media-file.json
+  - type: JSONLD
+    url: json-ld/zesty-context.jsonld
+- aid: zesty:zesty-authentication-api
+  name: Zesty Authentication API
+  description: User authentication and session management.
+  humanURL: https://docs.zesty.io/docs/auth-api
+  tags:
+  - Authentication
+  properties:
+  - type: OpenAPI
+    url: openapi/zesty-authentication-api-openapi.yml
+  - type: Documentation
+    url: https://docs.zesty.io/docs/auth-api
+  - type: GraphQL
+    url: graphql/zesty-graphql.md
+  - type: Documentation
+    url: https://docs.zesty.io/docs/accounts
+  - type: JSONSchema
+    url: json-schema/instance.json
+  - type: JSONSchema
+    url: json-schema/user.json
+  - type: JSONSchema
+    url: json-schema/role.json
+  - type: JSONSchema
+    url: json-schema/team.json
+  - type: JSONSchema
+    url: json-schema/token.json
+  - type: Documentation
+    url: https://docs.zesty.io/docs/media
+  - type: JSONSchema
+    url: json-schema/media-bin.json
+  - type: JSONSchema
+    url: json-schema/media-group.json
+  - type: JSONSchema
+    url: json-schema/media-file.json
+  - type: JSONLD
+    url: json-ld/zesty-context.jsonld
+- aid: zesty:zesty-bins-api
+  name: Zesty Bins API
+  description: Manage media bins (top-level containers).
+  humanURL: https://docs.zesty.io/docs/auth-api
+  tags:
+  - Bins
+  properties:
+  - type: OpenAPI
+    url: openapi/zesty-bins-api-openapi.yml
+  - type: Documentation
+    url: https://docs.zesty.io/docs/auth-api
+  - type: GraphQL
+    url: graphql/zesty-graphql.md
+  - type: Documentation
+    url: https://docs.zesty.io/docs/accounts
+  - type: JSONSchema
+    url: json-schema/instance.json
+  - type: JSONSchema
+    url: json-schema/user.json
+  - type: JSONSchema
+    url: json-schema/role.json
+  - type: JSONSchema
+    url: json-schema/team.json
+  - type: JSONSchema
+    url: json-schema/token.json
+  - type: Documentation
+    url: https://docs.zesty.io/docs/media
+  - type: JSONSchema
+    url: json-schema/media-bin.json
+  - type: JSONSchema
+    url: json-schema/media-group.json
+  - type: JSONSchema
+    url: json-schema/media-file.json
+  - type: JSONLD
+    url: json-ld/zesty-context.jsonld
+- aid: zesty:zesty-content-items-api
+  name: Zesty Content Items API
+  description: Manage content item data.
+  humanURL: https://docs.zesty.io/docs/auth-api
+  tags:
+  - Content Items
+  properties:
+  - type: OpenAPI
+    url: openapi/zesty-content-items-api-openapi.yml
+  - type: Documentation
+    url: https://docs.zesty.io/docs/auth-api
+  - type: GraphQL
+    url: graphql/zesty-graphql.md
+  - type: Documentation
+    url: https://docs.zesty.io/docs/accounts
+  - type: JSONSchema
+    url: json-schema/instance.json
+  - type: JSONSchema
+    url: json-schema/user.json
+  - type: JSONSchema
+    url: json-schema/role.json
+  - type: JSONSchema
+    url: json-schema/team.json
+  - type: JSONSchema
+    url: json-schema/token.json
+  - type: Documentation
+    url: https://docs.zesty.io/docs/media
+  - type: JSONSchema
+    url: json-schema/media-bin.json
+  - type: JSONSchema
+    url: json-schema/media-group.json
+  - type: JSONSchema
+    url: json-schema/media-file.json
+  - type: JSONLD
+    url: json-ld/zesty-context.jsonld
+- aid: zesty:zesty-content-models-api
+  name: Zesty Content Models API
+  description: Manage content model schemas.
+  humanURL: https://docs.zesty.io/docs/auth-api
+  tags:
+  - Content Models
+  properties:
+  - type: OpenAPI
+    url: openapi/zesty-content-models-api-openapi.yml
+  - type: Documentation
+    url: https://docs.zesty.io/docs/auth-api
+  - type: GraphQL
+    url: graphql/zesty-graphql.md
+  - type: Documentation
+    url: https://docs.zesty.io/docs/accounts
+  - type: JSONSchema
+    url: json-schema/instance.json
+  - type: JSONSchema
+    url: json-schema/user.json
+  - type: JSONSchema
+    url: json-schema/role.json
+  - type: JSONSchema
+    url: json-schema/team.json
+  - type: JSONSchema
+    url: json-schema/token.json
+  - type: Documentation
+    url: https://docs.zesty.io/docs/media
+  - type: JSONSchema
+    url: json-schema/media-bin.json
+  - type: JSONSchema
+    url: json-schema/media-group.json
+  - type: JSONSchema
+    url: json-schema/media-file.json
+  - type: JSONLD
+    url: json-ld/zesty-context.jsonld
+- aid: zesty:zesty-fields-api
+  name: Zesty Fields API
+  description: Manage fields on content models.
+  humanURL: https://docs.zesty.io/docs/auth-api
+  tags:
+  - Fields
+  properties:
+  - type: OpenAPI
+    url: openapi/zesty-fields-api-openapi.yml
+  - type: Documentation
+    url: https://docs.zesty.io/docs/auth-api
+  - type: GraphQL
+    url: graphql/zesty-graphql.md
+  - type: Documentation
+    url: https://docs.zesty.io/docs/accounts
+  - type: JSONSchema
+    url: json-schema/instance.json
+  - type: JSONSchema
+    url: json-schema/user.json
+  - type: JSONSchema
+    url: json-schema/role.json
+  - type: JSONSchema
+    url: json-schema/team.json
+  - type: JSONSchema
+    url: json-schema/token.json
+  - type: Documentation
+    url: https://docs.zesty.io/docs/media
+  - type: JSONSchema
+    url: json-schema/media-bin.json
+  - type: JSONSchema
+    url: json-schema/media-group.json
+  - type: JSONSchema
+    url: json-schema/media-file.json
+  - type: JSONLD
+    url: json-ld/zesty-context.jsonld
+- aid: zesty:zesty-files-api
+  name: Zesty Files API
+  description: Manage and upload media files.
+  humanURL: https://docs.zesty.io/docs/auth-api
+  tags:
+  - Files
+  properties:
+  - type: OpenAPI
+    url: openapi/zesty-files-api-openapi.yml
+  - type: Documentation
+    url: https://docs.zesty.io/docs/auth-api
+  - type: GraphQL
+    url: graphql/zesty-graphql.md
+  - type: Documentation
+    url: https://docs.zesty.io/docs/accounts
+  - type: JSONSchema
+    url: json-schema/instance.json
+  - type: JSONSchema
+    url: json-schema/user.json
+  - type: JSONSchema
+    url: json-schema/role.json
+  - type: JSONSchema
+    url: json-schema/team.json
+  - type: JSONSchema
+    url: json-schema/token.json
+  - type: Documentation
+    url: https://docs.zesty.io/docs/media
+  - type: JSONSchema
+    url: json-schema/media-bin.json
+  - type: JSONSchema
+    url: json-schema/media-group.json
+  - type: JSONSchema
+    url: json-schema/media-file.json
+  - type: JSONLD
+    url: json-ld/zesty-context.jsonld
+- aid: zesty:zesty-groups-api
+  name: Zesty Groups API
+  description: Manage media groups (folders within bins).
+  humanURL: https://docs.zesty.io/docs/auth-api
+  tags:
+  - Groups
+  properties:
+  - type: OpenAPI
+    url: openapi/zesty-groups-api-openapi.yml
+  - type: Documentation
+    url: https://docs.zesty.io/docs/auth-api
+  - type: GraphQL
+    url: graphql/zesty-graphql.md
+  - type: Documentation
+    url: https://docs.zesty.io/docs/accounts
+  - type: JSONSchema
+    url: json-schema/instance.json
+  - type: JSONSchema
+    url: json-schema/user.json
+  - type: JSONSchema
+    url: json-schema/role.json
+  - type: JSONSchema
+    url: json-schema/team.json
+  - type: JSONSchema
+    url: json-schema/token.json
+  - type: Documentation
+    url: https://docs.zesty.io/docs/media
+  - type: JSONSchema
+    url: json-schema/media-bin.json
+  - type: JSONSchema
+    url: json-schema/media-group.json
+  - type: JSONSchema
+    url: json-schema/media-file.json
+  - type: JSONLD
+    url: json-ld/zesty-context.jsonld
+- aid: zesty:zesty-head-tags-api
+  name: Zesty Head Tags API
+  description: Manage HTML head tag entries.
+  humanURL: https://docs.zesty.io/docs/auth-api
+  tags:
+  - Head Tags
+  properties:
+  - type: OpenAPI
+    url: openapi/zesty-head-tags-api-openapi.yml
+  - type: Documentation
+    url: https://docs.zesty.io/docs/auth-api
+  - type: GraphQL
+    url: graphql/zesty-graphql.md
+  - type: Documentation
+    url: https://docs.zesty.io/docs/accounts
+  - type: JSONSchema
+    url: json-schema/instance.json
+  - type: JSONSchema
+    url: json-schema/user.json
+  - type: JSONSchema
+    url: json-schema/role.json
+  - type: JSONSchema
+    url: json-schema/team.json
+  - type: JSONSchema
+    url: json-schema/token.json
+  - type: Documentation
+    url: https://docs.zesty.io/docs/media
+  - type: JSONSchema
+    url: json-schema/media-bin.json
+  - type: JSONSchema
+    url: json-schema/media-group.json
+  - type: JSONSchema
+    url: json-schema/media-file.json
+  - type: JSONLD
+    url: json-ld/zesty-context.jsonld
+- aid: zesty:zesty-navigation-api
+  name: Zesty Navigation API
+  description: Manage the instance navigation tree.
+  humanURL: https://docs.zesty.io/docs/auth-api
+  tags:
+  - Navigation
+  properties:
+  - type: OpenAPI
+    url: openapi/zesty-navigation-api-openapi.yml
+  - type: Documentation
+    url: https://docs.zesty.io/docs/auth-api
+  - type: GraphQL
+    url: graphql/zesty-graphql.md
+  - type: Documentation
+    url: https://docs.zesty.io/docs/accounts
+  - type: JSONSchema
+    url: json-schema/instance.json
+  - type: JSONSchema
+    url: json-schema/user.json
+  - type: JSONSchema
+    url: json-schema/role.json
+  - type: JSONSchema
+    url: json-schema/team.json
+  - type: JSONSchema
+    url: json-schema/token.json
+  - type: Documentation
+    url: https://docs.zesty.io/docs/media
+  - type: JSONSchema
+    url: json-schema/media-bin.json
+  - type: JSONSchema
+    url: json-schema/media-group.json
+  - type: JSONSchema
+    url: json-schema/media-file.json
+  - type: JSONLD
+    url: json-ld/zesty-context.jsonld
+- aid: zesty:zesty-password-api
+  name: Zesty Password API
+  description: Password management operations.
+  humanURL: https://docs.zesty.io/docs/auth-api
+  tags:
+  - Password
+  properties:
+  - type: OpenAPI
+    url: openapi/zesty-password-api-openapi.yml
+  - type: Documentation
+    url: https://docs.zesty.io/docs/auth-api
+  - type: GraphQL
+    url: graphql/zesty-graphql.md
+  - type: Documentation
+    url: https://docs.zesty.io/docs/accounts
+  - type: JSONSchema
+    url: json-schema/instance.json
+  - type: JSONSchema
+    url: json-schema/user.json
+  - type: JSONSchema
+    url: json-schema/role.json
+  - type: JSONSchema
+    url: json-schema/team.json
+  - type: JSONSchema
+    url: json-schema/token.json
+  - type: Documentation
+    url: https://docs.zesty.io/docs/media
+  - type: JSONSchema
+    url: json-schema/media-bin.json
+  - type: JSONSchema
+    url: json-schema/media-group.json
+  - type: JSONSchema
+    url: json-schema/media-file.json
+  - type: JSONLD
+    url: json-ld/zesty-context.jsonld
+- aid: zesty:zesty-publishing-api
+  name: Zesty Publishing API
+  description: Publish content items to the live site.
+  humanURL: https://docs.zesty.io/docs/auth-api
+  tags:
+  - Publishing
+  properties:
+  - type: OpenAPI
+    url: openapi/zesty-publishing-api-openapi.yml
+  - type: Documentation
+    url: https://docs.zesty.io/docs/auth-api
+  - type: GraphQL
+    url: graphql/zesty-graphql.md
+  - type: Documentation
+    url: https://docs.zesty.io/docs/accounts
+  - type: JSONSchema
+    url: json-schema/instance.json
+  - type: JSONSchema
+    url: json-schema/user.json
+  - type: JSONSchema
+    url: json-schema/role.json
+  - type: JSONSchema
+    url: json-schema/team.json
+  - type: JSONSchema
+    url: json-schema/token.json
+  - type: Documentation
+    url: https://docs.zesty.io/docs/media
+  - type: JSONSchema
+    url: json-schema/media-bin.json
+  - type: JSONSchema
+    url: json-schema/media-group.json
+  - type: JSONSchema
+    url: json-schema/media-file.json
+  - type: JSONLD
+    url: json-ld/zesty-context.jsonld
+- aid: zesty:zesty-resolver-api
+  name: Zesty Resolver API
+  description: Resolve file ZUIDs to CDN URLs.
+  humanURL: https://docs.zesty.io/docs/auth-api
+  tags:
+  - Resolver
+  properties:
+  - type: OpenAPI
+    url: openapi/zesty-resolver-api-openapi.yml
+  - type: Documentation
+    url: https://docs.zesty.io/docs/auth-api
+  - type: GraphQL
+    url: graphql/zesty-graphql.md
+  - type: Documentation
+    url: https://docs.zesty.io/docs/accounts
+  - type: JSONSchema
+    url: json-schema/instance.json
+  - type: JSONSchema
+    url: json-schema/user.json
+  - type: JSONSchema
+    url: json-schema/role.json
+  - type: JSONSchema
+    url: json-schema/team.json
+  - type: JSONSchema
+    url: json-schema/token.json
+  - type: Documentation
+    url: https://docs.zesty.io/docs/media
+  - type: JSONSchema
+    url: json-schema/media-bin.json
+  - type: JSONSchema
+    url: json-schema/media-group.json
+  - type: JSONSchema
+    url: json-schema/media-file.json
+  - type: JSONLD
+    url: json-ld/zesty-context.jsonld
+- aid: zesty:zesty-roles-api
+  name: Zesty Roles API
+  description: Manage roles and permissions.
+  humanURL: https://docs.zesty.io/docs/auth-api
+  tags:
+  - Roles
+  properties:
+  - type: OpenAPI
+    url: openapi/zesty-roles-api-openapi.yml
+  - type: Documentation
+    url: https://docs.zesty.io/docs/auth-api
+  - type: GraphQL
+    url: graphql/zesty-graphql.md
+  - type: Documentation
+    url: https://docs.zesty.io/docs/accounts
+  - type: JSONSchema
+    url: json-schema/instance.json
+  - type: JSONSchema
+    url: json-schema/user.json
+  - type: JSONSchema
+    url: json-schema/role.json
+  - type: JSONSchema
+    url: json-schema/team.json
+  - type: JSONSchema
+    url: json-schema/token.json
+  - type: Documentation
+    url: https://docs.zesty.io/docs/media
+  - type: JSONSchema
+    url: json-schema/media-bin.json
+  - type: JSONSchema
+    url: json-schema/media-group.json
+  - type: JSONSchema
+    url: json-schema/media-file.json
+  - type: JSONLD
+    url: json-ld/zesty-context.jsonld
+- aid: zesty:zesty-scripts-api
+  name: Zesty Scripts API
+  description: Manage JavaScript files.
+  humanURL: https://docs.zesty.io/docs/auth-api
+  tags:
+  - Scripts
+  properties:
+  - type: OpenAPI
+    url: openapi/zesty-scripts-api-openapi.yml
+  - type: Documentation
+    url: https://docs.zesty.io/docs/auth-api
+  - type: GraphQL
+    url: graphql/zesty-graphql.md
+  - type: Documentation
+    url: https://docs.zesty.io/docs/accounts
+  - type: JSONSchema
+    url: json-schema/instance.json
+  - type: JSONSchema
+    url: json-schema/user.json
+  - type: JSONSchema
+    url: json-schema/role.json
+  - type: JSONSchema
+    url: json-schema/team.json
+  - type: JSONSchema
+    url: json-schema/token.json
+  - type: Documentation
+    url: https://docs.zesty.io/docs/media
+  - type: JSONSchema
+    url: json-schema/media-bin.json
+  - type: JSONSchema
+    url: json-schema/media-group.json
+  - type: JSONSchema
+    url: json-schema/media-file.json
+  - type: JSONLD
+    url: json-ld/zesty-context.jsonld
+- aid: zesty:zesty-search-api
+  name: Zesty Search API
+  description: Search across content items.
+  humanURL: https://docs.zesty.io/docs/auth-api
+  tags:
+  - Search
+  properties:
+  - type: OpenAPI
+    url: openapi/zesty-search-api-openapi.yml
+  - type: Documentation
+    url: https://docs.zesty.io/docs/auth-api
+  - type: GraphQL
+    url: graphql/zesty-graphql.md
+  - type: Documentation
+    url: https://docs.zesty.io/docs/accounts
+  - type: JSONSchema
+    url: json-schema/instance.json
+  - type: JSONSchema
+    url: json-schema/user.json
+  - type: JSONSchema
+    url: json-schema/role.json
+  - type: JSONSchema
+    url: json-schema/team.json
+  - type: JSONSchema
+    url: json-schema/token.json
+  - type: Documentation
+    url: https://docs.zesty.io/docs/media
+  - type: JSONSchema
+    url: json-schema/media-bin.json
+  - type: JSONSchema
+    url: json-schema/media-group.json
+  - type: JSONSchema
+    url: json-schema/media-file.json
+  - type: JSONLD
+    url: json-ld/zesty-context.jsonld
+- aid: zesty:zesty-settings-api
+  name: Zesty Settings API
+  description: Manage instance settings.
+  humanURL: https://docs.zesty.io/docs/auth-api
+  tags:
+  - Settings
+  properties:
+  - type: OpenAPI
+    url: openapi/zesty-settings-api-openapi.yml
+  - type: Documentation
+    url: https://docs.zesty.io/docs/auth-api
+  - type: GraphQL
+    url: graphql/zesty-graphql.md
+  - type: Documentation
+    url: https://docs.zesty.io/docs/accounts
+  - type: JSONSchema
+    url: json-schema/instance.json
+  - type: JSONSchema
+    url: json-schema/user.json
+  - type: JSONSchema
+    url: json-schema/role.json
+  - type: JSONSchema
+    url: json-schema/team.json
+  - type: JSONSchema
+    url: json-schema/token.json
+  - type: Documentation
+    url: https://docs.zesty.io/docs/media
+  - type: JSONSchema
+    url: json-schema/media-bin.json
+  - type: JSONSchema
+    url: json-schema/media-group.json
+  - type: JSONSchema
+    url: json-schema/media-file.json
+  - type: JSONLD
+    url: json-ld/zesty-context.jsonld
+- aid: zesty:zesty-stylesheets-api
+  name: Zesty Stylesheets API
+  description: Manage CSS stylesheet files.
+  humanURL: https://docs.zesty.io/docs/auth-api
+  tags:
+  - Stylesheets
+  properties:
+  - type: OpenAPI
+    url: openapi/zesty-stylesheets-api-openapi.yml
+  - type: Documentation
+    url: https://docs.zesty.io/docs/auth-api
+  - type: GraphQL
+    url: graphql/zesty-graphql.md
+  - type: Documentation
+    url: https://docs.zesty.io/docs/accounts
+  - type: JSONSchema
+    url: json-schema/instance.json
+  - type: JSONSchema
+    url: json-schema/user.json
+  - type: JSONSchema
+    url: json-schema/role.json
+  - type: JSONSchema
+    url: json-schema/team.json
+  - type: JSONSchema
+    url: json-schema/token.json
+  - type: Documentation
+    url: https://docs.zesty.io/docs/media
+  - type: JSONSchema
+    url: json-schema/media-bin.json
+  - type: JSONSchema
+    url: json-schema/media-group.json
+  - type: JSONSchema
+    url: json-schema/media-file.json
+  - type: JSONLD
+    url: json-ld/zesty-context.jsonld
+- aid: zesty:zesty-teams-api
+  name: Zesty Teams API
+  description: Manage teams.
+  humanURL: https://docs.zesty.io/docs/auth-api
+  tags:
+  - Teams
+  properties:
+  - type: OpenAPI
+    url: openapi/zesty-teams-api-openapi.yml
+  - type: Documentation
+    url: https://docs.zesty.io/docs/auth-api
+  - type: GraphQL
+    url: graphql/zesty-graphql.md
+  - type: Documentation
+    url: https://docs.zesty.io/docs/accounts
+  - type: JSONSchema
+    url: json-schema/instance.json
+  - type: JSONSchema
+    url: json-schema/user.json
+  - type: JSONSchema
+    url: json-schema/role.json
+  - type: JSONSchema
+    url: json-schema/team.json
+  - type: JSONSchema
+    url: json-schema/token.json
+  - type: Documentation
+    url: https://docs.zesty.io/docs/media
+  - type: JSONSchema
+    url: json-schema/media-bin.json
+  - type: JSONSchema
+    url: json-schema/media-group.json
+  - type: JSONSchema
+    url: json-schema/media-file.json
+  - type: JSONLD
+    url: json-ld/zesty-context.jsonld
+- aid: zesty:zesty-tokens-api
+  name: Zesty Tokens API
+  description: Manage API access tokens.
+  humanURL: https://docs.zesty.io/docs/auth-api
+  tags:
+  - Tokens
+  properties:
+  - type: OpenAPI
+    url: openapi/zesty-tokens-api-openapi.yml
+  - type: Documentation
+    url: https://docs.zesty.io/docs/auth-api
+  - type: GraphQL
+    url: graphql/zesty-graphql.md
+  - type: Documentation
+    url: https://docs.zesty.io/docs/accounts
+  - type: JSONSchema
+    url: json-schema/instance.json
+  - type: JSONSchema
+    url: json-schema/user.json
+  - type: JSONSchema
+    url: json-schema/role.json
+  - type: JSONSchema
+    url: json-schema/team.json
+  - type: JSONSchema
+    url: json-schema/token.json
+  - type: Documentation
+    url: https://docs.zesty.io/docs/media
+  - type: JSONSchema
+    url: json-schema/media-bin.json
+  - type: JSONSchema
+    url: json-schema/media-group.json
+  - type: JSONSchema
+    url: json-schema/media-file.json
+  - type: JSONLD
+    url: json-ld/zesty-context.jsonld
+- aid: zesty:zesty-users-api
+  name: Zesty Users API
+  description: Manage user accounts.
+  humanURL: https://docs.zesty.io/docs/auth-api
+  tags:
+  - Users
+  properties:
+  - type: OpenAPI
+    url: openapi/zesty-users-api-openapi.yml
+  - type: Documentation
+    url: https://docs.zesty.io/docs/auth-api
+  - type: GraphQL
+    url: graphql/zesty-graphql.md
+  - type: Documentation
+    url: https://docs.zesty.io/docs/accounts
+  - type: JSONSchema
+    url: json-schema/instance.json
+  - type: JSONSchema
+    url: json-schema/user.json
+  - type: JSONSchema
+    url: json-schema/role.json
+  - type: JSONSchema
+    url: json-schema/team.json
+  - type: JSONSchema
+    url: json-schema/token.json
+  - type: Documentation
+    url: https://docs.zesty.io/docs/media
+  - type: JSONSchema
+    url: json-schema/media-bin.json
+  - type: JSONSchema
+    url: json-schema/media-group.json
+  - type: JSONSchema
+    url: json-schema/media-file.json
+  - type: JSONLD
+    url: json-ld/zesty-context.jsonld
+- aid: zesty:zesty-views-api
+  name: Zesty Views API
+  description: Manage view template files.
+  humanURL: https://docs.zesty.io/docs/auth-api
+  tags:
+  - Views
+  properties:
+  - type: OpenAPI
+    url: openapi/zesty-views-api-openapi.yml
+  - type: Documentation
+    url: https://docs.zesty.io/docs/auth-api
+  - type: GraphQL
+    url: graphql/zesty-graphql.md
+  - type: Documentation
+    url: https://docs.zesty.io/docs/accounts
+  - type: JSONSchema
+    url: json-schema/instance.json
+  - type: JSONSchema
+    url: json-schema/user.json
+  - type: JSONSchema
+    url: json-schema/role.json
+  - type: JSONSchema
+    url: json-schema/team.json
+  - type: JSONSchema
+    url: json-schema/token.json
+  - type: Documentation
+    url: https://docs.zesty.io/docs/media
+  - type: JSONSchema
+    url: json-schema/media-bin.json
+  - type: JSONSchema
+    url: json-schema/media-group.json
+  - type: JSONSchema
+    url: json-schema/media-file.json
+  - type: JSONLD
+    url: json-ld/zesty-context.jsonld
+- aid: zesty:zesty-webhooks-api
+  name: Zesty Webhooks API
+  description: Manage webhook subscriptions.
+  humanURL: https://docs.zesty.io/docs/auth-api
+  tags:
+  - Webhooks
+  properties:
+  - type: OpenAPI
+    url: openapi/zesty-webhooks-api-openapi.yml
+  - type: Documentation
+    url: https://docs.zesty.io/docs/auth-api
+  - type: GraphQL
+    url: graphql/zesty-graphql.md
+  - type: Documentation
+    url: https://docs.zesty.io/docs/accounts
+  - type: JSONSchema
+    url: json-schema/instance.json
+  - type: JSONSchema
+    url: json-schema/user.json
+  - type: JSONSchema
+    url: json-schema/role.json
+  - type: JSONSchema
+    url: json-schema/team.json
+  - type: JSONSchema
+    url: json-schema/token.json
+  - type: Documentation
+    url: https://docs.zesty.io/docs/media
+  - type: JSONSchema
+    url: json-schema/media-bin.json
+  - type: JSONSchema
+    url: json-schema/media-group.json
+  - type: JSONSchema
+    url: json-schema/media-file.json
+  - type: JSONLD
+    url: json-ld/zesty-context.jsonld
 common:
 - type: AgenticAccess
   url: agentic-access/zesty-agentic-access.yml
