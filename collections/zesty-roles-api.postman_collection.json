@@ -1,25 +1,25 @@
 {
   "item": [
     {
-      "id": "8d83400e-b1f5-4ca8-9b33-9de3a5e8b83b",
-      "name": "Instances",
+      "id": "e40efe2f-c9bf-4c5c-aa81-bda7ba087567",
+      "name": "Roles",
       "description": {
-        "content": "Manage Zesty.io instances.",
+        "content": "Manage roles and permissions.",
         "type": "text/plain"
       },
       "item": [
         {
-          "id": "f2eacff3-de1c-4676-8c35-2346d559985b",
-          "name": "Zesty List all instances",
+          "id": "47b4f846-49da-42e4-9b01-5ee3a4d42c47",
+          "name": "Zesty List all roles",
           "request": {
-            "name": "Zesty List all instances",
+            "name": "Zesty List all roles",
             "description": {
-              "content": "Returns a list of all instances accessible to the authenticated user.",
+              "content": "Returns a list of all roles available in the account.",
               "type": "text/plain"
             },
             "url": {
               "path": [
-                "instances"
+                "roles"
               ],
               "host": [
                 "{{baseUrl}}"
@@ -54,12 +54,12 @@
           },
           "response": [
             {
-              "id": "2cf8431f-bd5c-4982-9016-5b6f2451a94b",
-              "name": "A list of instances.",
+              "id": "e46ec835-73c1-4337-b113-c4103797376d",
+              "name": "A list of roles.",
               "originalRequest": {
                 "url": {
                   "path": [
-                    "instances"
+                    "roles"
                   ],
                   "host": [
                     "{{baseUrl}}"
@@ -92,17 +92,17 @@
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"code\": 6755,\n  \"data\": [\n    {\n      \"ZUID\": \"string\",\n      \"name\": \"string\",\n      \"ecoZUID\": \"string\",\n      \"domain\": \"string\",\n      \"createdAt\": \"1964-12-02T06:12:08.801Z\",\n      \"updatedAt\": \"1956-09-05T01:49:00.162Z\"\n    },\n    {\n      \"ZUID\": \"string\",\n      \"name\": \"string\",\n      \"ecoZUID\": \"string\",\n      \"domain\": \"string\",\n      \"createdAt\": \"2002-05-28T15:46:06.162Z\",\n      \"updatedAt\": \"1974-12-24T09:44:18.663Z\"\n    }\n  ]\n}",
+              "body": "{\n  \"code\": 4,\n  \"data\": [\n    {\n      \"ZUID\": \"string\",\n      \"name\": \"string\",\n      \"instanceZUID\": \"string\",\n      \"createdAt\": \"2008-07-03T00:30:07.057Z\",\n      \"updatedAt\": \"1978-06-08T06:53:50.428Z\"\n    },\n    {\n      \"ZUID\": \"string\",\n      \"name\": \"string\",\n      \"instanceZUID\": \"string\",\n      \"createdAt\": \"2026-01-18T01:14:29.758Z\",\n      \"updatedAt\": \"1972-10-13T19:37:55.293Z\"\n    }\n  ]\n}",
               "cookie": [],
               "_postman_previewlanguage": "json"
             },
             {
-              "id": "e395e810-841c-49cc-a255-1041b17da81c",
+              "id": "6749c4e8-91bb-4733-a240-d17432d9853e",
               "name": "Unauthorized.",
               "originalRequest": {
                 "url": {
                   "path": [
-                    "instances"
+                    "roles"
                   ],
                   "host": [
                     "{{baseUrl}}"
@@ -142,17 +142,17 @@
           }
         },
         {
-          "id": "b96d72f7-bdb0-467f-a0a4-5efd69097b7a",
-          "name": "Zesty Create a new instance",
+          "id": "9b78f307-6f8d-4d3f-b6f9-6e386216663b",
+          "name": "Zesty Create a new role",
           "request": {
-            "name": "Zesty Create a new instance",
+            "name": "Zesty Create a new role",
             "description": {
-              "content": "Creates a new Zesty.io instance.",
+              "content": "Creates a new role with specified permissions.",
               "type": "text/plain"
             },
             "url": {
               "path": [
-                "instances"
+                "roles"
               ],
               "host": [
                 "{{baseUrl}}"
@@ -163,10 +163,6 @@
             "header": [
               {
                 "key": "Content-Type",
-                "value": "application/json"
-              },
-              {
-                "key": "Accept",
                 "value": "application/json"
               }
             ],
@@ -190,7 +186,7 @@
             },
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"name\": \"<string>\",\n  \"ecoZUID\": \"<string>\"\n}",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"instanceZUID\": \"<string>\"\n}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -200,12 +196,12 @@
           },
           "response": [
             {
-              "id": "1933b05a-56a3-47ff-9288-ac592ae01eee",
-              "name": "Instance created successfully.",
+              "id": "ccf469ca-c1b5-4a7a-a1f9-eb9cc787a7f2",
+              "name": "Role created successfully.",
               "originalRequest": {
                 "url": {
                   "path": [
-                    "instances"
+                    "roles"
                   ],
                   "host": [
                     "{{baseUrl}}"
@@ -221,16 +217,12 @@
                     },
                     "key": "Authorization",
                     "value": "<API Key>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
                   }
                 ],
                 "method": "POST",
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"name\": \"<string>\",\n  \"ecoZUID\": \"<string>\"\n}",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"instanceZUID\": \"<string>\"\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -243,20 +235,20 @@
               "header": [
                 {
                   "key": "Content-Type",
-                  "value": "application/json"
+                  "value": "text/plain"
                 }
               ],
-              "body": "{\n  \"code\": 3260,\n  \"data\": {\n    \"ZUID\": \"string\",\n    \"name\": \"string\",\n    \"ecoZUID\": \"string\",\n    \"domain\": \"string\",\n    \"createdAt\": \"1950-04-13T10:35:33.928Z\",\n    \"updatedAt\": \"2009-10-08T21:01:20.366Z\"\n  }\n}",
+              "body": "",
               "cookie": [],
-              "_postman_previewlanguage": "json"
+              "_postman_previewlanguage": "text"
             },
             {
-              "id": "2cade95f-789e-40ff-92c9-4cd863bbdad7",
+              "id": "1452ad43-8093-451f-be26-62929a4186e4",
               "name": "Invalid request.",
               "originalRequest": {
                 "url": {
                   "path": [
-                    "instances"
+                    "roles"
                   ],
                   "host": [
                     "{{baseUrl}}"
@@ -277,7 +269,7 @@
                 "method": "POST",
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"name\": \"<string>\",\n  \"ecoZUID\": \"<string>\"\n}",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"instanceZUID\": \"<string>\"\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -298,12 +290,12 @@
               "_postman_previewlanguage": "text"
             },
             {
-              "id": "78577044-7bf9-4d1c-a22a-12bab0bafe90",
+              "id": "cc39a6fb-f3ce-4118-8aec-00875dcc9299",
               "name": "Unauthorized.",
               "originalRequest": {
                 "url": {
                   "path": [
-                    "instances"
+                    "roles"
                   ],
                   "host": [
                     "{{baseUrl}}"
@@ -324,7 +316,7 @@
                 "method": "POST",
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"name\": \"<string>\",\n  \"ecoZUID\": \"<string>\"\n}",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"instanceZUID\": \"<string>\"\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -351,18 +343,18 @@
           }
         },
         {
-          "id": "47b41849-0812-457b-9fb2-31eb35d5d2da",
-          "name": "Zesty Get an instance",
+          "id": "f6f177d8-ab46-4642-a3b3-a42070b0bb11",
+          "name": "Zesty Get a role",
           "request": {
-            "name": "Zesty Get an instance",
+            "name": "Zesty Get a role",
             "description": {
-              "content": "Returns details for a specific instance by its ZUID.",
+              "content": "Returns details for a specific role by its ZUID.",
               "type": "text/plain"
             },
             "url": {
               "path": [
-                "instances",
-                ":instanceZUID"
+                "roles",
+                ":roleZUID"
               ],
               "host": [
                 "{{baseUrl}}"
@@ -373,8 +365,8 @@
                   "disabled": false,
                   "type": "any",
                   "value": "<string>",
-                  "key": "instanceZUID",
-                  "description": "(Required) The ZUID of the instance."
+                  "key": "roleZUID",
+                  "description": "(Required) The ZUID of the role."
                 }
               ]
             },
@@ -405,13 +397,13 @@
           },
           "response": [
             {
-              "id": "1ef44a33-8015-4667-9195-fd352b1ce739",
-              "name": "Instance details.",
+              "id": "f9996c6a-b731-404d-aaa8-605940d4e0d4",
+              "name": "Role details.",
               "originalRequest": {
                 "url": {
                   "path": [
-                    "instances",
-                    ":instanceZUID"
+                    "roles",
+                    ":roleZUID"
                   ],
                   "host": [
                     "{{baseUrl}}"
@@ -422,8 +414,8 @@
                       "disabled": false,
                       "type": "any",
                       "value": "<string>",
-                      "key": "instanceZUID",
-                      "description": "(Required) The ZUID of the instance."
+                      "key": "roleZUID",
+                      "description": "(Required) The ZUID of the role."
                     }
                   ]
                 },
@@ -452,18 +444,18 @@
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"code\": 3260,\n  \"data\": {\n    \"ZUID\": \"string\",\n    \"name\": \"string\",\n    \"ecoZUID\": \"string\",\n    \"domain\": \"string\",\n    \"createdAt\": \"1950-04-13T10:35:33.928Z\",\n    \"updatedAt\": \"2009-10-08T21:01:20.366Z\"\n  }\n}",
+              "body": "{\n  \"code\": 540,\n  \"data\": {\n    \"ZUID\": \"string\",\n    \"name\": \"string\",\n    \"instanceZUID\": \"string\",\n    \"createdAt\": \"2007-03-11T12:46:28.053Z\",\n    \"updatedAt\": \"1989-08-20T08:21:46.235Z\"\n  }\n}",
               "cookie": [],
               "_postman_previewlanguage": "json"
             },
             {
-              "id": "3f249ead-070f-433f-8785-987012771a89",
+              "id": "8142078b-ea5c-4668-b0c9-e7e51110e11e",
               "name": "Unauthorized.",
               "originalRequest": {
                 "url": {
                   "path": [
-                    "instances",
-                    ":instanceZUID"
+                    "roles",
+                    ":roleZUID"
                   ],
                   "host": [
                     "{{baseUrl}}"
@@ -474,8 +466,8 @@
                       "disabled": false,
                       "type": "any",
                       "value": "<string>",
-                      "key": "instanceZUID",
-                      "description": "(Required) The ZUID of the instance."
+                      "key": "roleZUID",
+                      "description": "(Required) The ZUID of the role."
                     }
                   ]
                 },
@@ -505,13 +497,13 @@
               "_postman_previewlanguage": "text"
             },
             {
-              "id": "3406d9bd-9978-42ed-a0c2-87f4cfda07b2",
-              "name": "Instance not found.",
+              "id": "8c84dd07-4fef-4da9-ba1b-e5690f6abfad",
+              "name": "Role not found.",
               "originalRequest": {
                 "url": {
                   "path": [
-                    "instances",
-                    ":instanceZUID"
+                    "roles",
+                    ":roleZUID"
                   ],
                   "host": [
                     "{{baseUrl}}"
@@ -522,8 +514,8 @@
                       "disabled": false,
                       "type": "any",
                       "value": "<string>",
-                      "key": "instanceZUID",
-                      "description": "(Required) The ZUID of the instance."
+                      "key": "roleZUID",
+                      "description": "(Required) The ZUID of the role."
                     }
                   ]
                 },
@@ -559,18 +551,18 @@
           }
         },
         {
-          "id": "e30b444e-3074-40f5-8245-9b6ce17e9d69",
-          "name": "Zesty Update an instance",
+          "id": "f740295c-a4fa-465f-acf2-934ac22e7da7",
+          "name": "Zesty Update a role",
           "request": {
-            "name": "Zesty Update an instance",
+            "name": "Zesty Update a role",
             "description": {
-              "content": "Updates the details of a specific instance.",
+              "content": "Updates the details of a specific role.",
               "type": "text/plain"
             },
             "url": {
               "path": [
-                "instances",
-                ":instanceZUID"
+                "roles",
+                ":roleZUID"
               ],
               "host": [
                 "{{baseUrl}}"
@@ -581,8 +573,8 @@
                   "disabled": false,
                   "type": "any",
                   "value": "<string>",
-                  "key": "instanceZUID",
-                  "description": "(Required) The ZUID of the instance."
+                  "key": "roleZUID",
+                  "description": "(Required) The ZUID of the role."
                 }
               ]
             },
@@ -622,13 +614,13 @@
           },
           "response": [
             {
-              "id": "a53e26b2-c3b8-40c4-ad49-9028c8985bae",
-              "name": "Instance updated successfully.",
+              "id": "8aeab58a-a4f6-4e07-a13e-3ab609e5c939",
+              "name": "Role updated successfully.",
               "originalRequest": {
                 "url": {
                   "path": [
-                    "instances",
-                    ":instanceZUID"
+                    "roles",
+                    ":roleZUID"
                   ],
                   "host": [
                     "{{baseUrl}}"
@@ -639,8 +631,8 @@
                       "disabled": false,
                       "type": "any",
                       "value": "<string>",
-                      "key": "instanceZUID",
-                      "description": "(Required) The ZUID of the instance."
+                      "key": "roleZUID",
+                      "description": "(Required) The ZUID of the role."
                     }
                   ]
                 },
@@ -678,13 +670,13 @@
               "_postman_previewlanguage": "text"
             },
             {
-              "id": "07256e74-8206-4651-9ecf-b8a915b3556f",
+              "id": "fb9f5501-b78a-4378-b6af-84deefd3bb79",
               "name": "Unauthorized.",
               "originalRequest": {
                 "url": {
                   "path": [
-                    "instances",
-                    ":instanceZUID"
+                    "roles",
+                    ":roleZUID"
                   ],
                   "host": [
                     "{{baseUrl}}"
@@ -695,8 +687,8 @@
                       "disabled": false,
                       "type": "any",
                       "value": "<string>",
-                      "key": "instanceZUID",
-                      "description": "(Required) The ZUID of the instance."
+                      "key": "roleZUID",
+                      "description": "(Required) The ZUID of the role."
                     }
                   ]
                 },
@@ -734,13 +726,13 @@
               "_postman_previewlanguage": "text"
             },
             {
-              "id": "5ec5b890-1a4b-4376-be9a-1695c4f88447",
-              "name": "Instance not found.",
+              "id": "d012886b-f751-4dbb-91e0-bfe6ce2d2276",
+              "name": "Role not found.",
               "originalRequest": {
                 "url": {
                   "path": [
-                    "instances",
-                    ":instanceZUID"
+                    "roles",
+                    ":roleZUID"
                   ],
                   "host": [
                     "{{baseUrl}}"
@@ -751,8 +743,8 @@
                       "disabled": false,
                       "type": "any",
                       "value": "<string>",
-                      "key": "instanceZUID",
-                      "description": "(Required) The ZUID of the instance."
+                      "key": "roleZUID",
+                      "description": "(Required) The ZUID of the role."
                     }
                   ]
                 },
@@ -796,18 +788,18 @@
           }
         },
         {
-          "id": "4af7f2b5-9f57-4877-8194-0dca3af16938",
-          "name": "Zesty Delete an instance",
+          "id": "bd82e8bb-fcc7-4472-bd76-c096cb041d1d",
+          "name": "Zesty Delete a role",
           "request": {
-            "name": "Zesty Delete an instance",
+            "name": "Zesty Delete a role",
             "description": {
-              "content": "Deletes a specific instance.",
+              "content": "Deletes a specific role.",
               "type": "text/plain"
             },
             "url": {
               "path": [
-                "instances",
-                ":instanceZUID"
+                "roles",
+                ":roleZUID"
               ],
               "host": [
                 "{{baseUrl}}"
@@ -818,8 +810,8 @@
                   "disabled": false,
                   "type": "any",
                   "value": "<string>",
-                  "key": "instanceZUID",
-                  "description": "(Required) The ZUID of the instance."
+                  "key": "roleZUID",
+                  "description": "(Required) The ZUID of the role."
                 }
               ]
             },
@@ -844,13 +836,13 @@
           },
           "response": [
             {
-              "id": "6dc4c2a8-0dd6-4193-b9ea-5a7bfe91096c",
-              "name": "Instance deleted successfully.",
+              "id": "4b46cdba-1bf1-4937-af4b-50d808fdb2c7",
+              "name": "Role deleted successfully.",
               "originalRequest": {
                 "url": {
                   "path": [
-                    "instances",
-                    ":instanceZUID"
+                    "roles",
+                    ":roleZUID"
                   ],
                   "host": [
                     "{{baseUrl}}"
@@ -861,8 +853,8 @@
                       "disabled": false,
                       "type": "any",
                       "value": "<string>",
-                      "key": "instanceZUID",
-                      "description": "(Required) The ZUID of the instance."
+                      "key": "roleZUID",
+                      "description": "(Required) The ZUID of the role."
                     }
                   ]
                 },
@@ -892,13 +884,13 @@
               "_postman_previewlanguage": "text"
             },
             {
-              "id": "f432cc59-7abe-4e7c-a777-7cd2f5e3bd88",
+              "id": "0d6d829a-6f34-49e4-9151-41674ea7fb3b",
               "name": "Unauthorized.",
               "originalRequest": {
                 "url": {
                   "path": [
-                    "instances",
-                    ":instanceZUID"
+                    "roles",
+                    ":roleZUID"
                   ],
                   "host": [
                     "{{baseUrl}}"
@@ -909,8 +901,8 @@
                       "disabled": false,
                       "type": "any",
                       "value": "<string>",
-                      "key": "instanceZUID",
-                      "description": "(Required) The ZUID of the instance."
+                      "key": "roleZUID",
+                      "description": "(Required) The ZUID of the role."
                     }
                   ]
                 },
@@ -940,13 +932,13 @@
               "_postman_previewlanguage": "text"
             },
             {
-              "id": "45e66fdd-5c11-409e-ae73-855ce7c847e4",
-              "name": "Instance not found.",
+              "id": "db245ce2-2759-498d-997a-d1cd71c72bbf",
+              "name": "Role not found.",
               "originalRequest": {
                 "url": {
                   "path": [
-                    "instances",
-                    ":instanceZUID"
+                    "roles",
+                    ":roleZUID"
                   ],
                   "host": [
                     "{{baseUrl}}"
@@ -957,8 +949,8 @@
                       "disabled": false,
                       "type": "any",
                       "value": "<string>",
-                      "key": "instanceZUID",
-                      "description": "(Required) The ZUID of the instance."
+                      "key": "roleZUID",
+                      "description": "(Required) The ZUID of the role."
                     }
                   ]
                 },
@@ -1006,8 +998,8 @@
     }
   ],
   "info": {
-    "_postman_id": "93c3a45b-915f-4f12-92f0-216ffddd98a2",
-    "name": "Zesty Accounts Apps Instances API",
+    "_postman_id": "3474fd82-955f-440a-9240-98ad58c02d91",
+    "name": "Zesty Accounts Apps Roles API",
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
     "description": {
       "content": "The Zesty.io Accounts API is used to manage users, roles, instances, teams, tokens, ecosystems, webhooks, and apps. It provides administrative control over the organizational structure of a Zesty.io account. All endpoints require authentication via a session token obtained from the Auth API.\n\nContact Support:\n Name: Zesty.io",

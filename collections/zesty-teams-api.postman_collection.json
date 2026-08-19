@@ -1,25 +1,25 @@
 {
   "item": [
     {
-      "id": "8d83400e-b1f5-4ca8-9b33-9de3a5e8b83b",
-      "name": "Instances",
+      "id": "a4223037-e435-441c-b477-c545ae9590c7",
+      "name": "Teams",
       "description": {
-        "content": "Manage Zesty.io instances.",
+        "content": "Manage teams.",
         "type": "text/plain"
       },
       "item": [
         {
-          "id": "f2eacff3-de1c-4676-8c35-2346d559985b",
-          "name": "Zesty List all instances",
+          "id": "76661816-4899-4b98-ad3e-cf7ca87a4518",
+          "name": "Zesty List all teams",
           "request": {
-            "name": "Zesty List all instances",
+            "name": "Zesty List all teams",
             "description": {
-              "content": "Returns a list of all instances accessible to the authenticated user.",
+              "content": "Returns a list of all teams in the account.",
               "type": "text/plain"
             },
             "url": {
               "path": [
-                "instances"
+                "teams"
               ],
               "host": [
                 "{{baseUrl}}"
@@ -54,12 +54,12 @@
           },
           "response": [
             {
-              "id": "2cf8431f-bd5c-4982-9016-5b6f2451a94b",
-              "name": "A list of instances.",
+              "id": "433650ad-3194-458d-a6d0-972472d500f4",
+              "name": "A list of teams.",
               "originalRequest": {
                 "url": {
                   "path": [
-                    "instances"
+                    "teams"
                   ],
                   "host": [
                     "{{baseUrl}}"
@@ -92,17 +92,17 @@
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"code\": 6755,\n  \"data\": [\n    {\n      \"ZUID\": \"string\",\n      \"name\": \"string\",\n      \"ecoZUID\": \"string\",\n      \"domain\": \"string\",\n      \"createdAt\": \"1964-12-02T06:12:08.801Z\",\n      \"updatedAt\": \"1956-09-05T01:49:00.162Z\"\n    },\n    {\n      \"ZUID\": \"string\",\n      \"name\": \"string\",\n      \"ecoZUID\": \"string\",\n      \"domain\": \"string\",\n      \"createdAt\": \"2002-05-28T15:46:06.162Z\",\n      \"updatedAt\": \"1974-12-24T09:44:18.663Z\"\n    }\n  ]\n}",
+              "body": "{\n  \"code\": 9262,\n  \"data\": [\n    {\n      \"ZUID\": \"string\",\n      \"name\": \"string\",\n      \"description\": \"string\",\n      \"createdAt\": \"2013-06-19T06:50:56.287Z\",\n      \"updatedAt\": \"1966-07-11T00:05:30.971Z\"\n    },\n    {\n      \"ZUID\": \"string\",\n      \"name\": \"string\",\n      \"description\": \"string\",\n      \"createdAt\": \"1971-11-07T06:55:54.661Z\",\n      \"updatedAt\": \"1972-01-22T10:28:48.766Z\"\n    }\n  ]\n}",
               "cookie": [],
               "_postman_previewlanguage": "json"
             },
             {
-              "id": "e395e810-841c-49cc-a255-1041b17da81c",
+              "id": "8bc626f1-ee4e-4d96-b443-36cf66cbab8b",
               "name": "Unauthorized.",
               "originalRequest": {
                 "url": {
                   "path": [
-                    "instances"
+                    "teams"
                   ],
                   "host": [
                     "{{baseUrl}}"
@@ -142,17 +142,17 @@
           }
         },
         {
-          "id": "b96d72f7-bdb0-467f-a0a4-5efd69097b7a",
-          "name": "Zesty Create a new instance",
+          "id": "77e2e470-27f2-4330-9830-ecc978099e39",
+          "name": "Zesty Create a new team",
           "request": {
-            "name": "Zesty Create a new instance",
+            "name": "Zesty Create a new team",
             "description": {
-              "content": "Creates a new Zesty.io instance.",
+              "content": "Creates a new team.",
               "type": "text/plain"
             },
             "url": {
               "path": [
-                "instances"
+                "teams"
               ],
               "host": [
                 "{{baseUrl}}"
@@ -163,10 +163,6 @@
             "header": [
               {
                 "key": "Content-Type",
-                "value": "application/json"
-              },
-              {
-                "key": "Accept",
                 "value": "application/json"
               }
             ],
@@ -190,7 +186,7 @@
             },
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"name\": \"<string>\",\n  \"ecoZUID\": \"<string>\"\n}",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\"\n}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -200,12 +196,12 @@
           },
           "response": [
             {
-              "id": "1933b05a-56a3-47ff-9288-ac592ae01eee",
-              "name": "Instance created successfully.",
+              "id": "1a8aba27-2231-4403-b1bf-21ee15c94c85",
+              "name": "Team created successfully.",
               "originalRequest": {
                 "url": {
                   "path": [
-                    "instances"
+                    "teams"
                   ],
                   "host": [
                     "{{baseUrl}}"
@@ -221,16 +217,12 @@
                     },
                     "key": "Authorization",
                     "value": "<API Key>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
                   }
                 ],
                 "method": "POST",
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"name\": \"<string>\",\n  \"ecoZUID\": \"<string>\"\n}",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\"\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -243,20 +235,20 @@
               "header": [
                 {
                   "key": "Content-Type",
-                  "value": "application/json"
+                  "value": "text/plain"
                 }
               ],
-              "body": "{\n  \"code\": 3260,\n  \"data\": {\n    \"ZUID\": \"string\",\n    \"name\": \"string\",\n    \"ecoZUID\": \"string\",\n    \"domain\": \"string\",\n    \"createdAt\": \"1950-04-13T10:35:33.928Z\",\n    \"updatedAt\": \"2009-10-08T21:01:20.366Z\"\n  }\n}",
+              "body": "",
               "cookie": [],
-              "_postman_previewlanguage": "json"
+              "_postman_previewlanguage": "text"
             },
             {
-              "id": "2cade95f-789e-40ff-92c9-4cd863bbdad7",
+              "id": "ebcad4c8-53f4-4b04-9503-41b31f9f8d0f",
               "name": "Invalid request.",
               "originalRequest": {
                 "url": {
                   "path": [
-                    "instances"
+                    "teams"
                   ],
                   "host": [
                     "{{baseUrl}}"
@@ -277,7 +269,7 @@
                 "method": "POST",
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"name\": \"<string>\",\n  \"ecoZUID\": \"<string>\"\n}",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\"\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -298,12 +290,12 @@
               "_postman_previewlanguage": "text"
             },
             {
-              "id": "78577044-7bf9-4d1c-a22a-12bab0bafe90",
+              "id": "413bc6ec-0a36-4490-9a5f-6126543614e3",
               "name": "Unauthorized.",
               "originalRequest": {
                 "url": {
                   "path": [
-                    "instances"
+                    "teams"
                   ],
                   "host": [
                     "{{baseUrl}}"
@@ -324,7 +316,7 @@
                 "method": "POST",
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"name\": \"<string>\",\n  \"ecoZUID\": \"<string>\"\n}",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\"\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -351,18 +343,18 @@
           }
         },
         {
-          "id": "47b41849-0812-457b-9fb2-31eb35d5d2da",
-          "name": "Zesty Get an instance",
+          "id": "284856b6-b341-4f1c-bdc1-eccf306a88e0",
+          "name": "Zesty Get a team",
           "request": {
-            "name": "Zesty Get an instance",
+            "name": "Zesty Get a team",
             "description": {
-              "content": "Returns details for a specific instance by its ZUID.",
+              "content": "Returns details for a specific team by its ZUID.",
               "type": "text/plain"
             },
             "url": {
               "path": [
-                "instances",
-                ":instanceZUID"
+                "teams",
+                ":teamZUID"
               ],
               "host": [
                 "{{baseUrl}}"
@@ -373,8 +365,8 @@
                   "disabled": false,
                   "type": "any",
                   "value": "<string>",
-                  "key": "instanceZUID",
-                  "description": "(Required) The ZUID of the instance."
+                  "key": "teamZUID",
+                  "description": "(Required) The ZUID of the team."
                 }
               ]
             },
@@ -405,13 +397,13 @@
           },
           "response": [
             {
-              "id": "1ef44a33-8015-4667-9195-fd352b1ce739",
-              "name": "Instance details.",
+              "id": "ace12b6d-a322-417e-afb0-2af982a33d87",
+              "name": "Team details.",
               "originalRequest": {
                 "url": {
                   "path": [
-                    "instances",
-                    ":instanceZUID"
+                    "teams",
+                    ":teamZUID"
                   ],
                   "host": [
                     "{{baseUrl}}"
@@ -422,8 +414,8 @@
                       "disabled": false,
                       "type": "any",
                       "value": "<string>",
-                      "key": "instanceZUID",
-                      "description": "(Required) The ZUID of the instance."
+                      "key": "teamZUID",
+                      "description": "(Required) The ZUID of the team."
                     }
                   ]
                 },
@@ -452,18 +444,18 @@
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"code\": 3260,\n  \"data\": {\n    \"ZUID\": \"string\",\n    \"name\": \"string\",\n    \"ecoZUID\": \"string\",\n    \"domain\": \"string\",\n    \"createdAt\": \"1950-04-13T10:35:33.928Z\",\n    \"updatedAt\": \"2009-10-08T21:01:20.366Z\"\n  }\n}",
+              "body": "{\n  \"code\": 5338,\n  \"data\": {\n    \"ZUID\": \"string\",\n    \"name\": \"string\",\n    \"description\": \"string\",\n    \"createdAt\": \"1990-10-19T15:19:04.735Z\",\n    \"updatedAt\": \"1987-07-06T04:25:56.604Z\"\n  }\n}",
               "cookie": [],
               "_postman_previewlanguage": "json"
             },
             {
-              "id": "3f249ead-070f-433f-8785-987012771a89",
+              "id": "df992988-c39d-4021-9c3f-904a9312179b",
               "name": "Unauthorized.",
               "originalRequest": {
                 "url": {
                   "path": [
-                    "instances",
-                    ":instanceZUID"
+                    "teams",
+                    ":teamZUID"
                   ],
                   "host": [
                     "{{baseUrl}}"
@@ -474,8 +466,8 @@
                       "disabled": false,
                       "type": "any",
                       "value": "<string>",
-                      "key": "instanceZUID",
-                      "description": "(Required) The ZUID of the instance."
+                      "key": "teamZUID",
+                      "description": "(Required) The ZUID of the team."
                     }
                   ]
                 },
@@ -505,13 +497,13 @@
               "_postman_previewlanguage": "text"
             },
             {
-              "id": "3406d9bd-9978-42ed-a0c2-87f4cfda07b2",
-              "name": "Instance not found.",
+              "id": "f0d33377-3ded-4239-a0c7-52f4ba9d6224",
+              "name": "Team not found.",
               "originalRequest": {
                 "url": {
                   "path": [
-                    "instances",
-                    ":instanceZUID"
+                    "teams",
+                    ":teamZUID"
                   ],
                   "host": [
                     "{{baseUrl}}"
@@ -522,8 +514,8 @@
                       "disabled": false,
                       "type": "any",
                       "value": "<string>",
-                      "key": "instanceZUID",
-                      "description": "(Required) The ZUID of the instance."
+                      "key": "teamZUID",
+                      "description": "(Required) The ZUID of the team."
                     }
                   ]
                 },
@@ -559,18 +551,18 @@
           }
         },
         {
-          "id": "e30b444e-3074-40f5-8245-9b6ce17e9d69",
-          "name": "Zesty Update an instance",
+          "id": "05ca565f-0d9d-415c-9bb8-17c49485a948",
+          "name": "Zesty Update a team",
           "request": {
-            "name": "Zesty Update an instance",
+            "name": "Zesty Update a team",
             "description": {
-              "content": "Updates the details of a specific instance.",
+              "content": "Updates the details of a specific team.",
               "type": "text/plain"
             },
             "url": {
               "path": [
-                "instances",
-                ":instanceZUID"
+                "teams",
+                ":teamZUID"
               ],
               "host": [
                 "{{baseUrl}}"
@@ -581,8 +573,8 @@
                   "disabled": false,
                   "type": "any",
                   "value": "<string>",
-                  "key": "instanceZUID",
-                  "description": "(Required) The ZUID of the instance."
+                  "key": "teamZUID",
+                  "description": "(Required) The ZUID of the team."
                 }
               ]
             },
@@ -612,7 +604,7 @@
             },
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"name\": \"<string>\"\n}",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\"\n}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -622,13 +614,13 @@
           },
           "response": [
             {
-              "id": "a53e26b2-c3b8-40c4-ad49-9028c8985bae",
-              "name": "Instance updated successfully.",
+              "id": "5734abdb-8c97-4119-840e-ceaba6060fef",
+              "name": "Team updated successfully.",
               "originalRequest": {
                 "url": {
                   "path": [
-                    "instances",
-                    ":instanceZUID"
+                    "teams",
+                    ":teamZUID"
                   ],
                   "host": [
                     "{{baseUrl}}"
@@ -639,8 +631,8 @@
                       "disabled": false,
                       "type": "any",
                       "value": "<string>",
-                      "key": "instanceZUID",
-                      "description": "(Required) The ZUID of the instance."
+                      "key": "teamZUID",
+                      "description": "(Required) The ZUID of the team."
                     }
                   ]
                 },
@@ -657,7 +649,7 @@
                 "method": "PUT",
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"name\": \"<string>\"\n}",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\"\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -678,13 +670,13 @@
               "_postman_previewlanguage": "text"
             },
             {
-              "id": "07256e74-8206-4651-9ecf-b8a915b3556f",
+              "id": "523c1ed9-88c9-49d1-893b-ec93ed29a276",
               "name": "Unauthorized.",
               "originalRequest": {
                 "url": {
                   "path": [
-                    "instances",
-                    ":instanceZUID"
+                    "teams",
+                    ":teamZUID"
                   ],
                   "host": [
                     "{{baseUrl}}"
@@ -695,8 +687,8 @@
                       "disabled": false,
                       "type": "any",
                       "value": "<string>",
-                      "key": "instanceZUID",
-                      "description": "(Required) The ZUID of the instance."
+                      "key": "teamZUID",
+                      "description": "(Required) The ZUID of the team."
                     }
                   ]
                 },
@@ -713,7 +705,7 @@
                 "method": "PUT",
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"name\": \"<string>\"\n}",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\"\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -734,13 +726,13 @@
               "_postman_previewlanguage": "text"
             },
             {
-              "id": "5ec5b890-1a4b-4376-be9a-1695c4f88447",
-              "name": "Instance not found.",
+              "id": "d674205d-8c2b-4621-aebf-55007e02be00",
+              "name": "Team not found.",
               "originalRequest": {
                 "url": {
                   "path": [
-                    "instances",
-                    ":instanceZUID"
+                    "teams",
+                    ":teamZUID"
                   ],
                   "host": [
                     "{{baseUrl}}"
@@ -751,8 +743,8 @@
                       "disabled": false,
                       "type": "any",
                       "value": "<string>",
-                      "key": "instanceZUID",
-                      "description": "(Required) The ZUID of the instance."
+                      "key": "teamZUID",
+                      "description": "(Required) The ZUID of the team."
                     }
                   ]
                 },
@@ -769,7 +761,7 @@
                 "method": "PUT",
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"name\": \"<string>\"\n}",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\"\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -796,18 +788,18 @@
           }
         },
         {
-          "id": "4af7f2b5-9f57-4877-8194-0dca3af16938",
-          "name": "Zesty Delete an instance",
+          "id": "11a70ddd-553a-44c1-a220-7ead8b251076",
+          "name": "Zesty Delete a team",
           "request": {
-            "name": "Zesty Delete an instance",
+            "name": "Zesty Delete a team",
             "description": {
-              "content": "Deletes a specific instance.",
+              "content": "Deletes a specific team.",
               "type": "text/plain"
             },
             "url": {
               "path": [
-                "instances",
-                ":instanceZUID"
+                "teams",
+                ":teamZUID"
               ],
               "host": [
                 "{{baseUrl}}"
@@ -818,8 +810,8 @@
                   "disabled": false,
                   "type": "any",
                   "value": "<string>",
-                  "key": "instanceZUID",
-                  "description": "(Required) The ZUID of the instance."
+                  "key": "teamZUID",
+                  "description": "(Required) The ZUID of the team."
                 }
               ]
             },
@@ -844,13 +836,13 @@
           },
           "response": [
             {
-              "id": "6dc4c2a8-0dd6-4193-b9ea-5a7bfe91096c",
-              "name": "Instance deleted successfully.",
+              "id": "8b5a71ca-dd2a-4d0a-9ee9-3502db3c3daa",
+              "name": "Team deleted successfully.",
               "originalRequest": {
                 "url": {
                   "path": [
-                    "instances",
-                    ":instanceZUID"
+                    "teams",
+                    ":teamZUID"
                   ],
                   "host": [
                     "{{baseUrl}}"
@@ -861,8 +853,8 @@
                       "disabled": false,
                       "type": "any",
                       "value": "<string>",
-                      "key": "instanceZUID",
-                      "description": "(Required) The ZUID of the instance."
+                      "key": "teamZUID",
+                      "description": "(Required) The ZUID of the team."
                     }
                   ]
                 },
@@ -892,13 +884,13 @@
               "_postman_previewlanguage": "text"
             },
             {
-              "id": "f432cc59-7abe-4e7c-a777-7cd2f5e3bd88",
+              "id": "ded8314a-4ad6-41ee-aecd-e4a157bbf16f",
               "name": "Unauthorized.",
               "originalRequest": {
                 "url": {
                   "path": [
-                    "instances",
-                    ":instanceZUID"
+                    "teams",
+                    ":teamZUID"
                   ],
                   "host": [
                     "{{baseUrl}}"
@@ -909,8 +901,8 @@
                       "disabled": false,
                       "type": "any",
                       "value": "<string>",
-                      "key": "instanceZUID",
-                      "description": "(Required) The ZUID of the instance."
+                      "key": "teamZUID",
+                      "description": "(Required) The ZUID of the team."
                     }
                   ]
                 },
@@ -940,13 +932,13 @@
               "_postman_previewlanguage": "text"
             },
             {
-              "id": "45e66fdd-5c11-409e-ae73-855ce7c847e4",
-              "name": "Instance not found.",
+              "id": "38c855e1-1721-4fd6-8de2-33fcd77c9941",
+              "name": "Team not found.",
               "originalRequest": {
                 "url": {
                   "path": [
-                    "instances",
-                    ":instanceZUID"
+                    "teams",
+                    ":teamZUID"
                   ],
                   "host": [
                     "{{baseUrl}}"
@@ -957,8 +949,8 @@
                       "disabled": false,
                       "type": "any",
                       "value": "<string>",
-                      "key": "instanceZUID",
-                      "description": "(Required) The ZUID of the instance."
+                      "key": "teamZUID",
+                      "description": "(Required) The ZUID of the team."
                     }
                   ]
                 },
@@ -1006,8 +998,8 @@
     }
   ],
   "info": {
-    "_postman_id": "93c3a45b-915f-4f12-92f0-216ffddd98a2",
-    "name": "Zesty Accounts Apps Instances API",
+    "_postman_id": "8e71d527-e9e0-441d-a3c1-749c51859eba",
+    "name": "Zesty Accounts Apps Teams API",
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
     "description": {
       "content": "The Zesty.io Accounts API is used to manage users, roles, instances, teams, tokens, ecosystems, webhooks, and apps. It provides administrative control over the organizational structure of a Zesty.io account. All endpoints require authentication via a session token obtained from the Auth API.\n\nContact Support:\n Name: Zesty.io",

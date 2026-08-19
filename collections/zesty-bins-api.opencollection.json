@@ -1,24 +1,24 @@
 {
   "opencollection": "1.0.0",
   "info": {
-    "name": "Zesty Accounts Apps Instances API",
+    "name": "Zesty Accounts Apps Bins API",
     "version": "1.0.0"
   },
   "items": [
     {
       "info": {
-        "name": "Instances",
+        "name": "Bins",
         "type": "folder"
       },
       "items": [
         {
           "info": {
-            "name": "Zesty List all instances",
+            "name": "Zesty List all media bins",
             "type": "http"
           },
           "http": {
             "method": "GET",
-            "url": "https://accounts.api.zesty.io/v1/instances",
+            "url": "https://accounts.api.zesty.io/v1/bins",
             "auth": {
               "type": "apikey",
               "key": "Authorization",
@@ -26,16 +26,16 @@
               "placement": "header"
             }
           },
-          "docs": "Returns a list of all instances accessible to the authenticated user."
+          "docs": "Returns a list of all media bins accessible to the authenticated user. Bins are top-level containers for organizing media files."
         },
         {
           "info": {
-            "name": "Zesty Create a new instance",
+            "name": "Zesty Create a media bin",
             "type": "http"
           },
           "http": {
             "method": "POST",
-            "url": "https://accounts.api.zesty.io/v1/instances",
+            "url": "https://accounts.api.zesty.io/v1/bins",
             "body": {
               "type": "json",
               "data": "{}"
@@ -47,22 +47,22 @@
               "placement": "header"
             }
           },
-          "docs": "Creates a new Zesty.io instance."
+          "docs": "Creates a new media bin for organizing files."
         },
         {
           "info": {
-            "name": "Zesty Get an instance",
+            "name": "Zesty Get a media bin",
             "type": "http"
           },
           "http": {
             "method": "GET",
-            "url": "https://accounts.api.zesty.io/v1/instances/:instanceZUID",
+            "url": "https://accounts.api.zesty.io/v1/bins/:binZUID",
             "params": [
               {
-                "name": "instanceZUID",
+                "name": "binZUID",
                 "value": "",
                 "type": "path",
-                "description": "The ZUID of the instance."
+                "description": "The ZUID of the media bin."
               }
             ],
             "auth": {
@@ -72,22 +72,22 @@
               "placement": "header"
             }
           },
-          "docs": "Returns details for a specific instance by its ZUID."
+          "docs": "Returns details for a specific media bin."
         },
         {
           "info": {
-            "name": "Zesty Update an instance",
+            "name": "Zesty Update a media bin",
             "type": "http"
           },
           "http": {
             "method": "PUT",
-            "url": "https://accounts.api.zesty.io/v1/instances/:instanceZUID",
+            "url": "https://accounts.api.zesty.io/v1/bins/:binZUID",
             "params": [
               {
-                "name": "instanceZUID",
+                "name": "binZUID",
                 "value": "",
                 "type": "path",
-                "description": "The ZUID of the instance."
+                "description": "The ZUID of the media bin."
               }
             ],
             "body": {
@@ -101,22 +101,22 @@
               "placement": "header"
             }
           },
-          "docs": "Updates the details of a specific instance."
+          "docs": "Updates the details of a specific media bin."
         },
         {
           "info": {
-            "name": "Zesty Delete an instance",
+            "name": "Zesty Delete a media bin",
             "type": "http"
           },
           "http": {
             "method": "DELETE",
-            "url": "https://accounts.api.zesty.io/v1/instances/:instanceZUID",
+            "url": "https://accounts.api.zesty.io/v1/bins/:binZUID",
             "params": [
               {
-                "name": "instanceZUID",
+                "name": "binZUID",
                 "value": "",
                 "type": "path",
-                "description": "The ZUID of the instance."
+                "description": "The ZUID of the media bin."
               }
             ],
             "auth": {
@@ -126,7 +126,7 @@
               "placement": "header"
             }
           },
-          "docs": "Deletes a specific instance."
+          "docs": "Deletes a specific media bin and all its contents."
         }
       ]
     }

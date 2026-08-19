@@ -1,25 +1,26 @@
 {
   "item": [
     {
-      "id": "8d83400e-b1f5-4ca8-9b33-9de3a5e8b83b",
-      "name": "Instances",
+      "id": "87ce1d24-dd27-4371-9d83-b8994ffc9a8b",
+      "name": "Head Tags",
       "description": {
-        "content": "Manage Zesty.io instances.",
+        "content": "Manage HTML head tag entries.",
         "type": "text/plain"
       },
       "item": [
         {
-          "id": "f2eacff3-de1c-4676-8c35-2346d559985b",
-          "name": "Zesty List all instances",
+          "id": "f86fb21f-366e-4840-b6a0-1fe6c04f288b",
+          "name": "Zesty List all head tags",
           "request": {
-            "name": "Zesty List all instances",
+            "name": "Zesty List all head tags",
             "description": {
-              "content": "Returns a list of all instances accessible to the authenticated user.",
+              "content": "Returns a list of all HTML head tags in the instance.",
               "type": "text/plain"
             },
             "url": {
               "path": [
-                "instances"
+                "web",
+                "headtags"
               ],
               "host": [
                 "{{baseUrl}}"
@@ -54,12 +55,13 @@
           },
           "response": [
             {
-              "id": "2cf8431f-bd5c-4982-9016-5b6f2451a94b",
-              "name": "A list of instances.",
+              "id": "8c3e25b9-1539-4599-8746-d1df6198cf3d",
+              "name": "A list of head tags.",
               "originalRequest": {
                 "url": {
                   "path": [
-                    "instances"
+                    "web",
+                    "headtags"
                   ],
                   "host": [
                     "{{baseUrl}}"
@@ -92,17 +94,18 @@
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"code\": 6755,\n  \"data\": [\n    {\n      \"ZUID\": \"string\",\n      \"name\": \"string\",\n      \"ecoZUID\": \"string\",\n      \"domain\": \"string\",\n      \"createdAt\": \"1964-12-02T06:12:08.801Z\",\n      \"updatedAt\": \"1956-09-05T01:49:00.162Z\"\n    },\n    {\n      \"ZUID\": \"string\",\n      \"name\": \"string\",\n      \"ecoZUID\": \"string\",\n      \"domain\": \"string\",\n      \"createdAt\": \"2002-05-28T15:46:06.162Z\",\n      \"updatedAt\": \"1974-12-24T09:44:18.663Z\"\n    }\n  ]\n}",
+              "body": "{\n  \"code\": 526,\n  \"data\": [\n    {\n      \"ZUID\": \"string\",\n      \"type\": \"string\",\n      \"resourceZUID\": \"string\",\n      \"attributes\": {},\n      \"sort\": 9609,\n      \"createdAt\": \"1980-02-01T07:03:20.485Z\",\n      \"updatedAt\": \"2018-11-18T18:06:36.550Z\"\n    },\n    {\n      \"ZUID\": \"string\",\n      \"type\": \"string\",\n      \"resourceZUID\": \"string\",\n      \"attributes\": {},\n      \"sort\": 1217,\n      \"createdAt\": \"2025-06-24T12:38:26.927Z\",\n      \"updatedAt\": \"2015-08-02T16:28:33.701Z\"\n    }\n  ]\n}",
               "cookie": [],
               "_postman_previewlanguage": "json"
             },
             {
-              "id": "e395e810-841c-49cc-a255-1041b17da81c",
+              "id": "ac8d4f71-70af-4b1a-a5fd-97e568dc5bd9",
               "name": "Unauthorized.",
               "originalRequest": {
                 "url": {
                   "path": [
-                    "instances"
+                    "web",
+                    "headtags"
                   ],
                   "host": [
                     "{{baseUrl}}"
@@ -142,17 +145,18 @@
           }
         },
         {
-          "id": "b96d72f7-bdb0-467f-a0a4-5efd69097b7a",
-          "name": "Zesty Create a new instance",
+          "id": "a59b92d8-e1ba-4eb5-aa81-672c34c09351",
+          "name": "Zesty Create a head tag",
           "request": {
-            "name": "Zesty Create a new instance",
+            "name": "Zesty Create a head tag",
             "description": {
-              "content": "Creates a new Zesty.io instance.",
+              "content": "Creates a new HTML head tag entry for the instance.",
               "type": "text/plain"
             },
             "url": {
               "path": [
-                "instances"
+                "web",
+                "headtags"
               ],
               "host": [
                 "{{baseUrl}}"
@@ -163,10 +167,6 @@
             "header": [
               {
                 "key": "Content-Type",
-                "value": "application/json"
-              },
-              {
-                "key": "Accept",
                 "value": "application/json"
               }
             ],
@@ -190,7 +190,7 @@
             },
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"name\": \"<string>\",\n  \"ecoZUID\": \"<string>\"\n}",
+              "raw": "{\n  \"type\": \"<string>\",\n  \"resourceZUID\": \"<string>\",\n  \"attributes\": \"<object>\",\n  \"sort\": \"<integer>\"\n}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -200,12 +200,13 @@
           },
           "response": [
             {
-              "id": "1933b05a-56a3-47ff-9288-ac592ae01eee",
-              "name": "Instance created successfully.",
+              "id": "cb17209f-d836-4efe-b462-93812385358b",
+              "name": "Head tag created successfully.",
               "originalRequest": {
                 "url": {
                   "path": [
-                    "instances"
+                    "web",
+                    "headtags"
                   ],
                   "host": [
                     "{{baseUrl}}"
@@ -221,16 +222,12 @@
                     },
                     "key": "Authorization",
                     "value": "<API Key>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
                   }
                 ],
                 "method": "POST",
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"name\": \"<string>\",\n  \"ecoZUID\": \"<string>\"\n}",
+                  "raw": "{\n  \"type\": \"<string>\",\n  \"resourceZUID\": \"<string>\",\n  \"attributes\": \"<object>\",\n  \"sort\": \"<integer>\"\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -243,20 +240,21 @@
               "header": [
                 {
                   "key": "Content-Type",
-                  "value": "application/json"
+                  "value": "text/plain"
                 }
               ],
-              "body": "{\n  \"code\": 3260,\n  \"data\": {\n    \"ZUID\": \"string\",\n    \"name\": \"string\",\n    \"ecoZUID\": \"string\",\n    \"domain\": \"string\",\n    \"createdAt\": \"1950-04-13T10:35:33.928Z\",\n    \"updatedAt\": \"2009-10-08T21:01:20.366Z\"\n  }\n}",
+              "body": "",
               "cookie": [],
-              "_postman_previewlanguage": "json"
+              "_postman_previewlanguage": "text"
             },
             {
-              "id": "2cade95f-789e-40ff-92c9-4cd863bbdad7",
+              "id": "9b53d6ea-205d-461f-a108-1c6095afd67d",
               "name": "Invalid request.",
               "originalRequest": {
                 "url": {
                   "path": [
-                    "instances"
+                    "web",
+                    "headtags"
                   ],
                   "host": [
                     "{{baseUrl}}"
@@ -277,7 +275,7 @@
                 "method": "POST",
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"name\": \"<string>\",\n  \"ecoZUID\": \"<string>\"\n}",
+                  "raw": "{\n  \"type\": \"<string>\",\n  \"resourceZUID\": \"<string>\",\n  \"attributes\": \"<object>\",\n  \"sort\": \"<integer>\"\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -298,12 +296,13 @@
               "_postman_previewlanguage": "text"
             },
             {
-              "id": "78577044-7bf9-4d1c-a22a-12bab0bafe90",
+              "id": "a0167e1b-4fbd-4ac4-b3d6-76d092788dc4",
               "name": "Unauthorized.",
               "originalRequest": {
                 "url": {
                   "path": [
-                    "instances"
+                    "web",
+                    "headtags"
                   ],
                   "host": [
                     "{{baseUrl}}"
@@ -324,7 +323,7 @@
                 "method": "POST",
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"name\": \"<string>\",\n  \"ecoZUID\": \"<string>\"\n}",
+                  "raw": "{\n  \"type\": \"<string>\",\n  \"resourceZUID\": \"<string>\",\n  \"attributes\": \"<object>\",\n  \"sort\": \"<integer>\"\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -351,18 +350,19 @@
           }
         },
         {
-          "id": "47b41849-0812-457b-9fb2-31eb35d5d2da",
-          "name": "Zesty Get an instance",
+          "id": "2ea462e3-943a-412b-a404-7a34fc7fcb3d",
+          "name": "Zesty Get a head tag",
           "request": {
-            "name": "Zesty Get an instance",
+            "name": "Zesty Get a head tag",
             "description": {
-              "content": "Returns details for a specific instance by its ZUID.",
+              "content": "Returns a specific head tag.",
               "type": "text/plain"
             },
             "url": {
               "path": [
-                "instances",
-                ":instanceZUID"
+                "web",
+                "headtags",
+                ":headTagZUID"
               ],
               "host": [
                 "{{baseUrl}}"
@@ -373,17 +373,11 @@
                   "disabled": false,
                   "type": "any",
                   "value": "<string>",
-                  "key": "instanceZUID",
-                  "description": "(Required) The ZUID of the instance."
+                  "key": "headTagZUID",
+                  "description": "(Required) The ZUID of the head tag."
                 }
               ]
             },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
             "method": "GET",
             "auth": {
               "type": "apikey",
@@ -405,13 +399,14 @@
           },
           "response": [
             {
-              "id": "1ef44a33-8015-4667-9195-fd352b1ce739",
-              "name": "Instance details.",
+              "id": "452e90e0-c2b7-4400-9499-a6cb07c642a8",
+              "name": "Head tag details.",
               "originalRequest": {
                 "url": {
                   "path": [
-                    "instances",
-                    ":instanceZUID"
+                    "web",
+                    "headtags",
+                    ":headTagZUID"
                   ],
                   "host": [
                     "{{baseUrl}}"
@@ -422,8 +417,8 @@
                       "disabled": false,
                       "type": "any",
                       "value": "<string>",
-                      "key": "instanceZUID",
-                      "description": "(Required) The ZUID of the instance."
+                      "key": "headTagZUID",
+                      "description": "(Required) The ZUID of the head tag."
                     }
                   ]
                 },
@@ -435,10 +430,6 @@
                     },
                     "key": "Authorization",
                     "value": "<API Key>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
                   }
                 ],
                 "method": "GET",
@@ -449,21 +440,22 @@
               "header": [
                 {
                   "key": "Content-Type",
-                  "value": "application/json"
+                  "value": "text/plain"
                 }
               ],
-              "body": "{\n  \"code\": 3260,\n  \"data\": {\n    \"ZUID\": \"string\",\n    \"name\": \"string\",\n    \"ecoZUID\": \"string\",\n    \"domain\": \"string\",\n    \"createdAt\": \"1950-04-13T10:35:33.928Z\",\n    \"updatedAt\": \"2009-10-08T21:01:20.366Z\"\n  }\n}",
+              "body": "",
               "cookie": [],
-              "_postman_previewlanguage": "json"
+              "_postman_previewlanguage": "text"
             },
             {
-              "id": "3f249ead-070f-433f-8785-987012771a89",
+              "id": "87578a9d-29f9-4d47-a08c-a68a5f32926f",
               "name": "Unauthorized.",
               "originalRequest": {
                 "url": {
                   "path": [
-                    "instances",
-                    ":instanceZUID"
+                    "web",
+                    "headtags",
+                    ":headTagZUID"
                   ],
                   "host": [
                     "{{baseUrl}}"
@@ -474,8 +466,8 @@
                       "disabled": false,
                       "type": "any",
                       "value": "<string>",
-                      "key": "instanceZUID",
-                      "description": "(Required) The ZUID of the instance."
+                      "key": "headTagZUID",
+                      "description": "(Required) The ZUID of the head tag."
                     }
                   ]
                 },
@@ -505,13 +497,14 @@
               "_postman_previewlanguage": "text"
             },
             {
-              "id": "3406d9bd-9978-42ed-a0c2-87f4cfda07b2",
-              "name": "Instance not found.",
+              "id": "e3363aec-24bf-4079-9b66-09245a21545d",
+              "name": "Head tag not found.",
               "originalRequest": {
                 "url": {
                   "path": [
-                    "instances",
-                    ":instanceZUID"
+                    "web",
+                    "headtags",
+                    ":headTagZUID"
                   ],
                   "host": [
                     "{{baseUrl}}"
@@ -522,8 +515,8 @@
                       "disabled": false,
                       "type": "any",
                       "value": "<string>",
-                      "key": "instanceZUID",
-                      "description": "(Required) The ZUID of the instance."
+                      "key": "headTagZUID",
+                      "description": "(Required) The ZUID of the head tag."
                     }
                   ]
                 },
@@ -559,18 +552,19 @@
           }
         },
         {
-          "id": "e30b444e-3074-40f5-8245-9b6ce17e9d69",
-          "name": "Zesty Update an instance",
+          "id": "863bbd39-2a1d-4b22-960c-cd50067aa302",
+          "name": "Zesty Update a head tag",
           "request": {
-            "name": "Zesty Update an instance",
+            "name": "Zesty Update a head tag",
             "description": {
-              "content": "Updates the details of a specific instance.",
+              "content": "Updates a specific head tag.",
               "type": "text/plain"
             },
             "url": {
               "path": [
-                "instances",
-                ":instanceZUID"
+                "web",
+                "headtags",
+                ":headTagZUID"
               ],
               "host": [
                 "{{baseUrl}}"
@@ -581,8 +575,8 @@
                   "disabled": false,
                   "type": "any",
                   "value": "<string>",
-                  "key": "instanceZUID",
-                  "description": "(Required) The ZUID of the instance."
+                  "key": "headTagZUID",
+                  "description": "(Required) The ZUID of the head tag."
                 }
               ]
             },
@@ -612,7 +606,7 @@
             },
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"name\": \"<string>\"\n}",
+              "raw": "{\n  \"type\": \"<string>\",\n  \"attributes\": \"<object>\",\n  \"sort\": \"<integer>\"\n}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -622,13 +616,14 @@
           },
           "response": [
             {
-              "id": "a53e26b2-c3b8-40c4-ad49-9028c8985bae",
-              "name": "Instance updated successfully.",
+              "id": "b391d342-c18b-4891-bb23-058bb73fe980",
+              "name": "Head tag updated successfully.",
               "originalRequest": {
                 "url": {
                   "path": [
-                    "instances",
-                    ":instanceZUID"
+                    "web",
+                    "headtags",
+                    ":headTagZUID"
                   ],
                   "host": [
                     "{{baseUrl}}"
@@ -639,8 +634,8 @@
                       "disabled": false,
                       "type": "any",
                       "value": "<string>",
-                      "key": "instanceZUID",
-                      "description": "(Required) The ZUID of the instance."
+                      "key": "headTagZUID",
+                      "description": "(Required) The ZUID of the head tag."
                     }
                   ]
                 },
@@ -657,7 +652,7 @@
                 "method": "PUT",
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"name\": \"<string>\"\n}",
+                  "raw": "{\n  \"type\": \"<string>\",\n  \"attributes\": \"<object>\",\n  \"sort\": \"<integer>\"\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -678,13 +673,14 @@
               "_postman_previewlanguage": "text"
             },
             {
-              "id": "07256e74-8206-4651-9ecf-b8a915b3556f",
+              "id": "059e83cd-227f-4562-8203-25840387a0c8",
               "name": "Unauthorized.",
               "originalRequest": {
                 "url": {
                   "path": [
-                    "instances",
-                    ":instanceZUID"
+                    "web",
+                    "headtags",
+                    ":headTagZUID"
                   ],
                   "host": [
                     "{{baseUrl}}"
@@ -695,8 +691,8 @@
                       "disabled": false,
                       "type": "any",
                       "value": "<string>",
-                      "key": "instanceZUID",
-                      "description": "(Required) The ZUID of the instance."
+                      "key": "headTagZUID",
+                      "description": "(Required) The ZUID of the head tag."
                     }
                   ]
                 },
@@ -713,7 +709,7 @@
                 "method": "PUT",
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"name\": \"<string>\"\n}",
+                  "raw": "{\n  \"type\": \"<string>\",\n  \"attributes\": \"<object>\",\n  \"sort\": \"<integer>\"\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -734,13 +730,14 @@
               "_postman_previewlanguage": "text"
             },
             {
-              "id": "5ec5b890-1a4b-4376-be9a-1695c4f88447",
-              "name": "Instance not found.",
+              "id": "56a3255d-0540-45e4-b186-d78f6ea1ab3c",
+              "name": "Head tag not found.",
               "originalRequest": {
                 "url": {
                   "path": [
-                    "instances",
-                    ":instanceZUID"
+                    "web",
+                    "headtags",
+                    ":headTagZUID"
                   ],
                   "host": [
                     "{{baseUrl}}"
@@ -751,8 +748,8 @@
                       "disabled": false,
                       "type": "any",
                       "value": "<string>",
-                      "key": "instanceZUID",
-                      "description": "(Required) The ZUID of the instance."
+                      "key": "headTagZUID",
+                      "description": "(Required) The ZUID of the head tag."
                     }
                   ]
                 },
@@ -769,7 +766,7 @@
                 "method": "PUT",
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"name\": \"<string>\"\n}",
+                  "raw": "{\n  \"type\": \"<string>\",\n  \"attributes\": \"<object>\",\n  \"sort\": \"<integer>\"\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -796,18 +793,19 @@
           }
         },
         {
-          "id": "4af7f2b5-9f57-4877-8194-0dca3af16938",
-          "name": "Zesty Delete an instance",
+          "id": "c05707e6-8329-441d-9d1b-9d22c72df3b0",
+          "name": "Zesty Delete a head tag",
           "request": {
-            "name": "Zesty Delete an instance",
+            "name": "Zesty Delete a head tag",
             "description": {
-              "content": "Deletes a specific instance.",
+              "content": "Deletes a specific head tag.",
               "type": "text/plain"
             },
             "url": {
               "path": [
-                "instances",
-                ":instanceZUID"
+                "web",
+                "headtags",
+                ":headTagZUID"
               ],
               "host": [
                 "{{baseUrl}}"
@@ -818,8 +816,8 @@
                   "disabled": false,
                   "type": "any",
                   "value": "<string>",
-                  "key": "instanceZUID",
-                  "description": "(Required) The ZUID of the instance."
+                  "key": "headTagZUID",
+                  "description": "(Required) The ZUID of the head tag."
                 }
               ]
             },
@@ -844,13 +842,14 @@
           },
           "response": [
             {
-              "id": "6dc4c2a8-0dd6-4193-b9ea-5a7bfe91096c",
-              "name": "Instance deleted successfully.",
+              "id": "57d6bbbf-388a-409e-bbc1-3aeb573b093e",
+              "name": "Head tag deleted successfully.",
               "originalRequest": {
                 "url": {
                   "path": [
-                    "instances",
-                    ":instanceZUID"
+                    "web",
+                    "headtags",
+                    ":headTagZUID"
                   ],
                   "host": [
                     "{{baseUrl}}"
@@ -861,8 +860,8 @@
                       "disabled": false,
                       "type": "any",
                       "value": "<string>",
-                      "key": "instanceZUID",
-                      "description": "(Required) The ZUID of the instance."
+                      "key": "headTagZUID",
+                      "description": "(Required) The ZUID of the head tag."
                     }
                   ]
                 },
@@ -892,13 +891,14 @@
               "_postman_previewlanguage": "text"
             },
             {
-              "id": "f432cc59-7abe-4e7c-a777-7cd2f5e3bd88",
+              "id": "63ca9548-6aa3-4283-9216-70ac2fa91de6",
               "name": "Unauthorized.",
               "originalRequest": {
                 "url": {
                   "path": [
-                    "instances",
-                    ":instanceZUID"
+                    "web",
+                    "headtags",
+                    ":headTagZUID"
                   ],
                   "host": [
                     "{{baseUrl}}"
@@ -909,8 +909,8 @@
                       "disabled": false,
                       "type": "any",
                       "value": "<string>",
-                      "key": "instanceZUID",
-                      "description": "(Required) The ZUID of the instance."
+                      "key": "headTagZUID",
+                      "description": "(Required) The ZUID of the head tag."
                     }
                   ]
                 },
@@ -940,13 +940,14 @@
               "_postman_previewlanguage": "text"
             },
             {
-              "id": "45e66fdd-5c11-409e-ae73-855ce7c847e4",
-              "name": "Instance not found.",
+              "id": "c98f57fe-e205-4ee0-b530-93c2579f9cf0",
+              "name": "Head tag not found.",
               "originalRequest": {
                 "url": {
                   "path": [
-                    "instances",
-                    ":instanceZUID"
+                    "web",
+                    "headtags",
+                    ":headTagZUID"
                   ],
                   "host": [
                     "{{baseUrl}}"
@@ -957,8 +958,8 @@
                       "disabled": false,
                       "type": "any",
                       "value": "<string>",
-                      "key": "instanceZUID",
-                      "description": "(Required) The ZUID of the instance."
+                      "key": "headTagZUID",
+                      "description": "(Required) The ZUID of the head tag."
                     }
                   ]
                 },
@@ -1006,8 +1007,8 @@
     }
   ],
   "info": {
-    "_postman_id": "93c3a45b-915f-4f12-92f0-216ffddd98a2",
-    "name": "Zesty Accounts Apps Instances API",
+    "_postman_id": "235072d7-4eef-444f-95a2-38f17660fdd4",
+    "name": "Zesty Accounts Apps Head Tags API",
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
     "description": {
       "content": "The Zesty.io Accounts API is used to manage users, roles, instances, teams, tokens, ecosystems, webhooks, and apps. It provides administrative control over the organizational structure of a Zesty.io account. All endpoints require authentication via a session token obtained from the Auth API.\n\nContact Support:\n Name: Zesty.io",

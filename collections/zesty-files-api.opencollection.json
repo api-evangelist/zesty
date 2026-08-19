@@ -1,0 +1,191 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Zesty Accounts Apps Files API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Files",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Zesty List all media files",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://accounts.api.zesty.io/v1/files",
+            "params": [
+              {
+                "name": "binZUID",
+                "value": "",
+                "type": "query",
+                "description": "Filter files by bin ZUID."
+              },
+              {
+                "name": "groupZUID",
+                "value": "",
+                "type": "query",
+                "description": "Filter files by group ZUID."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of files to return."
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Page number for pagination."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Returns a list of media files, optionally filtered by bin or group."
+        },
+        {
+          "info": {
+            "name": "Zesty Get a media file",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://accounts.api.zesty.io/v1/files/:fileZUID",
+            "params": [
+              {
+                "name": "fileZUID",
+                "value": "",
+                "type": "path",
+                "description": "The ZUID of the file."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Returns details for a specific media file."
+        },
+        {
+          "info": {
+            "name": "Zesty Update a media file",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://accounts.api.zesty.io/v1/files/:fileZUID",
+            "params": [
+              {
+                "name": "fileZUID",
+                "value": "",
+                "type": "path",
+                "description": "The ZUID of the file."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Updates the metadata of a specific media file."
+        },
+        {
+          "info": {
+            "name": "Zesty Delete a media file",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://accounts.api.zesty.io/v1/files/:fileZUID",
+            "params": [
+              {
+                "name": "fileZUID",
+                "value": "",
+                "type": "path",
+                "description": "The ZUID of the file."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Deletes a specific media file."
+        },
+        {
+          "info": {
+            "name": "Zesty Upload a media file",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://accounts.api.zesty.io/v1/upload/:binZUID/:groupZUID",
+            "params": [
+              {
+                "name": "binZUID",
+                "value": "",
+                "type": "path",
+                "description": "The ZUID of the bin to upload to."
+              },
+              {
+                "name": "groupZUID",
+                "value": "",
+                "type": "path",
+                "description": "The ZUID of the group (folder) to upload to."
+              }
+            ],
+            "body": {
+              "type": "multipart-form",
+              "data": [
+                {
+                  "name": "file",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "title",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "fileName",
+                  "type": "text",
+                  "value": ""
+                }
+              ]
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Uploads a new media file to the specified bin and group. Supports images, documents, and other file types."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

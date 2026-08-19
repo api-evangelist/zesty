@@ -1,0 +1,53 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Zesty Accounts Apps Publishing API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Publishing",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Zesty Publish a content item",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://accounts.api.zesty.io/v1/content/models/:modelZUID/items/:itemZUID/publishings",
+            "params": [
+              {
+                "name": "modelZUID",
+                "value": "",
+                "type": "path",
+                "description": "The ZUID of the content model."
+              },
+              {
+                "name": "itemZUID",
+                "value": "",
+                "type": "path",
+                "description": "The ZUID of the content item."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Publishes a content item, making it available on the live site."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,67 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Zesty Accounts Apps Authentication API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Authentication",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Zesty Authenticate a user",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://accounts.api.zesty.io/v1/login",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Authenticates a user by providing an email and password combination. Returns a session token upon successful authentication. The session token is a short-lived 30-minute token that is extended whenever an authenticated action is taken."
+        },
+        {
+          "info": {
+            "name": "Zesty End a user session",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://accounts.api.zesty.io/v1/logout",
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Logs out the current user session and invalidates the session token."
+        },
+        {
+          "info": {
+            "name": "Zesty Verify a session token",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://accounts.api.zesty.io/v1/verify",
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Verifies whether the provided session token is still valid and returns user information associated with the token."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

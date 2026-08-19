@@ -1,0 +1,37 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Zesty Accounts Apps Resolver API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Resolver",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Zesty Resolve a file to its CDN URL",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://accounts.api.zesty.io/v1/resolve/:fileZUID",
+            "params": [
+              {
+                "name": "fileZUID",
+                "value": "",
+                "type": "path",
+                "description": "The ZUID of the file to resolve."
+              }
+            ]
+          },
+          "docs": "Returns the CDN URL for a media file by its ZUID. This endpoint is served by the Media Resolver service."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

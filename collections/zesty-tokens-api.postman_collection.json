@@ -1,25 +1,25 @@
 {
   "item": [
     {
-      "id": "8d83400e-b1f5-4ca8-9b33-9de3a5e8b83b",
-      "name": "Instances",
+      "id": "3e3d8cfe-c367-455d-b170-d7e6e194fed7",
+      "name": "Tokens",
       "description": {
-        "content": "Manage Zesty.io instances.",
+        "content": "Manage API access tokens.",
         "type": "text/plain"
       },
       "item": [
         {
-          "id": "f2eacff3-de1c-4676-8c35-2346d559985b",
-          "name": "Zesty List all instances",
+          "id": "4c3bedef-7658-4808-a9a9-c433e0e4c58e",
+          "name": "Zesty List all access tokens",
           "request": {
-            "name": "Zesty List all instances",
+            "name": "Zesty List all access tokens",
             "description": {
-              "content": "Returns a list of all instances accessible to the authenticated user.",
+              "content": "Returns a list of all access tokens for the account.",
               "type": "text/plain"
             },
             "url": {
               "path": [
-                "instances"
+                "tokens"
               ],
               "host": [
                 "{{baseUrl}}"
@@ -54,12 +54,12 @@
           },
           "response": [
             {
-              "id": "2cf8431f-bd5c-4982-9016-5b6f2451a94b",
-              "name": "A list of instances.",
+              "id": "9b5b3dd7-166e-464e-986a-98a7c6d5f30d",
+              "name": "A list of access tokens.",
               "originalRequest": {
                 "url": {
                   "path": [
-                    "instances"
+                    "tokens"
                   ],
                   "host": [
                     "{{baseUrl}}"
@@ -92,17 +92,17 @@
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"code\": 6755,\n  \"data\": [\n    {\n      \"ZUID\": \"string\",\n      \"name\": \"string\",\n      \"ecoZUID\": \"string\",\n      \"domain\": \"string\",\n      \"createdAt\": \"1964-12-02T06:12:08.801Z\",\n      \"updatedAt\": \"1956-09-05T01:49:00.162Z\"\n    },\n    {\n      \"ZUID\": \"string\",\n      \"name\": \"string\",\n      \"ecoZUID\": \"string\",\n      \"domain\": \"string\",\n      \"createdAt\": \"2002-05-28T15:46:06.162Z\",\n      \"updatedAt\": \"1974-12-24T09:44:18.663Z\"\n    }\n  ]\n}",
+              "body": "{\n  \"code\": 533,\n  \"data\": [\n    {\n      \"ZUID\": \"string\",\n      \"name\": \"string\",\n      \"roleZUID\": \"string\",\n      \"token\": \"string\",\n      \"createdAt\": \"2010-06-05T22:37:03.200Z\"\n    },\n    {\n      \"ZUID\": \"string\",\n      \"name\": \"string\",\n      \"roleZUID\": \"string\",\n      \"token\": \"string\",\n      \"createdAt\": \"2019-03-31T13:43:27.384Z\"\n    }\n  ]\n}",
               "cookie": [],
               "_postman_previewlanguage": "json"
             },
             {
-              "id": "e395e810-841c-49cc-a255-1041b17da81c",
+              "id": "6f7d02f0-d0a1-415f-bc1f-8ae90de742db",
               "name": "Unauthorized.",
               "originalRequest": {
                 "url": {
                   "path": [
-                    "instances"
+                    "tokens"
                   ],
                   "host": [
                     "{{baseUrl}}"
@@ -142,17 +142,17 @@
           }
         },
         {
-          "id": "b96d72f7-bdb0-467f-a0a4-5efd69097b7a",
-          "name": "Zesty Create a new instance",
+          "id": "02fa2a4f-6adc-4aa5-8798-6d4f0c5aff03",
+          "name": "Zesty Create an access token",
           "request": {
-            "name": "Zesty Create a new instance",
+            "name": "Zesty Create an access token",
             "description": {
-              "content": "Creates a new Zesty.io instance.",
+              "content": "Creates a new access token for API authentication.",
               "type": "text/plain"
             },
             "url": {
               "path": [
-                "instances"
+                "tokens"
               ],
               "host": [
                 "{{baseUrl}}"
@@ -163,10 +163,6 @@
             "header": [
               {
                 "key": "Content-Type",
-                "value": "application/json"
-              },
-              {
-                "key": "Accept",
                 "value": "application/json"
               }
             ],
@@ -190,7 +186,7 @@
             },
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"name\": \"<string>\",\n  \"ecoZUID\": \"<string>\"\n}",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"roleZUID\": \"<string>\"\n}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -200,12 +196,12 @@
           },
           "response": [
             {
-              "id": "1933b05a-56a3-47ff-9288-ac592ae01eee",
-              "name": "Instance created successfully.",
+              "id": "d7ec7335-8f08-4d3f-90ae-24205ece6169",
+              "name": "Token created successfully.",
               "originalRequest": {
                 "url": {
                   "path": [
-                    "instances"
+                    "tokens"
                   ],
                   "host": [
                     "{{baseUrl}}"
@@ -221,16 +217,12 @@
                     },
                     "key": "Authorization",
                     "value": "<API Key>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
                   }
                 ],
                 "method": "POST",
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"name\": \"<string>\",\n  \"ecoZUID\": \"<string>\"\n}",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"roleZUID\": \"<string>\"\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -243,20 +235,20 @@
               "header": [
                 {
                   "key": "Content-Type",
-                  "value": "application/json"
+                  "value": "text/plain"
                 }
               ],
-              "body": "{\n  \"code\": 3260,\n  \"data\": {\n    \"ZUID\": \"string\",\n    \"name\": \"string\",\n    \"ecoZUID\": \"string\",\n    \"domain\": \"string\",\n    \"createdAt\": \"1950-04-13T10:35:33.928Z\",\n    \"updatedAt\": \"2009-10-08T21:01:20.366Z\"\n  }\n}",
+              "body": "",
               "cookie": [],
-              "_postman_previewlanguage": "json"
+              "_postman_previewlanguage": "text"
             },
             {
-              "id": "2cade95f-789e-40ff-92c9-4cd863bbdad7",
+              "id": "f0a300c1-e68b-4cb8-af03-cbafd43d500f",
               "name": "Invalid request.",
               "originalRequest": {
                 "url": {
                   "path": [
-                    "instances"
+                    "tokens"
                   ],
                   "host": [
                     "{{baseUrl}}"
@@ -277,7 +269,7 @@
                 "method": "POST",
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"name\": \"<string>\",\n  \"ecoZUID\": \"<string>\"\n}",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"roleZUID\": \"<string>\"\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -298,12 +290,12 @@
               "_postman_previewlanguage": "text"
             },
             {
-              "id": "78577044-7bf9-4d1c-a22a-12bab0bafe90",
+              "id": "2771680f-8c84-4f5d-9852-ff85f3f07757",
               "name": "Unauthorized.",
               "originalRequest": {
                 "url": {
                   "path": [
-                    "instances"
+                    "tokens"
                   ],
                   "host": [
                     "{{baseUrl}}"
@@ -324,7 +316,7 @@
                 "method": "POST",
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"name\": \"<string>\",\n  \"ecoZUID\": \"<string>\"\n}",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"roleZUID\": \"<string>\"\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -351,18 +343,18 @@
           }
         },
         {
-          "id": "47b41849-0812-457b-9fb2-31eb35d5d2da",
-          "name": "Zesty Get an instance",
+          "id": "3299a037-f70e-4904-8db0-2feef1df6aa3",
+          "name": "Zesty Get an access token",
           "request": {
-            "name": "Zesty Get an instance",
+            "name": "Zesty Get an access token",
             "description": {
-              "content": "Returns details for a specific instance by its ZUID.",
+              "content": "Returns details for a specific access token.",
               "type": "text/plain"
             },
             "url": {
               "path": [
-                "instances",
-                ":instanceZUID"
+                "tokens",
+                ":tokenZUID"
               ],
               "host": [
                 "{{baseUrl}}"
@@ -373,8 +365,8 @@
                   "disabled": false,
                   "type": "any",
                   "value": "<string>",
-                  "key": "instanceZUID",
-                  "description": "(Required) The ZUID of the instance."
+                  "key": "tokenZUID",
+                  "description": "(Required) The ZUID of the token."
                 }
               ]
             },
@@ -405,13 +397,13 @@
           },
           "response": [
             {
-              "id": "1ef44a33-8015-4667-9195-fd352b1ce739",
-              "name": "Instance details.",
+              "id": "470aa400-fbd6-4cbd-acf9-ee403426ad41",
+              "name": "Token details.",
               "originalRequest": {
                 "url": {
                   "path": [
-                    "instances",
-                    ":instanceZUID"
+                    "tokens",
+                    ":tokenZUID"
                   ],
                   "host": [
                     "{{baseUrl}}"
@@ -422,8 +414,8 @@
                       "disabled": false,
                       "type": "any",
                       "value": "<string>",
-                      "key": "instanceZUID",
-                      "description": "(Required) The ZUID of the instance."
+                      "key": "tokenZUID",
+                      "description": "(Required) The ZUID of the token."
                     }
                   ]
                 },
@@ -452,18 +444,18 @@
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"code\": 3260,\n  \"data\": {\n    \"ZUID\": \"string\",\n    \"name\": \"string\",\n    \"ecoZUID\": \"string\",\n    \"domain\": \"string\",\n    \"createdAt\": \"1950-04-13T10:35:33.928Z\",\n    \"updatedAt\": \"2009-10-08T21:01:20.366Z\"\n  }\n}",
+              "body": "{\n  \"code\": 7795,\n  \"data\": {\n    \"ZUID\": \"string\",\n    \"name\": \"string\",\n    \"roleZUID\": \"string\",\n    \"token\": \"string\",\n    \"createdAt\": \"1952-10-27T15:04:13.198Z\"\n  }\n}",
               "cookie": [],
               "_postman_previewlanguage": "json"
             },
             {
-              "id": "3f249ead-070f-433f-8785-987012771a89",
+              "id": "e03d6fbe-0a79-48f1-80dd-899777ca4e99",
               "name": "Unauthorized.",
               "originalRequest": {
                 "url": {
                   "path": [
-                    "instances",
-                    ":instanceZUID"
+                    "tokens",
+                    ":tokenZUID"
                   ],
                   "host": [
                     "{{baseUrl}}"
@@ -474,8 +466,8 @@
                       "disabled": false,
                       "type": "any",
                       "value": "<string>",
-                      "key": "instanceZUID",
-                      "description": "(Required) The ZUID of the instance."
+                      "key": "tokenZUID",
+                      "description": "(Required) The ZUID of the token."
                     }
                   ]
                 },
@@ -505,13 +497,13 @@
               "_postman_previewlanguage": "text"
             },
             {
-              "id": "3406d9bd-9978-42ed-a0c2-87f4cfda07b2",
-              "name": "Instance not found.",
+              "id": "21aa5bb0-998c-4b95-ab00-fb8890dbab98",
+              "name": "Token not found.",
               "originalRequest": {
                 "url": {
                   "path": [
-                    "instances",
-                    ":instanceZUID"
+                    "tokens",
+                    ":tokenZUID"
                   ],
                   "host": [
                     "{{baseUrl}}"
@@ -522,8 +514,8 @@
                       "disabled": false,
                       "type": "any",
                       "value": "<string>",
-                      "key": "instanceZUID",
-                      "description": "(Required) The ZUID of the instance."
+                      "key": "tokenZUID",
+                      "description": "(Required) The ZUID of the token."
                     }
                   ]
                 },
@@ -559,18 +551,18 @@
           }
         },
         {
-          "id": "e30b444e-3074-40f5-8245-9b6ce17e9d69",
-          "name": "Zesty Update an instance",
+          "id": "8238f43d-d59d-40bf-994a-325d45116523",
+          "name": "Zesty Delete an access token",
           "request": {
-            "name": "Zesty Update an instance",
+            "name": "Zesty Delete an access token",
             "description": {
-              "content": "Updates the details of a specific instance.",
+              "content": "Deletes a specific access token.",
               "type": "text/plain"
             },
             "url": {
               "path": [
-                "instances",
-                ":instanceZUID"
+                "tokens",
+                ":tokenZUID"
               ],
               "host": [
                 "{{baseUrl}}"
@@ -581,245 +573,8 @@
                   "disabled": false,
                   "type": "any",
                   "value": "<string>",
-                  "key": "instanceZUID",
-                  "description": "(Required) The ZUID of the instance."
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "method": "PUT",
-            "auth": {
-              "type": "apikey",
-              "apikey": [
-                {
-                  "key": "key",
-                  "value": "Authorization"
-                },
-                {
-                  "key": "value",
-                  "value": "{{apiKey}}"
-                },
-                {
-                  "key": "in",
-                  "value": "header"
-                }
-              ]
-            },
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"name\": \"<string>\"\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            }
-          },
-          "response": [
-            {
-              "id": "a53e26b2-c3b8-40c4-ad49-9028c8985bae",
-              "name": "Instance updated successfully.",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "instances",
-                    ":instanceZUID"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "instanceZUID",
-                      "description": "(Required) The ZUID of the instance."
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "<API Key>"
-                  }
-                ],
-                "method": "PUT",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"name\": \"<string>\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "07256e74-8206-4651-9ecf-b8a915b3556f",
-              "name": "Unauthorized.",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "instances",
-                    ":instanceZUID"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "instanceZUID",
-                      "description": "(Required) The ZUID of the instance."
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "<API Key>"
-                  }
-                ],
-                "method": "PUT",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"name\": \"<string>\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "5ec5b890-1a4b-4376-be9a-1695c4f88447",
-              "name": "Instance not found.",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "instances",
-                    ":instanceZUID"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "instanceZUID",
-                      "description": "(Required) The ZUID of the instance."
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "<API Key>"
-                  }
-                ],
-                "method": "PUT",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"name\": \"<string>\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Not Found",
-              "code": 404,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "4af7f2b5-9f57-4877-8194-0dca3af16938",
-          "name": "Zesty Delete an instance",
-          "request": {
-            "name": "Zesty Delete an instance",
-            "description": {
-              "content": "Deletes a specific instance.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "instances",
-                ":instanceZUID"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "instanceZUID",
-                  "description": "(Required) The ZUID of the instance."
+                  "key": "tokenZUID",
+                  "description": "(Required) The ZUID of the token."
                 }
               ]
             },
@@ -844,13 +599,13 @@
           },
           "response": [
             {
-              "id": "6dc4c2a8-0dd6-4193-b9ea-5a7bfe91096c",
-              "name": "Instance deleted successfully.",
+              "id": "668eb57a-1d75-40d5-bdba-bcc7ca5bcbf1",
+              "name": "Token deleted successfully.",
               "originalRequest": {
                 "url": {
                   "path": [
-                    "instances",
-                    ":instanceZUID"
+                    "tokens",
+                    ":tokenZUID"
                   ],
                   "host": [
                     "{{baseUrl}}"
@@ -861,8 +616,8 @@
                       "disabled": false,
                       "type": "any",
                       "value": "<string>",
-                      "key": "instanceZUID",
-                      "description": "(Required) The ZUID of the instance."
+                      "key": "tokenZUID",
+                      "description": "(Required) The ZUID of the token."
                     }
                   ]
                 },
@@ -892,13 +647,13 @@
               "_postman_previewlanguage": "text"
             },
             {
-              "id": "f432cc59-7abe-4e7c-a777-7cd2f5e3bd88",
+              "id": "8218c5a8-8734-4ca0-a89b-9e3bc79fada2",
               "name": "Unauthorized.",
               "originalRequest": {
                 "url": {
                   "path": [
-                    "instances",
-                    ":instanceZUID"
+                    "tokens",
+                    ":tokenZUID"
                   ],
                   "host": [
                     "{{baseUrl}}"
@@ -909,8 +664,8 @@
                       "disabled": false,
                       "type": "any",
                       "value": "<string>",
-                      "key": "instanceZUID",
-                      "description": "(Required) The ZUID of the instance."
+                      "key": "tokenZUID",
+                      "description": "(Required) The ZUID of the token."
                     }
                   ]
                 },
@@ -940,13 +695,13 @@
               "_postman_previewlanguage": "text"
             },
             {
-              "id": "45e66fdd-5c11-409e-ae73-855ce7c847e4",
-              "name": "Instance not found.",
+              "id": "bf473456-bd8d-4ed7-96e7-fdfcdc9eeb22",
+              "name": "Token not found.",
               "originalRequest": {
                 "url": {
                   "path": [
-                    "instances",
-                    ":instanceZUID"
+                    "tokens",
+                    ":tokenZUID"
                   ],
                   "host": [
                     "{{baseUrl}}"
@@ -957,8 +712,8 @@
                       "disabled": false,
                       "type": "any",
                       "value": "<string>",
-                      "key": "instanceZUID",
-                      "description": "(Required) The ZUID of the instance."
+                      "key": "tokenZUID",
+                      "description": "(Required) The ZUID of the token."
                     }
                   ]
                 },
@@ -1006,8 +761,8 @@
     }
   ],
   "info": {
-    "_postman_id": "93c3a45b-915f-4f12-92f0-216ffddd98a2",
-    "name": "Zesty Accounts Apps Instances API",
+    "_postman_id": "eafb9a18-a678-4d0a-b228-3a68b1caabc1",
+    "name": "Zesty Accounts Apps Tokens API",
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
     "description": {
       "content": "The Zesty.io Accounts API is used to manage users, roles, instances, teams, tokens, ecosystems, webhooks, and apps. It provides administrative control over the organizational structure of a Zesty.io account. All endpoints require authentication via a session token obtained from the Auth API.\n\nContact Support:\n Name: Zesty.io",

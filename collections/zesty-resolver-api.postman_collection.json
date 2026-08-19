@@ -1,0 +1,170 @@
+{
+  "item": [
+    {
+      "id": "3bf7cbc1-064c-4379-9a46-58d56f9d5ba4",
+      "name": "Resolver",
+      "description": {
+        "content": "Resolve file ZUIDs to CDN URLs.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "782eedb9-0f56-4da5-bf46-283b009b3caa",
+          "name": "Zesty Resolve a file to its CDN URL",
+          "request": {
+            "name": "Zesty Resolve a file to its CDN URL",
+            "description": {
+              "content": "Returns the CDN URL for a media file by its ZUID. This endpoint is served by the Media Resolver service.",
+              "type": "text/plain"
+            },
+            "url": {
+              "protocol": "https",
+              "path": [
+                "resolve",
+                ":fileZUID"
+              ],
+              "host": [
+                "media-resolver",
+                "api",
+                "zesty",
+                "io"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "fileZUID",
+                  "description": "(Required) The ZUID of the file to resolve."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "0e8d12bc-d9ee-47f3-a959-43c997aa8df0",
+              "name": "CDN URL for the file.",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "resolve",
+                    ":fileZUID"
+                  ],
+                  "host": [
+                    "media-resolver",
+                    "api",
+                    "zesty",
+                    "io"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "fileZUID",
+                      "description": "(Required) The ZUID of the file to resolve."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 9431,\n  \"data\": {\n    \"url\": \"http://RCSKd.mppbGmT-q7LJFbaY,tkvsma8Mni,1tFP7.DSma.ijS9AogHXwG4AgeCVtUk\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4a0aa803-62e8-4b9c-9b6d-d2873607ca36",
+              "name": "File not found.",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "resolve",
+                    ":fileZUID"
+                  ],
+                  "host": [
+                    "media-resolver",
+                    "api",
+                    "zesty",
+                    "io"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "fileZUID",
+                      "description": "(Required) The ZUID of the file to resolve."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://accounts.api.zesty.io/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "0b6b8967-87c1-4ffe-ad38-7db782730fd4",
+    "name": "Zesty Accounts Apps Resolver API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Zesty.io Accounts API is used to manage users, roles, instances, teams, tokens, ecosystems, webhooks, and apps. It provides administrative control over the organizational structure of a Zesty.io account. All endpoints require authentication via a session token obtained from the Auth API.\n\nContact Support:\n Name: Zesty.io",
+      "type": "text/plain"
+    }
+  }
+}

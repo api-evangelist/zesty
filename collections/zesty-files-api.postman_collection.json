@@ -1,30 +1,55 @@
 {
   "item": [
     {
-      "id": "8d83400e-b1f5-4ca8-9b33-9de3a5e8b83b",
-      "name": "Instances",
+      "id": "45c428b7-19f3-4045-9c09-8e9490129e65",
+      "name": "Files",
       "description": {
-        "content": "Manage Zesty.io instances.",
+        "content": "Manage and upload media files.",
         "type": "text/plain"
       },
       "item": [
         {
-          "id": "f2eacff3-de1c-4676-8c35-2346d559985b",
-          "name": "Zesty List all instances",
+          "id": "aeddd4b1-7bc1-4146-83f0-1e46936862e6",
+          "name": "Zesty List all media files",
           "request": {
-            "name": "Zesty List all instances",
+            "name": "Zesty List all media files",
             "description": {
-              "content": "Returns a list of all instances accessible to the authenticated user.",
+              "content": "Returns a list of media files, optionally filtered by bin or group.",
               "type": "text/plain"
             },
             "url": {
               "path": [
-                "instances"
+                "files"
               ],
               "host": [
                 "{{baseUrl}}"
               ],
-              "query": [],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "binZUID",
+                  "value": "<string>",
+                  "description": "Filter files by bin ZUID."
+                },
+                {
+                  "disabled": false,
+                  "key": "groupZUID",
+                  "value": "<string>",
+                  "description": "Filter files by group ZUID."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>",
+                  "description": "Maximum number of files to return."
+                },
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "<integer>",
+                  "description": "Page number for pagination."
+                }
+              ],
               "variable": []
             },
             "header": [
@@ -54,17 +79,34 @@
           },
           "response": [
             {
-              "id": "2cf8431f-bd5c-4982-9016-5b6f2451a94b",
-              "name": "A list of instances.",
+              "id": "811afe5f-ccf5-4c94-a312-999da9362cc4",
+              "name": "A list of media files.",
               "originalRequest": {
                 "url": {
                   "path": [
-                    "instances"
+                    "files"
                   ],
                   "host": [
                     "{{baseUrl}}"
                   ],
-                  "query": [],
+                  "query": [
+                    {
+                      "key": "binZUID",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "groupZUID",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "<integer>"
+                    }
+                  ],
                   "variable": []
                 },
                 "header": [
@@ -92,22 +134,39 @@
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"code\": 6755,\n  \"data\": [\n    {\n      \"ZUID\": \"string\",\n      \"name\": \"string\",\n      \"ecoZUID\": \"string\",\n      \"domain\": \"string\",\n      \"createdAt\": \"1964-12-02T06:12:08.801Z\",\n      \"updatedAt\": \"1956-09-05T01:49:00.162Z\"\n    },\n    {\n      \"ZUID\": \"string\",\n      \"name\": \"string\",\n      \"ecoZUID\": \"string\",\n      \"domain\": \"string\",\n      \"createdAt\": \"2002-05-28T15:46:06.162Z\",\n      \"updatedAt\": \"1974-12-24T09:44:18.663Z\"\n    }\n  ]\n}",
+              "body": "{\n  \"code\": 2124,\n  \"data\": [\n    {\n      \"ZUID\": \"string\",\n      \"binZUID\": \"string\",\n      \"groupZUID\": \"string\",\n      \"fileName\": \"string\",\n      \"title\": \"string\",\n      \"url\": \"http://XchvuEAAHbRomaMPMuetYHHpIY.ohE7t0kq8FEHu5qi4DRa3clbLnveXbsvFTT-I7cz5ZvOFbQRgO03,qkWkCDPyYTiUuL0WsqyBju7eX,buk\",\n      \"type\": \"string\",\n      \"createdAt\": \"1988-11-26T12:42:15.555Z\",\n      \"updatedAt\": \"1977-01-11T15:33:59.681Z\"\n    },\n    {\n      \"ZUID\": \"string\",\n      \"binZUID\": \"string\",\n      \"groupZUID\": \"string\",\n      \"fileName\": \"string\",\n      \"title\": \"string\",\n      \"url\": \"https://DYbXuCbnHVVwttoTBYvx.bfwCziZYwZCZbHByjZxvl3U9kqsZpVXyyf9ju9n4C-qw2pq8,TqMf4.Mh0J-6uXs5Zb-Ei-U\",\n      \"type\": \"string\",\n      \"createdAt\": \"1949-12-05T10:56:57.918Z\",\n      \"updatedAt\": \"1949-11-29T03:37:44.459Z\"\n    }\n  ]\n}",
               "cookie": [],
               "_postman_previewlanguage": "json"
             },
             {
-              "id": "e395e810-841c-49cc-a255-1041b17da81c",
+              "id": "3a5cc0a3-4972-4a9b-9031-6adc18dbde3d",
               "name": "Unauthorized.",
               "originalRequest": {
                 "url": {
                   "path": [
-                    "instances"
+                    "files"
                   ],
                   "host": [
                     "{{baseUrl}}"
                   ],
-                  "query": [],
+                  "query": [
+                    {
+                      "key": "binZUID",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "groupZUID",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "<integer>"
+                    }
+                  ],
                   "variable": []
                 },
                 "header": [
@@ -142,227 +201,18 @@
           }
         },
         {
-          "id": "b96d72f7-bdb0-467f-a0a4-5efd69097b7a",
-          "name": "Zesty Create a new instance",
+          "id": "861fa4a6-4c60-4b2e-aff7-11bf62c0aba8",
+          "name": "Zesty Get a media file",
           "request": {
-            "name": "Zesty Create a new instance",
+            "name": "Zesty Get a media file",
             "description": {
-              "content": "Creates a new Zesty.io instance.",
+              "content": "Returns details for a specific media file.",
               "type": "text/plain"
             },
             "url": {
               "path": [
-                "instances"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
-            },
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              },
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "POST",
-            "auth": {
-              "type": "apikey",
-              "apikey": [
-                {
-                  "key": "key",
-                  "value": "Authorization"
-                },
-                {
-                  "key": "value",
-                  "value": "{{apiKey}}"
-                },
-                {
-                  "key": "in",
-                  "value": "header"
-                }
-              ]
-            },
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"name\": \"<string>\",\n  \"ecoZUID\": \"<string>\"\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            }
-          },
-          "response": [
-            {
-              "id": "1933b05a-56a3-47ff-9288-ac592ae01eee",
-              "name": "Instance created successfully.",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "instances"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "<API Key>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"name\": \"<string>\",\n  \"ecoZUID\": \"<string>\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Created",
-              "code": 201,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"code\": 3260,\n  \"data\": {\n    \"ZUID\": \"string\",\n    \"name\": \"string\",\n    \"ecoZUID\": \"string\",\n    \"domain\": \"string\",\n    \"createdAt\": \"1950-04-13T10:35:33.928Z\",\n    \"updatedAt\": \"2009-10-08T21:01:20.366Z\"\n  }\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "2cade95f-789e-40ff-92c9-4cd863bbdad7",
-              "name": "Invalid request.",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "instances"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "<API Key>"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"name\": \"<string>\",\n  \"ecoZUID\": \"<string>\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Bad Request",
-              "code": 400,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "78577044-7bf9-4d1c-a22a-12bab0bafe90",
-              "name": "Unauthorized.",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "instances"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "<API Key>"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"name\": \"<string>\",\n  \"ecoZUID\": \"<string>\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "47b41849-0812-457b-9fb2-31eb35d5d2da",
-          "name": "Zesty Get an instance",
-          "request": {
-            "name": "Zesty Get an instance",
-            "description": {
-              "content": "Returns details for a specific instance by its ZUID.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "instances",
-                ":instanceZUID"
+                "files",
+                ":fileZUID"
               ],
               "host": [
                 "{{baseUrl}}"
@@ -373,8 +223,8 @@
                   "disabled": false,
                   "type": "any",
                   "value": "<string>",
-                  "key": "instanceZUID",
-                  "description": "(Required) The ZUID of the instance."
+                  "key": "fileZUID",
+                  "description": "(Required) The ZUID of the file."
                 }
               ]
             },
@@ -405,13 +255,13 @@
           },
           "response": [
             {
-              "id": "1ef44a33-8015-4667-9195-fd352b1ce739",
-              "name": "Instance details.",
+              "id": "2ccdf849-cc44-4fb8-8dd7-b765f125de5b",
+              "name": "File details.",
               "originalRequest": {
                 "url": {
                   "path": [
-                    "instances",
-                    ":instanceZUID"
+                    "files",
+                    ":fileZUID"
                   ],
                   "host": [
                     "{{baseUrl}}"
@@ -422,8 +272,8 @@
                       "disabled": false,
                       "type": "any",
                       "value": "<string>",
-                      "key": "instanceZUID",
-                      "description": "(Required) The ZUID of the instance."
+                      "key": "fileZUID",
+                      "description": "(Required) The ZUID of the file."
                     }
                   ]
                 },
@@ -452,18 +302,18 @@
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"code\": 3260,\n  \"data\": {\n    \"ZUID\": \"string\",\n    \"name\": \"string\",\n    \"ecoZUID\": \"string\",\n    \"domain\": \"string\",\n    \"createdAt\": \"1950-04-13T10:35:33.928Z\",\n    \"updatedAt\": \"2009-10-08T21:01:20.366Z\"\n  }\n}",
+              "body": "{\n  \"code\": 7764,\n  \"data\": {\n    \"ZUID\": \"string\",\n    \"binZUID\": \"string\",\n    \"groupZUID\": \"string\",\n    \"fileName\": \"string\",\n    \"title\": \"string\",\n    \"url\": \"https://aofmsBnD.idKYhBMkm0vBY.QVWeVWazZhcpqa\",\n    \"type\": \"string\",\n    \"createdAt\": \"2000-01-24T13:33:16.006Z\",\n    \"updatedAt\": \"2011-02-04T14:44:16.549Z\"\n  }\n}",
               "cookie": [],
               "_postman_previewlanguage": "json"
             },
             {
-              "id": "3f249ead-070f-433f-8785-987012771a89",
+              "id": "74b30316-d291-41fa-9828-42dab9c6298b",
               "name": "Unauthorized.",
               "originalRequest": {
                 "url": {
                   "path": [
-                    "instances",
-                    ":instanceZUID"
+                    "files",
+                    ":fileZUID"
                   ],
                   "host": [
                     "{{baseUrl}}"
@@ -474,8 +324,8 @@
                       "disabled": false,
                       "type": "any",
                       "value": "<string>",
-                      "key": "instanceZUID",
-                      "description": "(Required) The ZUID of the instance."
+                      "key": "fileZUID",
+                      "description": "(Required) The ZUID of the file."
                     }
                   ]
                 },
@@ -505,13 +355,13 @@
               "_postman_previewlanguage": "text"
             },
             {
-              "id": "3406d9bd-9978-42ed-a0c2-87f4cfda07b2",
-              "name": "Instance not found.",
+              "id": "e252fc0b-57de-4602-a21f-c00771792016",
+              "name": "File not found.",
               "originalRequest": {
                 "url": {
                   "path": [
-                    "instances",
-                    ":instanceZUID"
+                    "files",
+                    ":fileZUID"
                   ],
                   "host": [
                     "{{baseUrl}}"
@@ -522,8 +372,8 @@
                       "disabled": false,
                       "type": "any",
                       "value": "<string>",
-                      "key": "instanceZUID",
-                      "description": "(Required) The ZUID of the instance."
+                      "key": "fileZUID",
+                      "description": "(Required) The ZUID of the file."
                     }
                   ]
                 },
@@ -559,18 +409,18 @@
           }
         },
         {
-          "id": "e30b444e-3074-40f5-8245-9b6ce17e9d69",
-          "name": "Zesty Update an instance",
+          "id": "25df175d-a4b8-49f2-9695-b9bbeec8f5b2",
+          "name": "Zesty Update a media file",
           "request": {
-            "name": "Zesty Update an instance",
+            "name": "Zesty Update a media file",
             "description": {
-              "content": "Updates the details of a specific instance.",
+              "content": "Updates the metadata of a specific media file.",
               "type": "text/plain"
             },
             "url": {
               "path": [
-                "instances",
-                ":instanceZUID"
+                "files",
+                ":fileZUID"
               ],
               "host": [
                 "{{baseUrl}}"
@@ -581,8 +431,8 @@
                   "disabled": false,
                   "type": "any",
                   "value": "<string>",
-                  "key": "instanceZUID",
-                  "description": "(Required) The ZUID of the instance."
+                  "key": "fileZUID",
+                  "description": "(Required) The ZUID of the file."
                 }
               ]
             },
@@ -612,7 +462,7 @@
             },
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"name\": \"<string>\"\n}",
+              "raw": "{\n  \"title\": \"<string>\",\n  \"fileName\": \"<string>\",\n  \"groupZUID\": \"<string>\"\n}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -622,13 +472,13 @@
           },
           "response": [
             {
-              "id": "a53e26b2-c3b8-40c4-ad49-9028c8985bae",
-              "name": "Instance updated successfully.",
+              "id": "5caba93b-8d1a-4336-9c92-3192b8a1e8bb",
+              "name": "File updated successfully.",
               "originalRequest": {
                 "url": {
                   "path": [
-                    "instances",
-                    ":instanceZUID"
+                    "files",
+                    ":fileZUID"
                   ],
                   "host": [
                     "{{baseUrl}}"
@@ -639,8 +489,8 @@
                       "disabled": false,
                       "type": "any",
                       "value": "<string>",
-                      "key": "instanceZUID",
-                      "description": "(Required) The ZUID of the instance."
+                      "key": "fileZUID",
+                      "description": "(Required) The ZUID of the file."
                     }
                   ]
                 },
@@ -657,7 +507,7 @@
                 "method": "PUT",
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"name\": \"<string>\"\n}",
+                  "raw": "{\n  \"title\": \"<string>\",\n  \"fileName\": \"<string>\",\n  \"groupZUID\": \"<string>\"\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -678,13 +528,13 @@
               "_postman_previewlanguage": "text"
             },
             {
-              "id": "07256e74-8206-4651-9ecf-b8a915b3556f",
+              "id": "b901e3a3-024c-404b-8f67-2017a3352cce",
               "name": "Unauthorized.",
               "originalRequest": {
                 "url": {
                   "path": [
-                    "instances",
-                    ":instanceZUID"
+                    "files",
+                    ":fileZUID"
                   ],
                   "host": [
                     "{{baseUrl}}"
@@ -695,8 +545,8 @@
                       "disabled": false,
                       "type": "any",
                       "value": "<string>",
-                      "key": "instanceZUID",
-                      "description": "(Required) The ZUID of the instance."
+                      "key": "fileZUID",
+                      "description": "(Required) The ZUID of the file."
                     }
                   ]
                 },
@@ -713,7 +563,7 @@
                 "method": "PUT",
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"name\": \"<string>\"\n}",
+                  "raw": "{\n  \"title\": \"<string>\",\n  \"fileName\": \"<string>\",\n  \"groupZUID\": \"<string>\"\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -734,13 +584,13 @@
               "_postman_previewlanguage": "text"
             },
             {
-              "id": "5ec5b890-1a4b-4376-be9a-1695c4f88447",
-              "name": "Instance not found.",
+              "id": "893e00c4-b87d-4aa0-a20f-e7d6a9b1957d",
+              "name": "File not found.",
               "originalRequest": {
                 "url": {
                   "path": [
-                    "instances",
-                    ":instanceZUID"
+                    "files",
+                    ":fileZUID"
                   ],
                   "host": [
                     "{{baseUrl}}"
@@ -751,8 +601,8 @@
                       "disabled": false,
                       "type": "any",
                       "value": "<string>",
-                      "key": "instanceZUID",
-                      "description": "(Required) The ZUID of the instance."
+                      "key": "fileZUID",
+                      "description": "(Required) The ZUID of the file."
                     }
                   ]
                 },
@@ -769,7 +619,7 @@
                 "method": "PUT",
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"name\": \"<string>\"\n}",
+                  "raw": "{\n  \"title\": \"<string>\",\n  \"fileName\": \"<string>\",\n  \"groupZUID\": \"<string>\"\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -796,18 +646,18 @@
           }
         },
         {
-          "id": "4af7f2b5-9f57-4877-8194-0dca3af16938",
-          "name": "Zesty Delete an instance",
+          "id": "0d747f9c-6288-4aff-9773-99b099f54864",
+          "name": "Zesty Delete a media file",
           "request": {
-            "name": "Zesty Delete an instance",
+            "name": "Zesty Delete a media file",
             "description": {
-              "content": "Deletes a specific instance.",
+              "content": "Deletes a specific media file.",
               "type": "text/plain"
             },
             "url": {
               "path": [
-                "instances",
-                ":instanceZUID"
+                "files",
+                ":fileZUID"
               ],
               "host": [
                 "{{baseUrl}}"
@@ -818,8 +668,8 @@
                   "disabled": false,
                   "type": "any",
                   "value": "<string>",
-                  "key": "instanceZUID",
-                  "description": "(Required) The ZUID of the instance."
+                  "key": "fileZUID",
+                  "description": "(Required) The ZUID of the file."
                 }
               ]
             },
@@ -844,13 +694,13 @@
           },
           "response": [
             {
-              "id": "6dc4c2a8-0dd6-4193-b9ea-5a7bfe91096c",
-              "name": "Instance deleted successfully.",
+              "id": "6db126bf-f73a-4b74-b1cc-e2c758b979e4",
+              "name": "File deleted successfully.",
               "originalRequest": {
                 "url": {
                   "path": [
-                    "instances",
-                    ":instanceZUID"
+                    "files",
+                    ":fileZUID"
                   ],
                   "host": [
                     "{{baseUrl}}"
@@ -861,8 +711,8 @@
                       "disabled": false,
                       "type": "any",
                       "value": "<string>",
-                      "key": "instanceZUID",
-                      "description": "(Required) The ZUID of the instance."
+                      "key": "fileZUID",
+                      "description": "(Required) The ZUID of the file."
                     }
                   ]
                 },
@@ -892,13 +742,13 @@
               "_postman_previewlanguage": "text"
             },
             {
-              "id": "f432cc59-7abe-4e7c-a777-7cd2f5e3bd88",
+              "id": "cc1508bb-2660-4709-8cf6-a3b075ab094f",
               "name": "Unauthorized.",
               "originalRequest": {
                 "url": {
                   "path": [
-                    "instances",
-                    ":instanceZUID"
+                    "files",
+                    ":fileZUID"
                   ],
                   "host": [
                     "{{baseUrl}}"
@@ -909,8 +759,8 @@
                       "disabled": false,
                       "type": "any",
                       "value": "<string>",
-                      "key": "instanceZUID",
-                      "description": "(Required) The ZUID of the instance."
+                      "key": "fileZUID",
+                      "description": "(Required) The ZUID of the file."
                     }
                   ]
                 },
@@ -940,13 +790,13 @@
               "_postman_previewlanguage": "text"
             },
             {
-              "id": "45e66fdd-5c11-409e-ae73-855ce7c847e4",
-              "name": "Instance not found.",
+              "id": "a200acac-aa3f-47c4-9609-f7d885a65fe7",
+              "name": "File not found.",
               "originalRequest": {
                 "url": {
                   "path": [
-                    "instances",
-                    ":instanceZUID"
+                    "files",
+                    ":fileZUID"
                   ],
                   "host": [
                     "{{baseUrl}}"
@@ -957,8 +807,8 @@
                       "disabled": false,
                       "type": "any",
                       "value": "<string>",
-                      "key": "instanceZUID",
-                      "description": "(Required) The ZUID of the instance."
+                      "key": "fileZUID",
+                      "description": "(Required) The ZUID of the file."
                     }
                   ]
                 },
@@ -977,6 +827,365 @@
               },
               "status": "Not Found",
               "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "69bdd904-8b5c-4d34-8c7d-92cf4e5f7724",
+          "name": "Zesty Upload a media file",
+          "request": {
+            "name": "Zesty Upload a media file",
+            "description": {
+              "content": "Uploads a new media file to the specified bin and group. Supports images, documents, and other file types.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "upload",
+                ":binZUID",
+                ":groupZUID"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "binZUID",
+                  "description": "(Required) The ZUID of the bin to upload to."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "groupZUID",
+                  "description": "(Required) The ZUID of the group (folder) to upload to."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "multipart/form-data"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "file",
+                  "type": "file",
+                  "description": "(Required) The file to upload."
+                },
+                {
+                  "key": "title",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "The file title."
+                },
+                {
+                  "key": "fileName",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "The desired file name."
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "f6a11469-63fd-495f-bf44-0e457ef11fea",
+              "name": "File uploaded successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "upload",
+                    ":binZUID",
+                    ":groupZUID"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "binZUID",
+                      "description": "(Required) The ZUID of the bin to upload to."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "groupZUID",
+                      "description": "(Required) The ZUID of the group (folder) to upload to."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "(Required) The file to upload.",
+                        "type": "text/plain"
+                      },
+                      "key": "file",
+                      "value": "<binary>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "The file title.",
+                        "type": "text/plain"
+                      },
+                      "key": "title",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "The desired file name.",
+                        "type": "text/plain"
+                      },
+                      "key": "fileName",
+                      "value": "<string>",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 7764,\n  \"data\": {\n    \"ZUID\": \"string\",\n    \"binZUID\": \"string\",\n    \"groupZUID\": \"string\",\n    \"fileName\": \"string\",\n    \"title\": \"string\",\n    \"url\": \"https://aofmsBnD.idKYhBMkm0vBY.QVWeVWazZhcpqa\",\n    \"type\": \"string\",\n    \"createdAt\": \"2000-01-24T13:33:16.006Z\",\n    \"updatedAt\": \"2011-02-04T14:44:16.549Z\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "110abd69-ad4e-4ff7-ae45-173f095be02a",
+              "name": "Invalid request or unsupported file type.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "upload",
+                    ":binZUID",
+                    ":groupZUID"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "binZUID",
+                      "description": "(Required) The ZUID of the bin to upload to."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "groupZUID",
+                      "description": "(Required) The ZUID of the group (folder) to upload to."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "(Required) The file to upload.",
+                        "type": "text/plain"
+                      },
+                      "key": "file",
+                      "value": "<binary>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "The file title.",
+                        "type": "text/plain"
+                      },
+                      "key": "title",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "The desired file name.",
+                        "type": "text/plain"
+                      },
+                      "key": "fileName",
+                      "value": "<string>",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "67ad3f44-d9be-45f8-b6f7-7404ad3529fa",
+              "name": "Unauthorized.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "upload",
+                    ":binZUID",
+                    ":groupZUID"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "binZUID",
+                      "description": "(Required) The ZUID of the bin to upload to."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "groupZUID",
+                      "description": "(Required) The ZUID of the group (folder) to upload to."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "(Required) The file to upload.",
+                        "type": "text/plain"
+                      },
+                      "key": "file",
+                      "value": "<binary>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "The file title.",
+                        "type": "text/plain"
+                      },
+                      "key": "title",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "The desired file name.",
+                        "type": "text/plain"
+                      },
+                      "key": "fileName",
+                      "value": "<string>",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
               "header": [
                 {
                   "key": "Content-Type",
@@ -1006,8 +1215,8 @@
     }
   ],
   "info": {
-    "_postman_id": "93c3a45b-915f-4f12-92f0-216ffddd98a2",
-    "name": "Zesty Accounts Apps Instances API",
+    "_postman_id": "1c3fcb08-9198-47f4-a8fb-660cc4157750",
+    "name": "Zesty Accounts Apps Files API",
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
     "description": {
       "content": "The Zesty.io Accounts API is used to manage users, roles, instances, teams, tokens, ecosystems, webhooks, and apps. It provides administrative control over the organizational structure of a Zesty.io account. All endpoints require authentication via a session token obtained from the Auth API.\n\nContact Support:\n Name: Zesty.io",

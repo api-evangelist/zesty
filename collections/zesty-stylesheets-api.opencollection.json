@@ -1,24 +1,24 @@
 {
   "opencollection": "1.0.0",
   "info": {
-    "name": "Zesty Accounts Apps Instances API",
+    "name": "Zesty Accounts Apps Stylesheets API",
     "version": "1.0.0"
   },
   "items": [
     {
       "info": {
-        "name": "Instances",
+        "name": "Stylesheets",
         "type": "folder"
       },
       "items": [
         {
           "info": {
-            "name": "Zesty List all instances",
+            "name": "Zesty List all stylesheets",
             "type": "http"
           },
           "http": {
             "method": "GET",
-            "url": "https://accounts.api.zesty.io/v1/instances",
+            "url": "https://accounts.api.zesty.io/v1/web/stylesheets",
             "auth": {
               "type": "apikey",
               "key": "Authorization",
@@ -26,16 +26,16 @@
               "placement": "header"
             }
           },
-          "docs": "Returns a list of all instances accessible to the authenticated user."
+          "docs": "Returns a list of all stylesheet files in the instance."
         },
         {
           "info": {
-            "name": "Zesty Create a new instance",
+            "name": "Zesty Create a stylesheet",
             "type": "http"
           },
           "http": {
             "method": "POST",
-            "url": "https://accounts.api.zesty.io/v1/instances",
+            "url": "https://accounts.api.zesty.io/v1/web/stylesheets",
             "body": {
               "type": "json",
               "data": "{}"
@@ -47,22 +47,22 @@
               "placement": "header"
             }
           },
-          "docs": "Creates a new Zesty.io instance."
+          "docs": "Creates a new stylesheet file in the instance."
         },
         {
           "info": {
-            "name": "Zesty Get an instance",
+            "name": "Zesty Get a stylesheet",
             "type": "http"
           },
           "http": {
             "method": "GET",
-            "url": "https://accounts.api.zesty.io/v1/instances/:instanceZUID",
+            "url": "https://accounts.api.zesty.io/v1/web/stylesheets/:stylesheetZUID",
             "params": [
               {
-                "name": "instanceZUID",
+                "name": "stylesheetZUID",
                 "value": "",
                 "type": "path",
-                "description": "The ZUID of the instance."
+                "description": "The ZUID of the stylesheet."
               }
             ],
             "auth": {
@@ -72,22 +72,22 @@
               "placement": "header"
             }
           },
-          "docs": "Returns details for a specific instance by its ZUID."
+          "docs": "Returns a specific stylesheet and its code content."
         },
         {
           "info": {
-            "name": "Zesty Update an instance",
+            "name": "Zesty Update a stylesheet",
             "type": "http"
           },
           "http": {
             "method": "PUT",
-            "url": "https://accounts.api.zesty.io/v1/instances/:instanceZUID",
+            "url": "https://accounts.api.zesty.io/v1/web/stylesheets/:stylesheetZUID",
             "params": [
               {
-                "name": "instanceZUID",
+                "name": "stylesheetZUID",
                 "value": "",
                 "type": "path",
-                "description": "The ZUID of the instance."
+                "description": "The ZUID of the stylesheet."
               }
             ],
             "body": {
@@ -101,32 +101,7 @@
               "placement": "header"
             }
           },
-          "docs": "Updates the details of a specific instance."
-        },
-        {
-          "info": {
-            "name": "Zesty Delete an instance",
-            "type": "http"
-          },
-          "http": {
-            "method": "DELETE",
-            "url": "https://accounts.api.zesty.io/v1/instances/:instanceZUID",
-            "params": [
-              {
-                "name": "instanceZUID",
-                "value": "",
-                "type": "path",
-                "description": "The ZUID of the instance."
-              }
-            ],
-            "auth": {
-              "type": "apikey",
-              "key": "Authorization",
-              "value": "{{Authorization}}",
-              "placement": "header"
-            }
-          },
-          "docs": "Deletes a specific instance."
+          "docs": "Updates the code content of a specific stylesheet."
         }
       ]
     }

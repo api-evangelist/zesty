@@ -1,25 +1,26 @@
 {
   "item": [
     {
-      "id": "8d83400e-b1f5-4ca8-9b33-9de3a5e8b83b",
-      "name": "Instances",
+      "id": "e2507c23-00c9-4a02-84e0-ef6933fadea6",
+      "name": "Views",
       "description": {
-        "content": "Manage Zesty.io instances.",
+        "content": "Manage view template files.",
         "type": "text/plain"
       },
       "item": [
         {
-          "id": "f2eacff3-de1c-4676-8c35-2346d559985b",
-          "name": "Zesty List all instances",
+          "id": "da26cb40-1db9-49e6-8cde-127337a43f94",
+          "name": "Zesty List all views",
           "request": {
-            "name": "Zesty List all instances",
+            "name": "Zesty List all views",
             "description": {
-              "content": "Returns a list of all instances accessible to the authenticated user.",
+              "content": "Returns a list of all view files (templates) in the instance.",
               "type": "text/plain"
             },
             "url": {
               "path": [
-                "instances"
+                "web",
+                "views"
               ],
               "host": [
                 "{{baseUrl}}"
@@ -54,12 +55,13 @@
           },
           "response": [
             {
-              "id": "2cf8431f-bd5c-4982-9016-5b6f2451a94b",
-              "name": "A list of instances.",
+              "id": "97f0aa2a-81e2-4409-9bbf-4b033e004915",
+              "name": "A list of views.",
               "originalRequest": {
                 "url": {
                   "path": [
-                    "instances"
+                    "web",
+                    "views"
                   ],
                   "host": [
                     "{{baseUrl}}"
@@ -92,17 +94,18 @@
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"code\": 6755,\n  \"data\": [\n    {\n      \"ZUID\": \"string\",\n      \"name\": \"string\",\n      \"ecoZUID\": \"string\",\n      \"domain\": \"string\",\n      \"createdAt\": \"1964-12-02T06:12:08.801Z\",\n      \"updatedAt\": \"1956-09-05T01:49:00.162Z\"\n    },\n    {\n      \"ZUID\": \"string\",\n      \"name\": \"string\",\n      \"ecoZUID\": \"string\",\n      \"domain\": \"string\",\n      \"createdAt\": \"2002-05-28T15:46:06.162Z\",\n      \"updatedAt\": \"1974-12-24T09:44:18.663Z\"\n    }\n  ]\n}",
+              "body": "{\n  \"code\": 6429,\n  \"data\": [\n    {\n      \"ZUID\": \"string\",\n      \"fileName\": \"string\",\n      \"code\": \"string\",\n      \"type\": \"string\",\n      \"version\": 133,\n      \"createdAt\": \"1986-06-25T22:49:25.961Z\",\n      \"updatedAt\": \"2004-08-28T15:22:39.284Z\"\n    },\n    {\n      \"ZUID\": \"string\",\n      \"fileName\": \"string\",\n      \"code\": \"string\",\n      \"type\": \"string\",\n      \"version\": 2329,\n      \"createdAt\": \"1970-10-07T14:03:37.085Z\",\n      \"updatedAt\": \"1998-11-15T05:08:25.841Z\"\n    }\n  ]\n}",
               "cookie": [],
               "_postman_previewlanguage": "json"
             },
             {
-              "id": "e395e810-841c-49cc-a255-1041b17da81c",
+              "id": "42d4d76b-4b08-4526-ae45-184b8d6efe76",
               "name": "Unauthorized.",
               "originalRequest": {
                 "url": {
                   "path": [
-                    "instances"
+                    "web",
+                    "views"
                   ],
                   "host": [
                     "{{baseUrl}}"
@@ -142,17 +145,18 @@
           }
         },
         {
-          "id": "b96d72f7-bdb0-467f-a0a4-5efd69097b7a",
-          "name": "Zesty Create a new instance",
+          "id": "cd645339-3a18-4992-bdfe-5b4f7df91bc5",
+          "name": "Zesty Create a view",
           "request": {
-            "name": "Zesty Create a new instance",
+            "name": "Zesty Create a view",
             "description": {
-              "content": "Creates a new Zesty.io instance.",
+              "content": "Creates a new view file in the instance.",
               "type": "text/plain"
             },
             "url": {
               "path": [
-                "instances"
+                "web",
+                "views"
               ],
               "host": [
                 "{{baseUrl}}"
@@ -163,10 +167,6 @@
             "header": [
               {
                 "key": "Content-Type",
-                "value": "application/json"
-              },
-              {
-                "key": "Accept",
                 "value": "application/json"
               }
             ],
@@ -190,7 +190,7 @@
             },
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"name\": \"<string>\",\n  \"ecoZUID\": \"<string>\"\n}",
+              "raw": "{\n  \"fileName\": \"<string>\",\n  \"code\": \"<string>\",\n  \"type\": \"<string>\"\n}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -200,12 +200,13 @@
           },
           "response": [
             {
-              "id": "1933b05a-56a3-47ff-9288-ac592ae01eee",
-              "name": "Instance created successfully.",
+              "id": "c101257c-df55-4151-a4b9-3a5fb995c9be",
+              "name": "View created successfully.",
               "originalRequest": {
                 "url": {
                   "path": [
-                    "instances"
+                    "web",
+                    "views"
                   ],
                   "host": [
                     "{{baseUrl}}"
@@ -221,16 +222,12 @@
                     },
                     "key": "Authorization",
                     "value": "<API Key>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
                   }
                 ],
                 "method": "POST",
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"name\": \"<string>\",\n  \"ecoZUID\": \"<string>\"\n}",
+                  "raw": "{\n  \"fileName\": \"<string>\",\n  \"code\": \"<string>\",\n  \"type\": \"<string>\"\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -243,20 +240,21 @@
               "header": [
                 {
                   "key": "Content-Type",
-                  "value": "application/json"
+                  "value": "text/plain"
                 }
               ],
-              "body": "{\n  \"code\": 3260,\n  \"data\": {\n    \"ZUID\": \"string\",\n    \"name\": \"string\",\n    \"ecoZUID\": \"string\",\n    \"domain\": \"string\",\n    \"createdAt\": \"1950-04-13T10:35:33.928Z\",\n    \"updatedAt\": \"2009-10-08T21:01:20.366Z\"\n  }\n}",
+              "body": "",
               "cookie": [],
-              "_postman_previewlanguage": "json"
+              "_postman_previewlanguage": "text"
             },
             {
-              "id": "2cade95f-789e-40ff-92c9-4cd863bbdad7",
+              "id": "a855eebd-439c-46f2-adae-b7c29bfb9edc",
               "name": "Invalid request.",
               "originalRequest": {
                 "url": {
                   "path": [
-                    "instances"
+                    "web",
+                    "views"
                   ],
                   "host": [
                     "{{baseUrl}}"
@@ -277,7 +275,7 @@
                 "method": "POST",
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"name\": \"<string>\",\n  \"ecoZUID\": \"<string>\"\n}",
+                  "raw": "{\n  \"fileName\": \"<string>\",\n  \"code\": \"<string>\",\n  \"type\": \"<string>\"\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -298,12 +296,13 @@
               "_postman_previewlanguage": "text"
             },
             {
-              "id": "78577044-7bf9-4d1c-a22a-12bab0bafe90",
+              "id": "52046b07-5d5a-4703-9392-55c7f6700e0e",
               "name": "Unauthorized.",
               "originalRequest": {
                 "url": {
                   "path": [
-                    "instances"
+                    "web",
+                    "views"
                   ],
                   "host": [
                     "{{baseUrl}}"
@@ -324,7 +323,7 @@
                 "method": "POST",
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"name\": \"<string>\",\n  \"ecoZUID\": \"<string>\"\n}",
+                  "raw": "{\n  \"fileName\": \"<string>\",\n  \"code\": \"<string>\",\n  \"type\": \"<string>\"\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -351,18 +350,19 @@
           }
         },
         {
-          "id": "47b41849-0812-457b-9fb2-31eb35d5d2da",
-          "name": "Zesty Get an instance",
+          "id": "40654185-53c8-4f66-9f3e-36fdcbadf81f",
+          "name": "Zesty Get a view",
           "request": {
-            "name": "Zesty Get an instance",
+            "name": "Zesty Get a view",
             "description": {
-              "content": "Returns details for a specific instance by its ZUID.",
+              "content": "Returns a specific view file and its code content.",
               "type": "text/plain"
             },
             "url": {
               "path": [
-                "instances",
-                ":instanceZUID"
+                "web",
+                "views",
+                ":viewZUID"
               ],
               "host": [
                 "{{baseUrl}}"
@@ -373,8 +373,8 @@
                   "disabled": false,
                   "type": "any",
                   "value": "<string>",
-                  "key": "instanceZUID",
-                  "description": "(Required) The ZUID of the instance."
+                  "key": "viewZUID",
+                  "description": "(Required) The ZUID of the view."
                 }
               ]
             },
@@ -405,13 +405,14 @@
           },
           "response": [
             {
-              "id": "1ef44a33-8015-4667-9195-fd352b1ce739",
-              "name": "Instance details.",
+              "id": "e8fd7f74-95a8-44dd-bdee-d840d293afb4",
+              "name": "View details.",
               "originalRequest": {
                 "url": {
                   "path": [
-                    "instances",
-                    ":instanceZUID"
+                    "web",
+                    "views",
+                    ":viewZUID"
                   ],
                   "host": [
                     "{{baseUrl}}"
@@ -422,8 +423,8 @@
                       "disabled": false,
                       "type": "any",
                       "value": "<string>",
-                      "key": "instanceZUID",
-                      "description": "(Required) The ZUID of the instance."
+                      "key": "viewZUID",
+                      "description": "(Required) The ZUID of the view."
                     }
                   ]
                 },
@@ -452,18 +453,19 @@
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"code\": 3260,\n  \"data\": {\n    \"ZUID\": \"string\",\n    \"name\": \"string\",\n    \"ecoZUID\": \"string\",\n    \"domain\": \"string\",\n    \"createdAt\": \"1950-04-13T10:35:33.928Z\",\n    \"updatedAt\": \"2009-10-08T21:01:20.366Z\"\n  }\n}",
+              "body": "{\n  \"code\": 8129,\n  \"data\": {\n    \"ZUID\": \"string\",\n    \"fileName\": \"string\",\n    \"code\": \"string\",\n    \"type\": \"string\",\n    \"version\": 4459,\n    \"createdAt\": \"2021-09-17T13:16:55.620Z\",\n    \"updatedAt\": \"1975-02-02T20:14:31.180Z\"\n  }\n}",
               "cookie": [],
               "_postman_previewlanguage": "json"
             },
             {
-              "id": "3f249ead-070f-433f-8785-987012771a89",
+              "id": "977f6205-afa0-4f4f-b7e5-e679f9bd074a",
               "name": "Unauthorized.",
               "originalRequest": {
                 "url": {
                   "path": [
-                    "instances",
-                    ":instanceZUID"
+                    "web",
+                    "views",
+                    ":viewZUID"
                   ],
                   "host": [
                     "{{baseUrl}}"
@@ -474,8 +476,8 @@
                       "disabled": false,
                       "type": "any",
                       "value": "<string>",
-                      "key": "instanceZUID",
-                      "description": "(Required) The ZUID of the instance."
+                      "key": "viewZUID",
+                      "description": "(Required) The ZUID of the view."
                     }
                   ]
                 },
@@ -505,13 +507,14 @@
               "_postman_previewlanguage": "text"
             },
             {
-              "id": "3406d9bd-9978-42ed-a0c2-87f4cfda07b2",
-              "name": "Instance not found.",
+              "id": "a0a1a566-3d4a-4800-825e-b14b0b347d18",
+              "name": "View not found.",
               "originalRequest": {
                 "url": {
                   "path": [
-                    "instances",
-                    ":instanceZUID"
+                    "web",
+                    "views",
+                    ":viewZUID"
                   ],
                   "host": [
                     "{{baseUrl}}"
@@ -522,8 +525,8 @@
                       "disabled": false,
                       "type": "any",
                       "value": "<string>",
-                      "key": "instanceZUID",
-                      "description": "(Required) The ZUID of the instance."
+                      "key": "viewZUID",
+                      "description": "(Required) The ZUID of the view."
                     }
                   ]
                 },
@@ -559,18 +562,19 @@
           }
         },
         {
-          "id": "e30b444e-3074-40f5-8245-9b6ce17e9d69",
-          "name": "Zesty Update an instance",
+          "id": "ca0e8567-461a-4306-b3e4-ecb52c5a9e37",
+          "name": "Zesty Update a view",
           "request": {
-            "name": "Zesty Update an instance",
+            "name": "Zesty Update a view",
             "description": {
-              "content": "Updates the details of a specific instance.",
+              "content": "Updates the code content of a specific view file.",
               "type": "text/plain"
             },
             "url": {
               "path": [
-                "instances",
-                ":instanceZUID"
+                "web",
+                "views",
+                ":viewZUID"
               ],
               "host": [
                 "{{baseUrl}}"
@@ -581,8 +585,8 @@
                   "disabled": false,
                   "type": "any",
                   "value": "<string>",
-                  "key": "instanceZUID",
-                  "description": "(Required) The ZUID of the instance."
+                  "key": "viewZUID",
+                  "description": "(Required) The ZUID of the view."
                 }
               ]
             },
@@ -612,7 +616,7 @@
             },
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"name\": \"<string>\"\n}",
+              "raw": "{\n  \"code\": \"<string>\"\n}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -622,13 +626,14 @@
           },
           "response": [
             {
-              "id": "a53e26b2-c3b8-40c4-ad49-9028c8985bae",
-              "name": "Instance updated successfully.",
+              "id": "518d759f-2edd-4625-8408-bfd1e993537e",
+              "name": "View updated successfully.",
               "originalRequest": {
                 "url": {
                   "path": [
-                    "instances",
-                    ":instanceZUID"
+                    "web",
+                    "views",
+                    ":viewZUID"
                   ],
                   "host": [
                     "{{baseUrl}}"
@@ -639,8 +644,8 @@
                       "disabled": false,
                       "type": "any",
                       "value": "<string>",
-                      "key": "instanceZUID",
-                      "description": "(Required) The ZUID of the instance."
+                      "key": "viewZUID",
+                      "description": "(Required) The ZUID of the view."
                     }
                   ]
                 },
@@ -657,7 +662,7 @@
                 "method": "PUT",
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"name\": \"<string>\"\n}",
+                  "raw": "{\n  \"code\": \"<string>\"\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -678,13 +683,14 @@
               "_postman_previewlanguage": "text"
             },
             {
-              "id": "07256e74-8206-4651-9ecf-b8a915b3556f",
+              "id": "5dfb3489-cd20-4443-954b-6b7ac649e8dd",
               "name": "Unauthorized.",
               "originalRequest": {
                 "url": {
                   "path": [
-                    "instances",
-                    ":instanceZUID"
+                    "web",
+                    "views",
+                    ":viewZUID"
                   ],
                   "host": [
                     "{{baseUrl}}"
@@ -695,8 +701,8 @@
                       "disabled": false,
                       "type": "any",
                       "value": "<string>",
-                      "key": "instanceZUID",
-                      "description": "(Required) The ZUID of the instance."
+                      "key": "viewZUID",
+                      "description": "(Required) The ZUID of the view."
                     }
                   ]
                 },
@@ -713,7 +719,7 @@
                 "method": "PUT",
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"name\": \"<string>\"\n}",
+                  "raw": "{\n  \"code\": \"<string>\"\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -734,13 +740,14 @@
               "_postman_previewlanguage": "text"
             },
             {
-              "id": "5ec5b890-1a4b-4376-be9a-1695c4f88447",
-              "name": "Instance not found.",
+              "id": "a1806fda-fdb3-4362-889f-1730896ae060",
+              "name": "View not found.",
               "originalRequest": {
                 "url": {
                   "path": [
-                    "instances",
-                    ":instanceZUID"
+                    "web",
+                    "views",
+                    ":viewZUID"
                   ],
                   "host": [
                     "{{baseUrl}}"
@@ -751,8 +758,8 @@
                       "disabled": false,
                       "type": "any",
                       "value": "<string>",
-                      "key": "instanceZUID",
-                      "description": "(Required) The ZUID of the instance."
+                      "key": "viewZUID",
+                      "description": "(Required) The ZUID of the view."
                     }
                   ]
                 },
@@ -769,211 +776,13 @@
                 "method": "PUT",
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"name\": \"<string>\"\n}",
+                  "raw": "{\n  \"code\": \"<string>\"\n}",
                   "options": {
                     "raw": {
                       "language": "json"
                     }
                   }
                 }
-              },
-              "status": "Not Found",
-              "code": 404,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "4af7f2b5-9f57-4877-8194-0dca3af16938",
-          "name": "Zesty Delete an instance",
-          "request": {
-            "name": "Zesty Delete an instance",
-            "description": {
-              "content": "Deletes a specific instance.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "instances",
-                ":instanceZUID"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "instanceZUID",
-                  "description": "(Required) The ZUID of the instance."
-                }
-              ]
-            },
-            "method": "DELETE",
-            "auth": {
-              "type": "apikey",
-              "apikey": [
-                {
-                  "key": "key",
-                  "value": "Authorization"
-                },
-                {
-                  "key": "value",
-                  "value": "{{apiKey}}"
-                },
-                {
-                  "key": "in",
-                  "value": "header"
-                }
-              ]
-            }
-          },
-          "response": [
-            {
-              "id": "6dc4c2a8-0dd6-4193-b9ea-5a7bfe91096c",
-              "name": "Instance deleted successfully.",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "instances",
-                    ":instanceZUID"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "instanceZUID",
-                      "description": "(Required) The ZUID of the instance."
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "<API Key>"
-                  }
-                ],
-                "method": "DELETE",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "f432cc59-7abe-4e7c-a777-7cd2f5e3bd88",
-              "name": "Unauthorized.",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "instances",
-                    ":instanceZUID"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "instanceZUID",
-                      "description": "(Required) The ZUID of the instance."
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "<API Key>"
-                  }
-                ],
-                "method": "DELETE",
-                "body": {}
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "45e66fdd-5c11-409e-ae73-855ce7c847e4",
-              "name": "Instance not found.",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "instances",
-                    ":instanceZUID"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "instanceZUID",
-                      "description": "(Required) The ZUID of the instance."
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "<API Key>"
-                  }
-                ],
-                "method": "DELETE",
-                "body": {}
               },
               "status": "Not Found",
               "code": 404,
@@ -1006,8 +815,8 @@
     }
   ],
   "info": {
-    "_postman_id": "93c3a45b-915f-4f12-92f0-216ffddd98a2",
-    "name": "Zesty Accounts Apps Instances API",
+    "_postman_id": "b8fd8d88-91a9-439a-b1ea-a15454e96b80",
+    "name": "Zesty Accounts Apps Views API",
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
     "description": {
       "content": "The Zesty.io Accounts API is used to manage users, roles, instances, teams, tokens, ecosystems, webhooks, and apps. It provides administrative control over the organizational structure of a Zesty.io account. All endpoints require authentication via a session token obtained from the Auth API.\n\nContact Support:\n Name: Zesty.io",

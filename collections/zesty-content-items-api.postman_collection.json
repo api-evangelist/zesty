@@ -1,368 +1,28 @@
 {
   "item": [
     {
-      "id": "8d83400e-b1f5-4ca8-9b33-9de3a5e8b83b",
-      "name": "Instances",
+      "id": "f84a4aa3-74c4-42bd-8ec2-e4e866bc4692",
+      "name": "Content Items",
       "description": {
-        "content": "Manage Zesty.io instances.",
+        "content": "Manage content item data.",
         "type": "text/plain"
       },
       "item": [
         {
-          "id": "f2eacff3-de1c-4676-8c35-2346d559985b",
-          "name": "Zesty List all instances",
+          "id": "b10ea6d6-03e3-4869-bab3-d30532d8481c",
+          "name": "Zesty List content items for a model",
           "request": {
-            "name": "Zesty List all instances",
+            "name": "Zesty List content items for a model",
             "description": {
-              "content": "Returns a list of all instances accessible to the authenticated user.",
+              "content": "Returns all content items for the specified content model.",
               "type": "text/plain"
             },
             "url": {
               "path": [
-                "instances"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": {
-              "type": "apikey",
-              "apikey": [
-                {
-                  "key": "key",
-                  "value": "Authorization"
-                },
-                {
-                  "key": "value",
-                  "value": "{{apiKey}}"
-                },
-                {
-                  "key": "in",
-                  "value": "header"
-                }
-              ]
-            }
-          },
-          "response": [
-            {
-              "id": "2cf8431f-bd5c-4982-9016-5b6f2451a94b",
-              "name": "A list of instances.",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "instances"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "<API Key>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"code\": 6755,\n  \"data\": [\n    {\n      \"ZUID\": \"string\",\n      \"name\": \"string\",\n      \"ecoZUID\": \"string\",\n      \"domain\": \"string\",\n      \"createdAt\": \"1964-12-02T06:12:08.801Z\",\n      \"updatedAt\": \"1956-09-05T01:49:00.162Z\"\n    },\n    {\n      \"ZUID\": \"string\",\n      \"name\": \"string\",\n      \"ecoZUID\": \"string\",\n      \"domain\": \"string\",\n      \"createdAt\": \"2002-05-28T15:46:06.162Z\",\n      \"updatedAt\": \"1974-12-24T09:44:18.663Z\"\n    }\n  ]\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "e395e810-841c-49cc-a255-1041b17da81c",
-              "name": "Unauthorized.",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "instances"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "<API Key>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "b96d72f7-bdb0-467f-a0a4-5efd69097b7a",
-          "name": "Zesty Create a new instance",
-          "request": {
-            "name": "Zesty Create a new instance",
-            "description": {
-              "content": "Creates a new Zesty.io instance.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "instances"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
-            },
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              },
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "POST",
-            "auth": {
-              "type": "apikey",
-              "apikey": [
-                {
-                  "key": "key",
-                  "value": "Authorization"
-                },
-                {
-                  "key": "value",
-                  "value": "{{apiKey}}"
-                },
-                {
-                  "key": "in",
-                  "value": "header"
-                }
-              ]
-            },
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"name\": \"<string>\",\n  \"ecoZUID\": \"<string>\"\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            }
-          },
-          "response": [
-            {
-              "id": "1933b05a-56a3-47ff-9288-ac592ae01eee",
-              "name": "Instance created successfully.",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "instances"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "<API Key>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"name\": \"<string>\",\n  \"ecoZUID\": \"<string>\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Created",
-              "code": 201,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"code\": 3260,\n  \"data\": {\n    \"ZUID\": \"string\",\n    \"name\": \"string\",\n    \"ecoZUID\": \"string\",\n    \"domain\": \"string\",\n    \"createdAt\": \"1950-04-13T10:35:33.928Z\",\n    \"updatedAt\": \"2009-10-08T21:01:20.366Z\"\n  }\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "2cade95f-789e-40ff-92c9-4cd863bbdad7",
-              "name": "Invalid request.",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "instances"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "<API Key>"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"name\": \"<string>\",\n  \"ecoZUID\": \"<string>\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Bad Request",
-              "code": 400,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "78577044-7bf9-4d1c-a22a-12bab0bafe90",
-              "name": "Unauthorized.",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "instances"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "<API Key>"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"name\": \"<string>\",\n  \"ecoZUID\": \"<string>\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "47b41849-0812-457b-9fb2-31eb35d5d2da",
-          "name": "Zesty Get an instance",
-          "request": {
-            "name": "Zesty Get an instance",
-            "description": {
-              "content": "Returns details for a specific instance by its ZUID.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "instances",
-                ":instanceZUID"
+                "content",
+                "models",
+                ":modelZUID",
+                "items"
               ],
               "host": [
                 "{{baseUrl}}"
@@ -373,8 +33,8 @@
                   "disabled": false,
                   "type": "any",
                   "value": "<string>",
-                  "key": "instanceZUID",
-                  "description": "(Required) The ZUID of the instance."
+                  "key": "modelZUID",
+                  "description": "(Required) The ZUID of the content model."
                 }
               ]
             },
@@ -405,13 +65,15 @@
           },
           "response": [
             {
-              "id": "1ef44a33-8015-4667-9195-fd352b1ce739",
-              "name": "Instance details.",
+              "id": "8b33f55d-99af-4c5b-9ede-c2eaab32b0d4",
+              "name": "A list of content items.",
               "originalRequest": {
                 "url": {
                   "path": [
-                    "instances",
-                    ":instanceZUID"
+                    "content",
+                    "models",
+                    ":modelZUID",
+                    "items"
                   ],
                   "host": [
                     "{{baseUrl}}"
@@ -422,8 +84,8 @@
                       "disabled": false,
                       "type": "any",
                       "value": "<string>",
-                      "key": "instanceZUID",
-                      "description": "(Required) The ZUID of the instance."
+                      "key": "modelZUID",
+                      "description": "(Required) The ZUID of the content model."
                     }
                   ]
                 },
@@ -452,18 +114,20 @@
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"code\": 3260,\n  \"data\": {\n    \"ZUID\": \"string\",\n    \"name\": \"string\",\n    \"ecoZUID\": \"string\",\n    \"domain\": \"string\",\n    \"createdAt\": \"1950-04-13T10:35:33.928Z\",\n    \"updatedAt\": \"2009-10-08T21:01:20.366Z\"\n  }\n}",
+              "body": "{\n  \"code\": 4987,\n  \"data\": [\n    {\n      \"ZUID\": \"string\",\n      \"data\": {},\n      \"web\": {\n        \"pathPart\": \"string\",\n        \"path\": \"string\",\n        \"metaTitle\": \"string\",\n        \"metaDescription\": \"string\",\n        \"metaLinkText\": \"string\"\n      },\n      \"meta\": {\n        \"ZUID\": \"string\",\n        \"contentModelZUID\": \"string\",\n        \"langID\": 7526,\n        \"version\": 2440,\n        \"createdAt\": \"1990-06-05T22:57:22.807Z\",\n        \"updatedAt\": \"1961-05-18T06:24:39.294Z\"\n      }\n    },\n    {\n      \"ZUID\": \"string\",\n      \"data\": {},\n      \"web\": {\n        \"pathPart\": \"string\",\n        \"path\": \"string\",\n        \"metaTitle\": \"string\",\n        \"metaDescription\": \"string\",\n        \"metaLinkText\": \"string\"\n      },\n      \"meta\": {\n        \"ZUID\": \"string\",\n        \"contentModelZUID\": \"string\",\n        \"langID\": 3511,\n        \"version\": 2087,\n        \"createdAt\": \"2025-03-05T21:47:42.539Z\",\n        \"updatedAt\": \"1992-02-14T23:03:29.814Z\"\n      }\n    }\n  ]\n}",
               "cookie": [],
               "_postman_previewlanguage": "json"
             },
             {
-              "id": "3f249ead-070f-433f-8785-987012771a89",
+              "id": "94de4ca5-b717-4931-a179-b4038fa02e00",
               "name": "Unauthorized.",
               "originalRequest": {
                 "url": {
                   "path": [
-                    "instances",
-                    ":instanceZUID"
+                    "content",
+                    "models",
+                    ":modelZUID",
+                    "items"
                   ],
                   "host": [
                     "{{baseUrl}}"
@@ -474,8 +138,8 @@
                       "disabled": false,
                       "type": "any",
                       "value": "<string>",
-                      "key": "instanceZUID",
-                      "description": "(Required) The ZUID of the instance."
+                      "key": "modelZUID",
+                      "description": "(Required) The ZUID of the content model."
                     }
                   ]
                 },
@@ -505,13 +169,15 @@
               "_postman_previewlanguage": "text"
             },
             {
-              "id": "3406d9bd-9978-42ed-a0c2-87f4cfda07b2",
-              "name": "Instance not found.",
+              "id": "988e4306-d5c3-47fe-a642-a70064c72da2",
+              "name": "Content model not found.",
               "originalRequest": {
                 "url": {
                   "path": [
-                    "instances",
-                    ":instanceZUID"
+                    "content",
+                    "models",
+                    ":modelZUID",
+                    "items"
                   ],
                   "host": [
                     "{{baseUrl}}"
@@ -522,8 +188,8 @@
                       "disabled": false,
                       "type": "any",
                       "value": "<string>",
-                      "key": "instanceZUID",
-                      "description": "(Required) The ZUID of the instance."
+                      "key": "modelZUID",
+                      "description": "(Required) The ZUID of the content model."
                     }
                   ]
                 },
@@ -559,18 +225,20 @@
           }
         },
         {
-          "id": "e30b444e-3074-40f5-8245-9b6ce17e9d69",
-          "name": "Zesty Update an instance",
+          "id": "cc5259f9-079f-4a77-82de-bd0fb6818afc",
+          "name": "Zesty Create a content item",
           "request": {
-            "name": "Zesty Update an instance",
+            "name": "Zesty Create a content item",
             "description": {
-              "content": "Updates the details of a specific instance.",
+              "content": "Creates a new content item in the specified content model.",
               "type": "text/plain"
             },
             "url": {
               "path": [
-                "instances",
-                ":instanceZUID"
+                "content",
+                "models",
+                ":modelZUID",
+                "items"
               ],
               "host": [
                 "{{baseUrl}}"
@@ -581,8 +249,509 @@
                   "disabled": false,
                   "type": "any",
                   "value": "<string>",
-                  "key": "instanceZUID",
-                  "description": "(Required) The ZUID of the instance."
+                  "key": "modelZUID",
+                  "description": "(Required) The ZUID of the content model."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"data\": \"<object>\",\n  \"web\": {\n    \"pathPart\": \"<string>\",\n    \"parentZUID\": \"<string>\",\n    \"metaTitle\": \"<string>\",\n    \"metaDescription\": \"<string>\",\n    \"metaLinkText\": \"<string>\"\n  },\n  \"meta\": {\n    \"langID\": \"<integer>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "3561e284-1b84-42e5-9d2f-b1bb9b1d9e1d",
+              "name": "Content item created successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "content",
+                    "models",
+                    ":modelZUID",
+                    "items"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "modelZUID",
+                      "description": "(Required) The ZUID of the content model."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"data\": \"<object>\",\n  \"web\": {\n    \"pathPart\": \"<string>\",\n    \"parentZUID\": \"<string>\",\n    \"metaTitle\": \"<string>\",\n    \"metaDescription\": \"<string>\",\n    \"metaLinkText\": \"<string>\"\n  },\n  \"meta\": {\n    \"langID\": \"<integer>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "b7f4c052-83e3-4ec6-b019-ece80d47db45",
+              "name": "Invalid request.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "content",
+                    "models",
+                    ":modelZUID",
+                    "items"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "modelZUID",
+                      "description": "(Required) The ZUID of the content model."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"data\": \"<object>\",\n  \"web\": {\n    \"pathPart\": \"<string>\",\n    \"parentZUID\": \"<string>\",\n    \"metaTitle\": \"<string>\",\n    \"metaDescription\": \"<string>\",\n    \"metaLinkText\": \"<string>\"\n  },\n  \"meta\": {\n    \"langID\": \"<integer>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "92c1459c-59cd-44f4-9316-0ce0c8a99b97",
+              "name": "Unauthorized.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "content",
+                    "models",
+                    ":modelZUID",
+                    "items"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "modelZUID",
+                      "description": "(Required) The ZUID of the content model."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"data\": \"<object>\",\n  \"web\": {\n    \"pathPart\": \"<string>\",\n    \"parentZUID\": \"<string>\",\n    \"metaTitle\": \"<string>\",\n    \"metaDescription\": \"<string>\",\n    \"metaLinkText\": \"<string>\"\n  },\n  \"meta\": {\n    \"langID\": \"<integer>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "208c2988-45e5-4b2f-9101-3997d58b4da6",
+          "name": "Zesty Get a content item",
+          "request": {
+            "name": "Zesty Get a content item",
+            "description": {
+              "content": "Returns a specific content item with its data, web, and meta properties.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "content",
+                "models",
+                ":modelZUID",
+                "items",
+                ":itemZUID"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "modelZUID",
+                  "description": "(Required) The ZUID of the content model."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "itemZUID",
+                  "description": "(Required) The ZUID of the content item."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "af46d0a6-1014-4b22-8dc3-de2a444e852f",
+              "name": "Content item details.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "content",
+                    "models",
+                    ":modelZUID",
+                    "items",
+                    ":itemZUID"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "modelZUID",
+                      "description": "(Required) The ZUID of the content model."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "itemZUID",
+                      "description": "(Required) The ZUID of the content item."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 1238,\n  \"data\": {\n    \"ZUID\": \"string\",\n    \"data\": {},\n    \"web\": {\n      \"pathPart\": \"string\",\n      \"path\": \"string\",\n      \"metaTitle\": \"string\",\n      \"metaDescription\": \"string\",\n      \"metaLinkText\": \"string\"\n    },\n    \"meta\": {\n      \"ZUID\": \"string\",\n      \"contentModelZUID\": \"string\",\n      \"langID\": 4271,\n      \"version\": 5687,\n      \"createdAt\": \"2009-01-27T10:53:37.490Z\",\n      \"updatedAt\": \"2018-03-16T18:35:20.684Z\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c5f7ddb6-0097-44aa-9898-0f3961345e1c",
+              "name": "Unauthorized.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "content",
+                    "models",
+                    ":modelZUID",
+                    "items",
+                    ":itemZUID"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "modelZUID",
+                      "description": "(Required) The ZUID of the content model."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "itemZUID",
+                      "description": "(Required) The ZUID of the content item."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "172963bc-477b-4135-8b97-7cceb3d423b9",
+              "name": "Content item not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "content",
+                    "models",
+                    ":modelZUID",
+                    "items",
+                    ":itemZUID"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "modelZUID",
+                      "description": "(Required) The ZUID of the content model."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "itemZUID",
+                      "description": "(Required) The ZUID of the content item."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "04f8165b-b5f0-45b6-abc5-1143ab779e73",
+          "name": "Zesty Update a content item",
+          "request": {
+            "name": "Zesty Update a content item",
+            "description": {
+              "content": "Updates the content, web, and meta data of a specific item.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "content",
+                "models",
+                ":modelZUID",
+                "items",
+                ":itemZUID"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "modelZUID",
+                  "description": "(Required) The ZUID of the content model."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "itemZUID",
+                  "description": "(Required) The ZUID of the content item."
                 }
               ]
             },
@@ -612,7 +781,7 @@
             },
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"name\": \"<string>\"\n}",
+              "raw": "{\n  \"data\": \"<object>\",\n  \"web\": {\n    \"pathPart\": \"<string>\",\n    \"metaTitle\": \"<string>\",\n    \"metaDescription\": \"<string>\"\n  }\n}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -622,13 +791,16 @@
           },
           "response": [
             {
-              "id": "a53e26b2-c3b8-40c4-ad49-9028c8985bae",
-              "name": "Instance updated successfully.",
+              "id": "f29ba7a2-4490-4a88-868f-98688d0f1824",
+              "name": "Content item updated successfully.",
               "originalRequest": {
                 "url": {
                   "path": [
-                    "instances",
-                    ":instanceZUID"
+                    "content",
+                    "models",
+                    ":modelZUID",
+                    "items",
+                    ":itemZUID"
                   ],
                   "host": [
                     "{{baseUrl}}"
@@ -639,8 +811,15 @@
                       "disabled": false,
                       "type": "any",
                       "value": "<string>",
-                      "key": "instanceZUID",
-                      "description": "(Required) The ZUID of the instance."
+                      "key": "modelZUID",
+                      "description": "(Required) The ZUID of the content model."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "itemZUID",
+                      "description": "(Required) The ZUID of the content item."
                     }
                   ]
                 },
@@ -657,7 +836,7 @@
                 "method": "PUT",
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"name\": \"<string>\"\n}",
+                  "raw": "{\n  \"data\": \"<object>\",\n  \"web\": {\n    \"pathPart\": \"<string>\",\n    \"metaTitle\": \"<string>\",\n    \"metaDescription\": \"<string>\"\n  }\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -678,13 +857,16 @@
               "_postman_previewlanguage": "text"
             },
             {
-              "id": "07256e74-8206-4651-9ecf-b8a915b3556f",
+              "id": "f144a5cc-e4e3-4edd-9e01-ccbc4ba5cfad",
               "name": "Unauthorized.",
               "originalRequest": {
                 "url": {
                   "path": [
-                    "instances",
-                    ":instanceZUID"
+                    "content",
+                    "models",
+                    ":modelZUID",
+                    "items",
+                    ":itemZUID"
                   ],
                   "host": [
                     "{{baseUrl}}"
@@ -695,8 +877,15 @@
                       "disabled": false,
                       "type": "any",
                       "value": "<string>",
-                      "key": "instanceZUID",
-                      "description": "(Required) The ZUID of the instance."
+                      "key": "modelZUID",
+                      "description": "(Required) The ZUID of the content model."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "itemZUID",
+                      "description": "(Required) The ZUID of the content item."
                     }
                   ]
                 },
@@ -713,7 +902,7 @@
                 "method": "PUT",
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"name\": \"<string>\"\n}",
+                  "raw": "{\n  \"data\": \"<object>\",\n  \"web\": {\n    \"pathPart\": \"<string>\",\n    \"metaTitle\": \"<string>\",\n    \"metaDescription\": \"<string>\"\n  }\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -734,13 +923,16 @@
               "_postman_previewlanguage": "text"
             },
             {
-              "id": "5ec5b890-1a4b-4376-be9a-1695c4f88447",
-              "name": "Instance not found.",
+              "id": "a2258330-a8cf-4e99-916c-4c26b3021e93",
+              "name": "Content item not found.",
               "originalRequest": {
                 "url": {
                   "path": [
-                    "instances",
-                    ":instanceZUID"
+                    "content",
+                    "models",
+                    ":modelZUID",
+                    "items",
+                    ":itemZUID"
                   ],
                   "host": [
                     "{{baseUrl}}"
@@ -751,8 +943,15 @@
                       "disabled": false,
                       "type": "any",
                       "value": "<string>",
-                      "key": "instanceZUID",
-                      "description": "(Required) The ZUID of the instance."
+                      "key": "modelZUID",
+                      "description": "(Required) The ZUID of the content model."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "itemZUID",
+                      "description": "(Required) The ZUID of the content item."
                     }
                   ]
                 },
@@ -769,7 +968,7 @@
                 "method": "PUT",
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"name\": \"<string>\"\n}",
+                  "raw": "{\n  \"data\": \"<object>\",\n  \"web\": {\n    \"pathPart\": \"<string>\",\n    \"metaTitle\": \"<string>\",\n    \"metaDescription\": \"<string>\"\n  }\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -796,18 +995,21 @@
           }
         },
         {
-          "id": "4af7f2b5-9f57-4877-8194-0dca3af16938",
-          "name": "Zesty Delete an instance",
+          "id": "7cf9337d-ebf7-4589-b86c-ca2ffefa876c",
+          "name": "Zesty Delete a content item",
           "request": {
-            "name": "Zesty Delete an instance",
+            "name": "Zesty Delete a content item",
             "description": {
-              "content": "Deletes a specific instance.",
+              "content": "Deletes a specific content item.",
               "type": "text/plain"
             },
             "url": {
               "path": [
-                "instances",
-                ":instanceZUID"
+                "content",
+                "models",
+                ":modelZUID",
+                "items",
+                ":itemZUID"
               ],
               "host": [
                 "{{baseUrl}}"
@@ -818,8 +1020,15 @@
                   "disabled": false,
                   "type": "any",
                   "value": "<string>",
-                  "key": "instanceZUID",
-                  "description": "(Required) The ZUID of the instance."
+                  "key": "modelZUID",
+                  "description": "(Required) The ZUID of the content model."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "itemZUID",
+                  "description": "(Required) The ZUID of the content item."
                 }
               ]
             },
@@ -844,13 +1053,16 @@
           },
           "response": [
             {
-              "id": "6dc4c2a8-0dd6-4193-b9ea-5a7bfe91096c",
-              "name": "Instance deleted successfully.",
+              "id": "b13c09b8-b042-40d1-8383-a40852df4b88",
+              "name": "Content item deleted successfully.",
               "originalRequest": {
                 "url": {
                   "path": [
-                    "instances",
-                    ":instanceZUID"
+                    "content",
+                    "models",
+                    ":modelZUID",
+                    "items",
+                    ":itemZUID"
                   ],
                   "host": [
                     "{{baseUrl}}"
@@ -861,8 +1073,15 @@
                       "disabled": false,
                       "type": "any",
                       "value": "<string>",
-                      "key": "instanceZUID",
-                      "description": "(Required) The ZUID of the instance."
+                      "key": "modelZUID",
+                      "description": "(Required) The ZUID of the content model."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "itemZUID",
+                      "description": "(Required) The ZUID of the content item."
                     }
                   ]
                 },
@@ -892,13 +1111,16 @@
               "_postman_previewlanguage": "text"
             },
             {
-              "id": "f432cc59-7abe-4e7c-a777-7cd2f5e3bd88",
+              "id": "d90977f8-d5f1-4e3d-a808-220b19a8bbf7",
               "name": "Unauthorized.",
               "originalRequest": {
                 "url": {
                   "path": [
-                    "instances",
-                    ":instanceZUID"
+                    "content",
+                    "models",
+                    ":modelZUID",
+                    "items",
+                    ":itemZUID"
                   ],
                   "host": [
                     "{{baseUrl}}"
@@ -909,8 +1131,15 @@
                       "disabled": false,
                       "type": "any",
                       "value": "<string>",
-                      "key": "instanceZUID",
-                      "description": "(Required) The ZUID of the instance."
+                      "key": "modelZUID",
+                      "description": "(Required) The ZUID of the content model."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "itemZUID",
+                      "description": "(Required) The ZUID of the content item."
                     }
                   ]
                 },
@@ -940,13 +1169,16 @@
               "_postman_previewlanguage": "text"
             },
             {
-              "id": "45e66fdd-5c11-409e-ae73-855ce7c847e4",
-              "name": "Instance not found.",
+              "id": "b6796348-2cfa-4188-85d0-3f77ae3bd02b",
+              "name": "Content item not found.",
               "originalRequest": {
                 "url": {
                   "path": [
-                    "instances",
-                    ":instanceZUID"
+                    "content",
+                    "models",
+                    ":modelZUID",
+                    "items",
+                    ":itemZUID"
                   ],
                   "host": [
                     "{{baseUrl}}"
@@ -957,8 +1189,15 @@
                       "disabled": false,
                       "type": "any",
                       "value": "<string>",
-                      "key": "instanceZUID",
-                      "description": "(Required) The ZUID of the instance."
+                      "key": "modelZUID",
+                      "description": "(Required) The ZUID of the content model."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "itemZUID",
+                      "description": "(Required) The ZUID of the content item."
                     }
                   ]
                 },
@@ -1006,8 +1245,8 @@
     }
   ],
   "info": {
-    "_postman_id": "93c3a45b-915f-4f12-92f0-216ffddd98a2",
-    "name": "Zesty Accounts Apps Instances API",
+    "_postman_id": "5d9fc671-ec23-4da2-8500-eb5c2cdf1e45",
+    "name": "Zesty Accounts Apps Content Items API",
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
     "description": {
       "content": "The Zesty.io Accounts API is used to manage users, roles, instances, teams, tokens, ecosystems, webhooks, and apps. It provides administrative control over the organizational structure of a Zesty.io account. All endpoints require authentication via a session token obtained from the Auth API.\n\nContact Support:\n Name: Zesty.io",

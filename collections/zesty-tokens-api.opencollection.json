@@ -1,24 +1,24 @@
 {
   "opencollection": "1.0.0",
   "info": {
-    "name": "Zesty Accounts Apps Instances API",
+    "name": "Zesty Accounts Apps Tokens API",
     "version": "1.0.0"
   },
   "items": [
     {
       "info": {
-        "name": "Instances",
+        "name": "Tokens",
         "type": "folder"
       },
       "items": [
         {
           "info": {
-            "name": "Zesty List all instances",
+            "name": "Zesty List all access tokens",
             "type": "http"
           },
           "http": {
             "method": "GET",
-            "url": "https://accounts.api.zesty.io/v1/instances",
+            "url": "https://accounts.api.zesty.io/v1/tokens",
             "auth": {
               "type": "apikey",
               "key": "Authorization",
@@ -26,16 +26,16 @@
               "placement": "header"
             }
           },
-          "docs": "Returns a list of all instances accessible to the authenticated user."
+          "docs": "Returns a list of all access tokens for the account."
         },
         {
           "info": {
-            "name": "Zesty Create a new instance",
+            "name": "Zesty Create an access token",
             "type": "http"
           },
           "http": {
             "method": "POST",
-            "url": "https://accounts.api.zesty.io/v1/instances",
+            "url": "https://accounts.api.zesty.io/v1/tokens",
             "body": {
               "type": "json",
               "data": "{}"
@@ -47,22 +47,22 @@
               "placement": "header"
             }
           },
-          "docs": "Creates a new Zesty.io instance."
+          "docs": "Creates a new access token for API authentication."
         },
         {
           "info": {
-            "name": "Zesty Get an instance",
+            "name": "Zesty Get an access token",
             "type": "http"
           },
           "http": {
             "method": "GET",
-            "url": "https://accounts.api.zesty.io/v1/instances/:instanceZUID",
+            "url": "https://accounts.api.zesty.io/v1/tokens/:tokenZUID",
             "params": [
               {
-                "name": "instanceZUID",
+                "name": "tokenZUID",
                 "value": "",
                 "type": "path",
-                "description": "The ZUID of the instance."
+                "description": "The ZUID of the token."
               }
             ],
             "auth": {
@@ -72,51 +72,22 @@
               "placement": "header"
             }
           },
-          "docs": "Returns details for a specific instance by its ZUID."
+          "docs": "Returns details for a specific access token."
         },
         {
           "info": {
-            "name": "Zesty Update an instance",
-            "type": "http"
-          },
-          "http": {
-            "method": "PUT",
-            "url": "https://accounts.api.zesty.io/v1/instances/:instanceZUID",
-            "params": [
-              {
-                "name": "instanceZUID",
-                "value": "",
-                "type": "path",
-                "description": "The ZUID of the instance."
-              }
-            ],
-            "body": {
-              "type": "json",
-              "data": "{}"
-            },
-            "auth": {
-              "type": "apikey",
-              "key": "Authorization",
-              "value": "{{Authorization}}",
-              "placement": "header"
-            }
-          },
-          "docs": "Updates the details of a specific instance."
-        },
-        {
-          "info": {
-            "name": "Zesty Delete an instance",
+            "name": "Zesty Delete an access token",
             "type": "http"
           },
           "http": {
             "method": "DELETE",
-            "url": "https://accounts.api.zesty.io/v1/instances/:instanceZUID",
+            "url": "https://accounts.api.zesty.io/v1/tokens/:tokenZUID",
             "params": [
               {
-                "name": "instanceZUID",
+                "name": "tokenZUID",
                 "value": "",
                 "type": "path",
-                "description": "The ZUID of the instance."
+                "description": "The ZUID of the token."
               }
             ],
             "auth": {
@@ -126,7 +97,7 @@
               "placement": "header"
             }
           },
-          "docs": "Deletes a specific instance."
+          "docs": "Deletes a specific access token."
         }
       ]
     }

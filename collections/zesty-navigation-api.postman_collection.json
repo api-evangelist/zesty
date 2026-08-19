@@ -1,0 +1,168 @@
+{
+  "item": [
+    {
+      "id": "f697e254-7377-4048-92c6-476fe1056381",
+      "name": "Navigation",
+      "description": {
+        "content": "Manage the instance navigation tree.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "8f5be53f-c4e3-4ea2-a501-0a3f524a066b",
+          "name": "Zesty Get navigation tree",
+          "request": {
+            "name": "Zesty Get navigation tree",
+            "description": {
+              "content": "Returns the navigation tree for the instance.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "env",
+                "nav"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "c11a12c6-a8b7-464d-ba32-258fae005900",
+              "name": "The navigation tree.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "env",
+                    "nav"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 6338,\n  \"data\": [\n    {\n      \"ZUID\": \"string\",\n      \"label\": \"string\",\n      \"parentZUID\": \"string\",\n      \"sort\": 8792\n    },\n    {\n      \"ZUID\": \"string\",\n      \"label\": \"string\",\n      \"parentZUID\": \"string\",\n      \"sort\": 8818\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "53666033-4ac9-41fd-84d3-64a6684734e7",
+              "name": "Unauthorized.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "env",
+                    "nav"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://accounts.api.zesty.io/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "69163598-66e0-41a6-a49d-96858244a844",
+    "name": "Zesty Accounts Apps Navigation API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Zesty.io Accounts API is used to manage users, roles, instances, teams, tokens, ecosystems, webhooks, and apps. It provides administrative control over the organizational structure of a Zesty.io account. All endpoints require authentication via a session token obtained from the Auth API.\n\nContact Support:\n Name: Zesty.io",
+      "type": "text/plain"
+    }
+  }
+}

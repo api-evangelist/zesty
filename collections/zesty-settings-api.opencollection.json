@@ -1,0 +1,89 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Zesty Accounts Apps Settings API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Settings",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Zesty List all instance settings",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://accounts.api.zesty.io/v1/env/settings",
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Returns all settings for the instance."
+        },
+        {
+          "info": {
+            "name": "Zesty Get a setting",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://accounts.api.zesty.io/v1/env/settings/:settingZUID",
+            "params": [
+              {
+                "name": "settingZUID",
+                "value": "",
+                "type": "path",
+                "description": "The ZUID of the setting."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Returns a specific instance setting."
+        },
+        {
+          "info": {
+            "name": "Zesty Update a setting",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://accounts.api.zesty.io/v1/env/settings/:settingZUID",
+            "params": [
+              {
+                "name": "settingZUID",
+                "value": "",
+                "type": "path",
+                "description": "The ZUID of the setting."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Updates the value of a specific instance setting."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,25 +1,26 @@
 {
   "item": [
     {
-      "id": "8d83400e-b1f5-4ca8-9b33-9de3a5e8b83b",
-      "name": "Instances",
+      "id": "5b1633f1-3c2e-4719-874c-5c1ebc5453c8",
+      "name": "Stylesheets",
       "description": {
-        "content": "Manage Zesty.io instances.",
+        "content": "Manage CSS stylesheet files.",
         "type": "text/plain"
       },
       "item": [
         {
-          "id": "f2eacff3-de1c-4676-8c35-2346d559985b",
-          "name": "Zesty List all instances",
+          "id": "0aac797f-5230-4e36-a49d-17bf70e8ac71",
+          "name": "Zesty List all stylesheets",
           "request": {
-            "name": "Zesty List all instances",
+            "name": "Zesty List all stylesheets",
             "description": {
-              "content": "Returns a list of all instances accessible to the authenticated user.",
+              "content": "Returns a list of all stylesheet files in the instance.",
               "type": "text/plain"
             },
             "url": {
               "path": [
-                "instances"
+                "web",
+                "stylesheets"
               ],
               "host": [
                 "{{baseUrl}}"
@@ -54,12 +55,13 @@
           },
           "response": [
             {
-              "id": "2cf8431f-bd5c-4982-9016-5b6f2451a94b",
-              "name": "A list of instances.",
+              "id": "03689ba2-2fd0-410c-8519-f16095e3c7c1",
+              "name": "A list of stylesheets.",
               "originalRequest": {
                 "url": {
                   "path": [
-                    "instances"
+                    "web",
+                    "stylesheets"
                   ],
                   "host": [
                     "{{baseUrl}}"
@@ -92,17 +94,18 @@
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"code\": 6755,\n  \"data\": [\n    {\n      \"ZUID\": \"string\",\n      \"name\": \"string\",\n      \"ecoZUID\": \"string\",\n      \"domain\": \"string\",\n      \"createdAt\": \"1964-12-02T06:12:08.801Z\",\n      \"updatedAt\": \"1956-09-05T01:49:00.162Z\"\n    },\n    {\n      \"ZUID\": \"string\",\n      \"name\": \"string\",\n      \"ecoZUID\": \"string\",\n      \"domain\": \"string\",\n      \"createdAt\": \"2002-05-28T15:46:06.162Z\",\n      \"updatedAt\": \"1974-12-24T09:44:18.663Z\"\n    }\n  ]\n}",
+              "body": "{\n  \"code\": 4352,\n  \"data\": [\n    {\n      \"ZUID\": \"string\",\n      \"fileName\": \"string\",\n      \"code\": \"string\",\n      \"type\": \"string\",\n      \"version\": 3886,\n      \"createdAt\": \"1992-04-30T09:32:17.935Z\",\n      \"updatedAt\": \"2008-07-26T21:18:26.072Z\"\n    },\n    {\n      \"ZUID\": \"string\",\n      \"fileName\": \"string\",\n      \"code\": \"string\",\n      \"type\": \"string\",\n      \"version\": 5309,\n      \"createdAt\": \"1953-09-02T23:39:34.758Z\",\n      \"updatedAt\": \"1946-11-17T09:47:32.963Z\"\n    }\n  ]\n}",
               "cookie": [],
               "_postman_previewlanguage": "json"
             },
             {
-              "id": "e395e810-841c-49cc-a255-1041b17da81c",
+              "id": "f63b2ad8-297c-4d53-aeac-2ccb2f021bf8",
               "name": "Unauthorized.",
               "originalRequest": {
                 "url": {
                   "path": [
-                    "instances"
+                    "web",
+                    "stylesheets"
                   ],
                   "host": [
                     "{{baseUrl}}"
@@ -142,17 +145,18 @@
           }
         },
         {
-          "id": "b96d72f7-bdb0-467f-a0a4-5efd69097b7a",
-          "name": "Zesty Create a new instance",
+          "id": "ba98dc0c-2bbc-4c89-9fc3-37b15b578966",
+          "name": "Zesty Create a stylesheet",
           "request": {
-            "name": "Zesty Create a new instance",
+            "name": "Zesty Create a stylesheet",
             "description": {
-              "content": "Creates a new Zesty.io instance.",
+              "content": "Creates a new stylesheet file in the instance.",
               "type": "text/plain"
             },
             "url": {
               "path": [
-                "instances"
+                "web",
+                "stylesheets"
               ],
               "host": [
                 "{{baseUrl}}"
@@ -163,10 +167,6 @@
             "header": [
               {
                 "key": "Content-Type",
-                "value": "application/json"
-              },
-              {
-                "key": "Accept",
                 "value": "application/json"
               }
             ],
@@ -190,7 +190,7 @@
             },
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"name\": \"<string>\",\n  \"ecoZUID\": \"<string>\"\n}",
+              "raw": "{\n  \"fileName\": \"<string>\",\n  \"code\": \"<string>\",\n  \"type\": \"<string>\"\n}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -200,12 +200,13 @@
           },
           "response": [
             {
-              "id": "1933b05a-56a3-47ff-9288-ac592ae01eee",
-              "name": "Instance created successfully.",
+              "id": "5f0e230f-fe48-4a23-8224-77960f78478d",
+              "name": "Stylesheet created successfully.",
               "originalRequest": {
                 "url": {
                   "path": [
-                    "instances"
+                    "web",
+                    "stylesheets"
                   ],
                   "host": [
                     "{{baseUrl}}"
@@ -221,16 +222,12 @@
                     },
                     "key": "Authorization",
                     "value": "<API Key>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
                   }
                 ],
                 "method": "POST",
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"name\": \"<string>\",\n  \"ecoZUID\": \"<string>\"\n}",
+                  "raw": "{\n  \"fileName\": \"<string>\",\n  \"code\": \"<string>\",\n  \"type\": \"<string>\"\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -243,20 +240,21 @@
               "header": [
                 {
                   "key": "Content-Type",
-                  "value": "application/json"
+                  "value": "text/plain"
                 }
               ],
-              "body": "{\n  \"code\": 3260,\n  \"data\": {\n    \"ZUID\": \"string\",\n    \"name\": \"string\",\n    \"ecoZUID\": \"string\",\n    \"domain\": \"string\",\n    \"createdAt\": \"1950-04-13T10:35:33.928Z\",\n    \"updatedAt\": \"2009-10-08T21:01:20.366Z\"\n  }\n}",
+              "body": "",
               "cookie": [],
-              "_postman_previewlanguage": "json"
+              "_postman_previewlanguage": "text"
             },
             {
-              "id": "2cade95f-789e-40ff-92c9-4cd863bbdad7",
+              "id": "66af981f-44c8-4036-8d02-02dcb7abb241",
               "name": "Invalid request.",
               "originalRequest": {
                 "url": {
                   "path": [
-                    "instances"
+                    "web",
+                    "stylesheets"
                   ],
                   "host": [
                     "{{baseUrl}}"
@@ -277,7 +275,7 @@
                 "method": "POST",
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"name\": \"<string>\",\n  \"ecoZUID\": \"<string>\"\n}",
+                  "raw": "{\n  \"fileName\": \"<string>\",\n  \"code\": \"<string>\",\n  \"type\": \"<string>\"\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -298,12 +296,13 @@
               "_postman_previewlanguage": "text"
             },
             {
-              "id": "78577044-7bf9-4d1c-a22a-12bab0bafe90",
+              "id": "e28f2fef-db4f-44b1-9051-1438f1254011",
               "name": "Unauthorized.",
               "originalRequest": {
                 "url": {
                   "path": [
-                    "instances"
+                    "web",
+                    "stylesheets"
                   ],
                   "host": [
                     "{{baseUrl}}"
@@ -324,7 +323,7 @@
                 "method": "POST",
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"name\": \"<string>\",\n  \"ecoZUID\": \"<string>\"\n}",
+                  "raw": "{\n  \"fileName\": \"<string>\",\n  \"code\": \"<string>\",\n  \"type\": \"<string>\"\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -351,18 +350,19 @@
           }
         },
         {
-          "id": "47b41849-0812-457b-9fb2-31eb35d5d2da",
-          "name": "Zesty Get an instance",
+          "id": "79f56eda-20ab-460a-8518-f53ee2e7c865",
+          "name": "Zesty Get a stylesheet",
           "request": {
-            "name": "Zesty Get an instance",
+            "name": "Zesty Get a stylesheet",
             "description": {
-              "content": "Returns details for a specific instance by its ZUID.",
+              "content": "Returns a specific stylesheet and its code content.",
               "type": "text/plain"
             },
             "url": {
               "path": [
-                "instances",
-                ":instanceZUID"
+                "web",
+                "stylesheets",
+                ":stylesheetZUID"
               ],
               "host": [
                 "{{baseUrl}}"
@@ -373,8 +373,8 @@
                   "disabled": false,
                   "type": "any",
                   "value": "<string>",
-                  "key": "instanceZUID",
-                  "description": "(Required) The ZUID of the instance."
+                  "key": "stylesheetZUID",
+                  "description": "(Required) The ZUID of the stylesheet."
                 }
               ]
             },
@@ -405,13 +405,14 @@
           },
           "response": [
             {
-              "id": "1ef44a33-8015-4667-9195-fd352b1ce739",
-              "name": "Instance details.",
+              "id": "fb988b92-f26e-4a30-89fc-6bf23ba665e8",
+              "name": "Stylesheet details.",
               "originalRequest": {
                 "url": {
                   "path": [
-                    "instances",
-                    ":instanceZUID"
+                    "web",
+                    "stylesheets",
+                    ":stylesheetZUID"
                   ],
                   "host": [
                     "{{baseUrl}}"
@@ -422,8 +423,8 @@
                       "disabled": false,
                       "type": "any",
                       "value": "<string>",
-                      "key": "instanceZUID",
-                      "description": "(Required) The ZUID of the instance."
+                      "key": "stylesheetZUID",
+                      "description": "(Required) The ZUID of the stylesheet."
                     }
                   ]
                 },
@@ -452,18 +453,19 @@
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"code\": 3260,\n  \"data\": {\n    \"ZUID\": \"string\",\n    \"name\": \"string\",\n    \"ecoZUID\": \"string\",\n    \"domain\": \"string\",\n    \"createdAt\": \"1950-04-13T10:35:33.928Z\",\n    \"updatedAt\": \"2009-10-08T21:01:20.366Z\"\n  }\n}",
+              "body": "{\n  \"code\": 6246,\n  \"data\": {\n    \"ZUID\": \"string\",\n    \"fileName\": \"string\",\n    \"code\": \"string\",\n    \"type\": \"string\",\n    \"version\": 2488,\n    \"createdAt\": \"2023-07-11T14:36:25.990Z\",\n    \"updatedAt\": \"2020-02-13T22:28:52.890Z\"\n  }\n}",
               "cookie": [],
               "_postman_previewlanguage": "json"
             },
             {
-              "id": "3f249ead-070f-433f-8785-987012771a89",
+              "id": "2121f565-e366-462b-b88e-395b59f31d6d",
               "name": "Unauthorized.",
               "originalRequest": {
                 "url": {
                   "path": [
-                    "instances",
-                    ":instanceZUID"
+                    "web",
+                    "stylesheets",
+                    ":stylesheetZUID"
                   ],
                   "host": [
                     "{{baseUrl}}"
@@ -474,8 +476,8 @@
                       "disabled": false,
                       "type": "any",
                       "value": "<string>",
-                      "key": "instanceZUID",
-                      "description": "(Required) The ZUID of the instance."
+                      "key": "stylesheetZUID",
+                      "description": "(Required) The ZUID of the stylesheet."
                     }
                   ]
                 },
@@ -505,13 +507,14 @@
               "_postman_previewlanguage": "text"
             },
             {
-              "id": "3406d9bd-9978-42ed-a0c2-87f4cfda07b2",
-              "name": "Instance not found.",
+              "id": "824dedcc-a4df-4b3d-9be0-e9bc7306fb20",
+              "name": "Stylesheet not found.",
               "originalRequest": {
                 "url": {
                   "path": [
-                    "instances",
-                    ":instanceZUID"
+                    "web",
+                    "stylesheets",
+                    ":stylesheetZUID"
                   ],
                   "host": [
                     "{{baseUrl}}"
@@ -522,8 +525,8 @@
                       "disabled": false,
                       "type": "any",
                       "value": "<string>",
-                      "key": "instanceZUID",
-                      "description": "(Required) The ZUID of the instance."
+                      "key": "stylesheetZUID",
+                      "description": "(Required) The ZUID of the stylesheet."
                     }
                   ]
                 },
@@ -559,18 +562,19 @@
           }
         },
         {
-          "id": "e30b444e-3074-40f5-8245-9b6ce17e9d69",
-          "name": "Zesty Update an instance",
+          "id": "95bd3032-806e-472b-9852-97e9b04b6544",
+          "name": "Zesty Update a stylesheet",
           "request": {
-            "name": "Zesty Update an instance",
+            "name": "Zesty Update a stylesheet",
             "description": {
-              "content": "Updates the details of a specific instance.",
+              "content": "Updates the code content of a specific stylesheet.",
               "type": "text/plain"
             },
             "url": {
               "path": [
-                "instances",
-                ":instanceZUID"
+                "web",
+                "stylesheets",
+                ":stylesheetZUID"
               ],
               "host": [
                 "{{baseUrl}}"
@@ -581,8 +585,8 @@
                   "disabled": false,
                   "type": "any",
                   "value": "<string>",
-                  "key": "instanceZUID",
-                  "description": "(Required) The ZUID of the instance."
+                  "key": "stylesheetZUID",
+                  "description": "(Required) The ZUID of the stylesheet."
                 }
               ]
             },
@@ -612,7 +616,7 @@
             },
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"name\": \"<string>\"\n}",
+              "raw": "{\n  \"code\": \"<string>\"\n}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -622,13 +626,14 @@
           },
           "response": [
             {
-              "id": "a53e26b2-c3b8-40c4-ad49-9028c8985bae",
-              "name": "Instance updated successfully.",
+              "id": "54285176-2b07-438c-b0ee-4a96a0e79872",
+              "name": "Stylesheet updated successfully.",
               "originalRequest": {
                 "url": {
                   "path": [
-                    "instances",
-                    ":instanceZUID"
+                    "web",
+                    "stylesheets",
+                    ":stylesheetZUID"
                   ],
                   "host": [
                     "{{baseUrl}}"
@@ -639,8 +644,8 @@
                       "disabled": false,
                       "type": "any",
                       "value": "<string>",
-                      "key": "instanceZUID",
-                      "description": "(Required) The ZUID of the instance."
+                      "key": "stylesheetZUID",
+                      "description": "(Required) The ZUID of the stylesheet."
                     }
                   ]
                 },
@@ -657,7 +662,7 @@
                 "method": "PUT",
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"name\": \"<string>\"\n}",
+                  "raw": "{\n  \"code\": \"<string>\"\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -678,13 +683,14 @@
               "_postman_previewlanguage": "text"
             },
             {
-              "id": "07256e74-8206-4651-9ecf-b8a915b3556f",
+              "id": "affe90a0-cdca-433f-b032-763ca1dea411",
               "name": "Unauthorized.",
               "originalRequest": {
                 "url": {
                   "path": [
-                    "instances",
-                    ":instanceZUID"
+                    "web",
+                    "stylesheets",
+                    ":stylesheetZUID"
                   ],
                   "host": [
                     "{{baseUrl}}"
@@ -695,8 +701,8 @@
                       "disabled": false,
                       "type": "any",
                       "value": "<string>",
-                      "key": "instanceZUID",
-                      "description": "(Required) The ZUID of the instance."
+                      "key": "stylesheetZUID",
+                      "description": "(Required) The ZUID of the stylesheet."
                     }
                   ]
                 },
@@ -713,7 +719,7 @@
                 "method": "PUT",
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"name\": \"<string>\"\n}",
+                  "raw": "{\n  \"code\": \"<string>\"\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -734,13 +740,14 @@
               "_postman_previewlanguage": "text"
             },
             {
-              "id": "5ec5b890-1a4b-4376-be9a-1695c4f88447",
-              "name": "Instance not found.",
+              "id": "a23296ce-133f-4b41-8597-0ad30934aaad",
+              "name": "Stylesheet not found.",
               "originalRequest": {
                 "url": {
                   "path": [
-                    "instances",
-                    ":instanceZUID"
+                    "web",
+                    "stylesheets",
+                    ":stylesheetZUID"
                   ],
                   "host": [
                     "{{baseUrl}}"
@@ -751,8 +758,8 @@
                       "disabled": false,
                       "type": "any",
                       "value": "<string>",
-                      "key": "instanceZUID",
-                      "description": "(Required) The ZUID of the instance."
+                      "key": "stylesheetZUID",
+                      "description": "(Required) The ZUID of the stylesheet."
                     }
                   ]
                 },
@@ -769,211 +776,13 @@
                 "method": "PUT",
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"name\": \"<string>\"\n}",
+                  "raw": "{\n  \"code\": \"<string>\"\n}",
                   "options": {
                     "raw": {
                       "language": "json"
                     }
                   }
                 }
-              },
-              "status": "Not Found",
-              "code": 404,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "4af7f2b5-9f57-4877-8194-0dca3af16938",
-          "name": "Zesty Delete an instance",
-          "request": {
-            "name": "Zesty Delete an instance",
-            "description": {
-              "content": "Deletes a specific instance.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "instances",
-                ":instanceZUID"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "instanceZUID",
-                  "description": "(Required) The ZUID of the instance."
-                }
-              ]
-            },
-            "method": "DELETE",
-            "auth": {
-              "type": "apikey",
-              "apikey": [
-                {
-                  "key": "key",
-                  "value": "Authorization"
-                },
-                {
-                  "key": "value",
-                  "value": "{{apiKey}}"
-                },
-                {
-                  "key": "in",
-                  "value": "header"
-                }
-              ]
-            }
-          },
-          "response": [
-            {
-              "id": "6dc4c2a8-0dd6-4193-b9ea-5a7bfe91096c",
-              "name": "Instance deleted successfully.",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "instances",
-                    ":instanceZUID"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "instanceZUID",
-                      "description": "(Required) The ZUID of the instance."
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "<API Key>"
-                  }
-                ],
-                "method": "DELETE",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "f432cc59-7abe-4e7c-a777-7cd2f5e3bd88",
-              "name": "Unauthorized.",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "instances",
-                    ":instanceZUID"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "instanceZUID",
-                      "description": "(Required) The ZUID of the instance."
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "<API Key>"
-                  }
-                ],
-                "method": "DELETE",
-                "body": {}
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "45e66fdd-5c11-409e-ae73-855ce7c847e4",
-              "name": "Instance not found.",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "instances",
-                    ":instanceZUID"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "instanceZUID",
-                      "description": "(Required) The ZUID of the instance."
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "<API Key>"
-                  }
-                ],
-                "method": "DELETE",
-                "body": {}
               },
               "status": "Not Found",
               "code": 404,
@@ -1006,8 +815,8 @@
     }
   ],
   "info": {
-    "_postman_id": "93c3a45b-915f-4f12-92f0-216ffddd98a2",
-    "name": "Zesty Accounts Apps Instances API",
+    "_postman_id": "53146342-3a22-43bd-8513-54380b8ddac9",
+    "name": "Zesty Accounts Apps Stylesheets API",
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
     "description": {
       "content": "The Zesty.io Accounts API is used to manage users, roles, instances, teams, tokens, ecosystems, webhooks, and apps. It provides administrative control over the organizational structure of a Zesty.io account. All endpoints require authentication via a session token obtained from the Auth API.\n\nContact Support:\n Name: Zesty.io",

@@ -1,24 +1,32 @@
 {
   "opencollection": "1.0.0",
   "info": {
-    "name": "Zesty Accounts Apps Instances API",
+    "name": "Zesty Accounts Apps Groups API",
     "version": "1.0.0"
   },
   "items": [
     {
       "info": {
-        "name": "Instances",
+        "name": "Groups",
         "type": "folder"
       },
       "items": [
         {
           "info": {
-            "name": "Zesty List all instances",
+            "name": "Zesty List all media groups",
             "type": "http"
           },
           "http": {
             "method": "GET",
-            "url": "https://accounts.api.zesty.io/v1/instances",
+            "url": "https://accounts.api.zesty.io/v1/groups",
+            "params": [
+              {
+                "name": "binZUID",
+                "value": "",
+                "type": "query",
+                "description": "Filter groups by bin ZUID."
+              }
+            ],
             "auth": {
               "type": "apikey",
               "key": "Authorization",
@@ -26,16 +34,16 @@
               "placement": "header"
             }
           },
-          "docs": "Returns a list of all instances accessible to the authenticated user."
+          "docs": "Returns a list of all media groups (folders) for organizing files within bins."
         },
         {
           "info": {
-            "name": "Zesty Create a new instance",
+            "name": "Zesty Create a media group",
             "type": "http"
           },
           "http": {
             "method": "POST",
-            "url": "https://accounts.api.zesty.io/v1/instances",
+            "url": "https://accounts.api.zesty.io/v1/groups",
             "body": {
               "type": "json",
               "data": "{}"
@@ -47,22 +55,22 @@
               "placement": "header"
             }
           },
-          "docs": "Creates a new Zesty.io instance."
+          "docs": "Creates a new media group (folder) within a bin."
         },
         {
           "info": {
-            "name": "Zesty Get an instance",
+            "name": "Zesty Get a media group",
             "type": "http"
           },
           "http": {
             "method": "GET",
-            "url": "https://accounts.api.zesty.io/v1/instances/:instanceZUID",
+            "url": "https://accounts.api.zesty.io/v1/groups/:groupZUID",
             "params": [
               {
-                "name": "instanceZUID",
+                "name": "groupZUID",
                 "value": "",
                 "type": "path",
-                "description": "The ZUID of the instance."
+                "description": "The ZUID of the group."
               }
             ],
             "auth": {
@@ -72,22 +80,22 @@
               "placement": "header"
             }
           },
-          "docs": "Returns details for a specific instance by its ZUID."
+          "docs": "Returns details for a specific media group."
         },
         {
           "info": {
-            "name": "Zesty Update an instance",
+            "name": "Zesty Update a media group",
             "type": "http"
           },
           "http": {
             "method": "PUT",
-            "url": "https://accounts.api.zesty.io/v1/instances/:instanceZUID",
+            "url": "https://accounts.api.zesty.io/v1/groups/:groupZUID",
             "params": [
               {
-                "name": "instanceZUID",
+                "name": "groupZUID",
                 "value": "",
                 "type": "path",
-                "description": "The ZUID of the instance."
+                "description": "The ZUID of the group."
               }
             ],
             "body": {
@@ -101,22 +109,22 @@
               "placement": "header"
             }
           },
-          "docs": "Updates the details of a specific instance."
+          "docs": "Updates the details of a specific media group."
         },
         {
           "info": {
-            "name": "Zesty Delete an instance",
+            "name": "Zesty Delete a media group",
             "type": "http"
           },
           "http": {
             "method": "DELETE",
-            "url": "https://accounts.api.zesty.io/v1/instances/:instanceZUID",
+            "url": "https://accounts.api.zesty.io/v1/groups/:groupZUID",
             "params": [
               {
-                "name": "instanceZUID",
+                "name": "groupZUID",
                 "value": "",
                 "type": "path",
-                "description": "The ZUID of the instance."
+                "description": "The ZUID of the group."
               }
             ],
             "auth": {
@@ -126,7 +134,7 @@
               "placement": "header"
             }
           },
-          "docs": "Deletes a specific instance."
+          "docs": "Deletes a specific media group."
         }
       ]
     }

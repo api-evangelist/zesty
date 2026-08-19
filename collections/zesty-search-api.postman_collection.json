@@ -1,0 +1,199 @@
+{
+  "item": [
+    {
+      "id": "b8664a36-1242-45cf-89e1-c709ac23e23a",
+      "name": "Search",
+      "description": {
+        "content": "Search across content items.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "4d11abd6-2641-4c12-a0ce-e2a1620abce1",
+          "name": "Zesty Search content items",
+          "request": {
+            "name": "Zesty Search content items",
+            "description": {
+              "content": "Searches across all content items in the instance.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "search",
+                "items"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "q",
+                  "value": "<string>",
+                  "description": "(Required) The search query string."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>",
+                  "description": "Maximum number of results to return."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "06cb6ba0-2d6d-46f1-913c-b547446e499f",
+              "name": "Search results.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "search",
+                    "items"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "q",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 1944,\n  \"data\": [\n    {\n      \"ZUID\": \"string\",\n      \"data\": {},\n      \"web\": {\n        \"pathPart\": \"string\",\n        \"path\": \"string\",\n        \"metaTitle\": \"string\",\n        \"metaDescription\": \"string\",\n        \"metaLinkText\": \"string\"\n      },\n      \"meta\": {\n        \"ZUID\": \"string\",\n        \"contentModelZUID\": \"string\",\n        \"langID\": 9275,\n        \"version\": 374,\n        \"createdAt\": \"1958-07-03T05:37:37.790Z\",\n        \"updatedAt\": \"1965-11-18T06:15:12.132Z\"\n      }\n    },\n    {\n      \"ZUID\": \"string\",\n      \"data\": {},\n      \"web\": {\n        \"pathPart\": \"string\",\n        \"path\": \"string\",\n        \"metaTitle\": \"string\",\n        \"metaDescription\": \"string\",\n        \"metaLinkText\": \"string\"\n      },\n      \"meta\": {\n        \"ZUID\": \"string\",\n        \"contentModelZUID\": \"string\",\n        \"langID\": 14,\n        \"version\": 9570,\n        \"createdAt\": \"1957-06-29T03:18:43.236Z\",\n        \"updatedAt\": \"1955-06-23T12:44:13.124Z\"\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "311d44cd-bae8-49f6-ac8a-f280ec3a9c53",
+              "name": "Unauthorized.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "search",
+                    "items"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "q",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://accounts.api.zesty.io/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "04ee4a53-8fa8-4d16-b7e9-21271210af69",
+    "name": "Zesty Accounts Apps Search API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Zesty.io Accounts API is used to manage users, roles, instances, teams, tokens, ecosystems, webhooks, and apps. It provides administrative control over the organizational structure of a Zesty.io account. All endpoints require authentication via a session token obtained from the Auth API.\n\nContact Support:\n Name: Zesty.io",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,30 +1,37 @@
 {
   "item": [
     {
-      "id": "8d83400e-b1f5-4ca8-9b33-9de3a5e8b83b",
-      "name": "Instances",
+      "id": "20d3092a-0a54-429a-98ce-fa0bede716ef",
+      "name": "Groups",
       "description": {
-        "content": "Manage Zesty.io instances.",
+        "content": "Manage media groups (folders within bins).",
         "type": "text/plain"
       },
       "item": [
         {
-          "id": "f2eacff3-de1c-4676-8c35-2346d559985b",
-          "name": "Zesty List all instances",
+          "id": "95f6d3c1-ea24-484b-a39f-b007132c99d7",
+          "name": "Zesty List all media groups",
           "request": {
-            "name": "Zesty List all instances",
+            "name": "Zesty List all media groups",
             "description": {
-              "content": "Returns a list of all instances accessible to the authenticated user.",
+              "content": "Returns a list of all media groups (folders) for organizing files within bins.",
               "type": "text/plain"
             },
             "url": {
               "path": [
-                "instances"
+                "groups"
               ],
               "host": [
                 "{{baseUrl}}"
               ],
-              "query": [],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "binZUID",
+                  "value": "<string>",
+                  "description": "Filter groups by bin ZUID."
+                }
+              ],
               "variable": []
             },
             "header": [
@@ -54,17 +61,22 @@
           },
           "response": [
             {
-              "id": "2cf8431f-bd5c-4982-9016-5b6f2451a94b",
-              "name": "A list of instances.",
+              "id": "75c9166e-46a0-4b1d-bc69-414cf71134b7",
+              "name": "A list of media groups.",
               "originalRequest": {
                 "url": {
                   "path": [
-                    "instances"
+                    "groups"
                   ],
                   "host": [
                     "{{baseUrl}}"
                   ],
-                  "query": [],
+                  "query": [
+                    {
+                      "key": "binZUID",
+                      "value": "<string>"
+                    }
+                  ],
                   "variable": []
                 },
                 "header": [
@@ -92,22 +104,27 @@
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"code\": 6755,\n  \"data\": [\n    {\n      \"ZUID\": \"string\",\n      \"name\": \"string\",\n      \"ecoZUID\": \"string\",\n      \"domain\": \"string\",\n      \"createdAt\": \"1964-12-02T06:12:08.801Z\",\n      \"updatedAt\": \"1956-09-05T01:49:00.162Z\"\n    },\n    {\n      \"ZUID\": \"string\",\n      \"name\": \"string\",\n      \"ecoZUID\": \"string\",\n      \"domain\": \"string\",\n      \"createdAt\": \"2002-05-28T15:46:06.162Z\",\n      \"updatedAt\": \"1974-12-24T09:44:18.663Z\"\n    }\n  ]\n}",
+              "body": "{\n  \"code\": 2981,\n  \"data\": [\n    {\n      \"ZUID\": \"string\",\n      \"name\": \"string\",\n      \"binZUID\": \"string\",\n      \"groupZUID\": \"string\",\n      \"createdAt\": \"1965-09-13T09:44:29.105Z\",\n      \"updatedAt\": \"1980-03-12T06:46:02.127Z\"\n    },\n    {\n      \"ZUID\": \"string\",\n      \"name\": \"string\",\n      \"binZUID\": \"string\",\n      \"groupZUID\": \"string\",\n      \"createdAt\": \"1952-12-24T06:28:37.989Z\",\n      \"updatedAt\": \"1994-03-03T17:51:54.578Z\"\n    }\n  ]\n}",
               "cookie": [],
               "_postman_previewlanguage": "json"
             },
             {
-              "id": "e395e810-841c-49cc-a255-1041b17da81c",
+              "id": "9f0386d9-87d8-433f-9fd3-77e571332739",
               "name": "Unauthorized.",
               "originalRequest": {
                 "url": {
                   "path": [
-                    "instances"
+                    "groups"
                   ],
                   "host": [
                     "{{baseUrl}}"
                   ],
-                  "query": [],
+                  "query": [
+                    {
+                      "key": "binZUID",
+                      "value": "<string>"
+                    }
+                  ],
                   "variable": []
                 },
                 "header": [
@@ -142,17 +159,17 @@
           }
         },
         {
-          "id": "b96d72f7-bdb0-467f-a0a4-5efd69097b7a",
-          "name": "Zesty Create a new instance",
+          "id": "29d034e9-e6d2-43e8-8879-e48db1d8ff3d",
+          "name": "Zesty Create a media group",
           "request": {
-            "name": "Zesty Create a new instance",
+            "name": "Zesty Create a media group",
             "description": {
-              "content": "Creates a new Zesty.io instance.",
+              "content": "Creates a new media group (folder) within a bin.",
               "type": "text/plain"
             },
             "url": {
               "path": [
-                "instances"
+                "groups"
               ],
               "host": [
                 "{{baseUrl}}"
@@ -163,10 +180,6 @@
             "header": [
               {
                 "key": "Content-Type",
-                "value": "application/json"
-              },
-              {
-                "key": "Accept",
                 "value": "application/json"
               }
             ],
@@ -190,7 +203,7 @@
             },
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"name\": \"<string>\",\n  \"ecoZUID\": \"<string>\"\n}",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"binZUID\": \"<string>\",\n  \"groupZUID\": \"<string>\"\n}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -200,12 +213,12 @@
           },
           "response": [
             {
-              "id": "1933b05a-56a3-47ff-9288-ac592ae01eee",
-              "name": "Instance created successfully.",
+              "id": "dcade7d2-6f55-4e07-93d3-efc8f51e0ea6",
+              "name": "Group created successfully.",
               "originalRequest": {
                 "url": {
                   "path": [
-                    "instances"
+                    "groups"
                   ],
                   "host": [
                     "{{baseUrl}}"
@@ -221,16 +234,12 @@
                     },
                     "key": "Authorization",
                     "value": "<API Key>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
                   }
                 ],
                 "method": "POST",
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"name\": \"<string>\",\n  \"ecoZUID\": \"<string>\"\n}",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"binZUID\": \"<string>\",\n  \"groupZUID\": \"<string>\"\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -243,20 +252,20 @@
               "header": [
                 {
                   "key": "Content-Type",
-                  "value": "application/json"
+                  "value": "text/plain"
                 }
               ],
-              "body": "{\n  \"code\": 3260,\n  \"data\": {\n    \"ZUID\": \"string\",\n    \"name\": \"string\",\n    \"ecoZUID\": \"string\",\n    \"domain\": \"string\",\n    \"createdAt\": \"1950-04-13T10:35:33.928Z\",\n    \"updatedAt\": \"2009-10-08T21:01:20.366Z\"\n  }\n}",
+              "body": "",
               "cookie": [],
-              "_postman_previewlanguage": "json"
+              "_postman_previewlanguage": "text"
             },
             {
-              "id": "2cade95f-789e-40ff-92c9-4cd863bbdad7",
+              "id": "8bde0894-62c6-451d-96cd-9bfcc82a542e",
               "name": "Invalid request.",
               "originalRequest": {
                 "url": {
                   "path": [
-                    "instances"
+                    "groups"
                   ],
                   "host": [
                     "{{baseUrl}}"
@@ -277,7 +286,7 @@
                 "method": "POST",
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"name\": \"<string>\",\n  \"ecoZUID\": \"<string>\"\n}",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"binZUID\": \"<string>\",\n  \"groupZUID\": \"<string>\"\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -298,12 +307,12 @@
               "_postman_previewlanguage": "text"
             },
             {
-              "id": "78577044-7bf9-4d1c-a22a-12bab0bafe90",
+              "id": "d6e2a61b-7098-4cee-bf06-2f31a4ccbfa0",
               "name": "Unauthorized.",
               "originalRequest": {
                 "url": {
                   "path": [
-                    "instances"
+                    "groups"
                   ],
                   "host": [
                     "{{baseUrl}}"
@@ -324,7 +333,7 @@
                 "method": "POST",
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"name\": \"<string>\",\n  \"ecoZUID\": \"<string>\"\n}",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"binZUID\": \"<string>\",\n  \"groupZUID\": \"<string>\"\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -351,18 +360,18 @@
           }
         },
         {
-          "id": "47b41849-0812-457b-9fb2-31eb35d5d2da",
-          "name": "Zesty Get an instance",
+          "id": "1802b4dc-bc13-4421-81de-45cc6bf31d8c",
+          "name": "Zesty Get a media group",
           "request": {
-            "name": "Zesty Get an instance",
+            "name": "Zesty Get a media group",
             "description": {
-              "content": "Returns details for a specific instance by its ZUID.",
+              "content": "Returns details for a specific media group.",
               "type": "text/plain"
             },
             "url": {
               "path": [
-                "instances",
-                ":instanceZUID"
+                "groups",
+                ":groupZUID"
               ],
               "host": [
                 "{{baseUrl}}"
@@ -373,8 +382,8 @@
                   "disabled": false,
                   "type": "any",
                   "value": "<string>",
-                  "key": "instanceZUID",
-                  "description": "(Required) The ZUID of the instance."
+                  "key": "groupZUID",
+                  "description": "(Required) The ZUID of the group."
                 }
               ]
             },
@@ -405,13 +414,13 @@
           },
           "response": [
             {
-              "id": "1ef44a33-8015-4667-9195-fd352b1ce739",
-              "name": "Instance details.",
+              "id": "e8b96f9d-8c3d-4156-b4b8-cf53407786d6",
+              "name": "Group details.",
               "originalRequest": {
                 "url": {
                   "path": [
-                    "instances",
-                    ":instanceZUID"
+                    "groups",
+                    ":groupZUID"
                   ],
                   "host": [
                     "{{baseUrl}}"
@@ -422,8 +431,8 @@
                       "disabled": false,
                       "type": "any",
                       "value": "<string>",
-                      "key": "instanceZUID",
-                      "description": "(Required) The ZUID of the instance."
+                      "key": "groupZUID",
+                      "description": "(Required) The ZUID of the group."
                     }
                   ]
                 },
@@ -452,18 +461,18 @@
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"code\": 3260,\n  \"data\": {\n    \"ZUID\": \"string\",\n    \"name\": \"string\",\n    \"ecoZUID\": \"string\",\n    \"domain\": \"string\",\n    \"createdAt\": \"1950-04-13T10:35:33.928Z\",\n    \"updatedAt\": \"2009-10-08T21:01:20.366Z\"\n  }\n}",
+              "body": "{\n  \"code\": 2750,\n  \"data\": {\n    \"ZUID\": \"string\",\n    \"name\": \"string\",\n    \"binZUID\": \"string\",\n    \"groupZUID\": \"string\",\n    \"createdAt\": \"1957-06-13T18:02:41.148Z\",\n    \"updatedAt\": \"1998-11-21T19:41:42.571Z\"\n  }\n}",
               "cookie": [],
               "_postman_previewlanguage": "json"
             },
             {
-              "id": "3f249ead-070f-433f-8785-987012771a89",
+              "id": "ddd90326-b565-4c55-8fbd-a544f43bf521",
               "name": "Unauthorized.",
               "originalRequest": {
                 "url": {
                   "path": [
-                    "instances",
-                    ":instanceZUID"
+                    "groups",
+                    ":groupZUID"
                   ],
                   "host": [
                     "{{baseUrl}}"
@@ -474,8 +483,8 @@
                       "disabled": false,
                       "type": "any",
                       "value": "<string>",
-                      "key": "instanceZUID",
-                      "description": "(Required) The ZUID of the instance."
+                      "key": "groupZUID",
+                      "description": "(Required) The ZUID of the group."
                     }
                   ]
                 },
@@ -505,13 +514,13 @@
               "_postman_previewlanguage": "text"
             },
             {
-              "id": "3406d9bd-9978-42ed-a0c2-87f4cfda07b2",
-              "name": "Instance not found.",
+              "id": "a9e8434a-6e12-48f6-9329-7287f7e206ed",
+              "name": "Group not found.",
               "originalRequest": {
                 "url": {
                   "path": [
-                    "instances",
-                    ":instanceZUID"
+                    "groups",
+                    ":groupZUID"
                   ],
                   "host": [
                     "{{baseUrl}}"
@@ -522,8 +531,8 @@
                       "disabled": false,
                       "type": "any",
                       "value": "<string>",
-                      "key": "instanceZUID",
-                      "description": "(Required) The ZUID of the instance."
+                      "key": "groupZUID",
+                      "description": "(Required) The ZUID of the group."
                     }
                   ]
                 },
@@ -559,18 +568,18 @@
           }
         },
         {
-          "id": "e30b444e-3074-40f5-8245-9b6ce17e9d69",
-          "name": "Zesty Update an instance",
+          "id": "b00cea92-321f-403f-beff-eb13cb6f0060",
+          "name": "Zesty Update a media group",
           "request": {
-            "name": "Zesty Update an instance",
+            "name": "Zesty Update a media group",
             "description": {
-              "content": "Updates the details of a specific instance.",
+              "content": "Updates the details of a specific media group.",
               "type": "text/plain"
             },
             "url": {
               "path": [
-                "instances",
-                ":instanceZUID"
+                "groups",
+                ":groupZUID"
               ],
               "host": [
                 "{{baseUrl}}"
@@ -581,8 +590,8 @@
                   "disabled": false,
                   "type": "any",
                   "value": "<string>",
-                  "key": "instanceZUID",
-                  "description": "(Required) The ZUID of the instance."
+                  "key": "groupZUID",
+                  "description": "(Required) The ZUID of the group."
                 }
               ]
             },
@@ -622,13 +631,13 @@
           },
           "response": [
             {
-              "id": "a53e26b2-c3b8-40c4-ad49-9028c8985bae",
-              "name": "Instance updated successfully.",
+              "id": "663dc0dc-4215-4f9a-bea2-fe038c2ce295",
+              "name": "Group updated successfully.",
               "originalRequest": {
                 "url": {
                   "path": [
-                    "instances",
-                    ":instanceZUID"
+                    "groups",
+                    ":groupZUID"
                   ],
                   "host": [
                     "{{baseUrl}}"
@@ -639,8 +648,8 @@
                       "disabled": false,
                       "type": "any",
                       "value": "<string>",
-                      "key": "instanceZUID",
-                      "description": "(Required) The ZUID of the instance."
+                      "key": "groupZUID",
+                      "description": "(Required) The ZUID of the group."
                     }
                   ]
                 },
@@ -678,13 +687,13 @@
               "_postman_previewlanguage": "text"
             },
             {
-              "id": "07256e74-8206-4651-9ecf-b8a915b3556f",
+              "id": "d59aabbe-db78-4f70-b8c0-2a79228e2f91",
               "name": "Unauthorized.",
               "originalRequest": {
                 "url": {
                   "path": [
-                    "instances",
-                    ":instanceZUID"
+                    "groups",
+                    ":groupZUID"
                   ],
                   "host": [
                     "{{baseUrl}}"
@@ -695,8 +704,8 @@
                       "disabled": false,
                       "type": "any",
                       "value": "<string>",
-                      "key": "instanceZUID",
-                      "description": "(Required) The ZUID of the instance."
+                      "key": "groupZUID",
+                      "description": "(Required) The ZUID of the group."
                     }
                   ]
                 },
@@ -734,13 +743,13 @@
               "_postman_previewlanguage": "text"
             },
             {
-              "id": "5ec5b890-1a4b-4376-be9a-1695c4f88447",
-              "name": "Instance not found.",
+              "id": "9f18219e-91bb-4952-ab73-42d6d7e143fe",
+              "name": "Group not found.",
               "originalRequest": {
                 "url": {
                   "path": [
-                    "instances",
-                    ":instanceZUID"
+                    "groups",
+                    ":groupZUID"
                   ],
                   "host": [
                     "{{baseUrl}}"
@@ -751,8 +760,8 @@
                       "disabled": false,
                       "type": "any",
                       "value": "<string>",
-                      "key": "instanceZUID",
-                      "description": "(Required) The ZUID of the instance."
+                      "key": "groupZUID",
+                      "description": "(Required) The ZUID of the group."
                     }
                   ]
                 },
@@ -796,18 +805,18 @@
           }
         },
         {
-          "id": "4af7f2b5-9f57-4877-8194-0dca3af16938",
-          "name": "Zesty Delete an instance",
+          "id": "20ea57da-4cad-4ed2-ad9b-cfbf6527d528",
+          "name": "Zesty Delete a media group",
           "request": {
-            "name": "Zesty Delete an instance",
+            "name": "Zesty Delete a media group",
             "description": {
-              "content": "Deletes a specific instance.",
+              "content": "Deletes a specific media group.",
               "type": "text/plain"
             },
             "url": {
               "path": [
-                "instances",
-                ":instanceZUID"
+                "groups",
+                ":groupZUID"
               ],
               "host": [
                 "{{baseUrl}}"
@@ -818,8 +827,8 @@
                   "disabled": false,
                   "type": "any",
                   "value": "<string>",
-                  "key": "instanceZUID",
-                  "description": "(Required) The ZUID of the instance."
+                  "key": "groupZUID",
+                  "description": "(Required) The ZUID of the group."
                 }
               ]
             },
@@ -844,13 +853,13 @@
           },
           "response": [
             {
-              "id": "6dc4c2a8-0dd6-4193-b9ea-5a7bfe91096c",
-              "name": "Instance deleted successfully.",
+              "id": "df41f371-2360-4bcb-9108-818df0334a42",
+              "name": "Group deleted successfully.",
               "originalRequest": {
                 "url": {
                   "path": [
-                    "instances",
-                    ":instanceZUID"
+                    "groups",
+                    ":groupZUID"
                   ],
                   "host": [
                     "{{baseUrl}}"
@@ -861,8 +870,8 @@
                       "disabled": false,
                       "type": "any",
                       "value": "<string>",
-                      "key": "instanceZUID",
-                      "description": "(Required) The ZUID of the instance."
+                      "key": "groupZUID",
+                      "description": "(Required) The ZUID of the group."
                     }
                   ]
                 },
@@ -892,13 +901,13 @@
               "_postman_previewlanguage": "text"
             },
             {
-              "id": "f432cc59-7abe-4e7c-a777-7cd2f5e3bd88",
+              "id": "fa01c074-12ee-44f5-b9ee-ebe70fec6c8b",
               "name": "Unauthorized.",
               "originalRequest": {
                 "url": {
                   "path": [
-                    "instances",
-                    ":instanceZUID"
+                    "groups",
+                    ":groupZUID"
                   ],
                   "host": [
                     "{{baseUrl}}"
@@ -909,8 +918,8 @@
                       "disabled": false,
                       "type": "any",
                       "value": "<string>",
-                      "key": "instanceZUID",
-                      "description": "(Required) The ZUID of the instance."
+                      "key": "groupZUID",
+                      "description": "(Required) The ZUID of the group."
                     }
                   ]
                 },
@@ -940,13 +949,13 @@
               "_postman_previewlanguage": "text"
             },
             {
-              "id": "45e66fdd-5c11-409e-ae73-855ce7c847e4",
-              "name": "Instance not found.",
+              "id": "e1f0f67a-bfee-4bf9-9606-a6b236911f64",
+              "name": "Group not found.",
               "originalRequest": {
                 "url": {
                   "path": [
-                    "instances",
-                    ":instanceZUID"
+                    "groups",
+                    ":groupZUID"
                   ],
                   "host": [
                     "{{baseUrl}}"
@@ -957,8 +966,8 @@
                       "disabled": false,
                       "type": "any",
                       "value": "<string>",
-                      "key": "instanceZUID",
-                      "description": "(Required) The ZUID of the instance."
+                      "key": "groupZUID",
+                      "description": "(Required) The ZUID of the group."
                     }
                   ]
                 },
@@ -1006,8 +1015,8 @@
     }
   ],
   "info": {
-    "_postman_id": "93c3a45b-915f-4f12-92f0-216ffddd98a2",
-    "name": "Zesty Accounts Apps Instances API",
+    "_postman_id": "a019b885-7640-4792-ac87-bb186c58f435",
+    "name": "Zesty Accounts Apps Groups API",
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
     "description": {
       "content": "The Zesty.io Accounts API is used to manage users, roles, instances, teams, tokens, ecosystems, webhooks, and apps. It provides administrative control over the organizational structure of a Zesty.io account. All endpoints require authentication via a session token obtained from the Auth API.\n\nContact Support:\n Name: Zesty.io",

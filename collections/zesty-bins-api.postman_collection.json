@@ -1,25 +1,25 @@
 {
   "item": [
     {
-      "id": "8d83400e-b1f5-4ca8-9b33-9de3a5e8b83b",
-      "name": "Instances",
+      "id": "3251fb92-102f-458e-8ea2-2fc3421ebf1e",
+      "name": "Bins",
       "description": {
-        "content": "Manage Zesty.io instances.",
+        "content": "Manage media bins (top-level containers).",
         "type": "text/plain"
       },
       "item": [
         {
-          "id": "f2eacff3-de1c-4676-8c35-2346d559985b",
-          "name": "Zesty List all instances",
+          "id": "c5f4fab3-674a-4a30-aae0-acc44ff64c92",
+          "name": "Zesty List all media bins",
           "request": {
-            "name": "Zesty List all instances",
+            "name": "Zesty List all media bins",
             "description": {
-              "content": "Returns a list of all instances accessible to the authenticated user.",
+              "content": "Returns a list of all media bins accessible to the authenticated user. Bins are top-level containers for organizing media files.",
               "type": "text/plain"
             },
             "url": {
               "path": [
-                "instances"
+                "bins"
               ],
               "host": [
                 "{{baseUrl}}"
@@ -54,12 +54,12 @@
           },
           "response": [
             {
-              "id": "2cf8431f-bd5c-4982-9016-5b6f2451a94b",
-              "name": "A list of instances.",
+              "id": "b8ea63b1-486a-4001-a93e-90ea465d50da",
+              "name": "A list of media bins.",
               "originalRequest": {
                 "url": {
                   "path": [
-                    "instances"
+                    "bins"
                   ],
                   "host": [
                     "{{baseUrl}}"
@@ -92,17 +92,17 @@
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"code\": 6755,\n  \"data\": [\n    {\n      \"ZUID\": \"string\",\n      \"name\": \"string\",\n      \"ecoZUID\": \"string\",\n      \"domain\": \"string\",\n      \"createdAt\": \"1964-12-02T06:12:08.801Z\",\n      \"updatedAt\": \"1956-09-05T01:49:00.162Z\"\n    },\n    {\n      \"ZUID\": \"string\",\n      \"name\": \"string\",\n      \"ecoZUID\": \"string\",\n      \"domain\": \"string\",\n      \"createdAt\": \"2002-05-28T15:46:06.162Z\",\n      \"updatedAt\": \"1974-12-24T09:44:18.663Z\"\n    }\n  ]\n}",
+              "body": "{\n  \"code\": 6089,\n  \"data\": [\n    {\n      \"ZUID\": \"string\",\n      \"name\": \"string\",\n      \"createdAt\": \"1980-05-24T23:53:27.913Z\",\n      \"updatedAt\": \"1948-11-09T11:21:18.308Z\"\n    },\n    {\n      \"ZUID\": \"string\",\n      \"name\": \"string\",\n      \"createdAt\": \"1958-02-23T02:45:11.108Z\",\n      \"updatedAt\": \"1975-08-13T03:35:08.332Z\"\n    }\n  ]\n}",
               "cookie": [],
               "_postman_previewlanguage": "json"
             },
             {
-              "id": "e395e810-841c-49cc-a255-1041b17da81c",
+              "id": "76b73020-f8e9-4a29-bea4-43377ad21036",
               "name": "Unauthorized.",
               "originalRequest": {
                 "url": {
                   "path": [
-                    "instances"
+                    "bins"
                   ],
                   "host": [
                     "{{baseUrl}}"
@@ -142,17 +142,17 @@
           }
         },
         {
-          "id": "b96d72f7-bdb0-467f-a0a4-5efd69097b7a",
-          "name": "Zesty Create a new instance",
+          "id": "65fde7a5-eebe-4650-8b63-4e26e93b94f7",
+          "name": "Zesty Create a media bin",
           "request": {
-            "name": "Zesty Create a new instance",
+            "name": "Zesty Create a media bin",
             "description": {
-              "content": "Creates a new Zesty.io instance.",
+              "content": "Creates a new media bin for organizing files.",
               "type": "text/plain"
             },
             "url": {
               "path": [
-                "instances"
+                "bins"
               ],
               "host": [
                 "{{baseUrl}}"
@@ -190,7 +190,7 @@
             },
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"name\": \"<string>\",\n  \"ecoZUID\": \"<string>\"\n}",
+              "raw": "{\n  \"name\": \"<string>\"\n}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -200,12 +200,12 @@
           },
           "response": [
             {
-              "id": "1933b05a-56a3-47ff-9288-ac592ae01eee",
-              "name": "Instance created successfully.",
+              "id": "1f0e4b51-195d-41c5-b385-43da9bd6ca8d",
+              "name": "Bin created successfully.",
               "originalRequest": {
                 "url": {
                   "path": [
-                    "instances"
+                    "bins"
                   ],
                   "host": [
                     "{{baseUrl}}"
@@ -230,7 +230,7 @@
                 "method": "POST",
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"name\": \"<string>\",\n  \"ecoZUID\": \"<string>\"\n}",
+                  "raw": "{\n  \"name\": \"<string>\"\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -246,17 +246,17 @@
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"code\": 3260,\n  \"data\": {\n    \"ZUID\": \"string\",\n    \"name\": \"string\",\n    \"ecoZUID\": \"string\",\n    \"domain\": \"string\",\n    \"createdAt\": \"1950-04-13T10:35:33.928Z\",\n    \"updatedAt\": \"2009-10-08T21:01:20.366Z\"\n  }\n}",
+              "body": "{\n  \"code\": 21,\n  \"data\": {\n    \"ZUID\": \"string\",\n    \"name\": \"string\",\n    \"createdAt\": \"1998-11-21T10:49:11.413Z\",\n    \"updatedAt\": \"1971-04-23T08:09:31.825Z\"\n  }\n}",
               "cookie": [],
               "_postman_previewlanguage": "json"
             },
             {
-              "id": "2cade95f-789e-40ff-92c9-4cd863bbdad7",
+              "id": "3e76cc00-e8e7-4317-9fc3-3341724218a0",
               "name": "Invalid request.",
               "originalRequest": {
                 "url": {
                   "path": [
-                    "instances"
+                    "bins"
                   ],
                   "host": [
                     "{{baseUrl}}"
@@ -277,7 +277,7 @@
                 "method": "POST",
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"name\": \"<string>\",\n  \"ecoZUID\": \"<string>\"\n}",
+                  "raw": "{\n  \"name\": \"<string>\"\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -298,12 +298,12 @@
               "_postman_previewlanguage": "text"
             },
             {
-              "id": "78577044-7bf9-4d1c-a22a-12bab0bafe90",
+              "id": "9c5b8ab0-9c93-471d-a4bb-c1a7cf9355f8",
               "name": "Unauthorized.",
               "originalRequest": {
                 "url": {
                   "path": [
-                    "instances"
+                    "bins"
                   ],
                   "host": [
                     "{{baseUrl}}"
@@ -324,7 +324,7 @@
                 "method": "POST",
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"name\": \"<string>\",\n  \"ecoZUID\": \"<string>\"\n}",
+                  "raw": "{\n  \"name\": \"<string>\"\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -351,18 +351,18 @@
           }
         },
         {
-          "id": "47b41849-0812-457b-9fb2-31eb35d5d2da",
-          "name": "Zesty Get an instance",
+          "id": "39ad627d-cff4-4a6f-b224-4aa92b5490e1",
+          "name": "Zesty Get a media bin",
           "request": {
-            "name": "Zesty Get an instance",
+            "name": "Zesty Get a media bin",
             "description": {
-              "content": "Returns details for a specific instance by its ZUID.",
+              "content": "Returns details for a specific media bin.",
               "type": "text/plain"
             },
             "url": {
               "path": [
-                "instances",
-                ":instanceZUID"
+                "bins",
+                ":binZUID"
               ],
               "host": [
                 "{{baseUrl}}"
@@ -373,8 +373,8 @@
                   "disabled": false,
                   "type": "any",
                   "value": "<string>",
-                  "key": "instanceZUID",
-                  "description": "(Required) The ZUID of the instance."
+                  "key": "binZUID",
+                  "description": "(Required) The ZUID of the media bin."
                 }
               ]
             },
@@ -405,13 +405,13 @@
           },
           "response": [
             {
-              "id": "1ef44a33-8015-4667-9195-fd352b1ce739",
-              "name": "Instance details.",
+              "id": "8d3b9762-dcaf-4172-9664-47ea4129c503",
+              "name": "Bin details.",
               "originalRequest": {
                 "url": {
                   "path": [
-                    "instances",
-                    ":instanceZUID"
+                    "bins",
+                    ":binZUID"
                   ],
                   "host": [
                     "{{baseUrl}}"
@@ -422,8 +422,8 @@
                       "disabled": false,
                       "type": "any",
                       "value": "<string>",
-                      "key": "instanceZUID",
-                      "description": "(Required) The ZUID of the instance."
+                      "key": "binZUID",
+                      "description": "(Required) The ZUID of the media bin."
                     }
                   ]
                 },
@@ -452,18 +452,18 @@
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"code\": 3260,\n  \"data\": {\n    \"ZUID\": \"string\",\n    \"name\": \"string\",\n    \"ecoZUID\": \"string\",\n    \"domain\": \"string\",\n    \"createdAt\": \"1950-04-13T10:35:33.928Z\",\n    \"updatedAt\": \"2009-10-08T21:01:20.366Z\"\n  }\n}",
+              "body": "{\n  \"code\": 21,\n  \"data\": {\n    \"ZUID\": \"string\",\n    \"name\": \"string\",\n    \"createdAt\": \"1998-11-21T10:49:11.413Z\",\n    \"updatedAt\": \"1971-04-23T08:09:31.825Z\"\n  }\n}",
               "cookie": [],
               "_postman_previewlanguage": "json"
             },
             {
-              "id": "3f249ead-070f-433f-8785-987012771a89",
+              "id": "5d12baf6-89cf-4291-9b8c-51094c40f2f5",
               "name": "Unauthorized.",
               "originalRequest": {
                 "url": {
                   "path": [
-                    "instances",
-                    ":instanceZUID"
+                    "bins",
+                    ":binZUID"
                   ],
                   "host": [
                     "{{baseUrl}}"
@@ -474,8 +474,8 @@
                       "disabled": false,
                       "type": "any",
                       "value": "<string>",
-                      "key": "instanceZUID",
-                      "description": "(Required) The ZUID of the instance."
+                      "key": "binZUID",
+                      "description": "(Required) The ZUID of the media bin."
                     }
                   ]
                 },
@@ -505,13 +505,13 @@
               "_postman_previewlanguage": "text"
             },
             {
-              "id": "3406d9bd-9978-42ed-a0c2-87f4cfda07b2",
-              "name": "Instance not found.",
+              "id": "c15d9f7d-2147-4af7-899a-a106e15dcf1b",
+              "name": "Bin not found.",
               "originalRequest": {
                 "url": {
                   "path": [
-                    "instances",
-                    ":instanceZUID"
+                    "bins",
+                    ":binZUID"
                   ],
                   "host": [
                     "{{baseUrl}}"
@@ -522,8 +522,8 @@
                       "disabled": false,
                       "type": "any",
                       "value": "<string>",
-                      "key": "instanceZUID",
-                      "description": "(Required) The ZUID of the instance."
+                      "key": "binZUID",
+                      "description": "(Required) The ZUID of the media bin."
                     }
                   ]
                 },
@@ -559,18 +559,18 @@
           }
         },
         {
-          "id": "e30b444e-3074-40f5-8245-9b6ce17e9d69",
-          "name": "Zesty Update an instance",
+          "id": "533ab594-cf63-4b84-b66a-86fc0c943952",
+          "name": "Zesty Update a media bin",
           "request": {
-            "name": "Zesty Update an instance",
+            "name": "Zesty Update a media bin",
             "description": {
-              "content": "Updates the details of a specific instance.",
+              "content": "Updates the details of a specific media bin.",
               "type": "text/plain"
             },
             "url": {
               "path": [
-                "instances",
-                ":instanceZUID"
+                "bins",
+                ":binZUID"
               ],
               "host": [
                 "{{baseUrl}}"
@@ -581,8 +581,8 @@
                   "disabled": false,
                   "type": "any",
                   "value": "<string>",
-                  "key": "instanceZUID",
-                  "description": "(Required) The ZUID of the instance."
+                  "key": "binZUID",
+                  "description": "(Required) The ZUID of the media bin."
                 }
               ]
             },
@@ -622,13 +622,13 @@
           },
           "response": [
             {
-              "id": "a53e26b2-c3b8-40c4-ad49-9028c8985bae",
-              "name": "Instance updated successfully.",
+              "id": "88896a67-c685-43c5-a743-0d0b02934a05",
+              "name": "Bin updated successfully.",
               "originalRequest": {
                 "url": {
                   "path": [
-                    "instances",
-                    ":instanceZUID"
+                    "bins",
+                    ":binZUID"
                   ],
                   "host": [
                     "{{baseUrl}}"
@@ -639,8 +639,8 @@
                       "disabled": false,
                       "type": "any",
                       "value": "<string>",
-                      "key": "instanceZUID",
-                      "description": "(Required) The ZUID of the instance."
+                      "key": "binZUID",
+                      "description": "(Required) The ZUID of the media bin."
                     }
                   ]
                 },
@@ -678,13 +678,13 @@
               "_postman_previewlanguage": "text"
             },
             {
-              "id": "07256e74-8206-4651-9ecf-b8a915b3556f",
+              "id": "bb98ce19-d55b-4322-a6ab-adb41de07b67",
               "name": "Unauthorized.",
               "originalRequest": {
                 "url": {
                   "path": [
-                    "instances",
-                    ":instanceZUID"
+                    "bins",
+                    ":binZUID"
                   ],
                   "host": [
                     "{{baseUrl}}"
@@ -695,8 +695,8 @@
                       "disabled": false,
                       "type": "any",
                       "value": "<string>",
-                      "key": "instanceZUID",
-                      "description": "(Required) The ZUID of the instance."
+                      "key": "binZUID",
+                      "description": "(Required) The ZUID of the media bin."
                     }
                   ]
                 },
@@ -734,13 +734,13 @@
               "_postman_previewlanguage": "text"
             },
             {
-              "id": "5ec5b890-1a4b-4376-be9a-1695c4f88447",
-              "name": "Instance not found.",
+              "id": "ceaa3f00-97b7-4a24-98eb-dbdd6a9e631e",
+              "name": "Bin not found.",
               "originalRequest": {
                 "url": {
                   "path": [
-                    "instances",
-                    ":instanceZUID"
+                    "bins",
+                    ":binZUID"
                   ],
                   "host": [
                     "{{baseUrl}}"
@@ -751,8 +751,8 @@
                       "disabled": false,
                       "type": "any",
                       "value": "<string>",
-                      "key": "instanceZUID",
-                      "description": "(Required) The ZUID of the instance."
+                      "key": "binZUID",
+                      "description": "(Required) The ZUID of the media bin."
                     }
                   ]
                 },
@@ -796,18 +796,18 @@
           }
         },
         {
-          "id": "4af7f2b5-9f57-4877-8194-0dca3af16938",
-          "name": "Zesty Delete an instance",
+          "id": "c2ed8c00-95e5-47fd-838c-f9cd9a12586a",
+          "name": "Zesty Delete a media bin",
           "request": {
-            "name": "Zesty Delete an instance",
+            "name": "Zesty Delete a media bin",
             "description": {
-              "content": "Deletes a specific instance.",
+              "content": "Deletes a specific media bin and all its contents.",
               "type": "text/plain"
             },
             "url": {
               "path": [
-                "instances",
-                ":instanceZUID"
+                "bins",
+                ":binZUID"
               ],
               "host": [
                 "{{baseUrl}}"
@@ -818,8 +818,8 @@
                   "disabled": false,
                   "type": "any",
                   "value": "<string>",
-                  "key": "instanceZUID",
-                  "description": "(Required) The ZUID of the instance."
+                  "key": "binZUID",
+                  "description": "(Required) The ZUID of the media bin."
                 }
               ]
             },
@@ -844,13 +844,13 @@
           },
           "response": [
             {
-              "id": "6dc4c2a8-0dd6-4193-b9ea-5a7bfe91096c",
-              "name": "Instance deleted successfully.",
+              "id": "89c0555c-7f70-4d1e-b29a-03d7df150f99",
+              "name": "Bin deleted successfully.",
               "originalRequest": {
                 "url": {
                   "path": [
-                    "instances",
-                    ":instanceZUID"
+                    "bins",
+                    ":binZUID"
                   ],
                   "host": [
                     "{{baseUrl}}"
@@ -861,8 +861,8 @@
                       "disabled": false,
                       "type": "any",
                       "value": "<string>",
-                      "key": "instanceZUID",
-                      "description": "(Required) The ZUID of the instance."
+                      "key": "binZUID",
+                      "description": "(Required) The ZUID of the media bin."
                     }
                   ]
                 },
@@ -892,13 +892,13 @@
               "_postman_previewlanguage": "text"
             },
             {
-              "id": "f432cc59-7abe-4e7c-a777-7cd2f5e3bd88",
+              "id": "dbaef72c-9e35-4764-b8e5-03685d9d71fc",
               "name": "Unauthorized.",
               "originalRequest": {
                 "url": {
                   "path": [
-                    "instances",
-                    ":instanceZUID"
+                    "bins",
+                    ":binZUID"
                   ],
                   "host": [
                     "{{baseUrl}}"
@@ -909,8 +909,8 @@
                       "disabled": false,
                       "type": "any",
                       "value": "<string>",
-                      "key": "instanceZUID",
-                      "description": "(Required) The ZUID of the instance."
+                      "key": "binZUID",
+                      "description": "(Required) The ZUID of the media bin."
                     }
                   ]
                 },
@@ -940,13 +940,13 @@
               "_postman_previewlanguage": "text"
             },
             {
-              "id": "45e66fdd-5c11-409e-ae73-855ce7c847e4",
-              "name": "Instance not found.",
+              "id": "203dba92-2353-4649-bdc7-fa6d1457aa3d",
+              "name": "Bin not found.",
               "originalRequest": {
                 "url": {
                   "path": [
-                    "instances",
-                    ":instanceZUID"
+                    "bins",
+                    ":binZUID"
                   ],
                   "host": [
                     "{{baseUrl}}"
@@ -957,8 +957,8 @@
                       "disabled": false,
                       "type": "any",
                       "value": "<string>",
-                      "key": "instanceZUID",
-                      "description": "(Required) The ZUID of the instance."
+                      "key": "binZUID",
+                      "description": "(Required) The ZUID of the media bin."
                     }
                   ]
                 },
@@ -1006,8 +1006,8 @@
     }
   ],
   "info": {
-    "_postman_id": "93c3a45b-915f-4f12-92f0-216ffddd98a2",
-    "name": "Zesty Accounts Apps Instances API",
+    "_postman_id": "1cfdfa4a-bd5d-4349-b455-e238f4828133",
+    "name": "Zesty Accounts Apps Bins API",
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
     "description": {
       "content": "The Zesty.io Accounts API is used to manage users, roles, instances, teams, tokens, ecosystems, webhooks, and apps. It provides administrative control over the organizational structure of a Zesty.io account. All endpoints require authentication via a session token obtained from the Auth API.\n\nContact Support:\n Name: Zesty.io",
