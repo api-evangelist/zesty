@@ -32,7 +32,7 @@ tags:
 - Media
 created: '2025-02-17'
 modified: '2026-05-19'
-specificationVersion: '0.19'
+specificationVersion: '0.23'
 apis:
 - aid: zesty:instances-api
   name: Zesty Instances API
