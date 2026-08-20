@@ -63,6 +63,8 @@ apis:
   description: Manage registered applications.
   humanURL: https://docs.zesty.io/docs/auth-api
   tags:
+  - Application
+  tags_raw:
   - Apps
   properties:
   - type: OpenAPI
@@ -308,6 +310,8 @@ apis:
   description: Manage and upload media files.
   humanURL: https://docs.zesty.io/docs/auth-api
   tags:
+  - File
+  tags_raw:
   - Files
   properties:
   - type: OpenAPI
@@ -343,6 +347,8 @@ apis:
   description: Manage media groups (folders within bins).
   humanURL: https://docs.zesty.io/docs/auth-api
   tags:
+  - Group
+  tags_raw:
   - Groups
   properties:
   - type: OpenAPI
@@ -728,6 +734,8 @@ apis:
   description: Manage teams.
   humanURL: https://docs.zesty.io/docs/auth-api
   tags:
+  - Team
+  tags_raw:
   - Teams
   properties:
   - type: OpenAPI
@@ -798,6 +806,8 @@ apis:
   description: Manage user accounts.
   humanURL: https://docs.zesty.io/docs/auth-api
   tags:
+  - User
+  tags_raw:
   - Users
   properties:
   - type: OpenAPI
@@ -868,6 +878,8 @@ apis:
   description: Manage webhook subscriptions.
   humanURL: https://docs.zesty.io/docs/auth-api
   tags:
+  - Webhook
+  tags_raw:
   - Webhooks
   properties:
   - type: OpenAPI
