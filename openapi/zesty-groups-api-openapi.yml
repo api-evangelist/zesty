@@ -1,7 +1,7 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Zesty Accounts Apps Groups API
-  description: The Zesty.io Accounts API is used to manage users, roles, instances, teams, tokens, ecosystems, webhooks, and apps. It provides administrative control over the organizational structure of a Zesty.io account. All endpoints require authentication via a session token obtained from the Auth API.
+  title: Zesty Media Groups API
+  description: 'The Zesty.io Media API is a collection of services for managing media files in the Zesty.io platform. It consists of four services: Media Manager (database communication and primary endpoints), Media Storage (communicates with storage provider), Media Modify (image manipulation), and Media Resolver (returns CDN paths for media file ZUIDs). The Media Manager service is the most commonly used and handles bins, groups (folders), and file management.'
   version: 1.0.0
   contact:
     name: Zesty.io
@@ -10,8 +10,14 @@ info:
     name: Proprietary
     url: https://www.zesty.io/
 servers:
-- url: https://accounts.api.zesty.io/v1
-  description: Zesty Accounts API Production Server
+- url: https://media-manager.api.zesty.io
+  description: Zesty Media Manager Service
+- url: https://media-storage.api.zesty.io
+  description: Zesty Media Storage Service
+- url: https://media-modify.api.zesty.io
+  description: Zesty Media Modify Service
+- url: https://media-resolver.api.zesty.io
+  description: Zesty Media Resolver Service
 tags:
 - name: Groups
   description: Manage media groups (folders within bins).
@@ -194,7 +200,7 @@ components:
       type: apiKey
       in: header
       name: Authorization
-      description: A session token obtained from the Auth API login endpoint.
+      description: A session token or access token obtained from the Auth API.
 externalDocs:
-  description: Zesty Accounts API Documentation
-  url: https://docs.zesty.io/docs/accounts
+  description: Zesty Media API Documentation
+  url: https://docs.zesty.io/docs/media

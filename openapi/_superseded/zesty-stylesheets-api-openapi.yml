@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Zesty Accounts Apps Settings API
+  title: Zesty Accounts Apps Stylesheets API
   description: The Zesty.io Accounts API is used to manage users, roles, instances, teams, tokens, ecosystems, webhooks, and apps. It provides administrative control over the organizational structure of a Zesty.io account. All endpoints require authentication via a session token obtained from the Auth API.
   version: 1.0.0
   contact:
@@ -13,21 +13,21 @@ servers:
 - url: https://accounts.api.zesty.io/v1
   description: Zesty Accounts API Production Server
 tags:
-- name: Settings
-  description: Manage instance settings.
+- name: Stylesheets
+  description: Manage CSS stylesheet files.
 paths:
-  /env/settings:
+  /web/stylesheets:
     get:
-      operationId: getSettings
-      summary: Zesty List all instance settings
-      description: Returns all settings for the instance.
+      operationId: getStylesheets
+      summary: Zesty List all stylesheets
+      description: Returns a list of all stylesheet files in the instance.
       tags:
-      - Settings
+      - Stylesheets
       security:
       - sessionToken: []
       responses:
         '200':
-          description: A list of settings.
+          description: A list of stylesheets.
           content:
             application/json:
               schema:
@@ -38,28 +38,59 @@ paths:
                   data:
                     type: array
                     items:
-                      $ref: '#/components/schemas/Setting'
+                      $ref: '#/components/schemas/Stylesheet'
         '401':
           description: Unauthorized.
-  /env/settings/{settingZUID}:
-    get:
-      operationId: getSetting
-      summary: Zesty Get a setting
-      description: Returns a specific instance setting.
+    post:
+      operationId: createStylesheet
+      summary: Zesty Create a stylesheet
+      description: Creates a new stylesheet file in the instance.
       tags:
-      - Settings
+      - Stylesheets
+      security:
+      - sessionToken: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - fileName
+              - code
+              properties:
+                fileName:
+                  type: string
+                code:
+                  type: string
+                type:
+                  type: string
+      responses:
+        '201':
+          description: Stylesheet created successfully.
+        '400':
+          description: Invalid request.
+        '401':
+          description: Unauthorized.
+  /web/stylesheets/{stylesheetZUID}:
+    get:
+      operationId: getStylesheet
+      summary: Zesty Get a stylesheet
+      description: Returns a specific stylesheet and its code content.
+      tags:
+      - Stylesheets
       security:
       - sessionToken: []
       parameters:
-      - name: settingZUID
+      - name: stylesheetZUID
         in: path
         required: true
         schema:
           type: string
-        description: The ZUID of the setting.
+        description: The ZUID of the stylesheet.
       responses:
         '200':
-          description: Setting details.
+          description: Stylesheet details.
           content:
             application/json:
               schema:
@@ -68,26 +99,26 @@ paths:
                   code:
                     type: integer
                   data:
-                    $ref: '#/components/schemas/Setting'
+                    $ref: '#/components/schemas/Stylesheet'
         '401':
           description: Unauthorized.
         '404':
-          description: Setting not found.
+          description: Stylesheet not found.
     put:
-      operationId: updateSetting
-      summary: Zesty Update a setting
-      description: Updates the value of a specific instance setting.
+      operationId: updateStylesheet
+      summary: Zesty Update a stylesheet
+      description: Updates the code content of a specific stylesheet.
       tags:
-      - Settings
+      - Stylesheets
       security:
       - sessionToken: []
       parameters:
-      - name: settingZUID
+      - name: stylesheetZUID
         in: path
         required: true
         schema:
           type: string
-        description: The ZUID of the setting.
+        description: The ZUID of the stylesheet.
       requestBody:
         required: true
         content:
@@ -95,29 +126,30 @@ paths:
             schema:
               type: object
               properties:
-                value:
+                code:
                   type: string
-                  description: The new value for the setting.
       responses:
         '200':
-          description: Setting updated successfully.
+          description: Stylesheet updated successfully.
         '401':
           description: Unauthorized.
         '404':
-          description: Setting not found.
+          description: Stylesheet not found.
 components:
   schemas:
-    Setting:
+    Stylesheet:
       type: object
       properties:
         ZUID:
           type: string
-        key:
+        fileName:
           type: string
-        value:
+        code:
           type: string
-        category:
+        type:
           type: string
+        version:
+          type: integer
         createdAt:
           type: string
           format: date-time

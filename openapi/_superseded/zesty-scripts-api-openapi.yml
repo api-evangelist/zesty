@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Zesty Accounts Apps Head Tags API
+  title: Zesty Accounts Apps Scripts API
   description: The Zesty.io Accounts API is used to manage users, roles, instances, teams, tokens, ecosystems, webhooks, and apps. It provides administrative control over the organizational structure of a Zesty.io account. All endpoints require authentication via a session token obtained from the Auth API.
   version: 1.0.0
   contact:
@@ -13,21 +13,21 @@ servers:
 - url: https://accounts.api.zesty.io/v1
   description: Zesty Accounts API Production Server
 tags:
-- name: Head Tags
-  description: Manage HTML head tag entries.
+- name: Scripts
+  description: Manage JavaScript files.
 paths:
-  /web/headtags:
+  /web/scripts:
     get:
-      operationId: getHeadTags
-      summary: Zesty List all head tags
-      description: Returns a list of all HTML head tags in the instance.
+      operationId: getScripts
+      summary: Zesty List all scripts
+      description: Returns a list of all JavaScript files in the instance.
       tags:
-      - Head Tags
+      - Scripts
       security:
       - sessionToken: []
       responses:
         '200':
-          description: A list of head tags.
+          description: A list of scripts.
           content:
             application/json:
               schema:
@@ -38,15 +38,15 @@ paths:
                   data:
                     type: array
                     items:
-                      $ref: '#/components/schemas/HeadTag'
+                      $ref: '#/components/schemas/Script'
         '401':
           description: Unauthorized.
     post:
-      operationId: createHeadTag
-      summary: Zesty Create a head tag
-      description: Creates a new HTML head tag entry for the instance.
+      operationId: createScript
+      summary: Zesty Create a script
+      description: Creates a new JavaScript file in the instance.
       tags:
-      - Head Tags
+      - Scripts
       security:
       - sessionToken: []
       requestBody:
@@ -56,65 +56,69 @@ paths:
             schema:
               type: object
               required:
-              - type
-              - resourceZUID
+              - fileName
+              - code
               properties:
+                fileName:
+                  type: string
+                code:
+                  type: string
                 type:
                   type: string
-                  description: The tag type (e.g., meta, link, script).
-                resourceZUID:
-                  type: string
-                  description: The ZUID of the resource this tag applies to.
-                attributes:
-                  type: object
-                  description: Key-value pairs of HTML attributes.
-                sort:
-                  type: integer
       responses:
         '201':
-          description: Head tag created successfully.
+          description: Script created successfully.
         '400':
           description: Invalid request.
         '401':
           description: Unauthorized.
-  /web/headtags/{headTagZUID}:
+  /web/scripts/{scriptZUID}:
     get:
-      operationId: getHeadTag
-      summary: Zesty Get a head tag
-      description: Returns a specific head tag.
+      operationId: getScript
+      summary: Zesty Get a script
+      description: Returns a specific script file and its code content.
       tags:
-      - Head Tags
+      - Scripts
       security:
       - sessionToken: []
       parameters:
-      - name: headTagZUID
+      - name: scriptZUID
         in: path
         required: true
         schema:
           type: string
-        description: The ZUID of the head tag.
+        description: The ZUID of the script.
       responses:
         '200':
-          description: Head tag details.
+          description: Script details.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                  data:
+                    $ref: '#/components/schemas/Script'
         '401':
           description: Unauthorized.
         '404':
-          description: Head tag not found.
+          description: Script not found.
     put:
-      operationId: updateHeadTag
-      summary: Zesty Update a head tag
-      description: Updates a specific head tag.
+      operationId: updateScript
+      summary: Zesty Update a script
+      description: Updates the code content of a specific script file.
       tags:
-      - Head Tags
+      - Scripts
       security:
       - sessionToken: []
       parameters:
-      - name: headTagZUID
+      - name: scriptZUID
         in: path
         required: true
         schema:
           type: string
-        description: The ZUID of the head tag.
+        description: The ZUID of the script.
       requestBody:
         required: true
         content:
@@ -122,55 +126,29 @@ paths:
             schema:
               type: object
               properties:
-                type:
+                code:
                   type: string
-                attributes:
-                  type: object
-                sort:
-                  type: integer
       responses:
         '200':
-          description: Head tag updated successfully.
+          description: Script updated successfully.
         '401':
           description: Unauthorized.
         '404':
-          description: Head tag not found.
-    delete:
-      operationId: deleteHeadTag
-      summary: Zesty Delete a head tag
-      description: Deletes a specific head tag.
-      tags:
-      - Head Tags
-      security:
-      - sessionToken: []
-      parameters:
-      - name: headTagZUID
-        in: path
-        required: true
-        schema:
-          type: string
-        description: The ZUID of the head tag.
-      responses:
-        '200':
-          description: Head tag deleted successfully.
-        '401':
-          description: Unauthorized.
-        '404':
-          description: Head tag not found.
+          description: Script not found.
 components:
   schemas:
-    HeadTag:
+    Script:
       type: object
       properties:
         ZUID:
           type: string
+        fileName:
+          type: string
+        code:
+          type: string
         type:
           type: string
-        resourceZUID:
-          type: string
-        attributes:
-          type: object
-        sort:
+        version:
           type: integer
         createdAt:
           type: string
