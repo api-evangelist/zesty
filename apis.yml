@@ -503,6 +503,8 @@ apis:
   - type: JSONLD
     url: json-ld/zesty-context.jsonld
 common:
+- type: Website
+  url: https://www.zesty.io/
 - type: AgenticAccess
   url: agentic-access/zesty-agentic-access.yml
 - type: DomainSecurity
