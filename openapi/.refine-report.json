@@ -27,33 +27,22 @@
     "sourced from openapi/_original/ (3 archived document(s)); previously refined output at the top level was skipped rather than re-split",
     "zesty-accounts-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
     "zesty-auth-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
-    "zesty-media-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0"
+    "zesty-media-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "apis.yml register: already-registered"
   ],
   "skipped": [
     "zesty-apps-api-openapi.yml: previously refined output, superseded by openapi/_original/",
-    "zesty-audits-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "zesty-authentication-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "zesty-bins-api-openapi.yml: previously refined output, superseded by openapi/_original/",
-    "zesty-content-items-api-openapi.yml: previously refined output, superseded by openapi/_original/",
-    "zesty-content-models-api-openapi.yml: previously refined output, superseded by openapi/_original/",
-    "zesty-fields-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "zesty-files-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "zesty-groups-api-openapi.yml: previously refined output, superseded by openapi/_original/",
-    "zesty-head-tags-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "zesty-instances-api-openapi.yml: previously refined output, superseded by openapi/_original/",
-    "zesty-navigation-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "zesty-password-api-openapi.yml: previously refined output, superseded by openapi/_original/",
-    "zesty-publishing-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "zesty-resolver-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "zesty-roles-api-openapi.yml: previously refined output, superseded by openapi/_original/",
-    "zesty-scripts-api-openapi.yml: previously refined output, superseded by openapi/_original/",
-    "zesty-search-api-openapi.yml: previously refined output, superseded by openapi/_original/",
-    "zesty-settings-api-openapi.yml: previously refined output, superseded by openapi/_original/",
-    "zesty-stylesheets-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "zesty-teams-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "zesty-tokens-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "zesty-users-api-openapi.yml: previously refined output, superseded by openapi/_original/",
-    "zesty-views-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "zesty-webhooks-api-openapi.yml: previously refined output, superseded by openapi/_original/"
   ]
 }
