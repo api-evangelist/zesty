@@ -83,8 +83,6 @@ apis:
     url: openapi/zesty-apps-api-openapi.yml
   - type: Documentation
     url: https://docs.zesty.io/docs/auth-api
-  - type: GraphQL
-    url: graphql/zesty-graphql.md
   - type: Documentation
     url: https://docs.zesty.io/docs/accounts
   - type: JSONSchema
@@ -118,8 +116,6 @@ apis:
     url: openapi/zesty-authentication-api-openapi.yml
   - type: Documentation
     url: https://docs.zesty.io/docs/auth-api
-  - type: GraphQL
-    url: graphql/zesty-graphql.md
   - type: Documentation
     url: https://docs.zesty.io/docs/accounts
   - type: JSONSchema
@@ -153,8 +149,6 @@ apis:
     url: openapi/zesty-bins-api-openapi.yml
   - type: Documentation
     url: https://docs.zesty.io/docs/auth-api
-  - type: GraphQL
-    url: graphql/zesty-graphql.md
   - type: Documentation
     url: https://docs.zesty.io/docs/accounts
   - type: JSONSchema
@@ -190,8 +184,6 @@ apis:
     url: openapi/zesty-files-api-openapi.yml
   - type: Documentation
     url: https://docs.zesty.io/docs/auth-api
-  - type: GraphQL
-    url: graphql/zesty-graphql.md
   - type: Documentation
     url: https://docs.zesty.io/docs/accounts
   - type: JSONSchema
@@ -227,8 +219,6 @@ apis:
     url: openapi/zesty-groups-api-openapi.yml
   - type: Documentation
     url: https://docs.zesty.io/docs/auth-api
-  - type: GraphQL
-    url: graphql/zesty-graphql.md
   - type: Documentation
     url: https://docs.zesty.io/docs/accounts
   - type: JSONSchema
@@ -262,8 +252,6 @@ apis:
     url: openapi/zesty-password-api-openapi.yml
   - type: Documentation
     url: https://docs.zesty.io/docs/auth-api
-  - type: GraphQL
-    url: graphql/zesty-graphql.md
   - type: Documentation
     url: https://docs.zesty.io/docs/accounts
   - type: JSONSchema
@@ -297,8 +285,6 @@ apis:
     url: openapi/zesty-resolver-api-openapi.yml
   - type: Documentation
     url: https://docs.zesty.io/docs/auth-api
-  - type: GraphQL
-    url: graphql/zesty-graphql.md
   - type: Documentation
     url: https://docs.zesty.io/docs/accounts
   - type: JSONSchema
@@ -332,8 +318,6 @@ apis:
     url: openapi/zesty-roles-api-openapi.yml
   - type: Documentation
     url: https://docs.zesty.io/docs/auth-api
-  - type: GraphQL
-    url: graphql/zesty-graphql.md
   - type: Documentation
     url: https://docs.zesty.io/docs/accounts
   - type: JSONSchema
@@ -369,8 +353,6 @@ apis:
     url: openapi/zesty-teams-api-openapi.yml
   - type: Documentation
     url: https://docs.zesty.io/docs/auth-api
-  - type: GraphQL
-    url: graphql/zesty-graphql.md
   - type: Documentation
     url: https://docs.zesty.io/docs/accounts
   - type: JSONSchema
@@ -404,8 +386,6 @@ apis:
     url: openapi/zesty-tokens-api-openapi.yml
   - type: Documentation
     url: https://docs.zesty.io/docs/auth-api
-  - type: GraphQL
-    url: graphql/zesty-graphql.md
   - type: Documentation
     url: https://docs.zesty.io/docs/accounts
   - type: JSONSchema
@@ -441,8 +421,6 @@ apis:
     url: openapi/zesty-users-api-openapi.yml
   - type: Documentation
     url: https://docs.zesty.io/docs/auth-api
-  - type: GraphQL
-    url: graphql/zesty-graphql.md
   - type: Documentation
     url: https://docs.zesty.io/docs/accounts
   - type: JSONSchema
@@ -478,8 +456,6 @@ apis:
     url: openapi/zesty-webhooks-api-openapi.yml
   - type: Documentation
     url: https://docs.zesty.io/docs/auth-api
-  - type: GraphQL
-    url: graphql/zesty-graphql.md
   - type: Documentation
     url: https://docs.zesty.io/docs/accounts
   - type: JSONSchema

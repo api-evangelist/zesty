@@ -1,1 +1,0 @@
-# Zesty GraphQL API
