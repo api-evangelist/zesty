@@ -1,21 +1,19 @@
-# Kin Score artifact — zesty — 2026-09-02T224043
+# Kin Score artifact — zesty — 2026-09-23T000603
 # The API Evangelist rating (https://github.com/api-evangelist/kin-score). Generated; do not edit.
 ---
 kin_score:
   slug: zesty
-  schema_version: 0.18.0
-  scored_at: '2026-09-02'
-  run_ts: 2026-09-02T224043
-  composite: 37.6
+  schema_version: 0.22.0
+  scored_at: '2026-09-23'
+  run_ts: 2026-09-23T000603
+  composite: 36.9
   band: thin
   facets:
     discoverability: 72.2
     contract_quality: 72.5
-    governance: 9.8
+    contract_governance: 9.8
     operational_transparency: 13.2
     developer_ergonomics: 31.0
-    commercial_clarity: 15.8
-    contract_governance: 9.8
     access_clarity: 15.8
   agent_readiness:
     score: 19.8
