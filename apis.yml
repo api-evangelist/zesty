@@ -479,6 +479,12 @@ apis:
   - type: JSONLD
     url: json-ld/zesty-context.jsonld
 common:
+- type: Plans
+  url: plans/zesty-plans-pricing.yml
+- type: RateLimits
+  url: rate-limits/zesty-rate-limits.yml
+- type: FinOps
+  url: finops/zesty-finops.yml
 - type: Website
   url: https://www.zesty.io/
 - type: AgenticAccess
